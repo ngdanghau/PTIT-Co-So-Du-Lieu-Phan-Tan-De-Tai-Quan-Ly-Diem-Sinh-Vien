@@ -27,37 +27,36 @@ namespace QLDSV_HTC
 
         public static SqlDataReader MyReader;
 
+        // Tên máy tính
+        public static string DataSource = Environment.MachineName;
+
         // những dòng này dùng trong phần tạo connection string ở bên dưới
         public static string ServerName = string.Empty;
-        public static string UserName = string.Empty;
+        
 
-
-        // lưu các login và password từ các form khi chương trình chạy.
-        public static string MLogin = string.Empty;
-        public static string MPassword = string.Empty;
 
         // RemoteLogin này là remote dùng để hỗ trợ kết nối ra ngoài ví dụ trong quá trình đăng nhập nó sẽ rẽ qua server 2
         // để đăng nhập truy vấn dữ liệu thì nó dùng login này để kết nối(hay là tạo link server)
         // vì nó giống nhau trên các phân mảnh là HTKN nối nó sẽ gán cứng vào.
         public static string RemoteLogin = "HTKN";
         public static string RemotePassword = "123456";
-        public static string Database = "QLDSV_HTC";
+        public static string Database = "QLDSV_TC";
 
-        //MLoginDN là mã login đăng nhập và mật khẩu của nó
-        public static string MLoginDN = string.Empty;
-        public static string PasswordDN = string.Empty;
 
-        // 3 Mgroup , MHoten, MKhoa dùng để hiển thi thông tin login vào
-        // MGroup là mã nhóm quyền khi của login đó đăng nhập vào.
-        public static string MGroup = string.Empty;
+        /**
+         * Thông tin authentication 
+         */
+        public static string AuthUserID = string.Empty;
+        public static string AuthLogin = string.Empty;
+        public static string AuthPassword = string.Empty;
+        public static string AuthGroup = string.Empty;
+        public static string AuthHoten = string.Empty;
 
-        // MHoten là mã họ tên của login đăng nhập vào 
-        public static string MHoten = string.Empty;
 
-        //MKhoa cho biết hiện tại khoa ta đăng nhập vô là khoa nào.
-        public static int MKhoa = 0;
+        //MaKhoa cho biết hiện tại khoa ta đăng nhập vô là khoa nào.
+        public static int MaKhoa = 0;
 
-        //biến dùng để chứa danh sách các phân mãnh từ viewDSPM (bằng code, ko kéo thả)
+        //biến dùng để chứa danh sách các phân mảnh
         public static BindingSource Bds_Dspm = new BindingSource(); //giu DSPM khi dang nhap
 
         // lưu các đối tượng form Main và form Login để thực hiển xử lý nghiệp vụ chuyển đổi từ Main sang Login và ngược lại.
@@ -66,30 +65,23 @@ namespace QLDSV_HTC
 
         // lưu danh sách các nhóm quyền
         public static string[] NhomQuyen = new string[4] { "PGV", "KHOA", "SV", "PKT" };
+        public static List<string> ServerList = new List<string>();
 
         // hàm thực hiện kết nối tới Database
-        public static int KetNoi()
+        public static void KetNoi()
         {
             if (Program.Conn != null && Program.Conn.State == ConnectionState.Open)
                 // đóng đối tượng kết nối
                 Program.Conn.Close();
-            try
-            {
-                Program.URL_Connect = "Data Source=" + Program.ServerName + ";Initial Catalog=" +
-                      Program.Database + ";User ID=" +
-                      Program.MLogin + ";Password=" + Program.MPassword;
-                Program.Conn.ConnectionString = Program.URL_Connect;
 
-                // mở đối tượng kết nối
-                Program.Conn.Open();
-                return 1;
-            }
 
-            catch (Exception e)
-            {
-                XtraMessageBox.Show("---> Lỗi kết nối cơ sở dữ liệu.\n---> Bạn xem lại Username và Password.\n " + e.Message, string.Empty, MessageBoxButtons.OK);
-                return 0;
-            }
+            Program.URL_Connect = "Data Source=" + Program.ServerName + ";Initial Catalog=" +
+                     Program.Database + ";User ID=" +
+                     Program.AuthLogin + ";Password=" + Program.AuthPassword;
+            Program.Conn.ConnectionString = Program.URL_Connect;
+
+            // mở đối tượng kết nối
+            Program.Conn.Open();
         }
 
 

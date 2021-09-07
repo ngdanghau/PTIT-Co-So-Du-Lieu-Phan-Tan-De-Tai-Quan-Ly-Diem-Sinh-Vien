@@ -14,6 +14,7 @@ namespace QLDSV_HTC.Forms
 {
     public partial class LoginForm : DevExpress.XtraEditors.XtraForm
     {
+
         public LoginForm()
         {
             InitializeComponent();
@@ -26,24 +27,71 @@ namespace QLDSV_HTC.Forms
 
         private void LoginBtn_Click(object sender, EventArgs e)
         {
-            Program.MLoginDN = "12321";
-            this.Hide();
+            if (usernameText.Text.Trim() == "" || passwordText.Text.Trim() == "")
+            {
+                XtraMessageBox.Show("Thông tin đăng nhập không được trống!", "Lỗi đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            Program.ServerName = Program.ServerList[cmbServer.SelectedIndex];
+            Program.AuthLogin = usernameText.Text;
+            Program.AuthPassword = passwordText.Text;
+            try
+            {
+                Program.KetNoi();
+            }
+            catch(Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Không thể kết nối!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            // truy cập vào frm main 
+            Program.MaKhoa = cmbServer.SelectedIndex;
+
+            String strLenh = "exec sp_Get_Info_Login '" + Program.AuthLogin + "'";
+            Program.MyReader = Program.ExecSqlDataReader(strLenh);
+            if (Program.MyReader == null)
+            {
+                return;
+            }
+
+            Program.MyReader.Read();
+
+
+            Program.AuthUserID = Program.MyReader.GetString(0);     // Lay user name
+            if (Convert.IsDBNull(Program.AuthUserID))
+            {
+                XtraMessageBox.Show("Tài khoản không có quyền truy cập dữ liệu", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                Program.AuthHoten = Program.MyReader.GetString(1);
+                Program.AuthGroup = Program.MyReader.GetString(2);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi lấy thông tin login: " + ex.ToString());
+                XtraMessageBox.Show("Tài khoản không có quyền truy cập vào chương trình", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            Program.MyReader.Close();
+            Program.Conn.Close();
+            
+
+            // mở Main Form
             Program.MainForm = new MainForm();
-            // hiện thông tin tài khoản
-            //Program.FormMain.lblMAGV.Text = "MÃ GIẢNG VIÊN : " + Program.UserName.Trim();
-            //Program.FormMain.lblHOTEN.Text = "HỌ VÀ TÊN : " + Program.MHoten.Trim();
-            //Program.FormMain.lblNHOM.Text = "NHÓM : " + Program.MGroup;
-
             Program.MainForm.StartPosition = FormStartPosition.CenterScreen;
             Program.MainForm.Show();
             Program.MainForm.Visible = true;
+
+            this.Hide();
         }
 
         private void FormLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (string.IsNullOrEmpty(Program.MLoginDN))
+            if (string.IsNullOrEmpty(Program.AuthLogin))
             {
                 Application.Exit();
             }
@@ -63,6 +111,27 @@ namespace QLDSV_HTC.Forms
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
+            // tạo chỗi kết nối
+            string chuoiketnoi = "Data Source="+Program.DataSource + ";Initial Catalog=" + Program.Database + ";Integrated Security=True";
+
+            Program.Conn.ConnectionString = chuoiketnoi;
+
+            DataTable dt = new DataTable();
+            //gọi 1 view và trả về dưới dạng datatable
+            dt = Program.ExecSqlDataTable("SELECT * FROM Get_Subscribes");
+
+            // cất dt vào biến toàn cục Bds_Dspm
+            Program.Bds_Dspm.DataSource = dt;
+
+            // lặp và thêm danh sách server vào combobox
+            foreach (DataRow dataRow in dt.Rows)
+            {
+                cmbServer.Properties.Items.Add(dataRow.ItemArray[0]);
+                Program.ServerList.Add(dataRow.ItemArray[1].ToString());
+            }
+
+            // sau khi add item vào combobox, set index mặc định là 0
+            cmbServer.SelectedIndex = 0;
 
         }
     }

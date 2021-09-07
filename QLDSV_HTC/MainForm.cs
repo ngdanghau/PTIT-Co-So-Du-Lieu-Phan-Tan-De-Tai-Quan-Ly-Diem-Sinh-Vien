@@ -20,12 +20,14 @@ namespace QLDSV_HTC
 
         private void logout()
         {
-            Program.MLoginDN = string.Empty;
-            Program.PasswordDN = string.Empty;
-            Program.MGroup = string.Empty;
-            Program.MHoten = string.Empty;
-            Program.MKhoa = 0;
-    }
+            Program.AuthUserID = string.Empty;
+            Program.AuthLogin = string.Empty;
+            Program.AuthPassword = string.Empty;
+            Program.AuthGroup = string.Empty;
+            Program.AuthHoten = string.Empty;
+
+            Program.MaKhoa = 0;
+        }
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -35,9 +37,17 @@ namespace QLDSV_HTC
         private void logoutBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             logout();
-            Program.MainForm.StartPosition = FormStartPosition.CenterScreen;
-            Program.MainForm.Show();
+            Program.LoginForm.StartPosition = FormStartPosition.CenterScreen;
+            Program.LoginForm.Show();
             this.Hide();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            statusStrip1.Items[0].Text = string.Format("MÃ GIẢNG VIÊN: {0}", Program.AuthUserID);
+            statusStrip1.Items[1].Text = string.Format("HỌ VÀ TÊN: {0}",Program.AuthHoten);
+            statusStrip1.Items[2].Text = string.Format("NHÓM: {0}", Program.AuthGroup);
+            statusStrip1.Items[3].Text = string.Format("SERVER: {0}", Program.ServerList[Program.MaKhoa]);
         }
     }
 }

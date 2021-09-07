@@ -34,7 +34,7 @@
             this.loginBtn = new DevExpress.XtraEditors.SimpleButton();
             this.passwordText = new DevExpress.XtraEditors.TextEdit();
             this.usernameText = new DevExpress.XtraEditors.TextEdit();
-            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cmbServer = new DevExpress.XtraEditors.ComboBoxEdit();
             this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -50,7 +50,7 @@
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.passwordText.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usernameText.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbServer.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
@@ -70,7 +70,7 @@
             this.dataLayoutControl1.Controls.Add(this.loginBtn);
             this.dataLayoutControl1.Controls.Add(this.passwordText);
             this.dataLayoutControl1.Controls.Add(this.usernameText);
-            this.dataLayoutControl1.Controls.Add(this.comboBoxEdit1);
+            this.dataLayoutControl1.Controls.Add(this.cmbServer);
             this.dataLayoutControl1.Controls.Add(this.checkEdit1);
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 0);
@@ -121,19 +121,19 @@
             this.usernameText.StyleController = this.dataLayoutControl1;
             this.usernameText.TabIndex = 4;
             // 
-            // comboBoxEdit1
+            // cmbServer
             // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(84, 26);
-            this.comboBoxEdit1.Name = "comboBoxEdit1";
-            this.comboBoxEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxEdit1.Properties.Appearance.Options.UseFont = true;
-            this.comboBoxEdit1.Properties.AutoComplete = false;
-            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.cmbServer.Location = new System.Drawing.Point(84, 26);
+            this.cmbServer.Name = "cmbServer";
+            this.cmbServer.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbServer.Properties.Appearance.Options.UseFont = true;
+            this.cmbServer.Properties.AutoComplete = false;
+            this.cmbServer.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.comboBoxEdit1.Size = new System.Drawing.Size(336, 20);
-            this.comboBoxEdit1.StyleController = this.dataLayoutControl1;
-            this.comboBoxEdit1.TabIndex = 8;
+            this.cmbServer.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cmbServer.Size = new System.Drawing.Size(336, 20);
+            this.cmbServer.StyleController = this.dataLayoutControl1;
+            this.cmbServer.TabIndex = 8;
             // 
             // checkEdit1
             // 
@@ -218,12 +218,12 @@
             // 
             // layoutControlItem5
             // 
-            this.layoutControlItem5.Control = this.comboBoxEdit1;
+            this.layoutControlItem5.Control = this.cmbServer;
             this.layoutControlItem5.CustomizationFormText = "Quyền";
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem5.Name = "layoutControlItem5";
             this.layoutControlItem5.Size = new System.Drawing.Size(419, 24);
-            this.layoutControlItem5.Text = "Quyền:";
+            this.layoutControlItem5.Text = "Máy chủ:";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(76, 13);
             // 
             // layoutControlItem6
@@ -241,15 +241,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(425, 151);
             this.Controls.Add(this.dataLayoutControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng nhập hệ thống";
+            this.Load += new System.EventHandler(this.LoginForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.passwordText.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usernameText.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbServer.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
@@ -279,7 +282,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
+        private DevExpress.XtraEditors.ComboBoxEdit cmbServer;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraEditors.CheckEdit checkEdit1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
