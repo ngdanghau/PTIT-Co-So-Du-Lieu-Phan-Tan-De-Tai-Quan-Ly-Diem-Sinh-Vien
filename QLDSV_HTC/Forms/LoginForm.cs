@@ -27,11 +27,13 @@ namespace QLDSV_HTC.Forms
 
         private void LoginBtn_Click(object sender, EventArgs e)
         {
+            // Kiểm tra input 
             if (usernameText.Text.Trim() == "" || passwordText.Text.Trim() == "")
             {
                 XtraMessageBox.Show("Thông tin đăng nhập không được trống!", "Lỗi đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             Program.ServerName = Program.ServerList[cmbServer.SelectedIndex];
             Program.AuthLogin = usernameText.Text;
             Program.AuthPassword = passwordText.Text;
@@ -47,37 +49,49 @@ namespace QLDSV_HTC.Forms
 
             Program.MaKhoa = cmbServer.SelectedIndex;
 
-            String strLenh = "exec sp_Get_Info_Login '" + Program.AuthLogin + "'";
-            Program.MyReader = Program.ExecSqlDataReader(strLenh);
-            if (Program.MyReader == null)
+            if(Program.AuthLogin == "SV01")
             {
-                return;
+                Program.AuthUserID = Program.AuthLogin;
+                Program.AuthHoten = "Sinh Viên";
+                Program.AuthGroup = "SV";
             }
-
-            Program.MyReader.Read();
-
-
-            Program.AuthUserID = Program.MyReader.GetString(0);     // Lay user name
-            if (Convert.IsDBNull(Program.AuthUserID))
+            else
             {
-                XtraMessageBox.Show("Tài khoản không có quyền truy cập dữ liệu", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                // Lấy thông tin của user đang login
+                string sqlQuery = "exec sp_Get_Info_Login '" + Program.AuthLogin + "'";
+                Program.MyReader = Program.ExecSqlDataReader(sqlQuery);
+                if (Program.MyReader == null)
+                {
+                    return;
+                }
 
-            try
-            {
-                Program.AuthHoten = Program.MyReader.GetString(1);
-                Program.AuthGroup = Program.MyReader.GetString(2);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Lỗi lấy thông tin login: " + ex.ToString());
-                XtraMessageBox.Show("Tài khoản không có quyền truy cập vào chương trình", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                Program.MyReader.Read();
 
-            Program.MyReader.Close();
-            Program.Conn.Close();
+
+
+                try
+                {
+                    Program.AuthUserID = Program.MyReader.GetString(0);
+                    if (string.IsNullOrEmpty(Program.AuthUserID))
+                    {
+                        XtraMessageBox.Show("Tài khoản không có quyền truy cập dữ liệu", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    Program.AuthHoten = Program.MyReader.GetString(1);
+                    Program.AuthGroup = Program.MyReader.GetString(2);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Lỗi lấy thông tin login: " + ex.ToString());
+                    XtraMessageBox.Show("Tài khoản không tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                Program.MyReader.Close();
+                Program.Conn.Close();
+            }
+            
             
 
             // mở Main Form

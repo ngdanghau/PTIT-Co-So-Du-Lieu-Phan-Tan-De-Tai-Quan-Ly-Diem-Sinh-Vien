@@ -44,10 +44,52 @@ namespace QLDSV_HTC
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            statusStrip1.Items[0].Text = string.Format("MÃ GIẢNG VIÊN: {0}", Program.AuthUserID);
+            // set thông tin dưới status trip
+            statusStrip1.Items[0].Text = string.Format("MÃ SỐ: {0}", Program.AuthUserID);
             statusStrip1.Items[1].Text = string.Format("HỌ VÀ TÊN: {0}",Program.AuthHoten);
             statusStrip1.Items[2].Text = string.Format("NHÓM: {0}", Program.AuthGroup);
             statusStrip1.Items[3].Text = string.Format("SERVER: {0}", Program.ServerList[Program.MaKhoa]);
+
+            //Hiện tính năng cho mỗi quyền khác nhau
+
+            if (Program.AuthGroup == "PGV")
+            {
+                usersGroup.Visible = true;
+            }
+            else if (Program.AuthGroup == "KHOA")
+            {
+                usersGroup.Visible = true;
+            }
+            else if (Program.AuthGroup == "PKT")
+            {
+                usersGroup.Visible = true;
+            }
+            else
+            {
+                usersGroup.Visible = false;
+            }
+
+        }
+
+        // TODO : HANDLE CONTROL CHILDREN
+        private void ShowMdiChildren(Type fType)
+        {
+            foreach (Form f in this.MdiChildren)
+            {
+                if (f.GetType() == fType)
+                {
+                    f.Activate();
+                    return;
+                }
+            }
+            Form form = (Form)Activator.CreateInstance(fType);
+            form.MdiParent = this;
+            form.Show();
+        }
+
+        private void registerBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(AddLoginForm));
         }
     }
 }

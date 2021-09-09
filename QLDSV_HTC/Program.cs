@@ -75,9 +75,7 @@ namespace QLDSV_HTC
                 Program.Conn.Close();
 
 
-            Program.URL_Connect = "Data Source=" + Program.ServerName + ";Initial Catalog=" +
-                     Program.Database + ";User ID=" +
-                     Program.AuthLogin + ";Password=" + Program.AuthPassword;
+            Program.URL_Connect = string.Format("Data Source={0};Initial Catalog={1};User ID={2};Password={3}", Program.ServerName, Program.Database, Program.AuthLogin, Program.AuthPassword);
             Program.Conn.ConnectionString = Program.URL_Connect;
 
             // mở đối tượng kết nối
@@ -107,7 +105,7 @@ namespace QLDSV_HTC
             catch (SqlException ex)
             {
                 Program.Conn.Close();
-                XtraMessageBox.Show(ex.Message);
+                XtraMessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }
@@ -134,7 +132,6 @@ namespace QLDSV_HTC
 
             Program.LoginForm = new LoginForm();
             Application.Run(Program.LoginForm);
-            //Application.Run(new FormMain());
         }
     }
 }

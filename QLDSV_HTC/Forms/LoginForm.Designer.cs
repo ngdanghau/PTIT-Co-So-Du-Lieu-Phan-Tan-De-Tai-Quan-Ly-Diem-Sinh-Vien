@@ -85,7 +85,6 @@
             this.closeBtn.Location = new System.Drawing.Point(343, 122);
             this.closeBtn.Name = "closeBtn";
             this.closeBtn.Size = new System.Drawing.Size(77, 22);
-            this.closeBtn.StyleController = this.dataLayoutControl1;
             this.closeBtn.TabIndex = 7;
             this.closeBtn.Text = "Close";
             this.closeBtn.Click += new System.EventHandler(this.outBtn_Click);
@@ -95,7 +94,6 @@
             this.loginBtn.Location = new System.Drawing.Point(236, 122);
             this.loginBtn.Name = "loginBtn";
             this.loginBtn.Size = new System.Drawing.Size(103, 22);
-            this.loginBtn.StyleController = this.dataLayoutControl1;
             this.loginBtn.TabIndex = 6;
             this.loginBtn.Text = "Login";
             this.loginBtn.Click += new System.EventHandler(this.LoginBtn_Click);
@@ -108,7 +106,6 @@
             this.passwordText.Properties.Appearance.Options.UseFont = true;
             this.passwordText.Properties.PasswordChar = '*';
             this.passwordText.Size = new System.Drawing.Size(336, 20);
-            this.passwordText.StyleController = this.dataLayoutControl1;
             this.passwordText.TabIndex = 5;
             // 
             // usernameText
@@ -118,7 +115,6 @@
             this.usernameText.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.usernameText.Properties.Appearance.Options.UseFont = true;
             this.usernameText.Size = new System.Drawing.Size(336, 20);
-            this.usernameText.StyleController = this.dataLayoutControl1;
             this.usernameText.TabIndex = 4;
             // 
             // cmbServer
@@ -132,7 +128,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbServer.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cmbServer.Size = new System.Drawing.Size(336, 20);
-            this.cmbServer.StyleController = this.dataLayoutControl1;
             this.cmbServer.TabIndex = 8;
             // 
             // checkEdit1
@@ -141,7 +136,6 @@
             this.checkEdit1.Name = "checkEdit1";
             this.checkEdit1.Properties.Caption = "Hiện mật khẩu";
             this.checkEdit1.Size = new System.Drawing.Size(415, 20);
-            this.checkEdit1.StyleController = this.dataLayoutControl1;
             this.checkEdit1.TabIndex = 9;
             this.checkEdit1.CheckedChanged += new System.EventHandler(this.checkEdit1_CheckedChanged);
             // 
