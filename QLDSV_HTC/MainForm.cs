@@ -54,19 +54,35 @@ namespace QLDSV_HTC
 
             if (Program.AuthGroup == "PGV")
             {
+                baoCaoPage.Visible = true;
                 usersGroup.Visible = true;
+                hocPhiPageGroup.Visible = false;
+                quanLyPageGroup.Visible = true;
+                dangKyPageGroup.Visible = false;
             }
             else if (Program.AuthGroup == "KHOA")
             {
+                baoCaoPage.Visible = true;
                 usersGroup.Visible = true;
+                hocPhiPageGroup.Visible = false;
+                quanLyPageGroup.Visible = true;
+                dangKyPageGroup.Visible = false;
             }
             else if (Program.AuthGroup == "PKT")
             {
+                baoCaoPage.Visible = false;
                 usersGroup.Visible = true;
+                hocPhiPageGroup.Visible = true;
+                quanLyPageGroup.Visible = false;
+                dangKyPageGroup.Visible = false;
             }
             else
             {
+                baoCaoPage.Visible = false;
+                hocPhiPageGroup.Visible = false;
+                quanLyPageGroup.Visible = false;
                 usersGroup.Visible = false;
+                dangKyPageGroup.Visible = true;
             }
 
         }
@@ -90,6 +106,11 @@ namespace QLDSV_HTC
         private void registerBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             ShowMdiChildren(typeof(AddLoginForm));
+        }
+
+        private void barButtonItem13_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
         }
     }
 }

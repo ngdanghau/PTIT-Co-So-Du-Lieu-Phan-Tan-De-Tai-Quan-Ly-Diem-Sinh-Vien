@@ -33,7 +33,7 @@ namespace QLDSV_HTC.Forms
             this.userIdTxt = new DevExpress.XtraEditors.TextEdit();
             this.userNameTxt = new DevExpress.XtraEditors.TextEdit();
             this.passTxt = new DevExpress.XtraEditors.TextEdit();
-            this.role = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.roleList = new DevExpress.XtraEditors.ComboBoxEdit();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -46,7 +46,7 @@ namespace QLDSV_HTC.Forms
             ((System.ComponentModel.ISupportInitialize)(this.userIdTxt.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userNameTxt.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.passTxt.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.role.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.roleList.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
@@ -60,7 +60,7 @@ namespace QLDSV_HTC.Forms
             this.layoutControl1.Controls.Add(this.userIdTxt);
             this.layoutControl1.Controls.Add(this.userNameTxt);
             this.layoutControl1.Controls.Add(this.passTxt);
-            this.layoutControl1.Controls.Add(this.role);
+            this.layoutControl1.Controls.Add(this.roleList);
             this.layoutControl1.Controls.Add(this.simpleButton1);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
@@ -95,20 +95,20 @@ namespace QLDSV_HTC.Forms
             this.passTxt.StyleController = this.layoutControl1;
             this.passTxt.TabIndex = 6;
             // 
-            // role
+            // roleList
             // 
-            this.role.Location = new System.Drawing.Point(64, 12);
-            this.role.Name = "role";
-            this.role.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.roleList.Location = new System.Drawing.Point(64, 12);
+            this.roleList.Name = "roleList";
+            this.roleList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.role.Properties.Items.AddRange(new object[] {
+            this.roleList.Properties.Items.AddRange(new object[] {
             "PGV",
             "KHOA",
             "PKT"});
-            this.role.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.role.Size = new System.Drawing.Size(533, 20);
-            this.role.StyleController = this.layoutControl1;
-            this.role.TabIndex = 7;
+            this.roleList.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.roleList.Size = new System.Drawing.Size(533, 20);
+            this.roleList.StyleController = this.layoutControl1;
+            this.roleList.TabIndex = 7;
             // 
             // simpleButton1
             // 
@@ -154,7 +154,7 @@ namespace QLDSV_HTC.Forms
             // 
             // layoutControlItem4
             // 
-            this.layoutControlItem4.Control = this.role;
+            this.layoutControlItem4.Control = this.roleList;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(589, 24);
@@ -194,7 +194,7 @@ namespace QLDSV_HTC.Forms
             ((System.ComponentModel.ISupportInitialize)(this.userIdTxt.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.userNameTxt.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.passTxt.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.role.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.roleList.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
@@ -215,7 +215,7 @@ namespace QLDSV_HTC.Forms
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
-        private DevExpress.XtraEditors.ComboBoxEdit role;
+        private DevExpress.XtraEditors.ComboBoxEdit roleList;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;

@@ -49,7 +49,7 @@ namespace QLDSV_HTC.Forms
 
             Program.MaKhoa = cmbServer.SelectedIndex;
 
-            if(Program.AuthLogin == "SV01")
+            if(Program.AuthLogin.Contains("SV_"))
             {
                 Program.AuthUserID = Program.AuthLogin;
                 Program.AuthHoten = "Sinh Viên";

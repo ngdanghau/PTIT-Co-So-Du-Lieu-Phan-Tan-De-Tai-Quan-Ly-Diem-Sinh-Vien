@@ -20,146 +20,110 @@ namespace QLDSV_HTC.Forms
         }
 
         private void AddLoginForm_Load(object sender, EventArgs e) { 
-            role.Properties.Items.Clear();
+            roleList.Properties.Items.Clear();
             if(Program.AuthGroup == "PGV"){
-                role.Properties.Items.Add("PGV");
-                role.Properties.Items.Add("KHOA");
+                roleList.Properties.Items.Add("PGV");
+                roleList.Properties.Items.Add("KHOA");
             }
             else if (Program.AuthGroup == "KHOA"){
-                role.Properties.Items.Add("KHOA");
+                roleList.Properties.Items.Add("KHOA");
             }
             else if (Program.AuthGroup == "PKT"){
-                role.Properties.Items.Add("PKT");
+                roleList.Properties.Items.Add("PKT");
             }
-            role.SelectedIndex = 0;
+            roleList.SelectedIndex = 0;
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
 
-            if (string.IsNullOrEmpty(userIdTxt.Text) || string.IsNullOrEmpty(userNameTxt.Text) || string.IsNullOrEmpty(passTxt.Text))
+            string userName = userNameTxt.Text;
+            string pass = passTxt.Text;
+            string userId = userIdTxt.Text;
+            string role = roleList.SelectedText;
+            if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(pass))
             {
                 XtraMessageBox.Show("Thông tin không được trống!", "Lỗi tạo tài khoản", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             // login không được chứa khoảng trắng
-            if (userIdTxt.Text.Contains(" "))
+            if (userId.Contains(" "))
             {
                 XtraMessageBox.Show("UserID không được chứa khoảng trắng!", "Lỗi tạo tài khoản", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (userNameTxt.Text.Contains(" "))
+            if (userName.Contains(" "))
             {
                 XtraMessageBox.Show("UserName không được chứa khoảng trắng!", "Lỗi tạo tài khoản", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            //try
-            //{
-            //    SqlConnection sqlConnection = new SqlConnection(Program.connectBackup);
-            //    SqlCommand sqlCommand = sqlConnection.CreateCommand();
-            //    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
-            //    //kirm tra
-            //    sqlCommand.CommandText = "sp_TaoTaiKhoan";
-            //    sqlCommand.Parameters.Add(new SqlParameter("@LGNAME", tendangnhap));
-            //    sqlCommand.Parameters.Add(new SqlParameter("@PASS", matkhau));
-            //    sqlCommand.Parameters.Add(new SqlParameter("@USERNAME", ten));
-            //    sqlCommand.Parameters.Add(new SqlParameter("@ROLE", cmbNhom.Text));
-            //    SqlParameter sqlParameter = new SqlParameter("@return", System.Data.SqlDbType.Int, sizeof(int));
-            //    sqlParameter.Direction = System.Data.ParameterDirection.ReturnValue;
-            //    sqlCommand.Parameters.Add(sqlParameter);
-            //    sqlConnection.Open();
-            //    sqlCommand.ExecuteNonQuery();
 
 
-            //    int result = (int)sqlCommand.Parameters["@return"].Value;
-            //    sqlConnection.Close();
+            var linkServer = "";
+            if (Program.ServerName == Program.ServerList[0])
+            {
+                linkServer = "LINK2";
+            }
+            else if (Program.ServerName == Program.ServerList[1])
+            {
+                linkServer = "LINK1";
+            }
 
-            //    if (result == 0)
-            //    {
-            //        XtraMessageBox.Show("Tạo tài khoản thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //        MessageBox.Show("Tạo tài khoản thành công");
-            //        //this.gETDSSVTableAdapter.Fill(this.dS.GETDSSV);
-            //        return;
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    XtraMessageBox.Show(ex.Message, "Lỗi tạo tài khoản", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            
 
-
-
-
-            //String login = txtLogin.Text;
-            //String pass = txtPass.Text;
-            //String user = (String)lookUpUser.EditValue;
-            //String role = rdoKhoa.Checked ? Program.NhomQuyen[1] : (rdoPGV.Checked ? Program.NhomQuyen[0] : Program.NhomQuyen[2]);
-
-            //String subLenh = " EXEC    @return_value = [dbo].[SP_TAOLOGIN] " +
-
-            //                " @LGNAME = N'" + login + "', " +
-            //                " @PASS = N'" + pass + "', " +
-            //                " @USERNAME = N'" + user + "', " +
-            //                " @ROLE = N'" + role + "' ";
+            // Tạo tài khoản ở site hiện tại
+            string query = string.Format(" EXEC    @return_value = [DBO].[sp_TaoTaiKhoan] " +
+                                         " @USERNAME = N'{1}', " +
+                                         " @PASSWORD = N'{2}', " +
+                                         " @USERID = N'{3}', " +
+                                         " @ROLE = N'{4}' ", Program.Database, userName, pass, userId, role);
 
 
-            //// trường hợp tạo tài khoản cho pketoan thì phải dùng LINK1, LINK2 để link tới Site 3 tạo tài khoản cho pKeToan
-            //if (role == (Program.NhomQuyen[2]) && Program.ServerName == ((DataRowView)Program.Bds_Dspm[0])["TENSERVER"].ToString())
-            //{
-            //    // site 1 ---> sử dụng LINK2
-            //    subLenh = " EXEC    @return_value = LINK2.QLDSV.[dbo].[SP_TAOLOGIN] " +
+            if (Program.AuthGroup == "PGV")
+            {
+                // Tạo tài khoản ở site phân khác => ở SERVER 1 => dùng link 1 để lk tới SERVER 2 và ngược lại
+                query = string.Format(" EXEC    @return_value = {0}.{1}.[DBO].[sp_TaoTaiKhoan] " +
+                                      " @USERNAME = N'{2}', " +
+                                      " @PASSWORD = N'{3}', " +
+                                      " @USERID = N'{4}', " +
+                                      " @ROLE = N'{5}' ", linkServer, Program.Database, userName, pass, userId, role);
+            }
 
-            //                " @LGNAME = N'" + login + "', " +
-            //                " @PASS = N'" + pass + "', " +
-            //                " @USERNAME = N'" + user + "', " +
-            //                " @ROLE = N'" + role + "' ";
-            //}
-            //else if (role == (Program.NhomQuyen[2]) && Program.ServerName == ((DataRowView)Program.Bds_Dspm[1])["TENSERVER"].ToString())
+                //// trường hợp tạo tài khoản cho chỉ khoa và pgv
 
-            //{
-            //    subLenh = " EXEC    @return_value = LINK1.QLDSV.[dbo].[SP_TAOLOGIN] " +
+                //String strLenh = " DECLARE @return_value int " + subLenh +
+                //             " SELECT  'Return Value' = @return_value ";
 
-            //               " @LGNAME = N'" + login + "', " +
-            //               " @PASS = N'" + pass + "', " +
-            //               " @USERNAME = N'" + user + "', " +
-            //               " @ROLE = N'" + role + "' ";
-            //}
+                //int resultCheckLogin = Utils.CheckDataHelper(strLenh);
 
-            //// trường hợp tạo tài khoản cho chỉ khoa và pgv
+                //if (resultCheckLogin == -1)
+                //{
+                //    XtraMessageBox.Show("Lỗi kết nối với database. Mời ban xem lại !", "", MessageBoxButtons.OK);
+                //    this.Close();
+                //}
+                //if (resultCheckLogin == 1)
+                //{
+                //    errorProvider.SetError(this.txtLogin, "Login bị trùng . Mời bạn nhập login khác !");
+                //}
+                //else if (resultCheckLogin == 2)
+                //{
+                //    errorProvider.SetError(this.lookUpUser, "Giảng viên đã có tài khoản rồi !");
 
-            //String strLenh = " DECLARE @return_value int " + subLenh +
-            //             " SELECT  'Return Value' = @return_value ";
+                //}
+                //else if (resultCheckLogin == 3)
+                //{
+                //    XtraMessageBox.Show("Lỗi thực thi trong cơ sơ dữ liệu !", "", MessageBoxButtons.OK);
+                //}
+                //else if (resultCheckLogin == 0)
+                //{
+                //    XtraMessageBox.Show("Tạo tài khoản thành công !", "", MessageBoxButtons.OK);
 
-            //int resultCheckLogin = Utils.CheckDataHelper(strLenh);
+                //}
 
-            //if (resultCheckLogin == -1)
-            //{
-            //    XtraMessageBox.Show("Lỗi kết nối với database. Mời ban xem lại !", "", MessageBoxButtons.OK);
-            //    this.Close();
-            //}
-            //if (resultCheckLogin == 1)
-            //{
-            //    errorProvider.SetError(this.txtLogin, "Login bị trùng . Mời bạn nhập login khác !");
-            //}
-            //else if (resultCheckLogin == 2)
-            //{
-            //    errorProvider.SetError(this.lookUpUser, "Giảng viên đã có tài khoản rồi !");
-
-            //}
-            //else if (resultCheckLogin == 3)
-            //{
-            //    XtraMessageBox.Show("Lỗi thực thi trong cơ sơ dữ liệu !", "", MessageBoxButtons.OK);
-            //}
-            //else if (resultCheckLogin == 0)
-            //{
-            //    XtraMessageBox.Show("Tạo tài khoản thành công !", "", MessageBoxButtons.OK);
-
-            //}
-
-            //return;
+                //return;
         }
     }
 }

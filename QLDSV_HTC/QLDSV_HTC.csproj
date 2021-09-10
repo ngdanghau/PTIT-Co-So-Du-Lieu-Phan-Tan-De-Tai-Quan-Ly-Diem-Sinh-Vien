@@ -81,6 +81,12 @@
     <Compile Include="Forms\AddLoginForm.Designer.cs">
       <DependentUpon>AddLoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MonHocForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MonHocForm.Designer.cs">
+      <DependentUpon>MonHocForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,8 +101,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\AddLoginForm.resx">
       <DependentUpon>AddLoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MonHocForm.resx">
+      <DependentUpon>MonHocForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -127,6 +141,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="DS.xsc">
+      <DependentUpon>DS.xsd</DependentUpon>
+    </None>
+    <None Include="DS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DS.xss">
+      <DependentUpon>DS.xsd</DependentUpon>
+    </None>
     <None Include="Resources\logout.png" />
   </ItemGroup>
   <ItemGroup>
