@@ -53,6 +53,7 @@ namespace QLDSV_HTC
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.quanLyPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.hocPhiPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.dangKyPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.baoCaoPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
@@ -65,7 +66,6 @@ namespace QLDSV_HTC
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
-            this.dangKyPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
@@ -201,6 +201,7 @@ namespace QLDSV_HTC
             this.barButtonItem10.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem10.ImageOptions.SvgImage")));
             this.barButtonItem10.LargeWidth = 80;
             this.barButtonItem10.Name = "barButtonItem10";
+            this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick);
             // 
             // barButtonItem11
             // 
@@ -282,6 +283,11 @@ namespace QLDSV_HTC
             this.hocPhiPageGroup.Name = "hocPhiPageGroup";
             this.hocPhiPageGroup.Text = "Chi Phí";
             // 
+            // dangKyPageGroup
+            // 
+            this.dangKyPageGroup.Name = "dangKyPageGroup";
+            this.dangKyPageGroup.Text = "Đăng ký";
+            // 
             // baoCaoPage
             // 
             this.baoCaoPage.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -362,11 +368,6 @@ namespace QLDSV_HTC
             this.documentManager1.View = this.tabbedView1;
             this.documentManager1.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] {
             this.tabbedView1});
-            // 
-            // dangKyPageGroup
-            // 
-            this.dangKyPageGroup.Name = "dangKyPageGroup";
-            this.dangKyPageGroup.Text = "Đăng ký";
             // 
             // MainForm
             // 
