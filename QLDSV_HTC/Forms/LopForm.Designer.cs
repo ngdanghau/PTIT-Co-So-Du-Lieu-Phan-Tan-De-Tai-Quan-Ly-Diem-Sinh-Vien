@@ -48,6 +48,7 @@ namespace QLDSV_HTC.Forms
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.tableAdapterManager = new QLDSV_HTC.DSTableAdapters.TableAdapterManager();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.cmbKhoa = new System.Windows.Forms.ComboBox();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.gcLOP = new DevExpress.XtraGrid.GridControl();
@@ -72,7 +73,6 @@ namespace QLDSV_HTC.Forms
             this.LOPTableAdapter = new QLDSV_HTC.DSTableAdapters.LOPTableAdapter();
             this.bdsSINHVIEN = new System.Windows.Forms.BindingSource(this.components);
             this.SINHVIENTableAdapter = new QLDSV_HTC.DSTableAdapters.SINHVIENTableAdapter();
-            this.cmbKhoa = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.DS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -279,6 +279,16 @@ namespace QLDSV_HTC.Forms
             this.panelControl1.Size = new System.Drawing.Size(1083, 36);
             this.panelControl1.TabIndex = 11;
             // 
+            // cmbKhoa
+            // 
+            this.cmbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbKhoa.FormattingEnabled = true;
+            this.cmbKhoa.Location = new System.Drawing.Point(81, 6);
+            this.cmbKhoa.Name = "cmbKhoa";
+            this.cmbKhoa.Size = new System.Drawing.Size(121, 21);
+            this.cmbKhoa.TabIndex = 2;
+            this.cmbKhoa.SelectedIndexChanged += new System.EventHandler(this.cmbKhoa_SelectedIndexChanged);
+            // 
             // labelControl1
             // 
             this.labelControl1.Location = new System.Drawing.Point(51, 9);
@@ -439,6 +449,7 @@ namespace QLDSV_HTC.Forms
             this.txtMaLop.Size = new System.Drawing.Size(400, 20);
             this.txtMaLop.StyleController = this.layoutControl1;
             this.txtMaLop.TabIndex = 5;
+            this.txtMaLop.EditValueChanged += new System.EventHandler(this.txtMaLop_EditValueChanged);
             // 
             // Root
             // 
@@ -502,16 +513,6 @@ namespace QLDSV_HTC.Forms
             // SINHVIENTableAdapter
             // 
             this.SINHVIENTableAdapter.ClearBeforeFill = true;
-            // 
-            // cmbKhoa
-            // 
-            this.cmbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbKhoa.FormattingEnabled = true;
-            this.cmbKhoa.Location = new System.Drawing.Point(81, 6);
-            this.cmbKhoa.Name = "cmbKhoa";
-            this.cmbKhoa.Size = new System.Drawing.Size(121, 21);
-            this.cmbKhoa.TabIndex = 2;
-            this.cmbKhoa.SelectedIndexChanged += new System.EventHandler(this.cmbKhoa_SelectedIndexChanged);
             // 
             // LopForm
             // 

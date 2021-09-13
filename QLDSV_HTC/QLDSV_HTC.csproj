@@ -82,6 +82,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DS.cs">
+      <DependentUpon>DS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -92,6 +95,12 @@
     </Compile>
     <Compile Include="Forms\AddLoginForm.Designer.cs">
       <DependentUpon>AddLoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DiemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DiemForm.Designer.cs">
+      <DependentUpon>DiemForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\LopForm.cs">
       <SubType>Form</SubType>
@@ -134,6 +143,9 @@
     <Compile Include="Utils.cs" />
     <EmbeddedResource Include="Forms\AddLoginForm.resx">
       <DependentUpon>AddLoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DiemForm.resx">
+      <DependentUpon>DiemForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LopForm.resx">
       <DependentUpon>LopForm.cs</DependentUpon>

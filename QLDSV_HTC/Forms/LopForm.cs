@@ -221,5 +221,10 @@ namespace QLDSV_HTC.Forms
                 LoadData();
             }
         }
+
+        private void txtMaLop_EditValueChanged(object sender, EventArgs e)
+        {
+            txtMaLop.Properties.CharacterCasing = CharacterCasing.Upper;
+        }
     }
 }

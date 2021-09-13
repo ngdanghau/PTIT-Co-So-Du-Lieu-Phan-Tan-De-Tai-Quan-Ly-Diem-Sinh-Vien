@@ -63,14 +63,8 @@ namespace QLDSV_HTC.Forms
                 // Lấy thông tin của user đang login
                 string sqlQuery = "exec sp_Get_Info_Login '" + Program.AuthLogin + "'";
                 Program.MyReader = Program.ExecSqlDataReader(sqlQuery);
-                if (Program.MyReader == null)
-                {
-                    return;
-                }
-
+                if (Program.MyReader == null) return; 
                 Program.MyReader.Read();
-
-
 
                 try
                 {
