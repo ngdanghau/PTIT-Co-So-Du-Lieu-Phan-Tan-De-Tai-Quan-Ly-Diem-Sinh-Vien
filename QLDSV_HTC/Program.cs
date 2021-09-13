@@ -23,7 +23,7 @@ namespace QLDSV_HTC
         public static SqlConnection Conn = new SqlConnection();
 
         // chuỗi kết nối connection string để kết nối với csdl , nó bước đầu tiên để thực hiện kết nối      
-        public static string URL_Connect;
+        public static string ConnStr;
 
         public static SqlDataReader MyReader;
 
@@ -32,8 +32,8 @@ namespace QLDSV_HTC
 
         // những dòng này dùng trong phần tạo connection string ở bên dưới
         public static string ServerName = string.Empty;
-        
-
+        public static string ServerLogin = string.Empty;
+        public static string ServerPassword = string.Empty;
 
         // RemoteLogin này là remote dùng để hỗ trợ kết nối ra ngoài ví dụ trong quá trình đăng nhập nó sẽ rẽ qua server 2
         // để đăng nhập truy vấn dữ liệu thì nó dùng login này để kết nối(hay là tạo link server)
@@ -53,8 +53,10 @@ namespace QLDSV_HTC
         public static string AuthHoten = string.Empty;
 
 
-        //MaKhoa cho biết hiện tại khoa ta đăng nhập vô là khoa nào.
-        public static int MaKhoa = 0;
+        /**
+         * Thông tin Khoa đã đăng nhập (VT-CNTT-PKT)
+         */
+        public static string MaKhoa = "";
 
         //biến dùng để chứa danh sách các phân mảnh
         public static BindingSource Bds_Dspm = new BindingSource(); //giu DSPM khi dang nhap
@@ -65,7 +67,6 @@ namespace QLDSV_HTC
 
         // lưu danh sách các nhóm quyền
         public static string[] NhomQuyen = new string[4] { "PGV", "KHOA", "SV", "PKT" };
-        public static List<string> ServerList = new List<string>();
 
         // hàm thực hiện kết nối tới Database
         public static void KetNoi()
@@ -75,8 +76,8 @@ namespace QLDSV_HTC
                 Program.Conn.Close();
 
 
-            Program.URL_Connect = string.Format("Data Source={0};Initial Catalog={1};User ID={2};Password={3}", Program.ServerName, Program.Database, Program.AuthLogin, Program.AuthPassword);
-            Program.Conn.ConnectionString = Program.URL_Connect;
+            Program.ConnStr = string.Format("Data Source={0};Initial Catalog={1};User ID={2};Password={3}", Program.ServerName, Program.Database, Program.ServerLogin, Program.ServerPassword);
+            Program.Conn.ConnectionString = Program.ConnStr;
 
             // mở đối tượng kết nối
             Program.Conn.Open();

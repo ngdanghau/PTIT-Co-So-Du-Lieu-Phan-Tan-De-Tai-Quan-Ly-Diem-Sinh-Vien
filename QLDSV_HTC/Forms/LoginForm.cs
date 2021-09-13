@@ -34,9 +34,12 @@ namespace QLDSV_HTC.Forms
                 return;
             }
 
-            Program.ServerName = Program.ServerList[cmbServer.SelectedIndex];
+            Program.ServerName = cmbServer.SelectedValue.ToString();
             Program.AuthLogin = usernameText.Text;
             Program.AuthPassword = passwordText.Text;
+
+            Program.ServerLogin = usernameText.Text;
+            Program.ServerPassword = passwordText.Text;
             try
             {
                 Program.KetNoi();
@@ -47,7 +50,7 @@ namespace QLDSV_HTC.Forms
                 return;
             }
 
-            Program.MaKhoa = cmbServer.SelectedIndex;
+            Program.MaKhoa = Utils.GetMaKhoa(cmbServer.Text);
 
             if(Program.AuthLogin.Contains("SV_"))
             {
@@ -134,19 +137,10 @@ namespace QLDSV_HTC.Forms
             //gọi 1 view và trả về dưới dạng datatable
             dt = Program.ExecSqlDataTable("SELECT * FROM Get_Subscribes");
 
+            
             // cất dt vào biến toàn cục Bds_Dspm
             Program.Bds_Dspm.DataSource = dt;
-
-            // lặp và thêm danh sách server vào combobox
-            foreach (DataRow dataRow in dt.Rows)
-            {
-                cmbServer.Properties.Items.Add(dataRow.ItemArray[0]);
-                Program.ServerList.Add(dataRow.ItemArray[1].ToString());
-            }
-
-            // sau khi add item vào combobox, set index mặc định là 0
-            cmbServer.SelectedIndex = 0;
-
+            Utils.LoadComboBox(cmbServer, dt);
         }
     }
 }

@@ -63,11 +63,11 @@ namespace QLDSV_HTC.Forms
 
 
             var linkServer = "";
-            if (Program.ServerName == Program.ServerList[0])
+            if (Program.ServerName.Contains("SERVER1"))
             {
                 linkServer = "LINK2";
             }
-            else if (Program.ServerName == Program.ServerList[1])
+            else if (Program.ServerName.Contains("SERVER2"))
             {
                 linkServer = "LINK1";
             }

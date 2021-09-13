@@ -1,4 +1,5 @@
 ﻿using QLDSV_HTC.Forms;
+using QLDSV_HTC.ReportForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,7 +27,7 @@ namespace QLDSV_HTC
             Program.AuthGroup = string.Empty;
             Program.AuthHoten = string.Empty;
 
-            Program.MaKhoa = 0;
+            Program.MaKhoa = "";
         }
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -39,6 +40,7 @@ namespace QLDSV_HTC
             logout();
             Program.LoginForm.StartPosition = FormStartPosition.CenterScreen;
             Program.LoginForm.Show();
+            Program.Bds_Dspm.Filter = "TENKHOA <> ''";
             this.Hide();
         }
 
@@ -48,7 +50,6 @@ namespace QLDSV_HTC
             statusStrip1.Items[0].Text = string.Format("MÃ SỐ: {0}", Program.AuthUserID);
             statusStrip1.Items[1].Text = string.Format("HỌ VÀ TÊN: {0}",Program.AuthHoten);
             statusStrip1.Items[2].Text = string.Format("NHÓM: {0}", Program.AuthGroup);
-            statusStrip1.Items[3].Text = string.Format("SERVER: {0}", Program.ServerList[Program.MaKhoa]);
 
             //Hiện tính năng cho mỗi quyền khác nhau
 
@@ -116,6 +117,21 @@ namespace QLDSV_HTC
         private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             ShowMdiChildren(typeof(MonHocForm));
+        }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(InDSLOPTINCHI));
+        }
+
+        private void barButtonItem12_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            
+        }
+
+        private void barButtonItem15_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(LopForm));
         }
     }
 }

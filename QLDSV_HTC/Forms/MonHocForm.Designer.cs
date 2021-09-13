@@ -410,7 +410,7 @@ namespace QLDSV_HTC.Forms
             this.colSOTIET_TH});
             this.gridView1.GridControl = this.gcMONHOC;
             this.gridView1.Name = "gridView1";
-            this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
+            this.gridView1.OptionsBehavior.ImmediateUpdateRowPosition = false;
             // 
             // colMAMH
             // 

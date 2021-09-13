@@ -1,21 +1,15 @@
 ﻿using DevExpress.XtraEditors;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QLDSV_HTC.Forms
 {
-    public partial class MonHocForm : DevExpress.XtraEditors.XtraForm
+    public partial class LopForm : DevExpress.XtraEditors.XtraForm
     {
-        private int position = -1;
+        private int position = 0;
         private string state;
-        public MonHocForm()
+        public LopForm()
         {
             InitializeComponent();
         }
@@ -28,13 +22,14 @@ namespace QLDSV_HTC.Forms
                     = barButtonEdit.Enabled
                     = barButtonDelete.Enabled
                     = barButtonRenew.Enabled
-                    = gcMONHOC.Enabled
+                    = gcLOP.Enabled
+                    = panelControl1.Enabled
                     = !value;
 
                 barButtonUndo.Enabled
                     = barButtonSave.Enabled
-                    = panelControl1.Enabled
-                    = txtMaMonHoc.Properties.ReadOnly
+                    = panelControl4.Enabled
+                    = txtMaLop.Properties.ReadOnly
                     = value;
             }
             else if (state == "add")
@@ -43,43 +38,44 @@ namespace QLDSV_HTC.Forms
                     = barButtonEdit.Enabled
                     = barButtonDelete.Enabled
                     = barButtonRenew.Enabled
-                    = gcMONHOC.Enabled
-                    = txtMaMonHoc.Properties.ReadOnly
+                    = gcLOP.Enabled
+                    = txtMaLop.Properties.ReadOnly
+                    = panelControl1.Enabled
                     = !value;
 
                 barButtonUndo.Enabled
                     = barButtonSave.Enabled
-                    = panelControl1.Enabled
+                    = panelControl4.Enabled
                     = value;
             }
         }
 
         private bool ValidateForm()
         {
-            if (txtMaMonHoc.Text.Trim() == "")
+            if (txtMaLop.Text.Trim() == "")
             {
-                XtraMessageBox.Show("Mã môn học không được để trống!", "Lỗi",
+                XtraMessageBox.Show("Mã lớp học không được để trống!", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
-            if (txtTenMonHoc.Text.Trim() == "")
+            if (txtTenLop.Text.Trim() == "")
             {
-                XtraMessageBox.Show("Tên môn học không được để trống!", "Lỗi",
+                XtraMessageBox.Show("Tên lớp học không được để trống!", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
-            if (Convert.ToInt32(txtSoTietLT.Text) < 0)
+            if (txtKhoaHoc.Text.Trim() == "")
             {
-                XtraMessageBox.Show("Số tiết lý thuyết phải lớn hơn 0!", "Lỗi",
+                XtraMessageBox.Show("Khóa học không được để trống!", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
-            if (Convert.ToInt32(txtSoTietTH.Text) < 0)
+            if (txtMaKhoa.Text.Trim() == "")
             {
-                XtraMessageBox.Show("Số tiết thực hành phải lớn hơn 0!", "Lỗi",
+                XtraMessageBox.Show("Mã khoa không được để trống!", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
@@ -87,51 +83,61 @@ namespace QLDSV_HTC.Forms
             return true;
         }
 
-        private void mONHOCBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.bdsMONHOC.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.DS);
-
-        }
-
-        private void MonHocForm_Load(object sender, EventArgs e)
+        private void LoadData()
         {
             DS.EnforceConstraints = false;
-            this.MONHOCTableAdapter.Connection.ConnectionString = Program.ConnStr;
-            // TODO: This line of code loads data into the 'dS.MONHOC' table. You can move, or remove it, as needed.
-            this.MONHOCTableAdapter.Fill(this.DS.MONHOC);
-
-            // TODO: This line of code loads data into the 'DS.LOPTINCHI' table. You can move, or remove it, as needed.
-            this.LOPTINCHITableAdapter.Connection.ConnectionString = Program.ConnStr;
-            this.LOPTINCHITableAdapter.Fill(this.DS.LOPTINCHI);
-            if (position > -1)
+            this.SINHVIENTableAdapter.Connection.ConnectionString = Program.ConnStr;
+            // TODO: This line of code loads data into the 'DS.SINHVIEN' table. You can move, or remove it, as needed.
+            this.SINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
+            // TODO: This line of code loads data into the 'DS.LOP' table. You can move, or remove it, as needed.
+            this.LOPTableAdapter.Connection.ConnectionString = Program.ConnStr;
+            this.LOPTableAdapter.Fill(this.DS.LOP);
+            if (position > 0)
             {
-                bdsMONHOC.Position = position;
+                bdsLOP.Position = position;
+            }
+            if (bdsLOP.Count == 0) barButtonDelete.Enabled = false;
+        }
+
+        private void LopForm_Load(object sender, EventArgs e)
+        {
+            if (Program.AuthGroup == "PGV")
+            {
+                Program.Bds_Dspm.Filter = "TENKHOA <> 'Phòng Kế Toán'";
+            }
+            else if (Program.AuthGroup == "KHOA")
+            {
+                Program.Bds_Dspm.Filter = string.Format("TENSERVER = '{0}'", Program.ServerName);
             }
 
-            if (bdsMONHOC.Count == 0) barButtonDelete.Enabled = false;
+            Utils.LoadComboBox(cmbKhoa, Program.Bds_Dspm.DataSource);
+
+            if (Utils.ChangeServer(cmbKhoa))
+            {
+                LoadData();
+            }
         }
 
         private void barButtonAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            position = bdsMONHOC.Position;
+            position = bdsLOP.Position;
             state = "add";
             SetButtonState(true);
-            txtMaMonHoc.Focus();
-            bdsMONHOC.AddNew();
+            txtMaLop.Focus();
+            txtMaKhoa.Text = Program.MaKhoa;
+            bdsLOP.AddNew();
         }
 
         private void barButtonEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            position = bdsMONHOC.Position;
+            position = bdsLOP.Position;
             state = "edit";
             SetButtonState(true);
         }
 
         private void barButtonRenew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            MonHocForm_Load(sender, e);
+            LopForm_Load(sender, e);
             XtraMessageBox.Show("Làm mới dữ liệu thành công", "", MessageBoxButtons.OK);
         }
 
@@ -155,14 +161,14 @@ namespace QLDSV_HTC.Forms
             if (!ValidateForm()) return;
             try
             {
-                this.bdsMONHOC.EndEdit();
-                this.bdsMONHOC.ResetCurrentItem();
-                this.MONHOCTableAdapter.Update(this.DS.MONHOC);
+                this.bdsLOP.EndEdit();
+                this.bdsLOP.ResetCurrentItem();
+                this.LOPTableAdapter.Update(this.DS.LOP);
                 SetButtonState(false);
             }
             catch (Exception ex)
             {
-                bdsMONHOC.RemoveCurrent();
+                //bdsMONHOC.RemoveCurrent();
                 XtraMessageBox.Show("Ghi dữ liệu thất lại. Vui lòng kiểm tra lại!\n" + ex.Message, "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -170,21 +176,21 @@ namespace QLDSV_HTC.Forms
 
         private void mAMHTextEdit_EditValueChanged(object sender, EventArgs e)
         {
-            txtMaMonHoc.Properties.CharacterCasing = CharacterCasing.Upper;
+            txtMaLop.Properties.CharacterCasing = CharacterCasing.Upper;
         }
 
         private void barButtonUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            bdsMONHOC.CancelEdit();
+            bdsLOP.CancelEdit();
             SetButtonState(false);
-            MonHocForm_Load(sender, e);
+            LoadData();
         }
 
         private void barButtonDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (bdsLOPTINCHI.Count > 0)
+            if (bdsSINHVIEN.Count > 0)
             {
-                XtraMessageBox.Show("Không thể xóa môn học này vì đã có lớp tín chỉ.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Không thể xóa lớp học này vì đã có sinh viên.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -192,20 +198,28 @@ namespace QLDSV_HTC.Forms
             {
                 try
                 {
-                    position = bdsMONHOC.Position;
-                    bdsMONHOC.RemoveCurrent();
-                    this.MONHOCTableAdapter.Connection.ConnectionString = Program.ConnStr;
-                    this.MONHOCTableAdapter.Update(this.DS.MONHOC);
-                    this.bdsMONHOC.ResetCurrentItem();
+                    position = bdsLOP.Position;
+                    bdsLOP.RemoveCurrent();
+                    this.LOPTableAdapter.Connection.ConnectionString = Program.ConnStr;
+                    this.LOPTableAdapter.Update(this.DS.LOP);
+                    this.bdsLOP.ResetCurrentItem();
                 }
                 catch (Exception ex)
                 {
-                    XtraMessageBox.Show("Lỗi xóa môn học.\nMã lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK);
-                    this.MONHOCTableAdapter.Fill(this.DS.MONHOC);
-                    bdsMONHOC.Position = position;
+                    XtraMessageBox.Show("Lỗi xóa lớp học.\nMã lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK);
+                    LopForm_Load(sender, e);
                 }
             }
-            if (bdsMONHOC.Count == 0) barButtonDelete.Enabled = false;
+
+            if (bdsLOP.Count == 0) barButtonDelete.Enabled = false;
+        }
+
+        private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Utils.ChangeServer(cmbKhoa))
+            {
+                LoadData();
+            }
         }
     }
 }

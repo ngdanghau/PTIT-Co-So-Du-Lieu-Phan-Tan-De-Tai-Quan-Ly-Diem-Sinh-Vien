@@ -103,16 +103,6 @@ namespace QLDSV_HTC.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Screenshot_2021_09_01_155433 {
-            get {
-                object obj = ResourceManager.GetObject("Screenshot 2021-09-01 155433", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Whitelisting_Services {
             get {
                 object obj = ResourceManager.GetObject("Whitelisting+Services", resourceCulture);
