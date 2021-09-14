@@ -49,6 +49,8 @@ namespace QLDSV_HTC.Forms
             this.tableAdapterManager = new QLDSV_HTC.DSTableAdapters.TableAdapterManager();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.btnHuy = new DevExpress.XtraEditors.SimpleButton();
+            this.btnUndo = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.btnStart = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
@@ -77,6 +79,7 @@ namespace QLDSV_HTC.Forms
             this.colDIEM_CK = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDIEM_HM = new DevExpress.XtraGrid.Columns.GridColumn();
             this.sp_GetBangDiemMonHocTableAdapter = new QLDSV_HTC.DSTableAdapters.sp_GetBangDiemMonHocTableAdapter();
+            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.DS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -103,6 +106,7 @@ namespace QLDSV_HTC.Forms
             ((System.ComponentModel.ISupportInitialize)(this.sp_GetBangDiemMonHocGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sp_GetBangDiemMonHocBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // DS
@@ -260,6 +264,8 @@ namespace QLDSV_HTC.Forms
             // 
             // groupControl2
             // 
+            this.groupControl2.Controls.Add(this.btnHuy);
+            this.groupControl2.Controls.Add(this.btnUndo);
             this.groupControl2.Controls.Add(this.btnSave);
             this.groupControl2.Controls.Add(this.btnStart);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -269,8 +275,29 @@ namespace QLDSV_HTC.Forms
             this.groupControl2.TabIndex = 1;
             this.groupControl2.Text = "Bảng điều khiển";
             // 
+            // btnHuy
+            // 
+            this.btnHuy.Enabled = false;
+            this.btnHuy.Location = new System.Drawing.Point(307, 35);
+            this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Size = new System.Drawing.Size(75, 23);
+            this.btnHuy.TabIndex = 3;
+            this.btnHuy.Text = "Hủy";
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
+            // 
+            // btnUndo
+            // 
+            this.btnUndo.Enabled = false;
+            this.btnUndo.Location = new System.Drawing.Point(214, 35);
+            this.btnUndo.Name = "btnUndo";
+            this.btnUndo.Size = new System.Drawing.Size(75, 23);
+            this.btnUndo.TabIndex = 2;
+            this.btnUndo.Text = "Khôi phục";
+            this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
+            // 
             // btnSave
             // 
+            this.btnSave.Enabled = false;
             this.btnSave.Location = new System.Drawing.Point(114, 35);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
@@ -478,7 +505,7 @@ namespace QLDSV_HTC.Forms
             this.colDIEM_HM});
             this.gridView1.GridControl = this.sp_GetBangDiemMonHocGridControl;
             this.gridView1.Name = "gridView1";
-            this.gridView1.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.gridView1_RowUpdated);
+            this.gridView1.ValidatingEditor += new DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventHandler(this.gridView1_ValidatingEditor);
             // 
             // colMASV
             // 
@@ -529,11 +556,13 @@ namespace QLDSV_HTC.Forms
             // colDIEM_HM
             // 
             this.colDIEM_HM.Caption = "Điểm hết môn";
-            this.colDIEM_HM.FieldName = "DIEM_HM";
+            this.colDIEM_HM.FieldName = "diem_hm";
             this.colDIEM_HM.Name = "colDIEM_HM";
             this.colDIEM_HM.OptionsColumn.AllowEdit = false;
             this.colDIEM_HM.OptionsColumn.AllowFocus = false;
-            this.colDIEM_HM.OptionsColumn.ReadOnly = true;
+            this.colDIEM_HM.ShowUnboundExpressionMenu = true;
+            this.colDIEM_HM.UnboundExpression = "Round([DIEM_CC] * 0.1 + [DIEM_GK] * 0.3 + [DIEM_CK] * 0.6, 1)";
+            this.colDIEM_HM.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.colDIEM_HM.Visible = true;
             this.colDIEM_HM.VisibleIndex = 5;
             // 
@@ -582,6 +611,7 @@ namespace QLDSV_HTC.Forms
             ((System.ComponentModel.ISupportInitialize)(this.sp_GetBangDiemMonHocGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sp_GetBangDiemMonHocBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -632,7 +662,10 @@ namespace QLDSV_HTC.Forms
         private DevExpress.XtraGrid.Columns.GridColumn colDIEM_CC;
         private DevExpress.XtraGrid.Columns.GridColumn colDIEM_GK;
         private DevExpress.XtraGrid.Columns.GridColumn colDIEM_CK;
-        private DevExpress.XtraGrid.Columns.GridColumn colDIEM_HM;
         private DSTableAdapters.sp_GetBangDiemMonHocTableAdapter sp_GetBangDiemMonHocTableAdapter;
+        private DevExpress.XtraEditors.SimpleButton btnUndo;
+        private DevExpress.XtraEditors.SimpleButton btnHuy;
+        private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
+        private DevExpress.XtraGrid.Columns.GridColumn colDIEM_HM;
     }
 }

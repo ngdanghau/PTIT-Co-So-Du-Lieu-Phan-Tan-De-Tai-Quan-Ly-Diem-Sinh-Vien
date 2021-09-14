@@ -7,8 +7,8 @@ namespace QLDSV_HTC.Forms
 {
     public partial class DiemForm : DevExpress.XtraEditors.XtraForm
     {
-        private int position = 0;
-        private string state;
+        private bool state = false;
+        private int position = -1;
         public DiemForm()
         {
             InitializeComponent();
@@ -23,11 +23,9 @@ namespace QLDSV_HTC.Forms
 
         private void barButtonCancel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (this.panelControl1.Enabled)
+            if (state)
             {
-                string message = "Môn học đang thêm chưa lưu vào Database. \n Bạn có chắc muốn thoát !";
-                if (state == "edit") message = "Môn học đang hiệu chỉnh chưa lưu vào Database. \n Bạn có chắc muốn thoát !";
-                DialogResult dr = XtraMessageBox.Show(message, "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult dr = XtraMessageBox.Show("Điểm đang được hiệu chỉnh, chưa lưu vào Database. \n Bạn có chắc muốn thoát !", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dr == DialogResult.No)
                 {
                     return;
@@ -65,7 +63,7 @@ namespace QLDSV_HTC.Forms
                 return;
             }
 
-            if (lookUpMonHoc.EditValue.ToString().Trim() == "")
+            if (lookUpMonHoc.EditValue == null || lookUpMonHoc.EditValue.ToString().Trim() == "")
             {
                 XtraMessageBox.Show("Môn học không được để trống!", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -101,7 +99,8 @@ namespace QLDSV_HTC.Forms
                 double diemCK = Convert.ToDouble(((DataRowView)bdsTemp[i])["DIEM_CK"]);
                 this.sp_GetBangDiemMonHocTableAdapter.Update(Utils.GetMaKhoa(cmbKhoa.Text), txtNienKhoa.Text, Convert.ToInt32(txtHocKy.Text), Convert.ToInt32(txtNhom.Text), lookUpMonHoc.EditValue.ToString(), masv, diemcc, diemGK, diemCK);
             }
-
+            btnSave.Enabled = btnHuy.Enabled = false;
+            btnUndo.Enabled = true;
             XtraMessageBox.Show("Cập nhật điểm thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
@@ -135,11 +134,74 @@ namespace QLDSV_HTC.Forms
             lookUpMonHoc.Properties.Columns[3].Visible = false;
         }
 
-        private void gridView1_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
+        private void gridView1_ValidatingEditor(object sender, DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventArgs e)
         {
-            DataRowView rowView = e.Row as DataRowView;
-            DataRow row = rowView.Row;
-            Console.WriteLine(row.ItemArray[2].ToString());
+            if (gridView1.FocusedColumn.FieldName == "DIEM_CC")
+            {
+                int x = 0;
+                if (!int.TryParse(e.Value as String, out x))
+                {
+                    e.Valid = false;
+                    e.ErrorText = "Điểm CC chỉ cho phép số tự nhiên từ 0-10";
+                }
+                else if (x < 0 || x > 10)
+                {
+                    e.Valid = false;
+                    e.ErrorText = "Điểm CC chỉ cho phép số tự nhiên từ 0-10";
+                }
+                else
+                {
+                    position = sp_GetBangDiemMonHocBindingSource.Position;
+                    state = true;
+                    btnSave.Enabled = btnHuy.Enabled = true;
+                }
+            }
+            else if (gridView1.FocusedColumn.FieldName == "DIEM_GK" || gridView1.FocusedColumn.FieldName == "DIEM_CK")
+            {
+                var mess = "Điểm CK chỉ cho phép số thập phân từ 0-10";
+                if(gridView1.FocusedColumn.FieldName == "DIEM_GK")
+                {
+                    mess = "Điểm GK chỉ cho phép số thập phân từ 0-10";
+                }
+                double x = 0;
+
+                if (!double.TryParse(e.Value as String, out x))
+                {
+                    e.Valid = false;
+                    e.ErrorText = mess;
+                }
+                else
+                {
+                    x = Math.Round(x, 1);
+                    if (x < 0 || x > 10)
+                    {
+                        e.Valid = false;
+                        e.ErrorText = mess;
+                    }
+                    else
+                    {
+                        e.Value = x;
+                        position = sp_GetBangDiemMonHocBindingSource.Position;
+                        state = true;
+                        btnSave.Enabled = btnHuy.Enabled = true;
+                    }
+                }
+            }
+        }
+
+        private void btnUndo_Click(object sender, EventArgs e)
+        {
+            // hủy
+            btnUndo.Enabled = false;
+        }
+
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            btnStart_Click(null, null);
+            if (position > -1)
+            {
+                sp_GetBangDiemMonHocBindingSource.Position = position;
+            }
         }
     }
 }
