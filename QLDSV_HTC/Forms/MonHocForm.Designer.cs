@@ -44,6 +44,7 @@ namespace QLDSV_HTC.Forms
             this.barButtonDelete = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonUndo = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonSave = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonHuy = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonRenew = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonOut = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
@@ -69,7 +70,6 @@ namespace QLDSV_HTC.Forms
             this.colSOTIET_TH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.bdsLOPTINCHI = new System.Windows.Forms.BindingSource(this.components);
             this.LOPTINCHITableAdapter = new QLDSV_HTC.DSTableAdapters.LOPTINCHITableAdapter();
-            this.barButtonHuy = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -235,6 +235,16 @@ namespace QLDSV_HTC.Forms
             this.barButtonSave.Name = "barButtonSave";
             this.barButtonSave.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.barButtonSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonSave_ItemClick);
+            // 
+            // barButtonHuy
+            // 
+            this.barButtonHuy.Caption = "Hủy";
+            this.barButtonHuy.Enabled = false;
+            this.barButtonHuy.Id = 7;
+            this.barButtonHuy.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonHuy.ImageOptions.SvgImage")));
+            this.barButtonHuy.Name = "barButtonHuy";
+            this.barButtonHuy.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonHuy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonHuy_ItemClick);
             // 
             // barButtonRenew
             // 
@@ -420,6 +430,7 @@ namespace QLDSV_HTC.Forms
             this.gridView1.GridControl = this.gcMONHOC;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.ImmediateUpdateRowPosition = false;
+            this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
             // 
             // colMAMH
             // 
@@ -439,7 +450,7 @@ namespace QLDSV_HTC.Forms
             this.colTENMH.OptionsColumn.AllowEdit = false;
             this.colTENMH.OptionsColumn.AllowFocus = false;
             this.colTENMH.Visible = true;
-            this.colTENMH.VisibleIndex = 3;
+            this.colTENMH.VisibleIndex = 1;
             // 
             // colSOTIET_LT
             // 
@@ -449,7 +460,7 @@ namespace QLDSV_HTC.Forms
             this.colSOTIET_LT.OptionsColumn.AllowEdit = false;
             this.colSOTIET_LT.OptionsColumn.AllowFocus = false;
             this.colSOTIET_LT.Visible = true;
-            this.colSOTIET_LT.VisibleIndex = 1;
+            this.colSOTIET_LT.VisibleIndex = 2;
             // 
             // colSOTIET_TH
             // 
@@ -459,7 +470,7 @@ namespace QLDSV_HTC.Forms
             this.colSOTIET_TH.OptionsColumn.AllowEdit = false;
             this.colSOTIET_TH.OptionsColumn.AllowFocus = false;
             this.colSOTIET_TH.Visible = true;
-            this.colSOTIET_TH.VisibleIndex = 2;
+            this.colSOTIET_TH.VisibleIndex = 3;
             // 
             // bdsLOPTINCHI
             // 
@@ -469,16 +480,6 @@ namespace QLDSV_HTC.Forms
             // LOPTINCHITableAdapter
             // 
             this.LOPTINCHITableAdapter.ClearBeforeFill = true;
-            // 
-            // barButtonHuy
-            // 
-            this.barButtonHuy.Caption = "Hủy";
-            this.barButtonHuy.Enabled = false;
-            this.barButtonHuy.Id = 7;
-            this.barButtonHuy.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
-            this.barButtonHuy.Name = "barButtonHuy";
-            this.barButtonHuy.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.barButtonHuy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonHuy_ItemClick);
             // 
             // MonHocForm
             // 

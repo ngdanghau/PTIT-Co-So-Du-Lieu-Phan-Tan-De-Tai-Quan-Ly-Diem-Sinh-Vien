@@ -34,7 +34,7 @@ namespace QLDSV_HTC.Forms
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.hUYLOPCheckEdit = new DevExpress.XtraEditors.CheckEdit();
+            this.txtMaLTC = new DevExpress.XtraEditors.SpinEdit();
             this.bdsLOPTINCHI = new System.Windows.Forms.BindingSource(this.components);
             this.DS = new QLDSV_HTC.DS();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -44,6 +44,7 @@ namespace QLDSV_HTC.Forms
             this.barButtonDelete = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonUndo = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonSave = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonHuy = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonRenew = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonOut = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
@@ -51,6 +52,7 @@ namespace QLDSV_HTC.Forms
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.hUYLOPCheckEdit = new DevExpress.XtraEditors.CheckEdit();
             this.txtSoSVTT = new DevExpress.XtraEditors.SpinEdit();
             this.txtMaKhoa = new DevExpress.XtraEditors.TextEdit();
             this.txtNhom = new DevExpress.XtraEditors.SpinEdit();
@@ -69,6 +71,7 @@ namespace QLDSV_HTC.Forms
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.tableAdapterManager = new QLDSV_HTC.DSTableAdapters.TableAdapterManager();
             this.LOPTINCHITableAdapter = new QLDSV_HTC.DSTableAdapters.LOPTINCHITableAdapter();
             this.gcLOPTINCHI = new DevExpress.XtraGrid.GridControl();
@@ -89,17 +92,17 @@ namespace QLDSV_HTC.Forms
             this.cmbKhoa = new System.Windows.Forms.ComboBox();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
-            this.barButtonHuy = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.hUYLOPCheckEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMaLTC.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLOPTINCHI)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hUYLOPCheckEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoSVTT.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaKhoa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNhom.Properties)).BeginInit();
@@ -118,6 +121,7 @@ namespace QLDSV_HTC.Forms
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcLOPTINCHI)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDANGKY)).BeginInit();
@@ -132,7 +136,7 @@ namespace QLDSV_HTC.Forms
             this.panelControl1.Controls.Add(this.groupControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl1.Enabled = false;
-            this.panelControl1.Location = new System.Drawing.Point(0, 551);
+            this.panelControl1.Location = new System.Drawing.Point(0, 697);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(1144, 146);
             this.panelControl1.TabIndex = 0;
@@ -149,6 +153,7 @@ namespace QLDSV_HTC.Forms
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.txtMaLTC);
             this.layoutControl1.Controls.Add(this.hUYLOPCheckEdit);
             this.layoutControl1.Controls.Add(this.txtSoSVTT);
             this.layoutControl1.Controls.Add(this.txtMaKhoa);
@@ -165,17 +170,22 @@ namespace QLDSV_HTC.Forms
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // hUYLOPCheckEdit
+            // txtMaLTC
             // 
-            this.hUYLOPCheckEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsLOPTINCHI, "HUYLOP", true));
-            this.hUYLOPCheckEdit.Location = new System.Drawing.Point(314, 84);
-            this.hUYLOPCheckEdit.MenuManager = this.barManager1;
-            this.hUYLOPCheckEdit.Name = "hUYLOPCheckEdit";
-            this.hUYLOPCheckEdit.Properties.Caption = "Hủy lớp";
-            this.hUYLOPCheckEdit.Properties.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked;
-            this.hUYLOPCheckEdit.Size = new System.Drawing.Size(335, 20);
-            this.hUYLOPCheckEdit.StyleController = this.layoutControl1;
-            this.hUYLOPCheckEdit.TabIndex = 12;
+            this.txtMaLTC.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsLOPTINCHI, "MALTC", true));
+            this.txtMaLTC.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.txtMaLTC.Location = new System.Drawing.Point(559, 84);
+            this.txtMaLTC.MenuManager = this.barManager1;
+            this.txtMaLTC.Name = "txtMaLTC";
+            this.txtMaLTC.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtMaLTC.Size = new System.Drawing.Size(90, 20);
+            this.txtMaLTC.StyleController = this.layoutControl1;
+            this.txtMaLTC.TabIndex = 13;
             // 
             // bdsLOPTINCHI
             // 
@@ -276,6 +286,16 @@ namespace QLDSV_HTC.Forms
             this.barButtonSave.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.barButtonSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonSave_ItemClick);
             // 
+            // barButtonHuy
+            // 
+            this.barButtonHuy.Caption = "Hủy";
+            this.barButtonHuy.Enabled = false;
+            this.barButtonHuy.Id = 7;
+            this.barButtonHuy.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonHuy.ImageOptions.SvgImage")));
+            this.barButtonHuy.Name = "barButtonHuy";
+            this.barButtonHuy.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonHuy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonHuy_ItemClick);
+            // 
             // barButtonRenew
             // 
             this.barButtonRenew.Caption = "Làm mới";
@@ -318,7 +338,7 @@ namespace QLDSV_HTC.Forms
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 697);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 843);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(1144, 20);
             // 
@@ -328,7 +348,7 @@ namespace QLDSV_HTC.Forms
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 673);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 819);
             // 
             // barDockControlRight
             // 
@@ -336,7 +356,19 @@ namespace QLDSV_HTC.Forms
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1144, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 673);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 819);
+            // 
+            // hUYLOPCheckEdit
+            // 
+            this.hUYLOPCheckEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsLOPTINCHI, "HUYLOP", true));
+            this.hUYLOPCheckEdit.Location = new System.Drawing.Point(314, 84);
+            this.hUYLOPCheckEdit.MenuManager = this.barManager1;
+            this.hUYLOPCheckEdit.Name = "hUYLOPCheckEdit";
+            this.hUYLOPCheckEdit.Properties.Caption = "Hủy lớp";
+            this.hUYLOPCheckEdit.Properties.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked;
+            this.hUYLOPCheckEdit.Size = new System.Drawing.Size(165, 20);
+            this.hUYLOPCheckEdit.StyleController = this.layoutControl1;
+            this.hUYLOPCheckEdit.TabIndex = 12;
             // 
             // txtSoSVTT
             // 
@@ -504,7 +536,8 @@ namespace QLDSV_HTC.Forms
             this.layoutControlItem8,
             this.layoutControlItem6,
             this.layoutControlItem5,
-            this.layoutControlItem9});
+            this.layoutControlItem9,
+            this.layoutControlItem10});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(661, 117);
             this.Root.TextVisible = false;
@@ -577,10 +610,20 @@ namespace QLDSV_HTC.Forms
             this.layoutControlItem9.Control = this.hUYLOPCheckEdit;
             this.layoutControlItem9.Location = new System.Drawing.Point(302, 72);
             this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(339, 25);
+            this.layoutControlItem9.Size = new System.Drawing.Size(169, 25);
             this.layoutControlItem9.Text = "HUYLOP:";
             this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem9.TextVisible = false;
+            // 
+            // layoutControlItem10
+            // 
+            this.layoutControlItem10.Control = this.txtMaLTC;
+            this.layoutControlItem10.Enabled = false;
+            this.layoutControlItem10.Location = new System.Drawing.Point(471, 72);
+            this.layoutControlItem10.Name = "layoutControlItem10";
+            this.layoutControlItem10.Size = new System.Drawing.Size(170, 25);
+            this.layoutControlItem10.Text = "Mã lớp tín chỉ";
+            this.layoutControlItem10.TextSize = new System.Drawing.Size(73, 13);
             // 
             // tableAdapterManager
             // 
@@ -610,7 +653,7 @@ namespace QLDSV_HTC.Forms
             this.gcLOPTINCHI.MainView = this.gridView1;
             this.gcLOPTINCHI.MenuManager = this.barManager1;
             this.gcLOPTINCHI.Name = "gcLOPTINCHI";
-            this.gcLOPTINCHI.Size = new System.Drawing.Size(1140, 488);
+            this.gcLOPTINCHI.Size = new System.Drawing.Size(1140, 634);
             this.gcLOPTINCHI.TabIndex = 11;
             this.gcLOPTINCHI.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -628,6 +671,7 @@ namespace QLDSV_HTC.Forms
             this.colHUYLOP});
             this.gridView1.GridControl = this.gcLOPTINCHI;
             this.gridView1.Name = "gridView1";
+            this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
             // 
             // colNIENKHOA
             // 
@@ -742,7 +786,7 @@ namespace QLDSV_HTC.Forms
             this.cmbKhoa.FormattingEnabled = true;
             this.cmbKhoa.Location = new System.Drawing.Point(81, 6);
             this.cmbKhoa.Name = "cmbKhoa";
-            this.cmbKhoa.Size = new System.Drawing.Size(121, 21);
+            this.cmbKhoa.Size = new System.Drawing.Size(186, 21);
             this.cmbKhoa.TabIndex = 2;
             this.cmbKhoa.SelectedIndexChanged += new System.EventHandler(this.cmbKhoa_SelectedIndexChanged);
             // 
@@ -760,25 +804,15 @@ namespace QLDSV_HTC.Forms
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl3.Location = new System.Drawing.Point(0, 59);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(1144, 492);
+            this.panelControl3.Size = new System.Drawing.Size(1144, 638);
             this.panelControl3.TabIndex = 17;
-            // 
-            // barButtonHuy
-            // 
-            this.barButtonHuy.Caption = "Hủy";
-            this.barButtonHuy.Enabled = false;
-            this.barButtonHuy.Id = 7;
-            this.barButtonHuy.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonHuy.ImageOptions.SvgImage")));
-            this.barButtonHuy.Name = "barButtonHuy";
-            this.barButtonHuy.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.barButtonHuy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonHuy_ItemClick);
             // 
             // MoLopTinChiForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1144, 717);
+            this.ClientSize = new System.Drawing.Size(1144, 863);
             this.Controls.Add(this.panelControl3);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
@@ -795,10 +829,11 @@ namespace QLDSV_HTC.Forms
             this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.hUYLOPCheckEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMaLTC.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLOPTINCHI)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hUYLOPCheckEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoSVTT.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaKhoa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNhom.Properties)).EndInit();
@@ -817,6 +852,7 @@ namespace QLDSV_HTC.Forms
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcLOPTINCHI)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDANGKY)).EndInit();
@@ -891,5 +927,7 @@ namespace QLDSV_HTC.Forms
         private DevExpress.XtraEditors.CheckEdit hUYLOPCheckEdit;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
         private DevExpress.XtraBars.BarButtonItem barButtonHuy;
+        private DevExpress.XtraEditors.SpinEdit txtMaLTC;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
     }
 }

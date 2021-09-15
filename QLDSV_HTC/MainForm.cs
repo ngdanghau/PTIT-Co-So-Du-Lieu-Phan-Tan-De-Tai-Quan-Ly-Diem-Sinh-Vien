@@ -143,5 +143,10 @@ namespace QLDSV_HTC
         {
 
         }
+
+        private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(HocPhiForm));
+        }
     }
 }

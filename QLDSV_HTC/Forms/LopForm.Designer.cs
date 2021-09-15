@@ -39,6 +39,7 @@ namespace QLDSV_HTC.Forms
             this.barButtonDelete = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonUndo = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonSave = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonHuy = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonRenew = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonOut = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
@@ -73,7 +74,6 @@ namespace QLDSV_HTC.Forms
             this.LOPTableAdapter = new QLDSV_HTC.DSTableAdapters.LOPTableAdapter();
             this.bdsSINHVIEN = new System.Windows.Forms.BindingSource(this.components);
             this.SINHVIENTableAdapter = new QLDSV_HTC.DSTableAdapters.SINHVIENTableAdapter();
-            this.barButtonHuy = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.DS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -195,6 +195,16 @@ namespace QLDSV_HTC.Forms
             this.barButtonSave.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.barButtonSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonSave_ItemClick);
             // 
+            // barButtonHuy
+            // 
+            this.barButtonHuy.Caption = "Hủy";
+            this.barButtonHuy.Enabled = false;
+            this.barButtonHuy.Id = 7;
+            this.barButtonHuy.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonHuy.ImageOptions.SvgImage")));
+            this.barButtonHuy.Name = "barButtonHuy";
+            this.barButtonHuy.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonHuy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonHuy_ItemClick);
+            // 
             // barButtonRenew
             // 
             this.barButtonRenew.Caption = "Làm mới";
@@ -289,7 +299,7 @@ namespace QLDSV_HTC.Forms
             this.cmbKhoa.FormattingEnabled = true;
             this.cmbKhoa.Location = new System.Drawing.Point(81, 6);
             this.cmbKhoa.Name = "cmbKhoa";
-            this.cmbKhoa.Size = new System.Drawing.Size(121, 21);
+            this.cmbKhoa.Size = new System.Drawing.Size(167, 21);
             this.cmbKhoa.TabIndex = 2;
             this.cmbKhoa.SelectedIndexChanged += new System.EventHandler(this.cmbKhoa_SelectedIndexChanged);
             // 
@@ -338,6 +348,7 @@ namespace QLDSV_HTC.Forms
             this.colMAKHOA});
             this.gridView1.GridControl = this.gcLOP;
             this.gridView1.Name = "gridView1";
+            this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
             // 
             // colMALOP
             // 
@@ -520,16 +531,6 @@ namespace QLDSV_HTC.Forms
             // SINHVIENTableAdapter
             // 
             this.SINHVIENTableAdapter.ClearBeforeFill = true;
-            // 
-            // barButtonHuy
-            // 
-            this.barButtonHuy.Caption = "Hủy";
-            this.barButtonHuy.Enabled = false;
-            this.barButtonHuy.Id = 7;
-            this.barButtonHuy.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
-            this.barButtonHuy.Name = "barButtonHuy";
-            this.barButtonHuy.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.barButtonHuy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonHuy_ItemClick);
             // 
             // LopForm
             // 

@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using QLDSV_HTC.Class;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,10 @@ namespace QLDSV_HTC.Forms
     {
         private int position = -1;
         private string state;
+        private MonHocClass MonHocData = null;
+
+        Stack<string> undoStack = new Stack<string>();
+
         public MonHocForm()
         {
             InitializeComponent();
@@ -31,12 +36,13 @@ namespace QLDSV_HTC.Forms
                     = gcMONHOC.Enabled
                     = !value;
 
-                barButtonUndo.Enabled
-                    = barButtonHuy.Enabled
+                barButtonHuy.Enabled
                     = barButtonSave.Enabled
                     = panelControl1.Enabled
                     = txtMaMonHoc.Properties.ReadOnly
                     = value;
+
+                barButtonUndo.Enabled = undoStack.Count > 0;
             }
             else if (state == "add")
             {
@@ -48,8 +54,7 @@ namespace QLDSV_HTC.Forms
                     = txtMaMonHoc.Properties.ReadOnly
                     = !value;
 
-                barButtonUndo.Enabled
-                    = barButtonHuy.Enabled
+                barButtonHuy.Enabled
                     = barButtonSave.Enabled
                     = panelControl1.Enabled
                     = value;
@@ -112,7 +117,7 @@ namespace QLDSV_HTC.Forms
                 bdsMONHOC.Position = position;
             }
 
-            if (bdsMONHOC.Count == 0) barButtonDelete.Enabled = false;
+            barButtonDelete.Enabled = bdsMONHOC.Count > 0;
         }
 
         private void barButtonAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -157,9 +162,15 @@ namespace QLDSV_HTC.Forms
             if (!ValidateForm()) return;
             try
             {
+
                 this.bdsMONHOC.EndEdit();
                 this.bdsMONHOC.ResetCurrentItem();
                 this.MONHOCTableAdapter.Update(this.DS.MONHOC);
+
+                if(state == "edit")
+                {
+                    undoStack.Push(string.Format("UPDATE MONHOC SET TENMH = N'{0}', SOTIET_LT = {1}, SOTIET_TH = {2} WHERE MAMH = '{3}'", MonHocData.TenMonHoc, MonHocData.SoTiet_LT, MonHocData.SoTiet_TH, MonHocData.MaMonHoc));
+                }
             }
             catch (Exception ex)
             {
@@ -172,7 +183,11 @@ namespace QLDSV_HTC.Forms
 
         private void barButtonUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            
+            string command = undoStack.Pop();
+            Program.ExecSqlNonQuery(command);
+
+            MonHocForm_Load(null, null);
+            barButtonUndo.Enabled = undoStack.Count > 0;
         }
 
         private void barButtonDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -192,6 +207,8 @@ namespace QLDSV_HTC.Forms
                     this.MONHOCTableAdapter.Connection.ConnectionString = Program.ConnStr;
                     this.MONHOCTableAdapter.Update(this.DS.MONHOC);
                     this.bdsMONHOC.ResetCurrentItem();
+
+                    undoStack.Push(string.Format("INSERT INTO MONHOC(MAMH, TENMH, SOTIET_LT, SOTIET_TH) values('{0}', N'{1}', {2}, {3})", MonHocData.MaMonHoc, MonHocData.TenMonHoc, MonHocData.SoTiet_LT, MonHocData.SoTiet_TH));
                 }
                 catch (Exception ex)
                 {
@@ -200,7 +217,8 @@ namespace QLDSV_HTC.Forms
                     bdsMONHOC.Position = position;
                 }
             }
-            if (bdsMONHOC.Count == 0) barButtonDelete.Enabled = false;
+            barButtonDelete.Enabled = bdsMONHOC.Count > 0;
+            barButtonUndo.Enabled = undoStack.Count > 0;
         }
 
         private void txtMaMonHoc_EditValueChanged(object sender, EventArgs e)
@@ -213,6 +231,15 @@ namespace QLDSV_HTC.Forms
             bdsMONHOC.CancelEdit();
             SetButtonState(false);
             MonHocForm_Load(sender, e);
+        }
+
+        private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            try
+            {
+                MonHocData = new MonHocClass(txtMaMonHoc.Text.Trim(), txtTenMonHoc.Text.Trim(), Convert.ToInt32(txtSoTietLT.Text), Convert.ToInt32(txtSoTietTH.Text));
+            }
+            catch { }
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using DevExpress.XtraEditors;
+using QLDSV_HTC.Class;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
@@ -9,6 +11,9 @@ namespace QLDSV_HTC.Forms
     {
         private int position = 0;
         private string state;
+        private LopClass LopData = null;
+
+        Stack<string> undoStack = new Stack<string>();
         public LopForm()
         {
             InitializeComponent();
@@ -26,12 +31,13 @@ namespace QLDSV_HTC.Forms
                     = panelControl1.Enabled
                     = !value;
 
-                barButtonUndo.Enabled
-                    = barButtonHuy.Enabled
+                barButtonHuy.Enabled
                     = barButtonSave.Enabled
                     = panelControl4.Enabled
                     = txtMaLop.Properties.ReadOnly
                     = value;
+
+                barButtonUndo.Enabled = undoStack.Count > 0;
             }
             else if (state == "add")
             {
@@ -44,8 +50,7 @@ namespace QLDSV_HTC.Forms
                     = panelControl1.Enabled
                     = !value;
 
-                barButtonUndo.Enabled
-                    = barButtonHuy.Enabled
+                barButtonHuy.Enabled
                     = barButtonSave.Enabled
                     = panelControl4.Enabled
                     = value;
@@ -98,7 +103,7 @@ namespace QLDSV_HTC.Forms
             {
                 bdsLOP.Position = position;
             }
-            if (bdsLOP.Count == 0) barButtonDelete.Enabled = false;
+            barButtonDelete.Enabled = bdsLOP.Count > 0;
         }
 
         private void LopForm_Load(object sender, EventArgs e)
@@ -143,7 +148,7 @@ namespace QLDSV_HTC.Forms
 
         private void barButtonRenew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            LopForm_Load(sender, e);
+            LoadData();
             XtraMessageBox.Show("Làm mới dữ liệu thành công", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -151,8 +156,8 @@ namespace QLDSV_HTC.Forms
         {
             if (this.panelControl1.Enabled)
             {
-                string message = "Môn học đang thêm chưa lưu vào Database. \n Bạn có chắc muốn thoát !";
-                if (state == "edit") message = "Môn học đang hiệu chỉnh chưa lưu vào Database. \n Bạn có chắc muốn thoát !";
+                string message = "Lớp học đang thêm chưa lưu vào Database. \n Bạn có chắc muốn thoát !";
+                if (state == "edit") message = "Lớp học đang hiệu chỉnh chưa lưu vào Database. \n Bạn có chắc muốn thoát !";
                 DialogResult dr = XtraMessageBox.Show(message, "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dr == DialogResult.No)
                 {
@@ -170,6 +175,11 @@ namespace QLDSV_HTC.Forms
                 this.bdsLOP.EndEdit();
                 this.bdsLOP.ResetCurrentItem();
                 this.LOPTableAdapter.Update(this.DS.LOP);
+
+                if (state == "edit")
+                {
+                    undoStack.Push(string.Format("UPDATE LOP SET TENLOP = N'{0}', KHOAHOC = N'{1}', MAKHOA = N'{2}' WHERE MALOP = N'{3}'", LopData.TenLop, LopData.KhoaHoc, LopData.MaKhoa, LopData.MaLop));
+                }
             }
             catch (Exception ex)
             {
@@ -187,7 +197,11 @@ namespace QLDSV_HTC.Forms
 
         private void barButtonUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            
+            string command = undoStack.Pop();
+            Program.ExecSqlNonQuery(command);
+
+            LoadData();
+            barButtonUndo.Enabled = undoStack.Count > 0;
         }
 
         private void barButtonDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -207,6 +221,8 @@ namespace QLDSV_HTC.Forms
                     this.LOPTableAdapter.Connection.ConnectionString = Program.ConnStr;
                     this.LOPTableAdapter.Update(this.DS.LOP);
                     this.bdsLOP.ResetCurrentItem();
+
+                    undoStack.Push(string.Format("INSERT INTO LOP(MALOP, TENLOP, KHOAHOC, MAKHOA) values(N'{0}', N'{1}', N'{2}', N'{3}')", LopData.MaLop, LopData.TenLop, LopData.KhoaHoc, LopData.MaKhoa));
                 }
                 catch (Exception ex)
                 {
@@ -215,7 +231,8 @@ namespace QLDSV_HTC.Forms
                 }
             }
 
-            if (bdsLOP.Count == 0) barButtonDelete.Enabled = false;
+            barButtonDelete.Enabled = bdsLOP.Count > 0;
+            barButtonUndo.Enabled = undoStack.Count > 0;
         }
 
         private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)
@@ -236,6 +253,15 @@ namespace QLDSV_HTC.Forms
             bdsLOP.CancelEdit();
             SetButtonState(false);
             LoadData();
+        }
+
+        private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            try
+            {
+                LopData = new LopClass(txtMaLop.Text.Trim(), txtTenLop.Text.Trim(), txtKhoaHoc.Text.Trim(), txtMaKhoa.Text.Trim());
+            }
+            catch { }
         }
     }
 }

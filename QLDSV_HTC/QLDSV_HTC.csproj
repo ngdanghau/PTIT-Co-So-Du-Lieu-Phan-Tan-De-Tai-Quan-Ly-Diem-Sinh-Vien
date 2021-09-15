@@ -82,6 +82,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\LopClass.cs" />
+    <Compile Include="Class\LopTinChiClass.cs" />
+    <Compile Include="Class\MonHocClass.cs" />
     <Compile Include="DS.cs">
       <DependentUpon>DS.xsd</DependentUpon>
     </Compile>
@@ -107,6 +110,12 @@
     </Compile>
     <Compile Include="Forms\DiemForm.Designer.cs">
       <DependentUpon>DiemForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HocPhiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HocPhiForm.Designer.cs">
+      <DependentUpon>HocPhiForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\LopForm.cs">
       <SubType>Form</SubType>
@@ -161,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DiemForm.resx">
       <DependentUpon>DiemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HocPhiForm.resx">
+      <DependentUpon>HocPhiForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LopForm.resx">
       <DependentUpon>LopForm.cs</DependentUpon>

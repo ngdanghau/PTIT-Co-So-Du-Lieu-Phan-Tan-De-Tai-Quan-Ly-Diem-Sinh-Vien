@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using QLDSV_HTC.Class;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,10 @@ namespace QLDSV_HTC.Forms
     {
         private int position = -1;
         private string state;
+
+        private LopTinChiClass LopTinChiData = null;
+
+        Stack<string> undoStack = new Stack<string>();
         public MoLopTinChiForm()
         {
             InitializeComponent();
@@ -32,11 +37,12 @@ namespace QLDSV_HTC.Forms
                     = panelControl2.Enabled
                     = !value;
 
-                barButtonUndo.Enabled
-                    = barButtonHuy.Enabled
+                barButtonHuy.Enabled
                     = barButtonSave.Enabled
                     = panelControl1.Enabled
                     = value;
+
+                barButtonUndo.Enabled = undoStack.Count > 0;
             }
             else if (state == "add")
             {
@@ -48,8 +54,7 @@ namespace QLDSV_HTC.Forms
                     = panelControl2.Enabled
                     = !value;
 
-                barButtonUndo.Enabled
-                    = barButtonHuy.Enabled
+                barButtonHuy.Enabled
                     = barButtonSave.Enabled
                     = panelControl1.Enabled
                     = value;
@@ -58,7 +63,6 @@ namespace QLDSV_HTC.Forms
 
         private bool ValidateForm()
         {
-            Console.WriteLine(txtMaKhoa.Text);
             if (txtNienKhoa.Text.Trim() == "")
             {
                 XtraMessageBox.Show("Niên khóa không được để trống!", "Lỗi",
@@ -134,7 +138,7 @@ namespace QLDSV_HTC.Forms
 
         private void barButtonRenew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            MoLopTinChiForm_Load(sender, e);
+            LoadData();
             XtraMessageBox.Show("Làm mới dữ liệu thành công", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -161,6 +165,11 @@ namespace QLDSV_HTC.Forms
                 this.bdsLOPTINCHI.EndEdit();
                 this.bdsLOPTINCHI.ResetCurrentItem();
                 this.LOPTINCHITableAdapter.Update(this.DS.LOPTINCHI);
+
+                if (state == "edit")
+                {
+                    undoStack.Push(string.Format("UPDATE LOPTINCHI SET NIENKHOA = N'{0}', HOCKY = {1}, MAMH = N'{2}', NHOM = {3}, MAGV = N'{4}', MAKHOA = N'{5}', SOSVTOITHIEU = {6}, HUYLOP = {7} WHERE MALTC = '{8}'", LopTinChiData.NienKhoa, LopTinChiData.HocKy, LopTinChiData.MaMonHoc, LopTinChiData.Nhom, LopTinChiData.MaGiangVien, LopTinChiData.MaKhoa, LopTinChiData.SoSVToiThieu, Convert.ToInt32(LopTinChiData.HuyLop), LopTinChiData.MaLTC));
+                }
             }
             catch (Exception ex)
             {
@@ -173,7 +182,11 @@ namespace QLDSV_HTC.Forms
 
         private void barButtonUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            
+            string command = undoStack.Pop();
+            Program.ExecSqlNonQuery(command);
+
+            LoadData();
+            barButtonUndo.Enabled = undoStack.Count > 0;
         }
 
         private void barButtonDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -193,6 +206,8 @@ namespace QLDSV_HTC.Forms
                     this.LOPTINCHITableAdapter.Connection.ConnectionString = Program.ConnStr;
                     this.LOPTINCHITableAdapter.Update(this.DS.LOPTINCHI);
                     this.bdsLOPTINCHI.ResetCurrentItem();
+
+                    undoStack.Push(string.Format("INSERT LOPTINCHI (NIENKHOA, HOCKY, MAMH, NHOM, MAGV, MAKHOA, SOSVTOITHIEU, HUYLOP) VALUES (N'{0}', {1}, N'{2}', {3}, N'{4}', N'{5}', {6}, {7})", LopTinChiData.NienKhoa, LopTinChiData.HocKy, LopTinChiData.MaMonHoc, LopTinChiData.Nhom, LopTinChiData.MaGiangVien, LopTinChiData.MaKhoa, LopTinChiData.SoSVToiThieu, Convert.ToInt32(LopTinChiData.HuyLop)));
                 }
                 catch (Exception ex)
                 {
@@ -201,7 +216,8 @@ namespace QLDSV_HTC.Forms
                     bdsLOPTINCHI.Position = position;
                 }
             }
-            if (bdsLOPTINCHI.Count == 0) barButtonDelete.Enabled = false;
+            barButtonDelete.Enabled = bdsLOPTINCHI.Count > 0;
+            barButtonUndo.Enabled = undoStack.Count > 0;
         }
 
         private void lOPTINCHIBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -275,6 +291,15 @@ namespace QLDSV_HTC.Forms
             bdsLOPTINCHI.CancelEdit();
             SetButtonState(false);
             MoLopTinChiForm_Load(sender, e);
+        }
+
+        private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            try
+            {
+                LopTinChiData = new LopTinChiClass(Convert.ToInt32(txtMaLTC.Text), txtNienKhoa.Text.Trim(), txtMaMonHoc.EditValue.ToString().Trim(), txtMaGV.Text.Trim(), txtMaKhoa.Text.Trim(), Convert.ToInt32(txtHocKy.Text), Convert.ToInt32(txtNhom.Text), Convert.ToInt32(txtSoSVTT.Text), hUYLOPCheckEdit.Checked);
+            }
+            catch { }
         }
     }
 }
