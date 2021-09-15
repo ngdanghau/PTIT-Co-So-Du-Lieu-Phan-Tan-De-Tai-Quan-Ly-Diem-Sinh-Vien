@@ -96,6 +96,12 @@
     <Compile Include="Forms\AddLoginForm.Designer.cs">
       <DependentUpon>AddLoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DangKyLTCForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DangKyLTCForm.Designer.cs">
+      <DependentUpon>DangKyLTCForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DiemForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,12 @@
     </Compile>
     <Compile Include="Forms\LopForm.Designer.cs">
       <DependentUpon>LopForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MoLopTinChiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MoLopTinChiForm.Designer.cs">
+      <DependentUpon>MoLopTinChiForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MonHocForm.cs">
       <SubType>Form</SubType>
@@ -144,11 +156,17 @@
     <EmbeddedResource Include="Forms\AddLoginForm.resx">
       <DependentUpon>AddLoginForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DangKyLTCForm.resx">
+      <DependentUpon>DangKyLTCForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DiemForm.resx">
       <DependentUpon>DiemForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LopForm.resx">
       <DependentUpon>LopForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MoLopTinChiForm.resx">
+      <DependentUpon>MoLopTinChiForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MonHocForm.resx">
       <DependentUpon>MonHocForm.cs</DependentUpon>

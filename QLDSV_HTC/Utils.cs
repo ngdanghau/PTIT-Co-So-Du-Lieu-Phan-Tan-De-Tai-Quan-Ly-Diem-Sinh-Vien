@@ -29,7 +29,7 @@ namespace QLDSV_HTC
             }
 
             Program.ServerName = cmbKhoa.SelectedValue.ToString();
-
+            Program.MaKhoa = Utils.GetMaKhoa(cmbKhoa.Text);
             try
             {
                 Program.KetNoi();

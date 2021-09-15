@@ -124,7 +124,11 @@ namespace QLDSV_HTC.Forms
             state = "add";
             SetButtonState(true);
             txtMaLop.Focus();
-            txtMaKhoa.Text = Program.MaKhoa;
+            if (txtMaKhoa.DataBindings.Count > 0)
+            {
+                this.DS.LOP.MAKHOAColumn.DefaultValue = Program.MaKhoa;
+                txtMaKhoa.DataBindings[0].DataSourceNullValue = Program.MaKhoa;
+            }
             bdsLOP.AddNew();
         }
 
@@ -138,7 +142,7 @@ namespace QLDSV_HTC.Forms
         private void barButtonRenew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             LopForm_Load(sender, e);
-            XtraMessageBox.Show("Làm mới dữ liệu thành công", "", MessageBoxButtons.OK);
+            XtraMessageBox.Show("Làm mới dữ liệu thành công", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void barButtonCancel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -164,14 +168,14 @@ namespace QLDSV_HTC.Forms
                 this.bdsLOP.EndEdit();
                 this.bdsLOP.ResetCurrentItem();
                 this.LOPTableAdapter.Update(this.DS.LOP);
-                SetButtonState(false);
             }
             catch (Exception ex)
             {
-                //bdsMONHOC.RemoveCurrent();
+                bdsLOP.RemoveCurrent();
                 XtraMessageBox.Show("Ghi dữ liệu thất lại. Vui lòng kiểm tra lại!\n" + ex.Message, "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            SetButtonState(false);
         }
 
         private void mAMHTextEdit_EditValueChanged(object sender, EventArgs e)

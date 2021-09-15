@@ -132,7 +132,7 @@ namespace QLDSV_HTC.Forms
         private void barButtonRenew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             MonHocForm_Load(sender, e);
-            XtraMessageBox.Show("Làm mới dữ liệu thành công", "", MessageBoxButtons.OK);
+            XtraMessageBox.Show("Làm mới dữ liệu thành công", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void barButtonCancel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -158,7 +158,6 @@ namespace QLDSV_HTC.Forms
                 this.bdsMONHOC.EndEdit();
                 this.bdsMONHOC.ResetCurrentItem();
                 this.MONHOCTableAdapter.Update(this.DS.MONHOC);
-                SetButtonState(false);
             }
             catch (Exception ex)
             {
@@ -166,11 +165,7 @@ namespace QLDSV_HTC.Forms
                 XtraMessageBox.Show("Ghi dữ liệu thất lại. Vui lòng kiểm tra lại!\n" + ex.Message, "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void mAMHTextEdit_EditValueChanged(object sender, EventArgs e)
-        {
-            txtMaMonHoc.Properties.CharacterCasing = CharacterCasing.Upper;
+            SetButtonState(false);
         }
 
         private void barButtonUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -206,6 +201,11 @@ namespace QLDSV_HTC.Forms
                 }
             }
             if (bdsMONHOC.Count == 0) barButtonDelete.Enabled = false;
+        }
+
+        private void txtMaMonHoc_EditValueChanged(object sender, EventArgs e)
+        {
+            txtMaMonHoc.Properties.CharacterCasing = CharacterCasing.Upper;
         }
     }
 }
