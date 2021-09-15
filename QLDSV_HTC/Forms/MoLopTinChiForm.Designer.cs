@@ -89,6 +89,7 @@ namespace QLDSV_HTC.Forms
             this.cmbKhoa = new System.Windows.Forms.ComboBox();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.barButtonHuy = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -203,9 +204,10 @@ namespace QLDSV_HTC.Forms
             this.barButtonUndo,
             this.barButtonSave,
             this.barButtonOut,
-            this.barButtonRenew});
+            this.barButtonRenew,
+            this.barButtonHuy});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 7;
+            this.barManager1.MaxItemId = 8;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar2
@@ -220,6 +222,7 @@ namespace QLDSV_HTC.Forms
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonDelete),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonUndo),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonSave),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonHuy),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonRenew),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonOut)});
             this.bar2.OptionsBar.MultiLine = true;
@@ -760,6 +763,16 @@ namespace QLDSV_HTC.Forms
             this.panelControl3.Size = new System.Drawing.Size(1144, 492);
             this.panelControl3.TabIndex = 17;
             // 
+            // barButtonHuy
+            // 
+            this.barButtonHuy.Caption = "Hủy";
+            this.barButtonHuy.Enabled = false;
+            this.barButtonHuy.Id = 7;
+            this.barButtonHuy.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonHuy.ImageOptions.SvgImage")));
+            this.barButtonHuy.Name = "barButtonHuy";
+            this.barButtonHuy.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonHuy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonHuy_ItemClick);
+            // 
             // MoLopTinChiForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -877,5 +890,6 @@ namespace QLDSV_HTC.Forms
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.CheckEdit hUYLOPCheckEdit;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
+        private DevExpress.XtraBars.BarButtonItem barButtonHuy;
     }
 }

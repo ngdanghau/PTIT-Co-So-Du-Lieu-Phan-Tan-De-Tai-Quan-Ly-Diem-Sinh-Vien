@@ -73,6 +73,7 @@ namespace QLDSV_HTC.Forms
             this.LOPTableAdapter = new QLDSV_HTC.DSTableAdapters.LOPTableAdapter();
             this.bdsSINHVIEN = new System.Windows.Forms.BindingSource(this.components);
             this.SINHVIENTableAdapter = new QLDSV_HTC.DSTableAdapters.SINHVIENTableAdapter();
+            this.barButtonHuy = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.DS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -122,9 +123,10 @@ namespace QLDSV_HTC.Forms
             this.barButtonUndo,
             this.barButtonSave,
             this.barButtonOut,
-            this.barButtonRenew});
+            this.barButtonRenew,
+            this.barButtonHuy});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 7;
+            this.barManager1.MaxItemId = 8;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar2
@@ -139,6 +141,7 @@ namespace QLDSV_HTC.Forms
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonDelete),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonUndo),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonSave),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonHuy),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonRenew),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonOut)});
             this.bar2.OptionsBar.MultiLine = true;
@@ -427,6 +430,8 @@ namespace QLDSV_HTC.Forms
             this.txtKhoaHoc.Location = new System.Drawing.Point(63, 60);
             this.txtKhoaHoc.MenuManager = this.barManager1;
             this.txtKhoaHoc.Name = "txtKhoaHoc";
+            this.txtKhoaHoc.Properties.Mask.EditMask = "\\d{4}-\\d{4}";
+            this.txtKhoaHoc.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.txtKhoaHoc.Size = new System.Drawing.Size(400, 20);
             this.txtKhoaHoc.StyleController = this.layoutControl1;
             this.txtKhoaHoc.TabIndex = 7;
@@ -515,6 +520,16 @@ namespace QLDSV_HTC.Forms
             // SINHVIENTableAdapter
             // 
             this.SINHVIENTableAdapter.ClearBeforeFill = true;
+            // 
+            // barButtonHuy
+            // 
+            this.barButtonHuy.Caption = "Hủy";
+            this.barButtonHuy.Enabled = false;
+            this.barButtonHuy.Id = 7;
+            this.barButtonHuy.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
+            this.barButtonHuy.Name = "barButtonHuy";
+            this.barButtonHuy.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonHuy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonHuy_ItemClick);
             // 
             // LopForm
             // 
@@ -605,5 +620,6 @@ namespace QLDSV_HTC.Forms
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private System.Windows.Forms.ComboBox cmbKhoa;
+        private DevExpress.XtraBars.BarButtonItem barButtonHuy;
     }
 }

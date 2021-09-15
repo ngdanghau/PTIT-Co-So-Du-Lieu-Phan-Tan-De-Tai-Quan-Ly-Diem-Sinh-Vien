@@ -27,6 +27,7 @@ namespace QLDSV_HTC.Forms
                     = !value;
 
                 barButtonUndo.Enabled
+                    = barButtonHuy.Enabled
                     = barButtonSave.Enabled
                     = panelControl4.Enabled
                     = txtMaLop.Properties.ReadOnly
@@ -44,6 +45,7 @@ namespace QLDSV_HTC.Forms
                     = !value;
 
                 barButtonUndo.Enabled
+                    = barButtonHuy.Enabled
                     = barButtonSave.Enabled
                     = panelControl4.Enabled
                     = value;
@@ -185,9 +187,7 @@ namespace QLDSV_HTC.Forms
 
         private void barButtonUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            bdsLOP.CancelEdit();
-            SetButtonState(false);
-            LoadData();
+            
         }
 
         private void barButtonDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -229,6 +229,13 @@ namespace QLDSV_HTC.Forms
         private void txtMaLop_EditValueChanged(object sender, EventArgs e)
         {
             txtMaLop.Properties.CharacterCasing = CharacterCasing.Upper;
+        }
+
+        private void barButtonHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            bdsLOP.CancelEdit();
+            SetButtonState(false);
+            LoadData();
         }
     }
 }

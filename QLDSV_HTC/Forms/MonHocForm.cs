@@ -32,6 +32,7 @@ namespace QLDSV_HTC.Forms
                     = !value;
 
                 barButtonUndo.Enabled
+                    = barButtonHuy.Enabled
                     = barButtonSave.Enabled
                     = panelControl1.Enabled
                     = txtMaMonHoc.Properties.ReadOnly
@@ -48,6 +49,7 @@ namespace QLDSV_HTC.Forms
                     = !value;
 
                 barButtonUndo.Enabled
+                    = barButtonHuy.Enabled
                     = barButtonSave.Enabled
                     = panelControl1.Enabled
                     = value;
@@ -170,9 +172,7 @@ namespace QLDSV_HTC.Forms
 
         private void barButtonUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            bdsMONHOC.CancelEdit();
-            SetButtonState(false);
-            MonHocForm_Load(sender, e);
+            
         }
 
         private void barButtonDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -206,6 +206,13 @@ namespace QLDSV_HTC.Forms
         private void txtMaMonHoc_EditValueChanged(object sender, EventArgs e)
         {
             txtMaMonHoc.Properties.CharacterCasing = CharacterCasing.Upper;
+        }
+
+        private void barButtonHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            bdsMONHOC.CancelEdit();
+            SetButtonState(false);
+            MonHocForm_Load(sender, e);
         }
     }
 }
