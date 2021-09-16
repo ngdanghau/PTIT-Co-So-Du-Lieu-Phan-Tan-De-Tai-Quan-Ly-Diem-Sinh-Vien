@@ -133,6 +133,7 @@ namespace QLDSV_HTC
             this.InDSSVBtn.LargeWidth = 80;
             this.InDSSVBtn.Name = "InDSSVBtn";
             this.InDSSVBtn.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.InDSSVBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.InDSSVBtn_ItemClick);
             // 
             // barButtonItem3
             // 

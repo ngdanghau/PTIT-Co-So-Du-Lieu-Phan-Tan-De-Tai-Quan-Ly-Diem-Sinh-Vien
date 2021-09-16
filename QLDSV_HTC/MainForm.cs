@@ -148,5 +148,10 @@ namespace QLDSV_HTC
         {
             ShowMdiChildren(typeof(HocPhiForm));
         }
+
+        private void InDSSVBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(InDSSV));
+        }
     }
 }
