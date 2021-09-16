@@ -155,12 +155,6 @@
     <Compile Include="ReportForms\InDSLOPTINCHI.Designer.cs">
       <DependentUpon>InDSLOPTINCHI.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\XtraReport1.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\XtraReport1.Designer.cs">
-      <DependentUpon>XtraReport1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Utils.cs" />
     <EmbeddedResource Include="Forms\AddLoginForm.resx">
       <DependentUpon>AddLoginForm.cs</DependentUpon>
@@ -203,9 +197,6 @@
     <EmbeddedResource Include="ReportForms\InDSLOPTINCHI.resx">
       <DependentUpon>InDSLOPTINCHI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\XtraReport1.resx">
-      <DependentUpon>XtraReport1.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="DS.xsc">
       <DependentUpon>DS.xsd</DependentUpon>
@@ -243,7 +234,9 @@
   <ItemGroup>
     <None Include="Resources\777494-200.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Reports\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
