@@ -9,11 +9,9 @@
     <TableUISetting Name="LOPTINCHI">
       <ColumnUISettings>
         <ColumnUISetting Name="MAMH">
-          <ControlSettings>
-            <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
               <BindableControlInfo Name="ComboBoxEdit" Type="DevExpress.XtraEditors.ComboBoxEdit" AssemblyName="DevExpress.XtraEditors.v19.2" />
-            </ControlSetting>
-          </ControlSettings>
+            </ControlSetting></ControlSettings>
         </ColumnUISetting>
       </ColumnUISettings>
     </TableUISetting>
@@ -27,6 +25,25 @@
         <ColumnUISetting Name="SOTIET_TH">
           <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
               <BindableControlInfo Name="TextEdit" Type="DevExpress.XtraEditors.TextEdit" AssemblyName="DevExpress.XtraEditors.v19.2" />
+            </ControlSetting></ControlSettings>
+        </ColumnUISetting>
+      </ColumnUISettings>
+    </TableUISetting>
+    <TableUISetting Name="sp_GetThongTinDongHocPhi">
+      <ColumnUISettings>
+        <ColumnUISetting Name="HOCKY">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+              <BindableControlInfo Name="SpinEdit" Type="DevExpress.XtraEditors.SpinEdit" AssemblyName="DevExpress.XtraEditors.v19.2" />
+            </ControlSetting></ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="HOCPHI">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+              <BindableControlInfo Name="SpinEdit" Type="DevExpress.XtraEditors.SpinEdit" AssemblyName="DevExpress.XtraEditors.v19.2" />
+            </ControlSetting></ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="SOTIENDADONG">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+              <BindableControlInfo Name="SpinEdit" Type="DevExpress.XtraEditors.SpinEdit" AssemblyName="DevExpress.XtraEditors.v19.2" />
             </ControlSetting></ControlSettings>
         </ColumnUISetting>
       </ColumnUISettings>

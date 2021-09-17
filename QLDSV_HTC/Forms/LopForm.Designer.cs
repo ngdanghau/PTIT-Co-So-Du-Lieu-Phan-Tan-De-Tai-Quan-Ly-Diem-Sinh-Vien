@@ -42,7 +42,6 @@ namespace QLDSV_HTC.Forms
             this.barButtonHuy = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonRenew = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonOut = new DevExpress.XtraBars.BarButtonItem();
-            this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -109,8 +108,7 @@ namespace QLDSV_HTC.Forms
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar2,
-            this.bar3});
+            this.bar2});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -127,7 +125,6 @@ namespace QLDSV_HTC.Forms
             this.barButtonHuy});
             this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 8;
-            this.barManager1.StatusBar = this.bar3;
             // 
             // bar2
             // 
@@ -223,18 +220,6 @@ namespace QLDSV_HTC.Forms
             this.barButtonOut.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.barButtonOut.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonCancel_ItemClick);
             // 
-            // bar3
-            // 
-            this.bar3.BarName = "Status bar";
-            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
-            this.bar3.DockCol = 0;
-            this.bar3.DockRow = 0;
-            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-            this.bar3.OptionsBar.AllowQuickCustomization = false;
-            this.bar3.OptionsBar.DrawDragBorder = false;
-            this.bar3.OptionsBar.UseWholeRow = true;
-            this.bar3.Text = "Status bar";
-            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
@@ -247,9 +232,9 @@ namespace QLDSV_HTC.Forms
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 552);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 572);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1083, 20);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1083, 0);
             // 
             // barDockControlLeft
             // 
@@ -257,7 +242,7 @@ namespace QLDSV_HTC.Forms
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 528);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 548);
             // 
             // barDockControlRight
             // 
@@ -265,7 +250,7 @@ namespace QLDSV_HTC.Forms
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1083, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 528);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 548);
             // 
             // tableAdapterManager
             // 
@@ -318,7 +303,7 @@ namespace QLDSV_HTC.Forms
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(0, 60);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1083, 492);
+            this.panelControl2.Size = new System.Drawing.Size(1083, 512);
             this.panelControl2.TabIndex = 12;
             // 
             // gcLOP
@@ -329,7 +314,7 @@ namespace QLDSV_HTC.Forms
             this.gcLOP.MainView = this.gridView1;
             this.gcLOP.MenuManager = this.barManager1;
             this.gcLOP.Name = "gcLOP";
-            this.gcLOP.Size = new System.Drawing.Size(1079, 363);
+            this.gcLOP.Size = new System.Drawing.Size(1079, 383);
             this.gcLOP.TabIndex = 1;
             this.gcLOP.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -394,7 +379,7 @@ namespace QLDSV_HTC.Forms
             // 
             this.panelControl3.Controls.Add(this.panelControl4);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl3.Location = new System.Drawing.Point(2, 365);
+            this.panelControl3.Location = new System.Drawing.Point(2, 385);
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Size = new System.Drawing.Size(1079, 125);
             this.panelControl3.TabIndex = 0;
@@ -582,7 +567,6 @@ namespace QLDSV_HTC.Forms
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar2;
         private DevExpress.XtraBars.BarButtonItem barButtonAdd;
-        private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
