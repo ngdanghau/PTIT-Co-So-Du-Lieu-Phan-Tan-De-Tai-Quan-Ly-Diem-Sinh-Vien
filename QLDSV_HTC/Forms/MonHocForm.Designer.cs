@@ -319,10 +319,11 @@ namespace QLDSV_HTC.Forms
             this.txtMaMonHoc.Location = new System.Drawing.Point(102, 12);
             this.txtMaMonHoc.MenuManager = this.barManager1;
             this.txtMaMonHoc.Name = "txtMaMonHoc";
+            this.txtMaMonHoc.Properties.Mask.EditMask = "(\\p{Lu}|[0-9])+";
+            this.txtMaMonHoc.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.txtMaMonHoc.Size = new System.Drawing.Size(396, 20);
             this.txtMaMonHoc.StyleController = this.layoutControl2;
             this.txtMaMonHoc.TabIndex = 5;
-            this.txtMaMonHoc.EditValueChanged += new System.EventHandler(this.txtMaMonHoc_EditValueChanged);
             // 
             // layoutControlGroup1
             // 

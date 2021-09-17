@@ -269,10 +269,11 @@ namespace QLDSV_HTC.Forms
             // 
             this.txtMaSV.Location = new System.Drawing.Point(78, 12);
             this.txtMaSV.Name = "txtMaSV";
+            this.txtMaSV.Properties.Mask.EditMask = "(\\p{Lu}|[0-9])+";
+            this.txtMaSV.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.txtMaSV.Size = new System.Drawing.Size(154, 20);
             this.txtMaSV.StyleController = this.layoutControl2;
             this.txtMaSV.TabIndex = 0;
-            this.txtMaSV.EditValueChanged += new System.EventHandler(this.txtMaSV_EditValueChanged);
             // 
             // txtHoTen
             // 

@@ -449,10 +449,11 @@ namespace QLDSV_HTC.Forms
             this.txtMaLop.MenuManager = this.barManager1;
             this.txtMaLop.Name = "txtMaLop";
             this.txtMaLop.Properties.ReadOnly = true;
+            this.txtMaLop.Properties.Mask.EditMask = "(\\p{Lu}|[0-9])+";
+            this.txtMaLop.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.txtMaLop.Size = new System.Drawing.Size(400, 20);
             this.txtMaLop.StyleController = this.layoutControl1;
             this.txtMaLop.TabIndex = 5;
-            this.txtMaLop.EditValueChanged += new System.EventHandler(this.txtMaLop_EditValueChanged);
             // 
             // Root
             // 

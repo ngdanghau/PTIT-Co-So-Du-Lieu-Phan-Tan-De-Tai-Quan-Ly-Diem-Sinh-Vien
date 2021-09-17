@@ -75,11 +75,6 @@ namespace QLDSV_HTC.Forms
             }
         }
 
-        private void txtMaSV_EditValueChanged(object sender, EventArgs e)
-        {
-            txtMaSV.Properties.CharacterCasing = CharacterCasing.Upper;
-        }
-
         private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
             try

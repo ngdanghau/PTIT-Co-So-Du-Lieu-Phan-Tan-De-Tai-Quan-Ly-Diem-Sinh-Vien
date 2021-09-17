@@ -221,11 +221,6 @@ namespace QLDSV_HTC.Forms
             barButtonUndo.Enabled = undoStack.Count > 0;
         }
 
-        private void txtMaMonHoc_EditValueChanged(object sender, EventArgs e)
-        {
-            txtMaMonHoc.Properties.CharacterCasing = CharacterCasing.Upper;
-        }
-
         private void barButtonHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             bdsMONHOC.CancelEdit();

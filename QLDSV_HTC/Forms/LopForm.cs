@@ -243,10 +243,6 @@ namespace QLDSV_HTC.Forms
             }
         }
 
-        private void txtMaLop_EditValueChanged(object sender, EventArgs e)
-        {
-            txtMaLop.Properties.CharacterCasing = CharacterCasing.Upper;
-        }
 
         private void barButtonHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
