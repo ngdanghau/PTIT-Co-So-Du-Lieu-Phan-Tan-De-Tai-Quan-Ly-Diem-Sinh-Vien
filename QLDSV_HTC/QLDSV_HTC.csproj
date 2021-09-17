@@ -149,12 +149,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReportForms\InDSLOPTINCHI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ReportForms\InDSLOPTINCHI.Designer.cs">
-      <DependentUpon>InDSLOPTINCHI.cs</DependentUpon>
-    </Compile>
     <Compile Include="Utils.cs" />
     <EmbeddedResource Include="Forms\AddLoginForm.resx">
       <DependentUpon>AddLoginForm.cs</DependentUpon>
@@ -194,9 +188,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ReportForms\InDSLOPTINCHI.resx">
-      <DependentUpon>InDSLOPTINCHI.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="DS.xsc">
       <DependentUpon>DS.xsd</DependentUpon>
@@ -235,6 +226,7 @@
     <None Include="Resources\777494-200.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ReportForms\" />
     <Folder Include="Reports\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
