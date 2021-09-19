@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using DevExpress.XtraReports.UI;
+using QLDSV_HTC.Reports;
 //using QLDSV_HTC.Reports;
 using System;
 using System.Collections.Generic;
@@ -43,10 +44,9 @@ namespace QLDSV_HTC.ReportForms
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            //XtraReport1 report = new XtraReport1(cmbKhoa.SelectedText, txtNienKhoa.Text, txtHocKy.Text);
-            //XtraReport1 report = new XtraReport1("Công nghệ thông tin", "2021-2022", 1);
-            //ReportPrintTool print = new ReportPrintTool(report);
-            //print.ShowPreviewDialog();
+            InDSLTC_RP report = new InDSLTC_RP(/*cmbKhoa.SelectedText,*/ txtNienKhoa.Text, int.Parse(txtHocKy.Text));
+            ReportPrintTool print = new ReportPrintTool(report);
+            print.ShowPreviewDialog();
         }
     }
 }

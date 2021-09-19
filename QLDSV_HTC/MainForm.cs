@@ -153,5 +153,15 @@ namespace QLDSV_HTC
         {
             ShowMdiChildren(typeof(InDSSV));
         }
+
+        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(InPhieuDiemForm));
+        }
+
+        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(InDiemForm));
+        }
     }
 }

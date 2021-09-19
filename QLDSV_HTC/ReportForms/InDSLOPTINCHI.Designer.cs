@@ -33,24 +33,24 @@ namespace QLDSV_HTC.ReportForms
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.cmbKhoa = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.txtNienKhoa = new DevExpress.XtraEditors.TextEdit();
+            this.txtHocKy = new DevExpress.XtraEditors.TextEdit();
+            this.Button_Preview = new DevExpress.XtraEditors.SimpleButton();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtNienKhoa = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtHocKy = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbKhoa.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNienKhoa.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHocKy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNienKhoa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtHocKy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             this.SuspendLayout();
@@ -69,7 +69,7 @@ namespace QLDSV_HTC.ReportForms
             this.layoutControl1.Controls.Add(this.cmbKhoa);
             this.layoutControl1.Controls.Add(this.txtNienKhoa);
             this.layoutControl1.Controls.Add(this.txtHocKy);
-            this.layoutControl1.Controls.Add(this.simpleButton1);
+            this.layoutControl1.Controls.Add(this.Button_Preview);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(2, 2);
             this.layoutControl1.Name = "layoutControl1";
@@ -88,6 +88,33 @@ namespace QLDSV_HTC.ReportForms
             this.cmbKhoa.Size = new System.Drawing.Size(493, 20);
             this.cmbKhoa.StyleController = this.layoutControl1;
             this.cmbKhoa.TabIndex = 4;
+            // 
+            // txtNienKhoa
+            // 
+            this.txtNienKhoa.Location = new System.Drawing.Point(66, 36);
+            this.txtNienKhoa.Name = "txtNienKhoa";
+            this.txtNienKhoa.Size = new System.Drawing.Size(493, 20);
+            this.txtNienKhoa.StyleController = this.layoutControl1;
+            this.txtNienKhoa.TabIndex = 5;
+            // 
+            // txtHocKy
+            // 
+            this.txtHocKy.Location = new System.Drawing.Point(66, 60);
+            this.txtHocKy.Name = "txtHocKy";
+            this.txtHocKy.Size = new System.Drawing.Size(493, 20);
+            this.txtHocKy.StyleController = this.layoutControl1;
+            this.txtHocKy.TabIndex = 6;
+            // 
+            // Button_Preview
+            // 
+            this.Button_Preview.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage")));
+            this.Button_Preview.Location = new System.Drawing.Point(12, 84);
+            this.Button_Preview.Name = "Button_Preview";
+            this.Button_Preview.Size = new System.Drawing.Size(547, 36);
+            this.Button_Preview.StyleController = this.layoutControl1;
+            this.Button_Preview.TabIndex = 7;
+            this.Button_Preview.Text = "Xem trước";
+            this.Button_Preview.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // Root
             // 
@@ -111,14 +138,6 @@ namespace QLDSV_HTC.ReportForms
             this.layoutControlItem1.Text = "Khoa: ";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(51, 13);
             // 
-            // txtNienKhoa
-            // 
-            this.txtNienKhoa.Location = new System.Drawing.Point(66, 36);
-            this.txtNienKhoa.Name = "txtNienKhoa";
-            this.txtNienKhoa.Size = new System.Drawing.Size(493, 20);
-            this.txtNienKhoa.StyleController = this.layoutControl1;
-            this.txtNienKhoa.TabIndex = 5;
-            // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.txtNienKhoa;
@@ -127,14 +146,6 @@ namespace QLDSV_HTC.ReportForms
             this.layoutControlItem2.Size = new System.Drawing.Size(551, 24);
             this.layoutControlItem2.Text = "Niên khóa:";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(51, 13);
-            // 
-            // txtHocKy
-            // 
-            this.txtHocKy.Location = new System.Drawing.Point(66, 60);
-            this.txtHocKy.Name = "txtHocKy";
-            this.txtHocKy.Size = new System.Drawing.Size(493, 20);
-            this.txtHocKy.StyleController = this.layoutControl1;
-            this.txtHocKy.TabIndex = 6;
             // 
             // layoutControlItem3
             // 
@@ -145,20 +156,9 @@ namespace QLDSV_HTC.ReportForms
             this.layoutControlItem3.Text = "Học kỳ:";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(51, 13);
             // 
-            // simpleButton1
-            // 
-            this.simpleButton1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage")));
-            this.simpleButton1.Location = new System.Drawing.Point(12, 84);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(547, 36);
-            this.simpleButton1.StyleController = this.layoutControl1;
-            this.simpleButton1.TabIndex = 7;
-            this.simpleButton1.Text = "Xem trước";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
-            // 
             // layoutControlItem4
             // 
-            this.layoutControlItem4.Control = this.simpleButton1;
+            this.layoutControlItem4.Control = this.Button_Preview;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 72);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(551, 165);
@@ -179,11 +179,11 @@ namespace QLDSV_HTC.ReportForms
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cmbKhoa.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNienKhoa.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHocKy.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNienKhoa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtHocKy.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             this.ResumeLayout(false);
@@ -201,7 +201,7 @@ namespace QLDSV_HTC.ReportForms
         private DevExpress.XtraEditors.TextEdit txtHocKy;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton Button_Preview;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
     }
 }

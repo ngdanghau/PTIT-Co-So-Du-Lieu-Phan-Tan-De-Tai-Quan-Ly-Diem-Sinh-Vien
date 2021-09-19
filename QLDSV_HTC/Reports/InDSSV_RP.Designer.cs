@@ -1,7 +1,7 @@
 ﻿
 namespace QLDSV_HTC.Reports
 {
-    partial class InDSSVReport
+    partial class InDSSV_RP
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,12 @@ namespace QLDSV_HTC.Reports
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.DataAccess.ConnectionParameters.CustomStringConnectionParameters customStringConnectionParameters1 = new DevExpress.DataAccess.ConnectionParameters.CustomStringConnectionParameters();
             DevExpress.DataAccess.Sql.StoredProcQuery storedProcQuery1 = new DevExpress.DataAccess.Sql.StoredProcQuery();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter1 = new DevExpress.DataAccess.Sql.QueryParameter();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter2 = new DevExpress.DataAccess.Sql.QueryParameter();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter3 = new DevExpress.DataAccess.Sql.QueryParameter();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter4 = new DevExpress.DataAccess.Sql.QueryParameter();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InDSSVReport));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InDSSV_RP));
             this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.Title = new DevExpress.XtraReports.UI.XRControlStyle();
             this.DetailCaption1 = new DevExpress.XtraReports.UI.XRControlStyle();
@@ -65,17 +64,14 @@ namespace QLDSV_HTC.Reports
             this.tableCell8 = new DevExpress.XtraReports.UI.XRTableCell();
             this.tableCell9 = new DevExpress.XtraReports.UI.XRTableCell();
             this.tableCell10 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.checkBox1 = new DevExpress.XtraReports.UI.XRCheckBox();
+            this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.table1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.table2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // sqlDataSource1
             // 
-            this.sqlDataSource1.ConnectionName = "QLDSV_TCConnectionString";
-            customStringConnectionParameters1.ConnectionString = "xpoprovider=MSSqlServer;data source=DESKTOP-I8UUUNH\\SERVER1;initial catalog=QLDSV" +
-    "_TC;persist security info=True;user=sa";
-            this.sqlDataSource1.ConnectionParameters = customStringConnectionParameters1;
+            this.sqlDataSource1.ConnectionName = "HTKN_QLDSV_TC_Connection";
             this.sqlDataSource1.Name = "sqlDataSource1";
             storedProcQuery1.Name = "sp_InDSSV";
             queryParameter1.Name = "@NIENKHOA";
@@ -207,7 +203,9 @@ namespace QLDSV_HTC.Reports
             this.label1.Name = "label1";
             this.label1.SizeF = new System.Drawing.SizeF(638F, 24.19433F);
             this.label1.StyleName = "Title";
-            this.label1.Text = "Danh sach sinh vien";
+            this.label1.StylePriority.UseTextAlignment = false;
+            this.label1.Text = "DANH SÁCH SINH VIÊN LỚP TÍN CHỈ";
+            this.label1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // table1
             // 
@@ -316,7 +314,7 @@ namespace QLDSV_HTC.Reports
             // tableCell9
             // 
             this.tableCell9.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.checkBox1});
+            this.xrLabel1});
             this.tableCell9.Name = "tableCell9";
             this.tableCell9.StyleName = "DetailData1";
             this.tableCell9.StylePriority.UseTextAlignment = false;
@@ -331,18 +329,18 @@ namespace QLDSV_HTC.Reports
             this.tableCell10.StyleName = "DetailData1";
             this.tableCell10.Weight = 0.26112933819110579D;
             // 
-            // checkBox1
+            // xrLabel1
             // 
-            this.checkBox1.AnchorHorizontal = ((DevExpress.XtraReports.UI.HorizontalAnchorStyles)((DevExpress.XtraReports.UI.HorizontalAnchorStyles.Left | DevExpress.XtraReports.UI.HorizontalAnchorStyles.Right)));
-            this.checkBox1.AnchorVertical = ((DevExpress.XtraReports.UI.VerticalAnchorStyles)((DevExpress.XtraReports.UI.VerticalAnchorStyles.Top | DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom)));
-            this.checkBox1.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "CheckState", "[PHAI]")});
-            this.checkBox1.GlyphOptions.Alignment = DevExpress.Utils.HorzAlignment.Center;
-            this.checkBox1.LocationFloat = new DevExpress.Utils.PointFloat(2.083333F, 0F);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.SizeF = new System.Drawing.SizeF(124.807F, 25F);
+            this.xrLabel1.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Phai]")});
+            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(10F, 0F);
+            this.xrLabel1.Multiline = true;
+            this.xrLabel1.Name = "xrLabel1";
+            this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel1.SizeF = new System.Drawing.SizeF(116.8903F, 25F);
+            this.xrLabel1.Text = "xrLabel1";
             // 
-            // InDSSVReport
+            // InDSSV_RP
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
             this.TopMargin,
@@ -397,7 +395,7 @@ namespace QLDSV_HTC.Reports
         private DevExpress.XtraReports.UI.XRTableCell tableCell7;
         private DevExpress.XtraReports.UI.XRTableCell tableCell8;
         private DevExpress.XtraReports.UI.XRTableCell tableCell9;
-        private DevExpress.XtraReports.UI.XRCheckBox checkBox1;
         private DevExpress.XtraReports.UI.XRTableCell tableCell10;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel1;
     }
 }

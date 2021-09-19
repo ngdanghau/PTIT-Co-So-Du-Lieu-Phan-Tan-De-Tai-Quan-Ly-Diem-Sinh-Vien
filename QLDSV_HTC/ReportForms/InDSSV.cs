@@ -1,15 +1,6 @@
-﻿using DevExpress.XtraEditors;
-using DevExpress.XtraReports.UI;
+﻿using DevExpress.XtraReports.UI;
 using QLDSV_HTC.Reports;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace QLDSV_HTC.ReportForms
 {
@@ -20,11 +11,63 @@ namespace QLDSV_HTC.ReportForms
             InitializeComponent();
         }
 
-        private void simpleButton1_Click(object sender, EventArgs e)
+
+        private void ButtonPreviewclick(object sender, EventArgs e)
         {
-            InDSSVReport rpt = new InDSSVReport("2021-2022", 1, "CTDL", 1);
+
+            InDSSV_RP rpt = new InDSSV_RP(textEdit_NK.Text, int.Parse(textEdit_HK.Text), textEdit_MH.Text, int.Parse(textEdit_Nhom.Text));
             ReportPrintTool print = new ReportPrintTool(rpt);
             print.ShowPreviewDialog();
+
+        }
+
+        private void labelControl2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textEdit1_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textEdit2_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void InDSSV_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelControl1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelControl4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textEdit_MH_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelControl3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textEdit_Nhom_EditValueChanged(object sender, EventArgs e)
+        {
 
         }
     }

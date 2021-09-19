@@ -149,6 +149,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportForms\InDiemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportForms\InDiemForm.Designer.cs">
+      <DependentUpon>InDiemForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReportForms\InDSLOPTINCHI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,11 +172,35 @@
     <Compile Include="ReportForms\InDSSV.Designer.cs">
       <DependentUpon>InDSSV.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\InDSSVReport.cs">
+    <Compile Include="ReportForms\InPhieuDiemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportForms\InPhieuDiemForm.Designer.cs">
+      <DependentUpon>InPhieuDiemForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\InDiemMonHoc_RP.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\InDSSVReport.Designer.cs">
-      <DependentUpon>InDSSVReport.cs</DependentUpon>
+    <Compile Include="Reports\InDiemMonHoc_RP.Designer.cs">
+      <DependentUpon>InDiemMonHoc_RP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\InDSLTC_RP.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\InDSLTC_RP.Designer.cs">
+      <DependentUpon>InDSLTC_RP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\InDSSV_RP.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\InDSSV_RP.Designer.cs">
+      <DependentUpon>InDSSV_RP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\InPhieuDiem_RP.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\InPhieuDiem_RP.Designer.cs">
+      <DependentUpon>InPhieuDiem_RP.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils.cs" />
     <EmbeddedResource Include="Forms\AddLoginForm.resx">
@@ -198,22 +233,32 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
+    <EmbeddedResource Include="ReportForms\InDiemForm.resx">
+      <DependentUpon>InDiemForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReportForms\InDSLOPTINCHI.resx">
       <DependentUpon>InDSLOPTINCHI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportForms\InDSSV.resx">
       <DependentUpon>InDSSV.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\InDSSVReport.resx">
-      <DependentUpon>InDSSVReport.cs</DependentUpon>
+    <EmbeddedResource Include="ReportForms\InPhieuDiemForm.resx">
+      <DependentUpon>InPhieuDiemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\InDiemMonHoc_RP.resx">
+      <DependentUpon>InDiemMonHoc_RP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\InDSLTC_RP.resx">
+      <DependentUpon>InDSLTC_RP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\InDSSV_RP.resx">
+      <DependentUpon>InDSSV_RP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\InPhieuDiem_RP.resx">
+      <DependentUpon>InPhieuDiem_RP.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="DS.xsc">
