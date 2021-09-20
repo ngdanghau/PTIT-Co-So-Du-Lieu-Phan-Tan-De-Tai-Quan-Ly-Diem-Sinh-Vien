@@ -117,7 +117,7 @@ namespace QLDSV_HTC.Forms
                 bdsMONHOC.Position = position;
             }
 
-            barButtonDelete.Enabled = bdsMONHOC.Count > 0;
+            barButtonDelete.Enabled = barButtonEdit.Enabled = bdsMONHOC.Count > 0;
         }
 
         private void barButtonAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

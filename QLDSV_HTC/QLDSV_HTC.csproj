@@ -82,6 +82,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\HocPhiClass.cs" />
     <Compile Include="Class\LopClass.cs" />
     <Compile Include="Class\LopTinChiClass.cs" />
     <Compile Include="Class\MonHocClass.cs" />

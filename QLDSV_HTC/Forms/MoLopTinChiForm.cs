@@ -253,7 +253,7 @@ namespace QLDSV_HTC.Forms
                 bdsLOPTINCHI.Position = position;
             }
 
-            if (bdsLOPTINCHI.Count == 0) barButtonDelete.Enabled = false;
+            barButtonEdit.Enabled = barButtonDelete.Enabled = bdsLOPTINCHI.Count > 0;
         }
 
         private void MoLopTinChiForm_Load(object sender, EventArgs e)

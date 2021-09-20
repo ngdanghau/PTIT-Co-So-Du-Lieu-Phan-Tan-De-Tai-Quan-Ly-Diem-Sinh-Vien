@@ -9,22 +9,55 @@ namespace QLDSV_HTC.Forms
 {
     public partial class HocPhiForm : DevExpress.XtraEditors.XtraForm
     {
-
+        private string maSV = "";
+        private int position = 0;
+        private string state;
+        Stack<string> undoStack = new Stack<string>();
+        private HocPhiClass HocPhiData = null;
         public HocPhiForm()
         {
             InitializeComponent();
         }
 
-        private void txtMaLop_EditValueChanged(object sender, EventArgs e)
+        private void SetButtonState(bool value)
         {
-            txtMaLop.Properties.CharacterCasing = CharacterCasing.Upper;
+            if (state == "edit")
+            {
+                barButtonAdd.Enabled
+                    = barButtonEdit.Enabled
+                    = barButtonDelete.Enabled
+                    = barButtonRenew.Enabled
+                    = sp_GetThongTinDongHocPhiGridControl.Enabled
+                    = !value;
+
+                barButtonHuy.Enabled
+                    = barButtonSave.Enabled
+                    = groupControl2.Enabled
+                    = value;
+
+                barButtonUndo.Enabled = undoStack.Count > 0;
+            }
+            else if (state == "add")
+            {
+                barButtonAdd.Enabled
+                    = barButtonEdit.Enabled
+                    = barButtonDelete.Enabled
+                    = barButtonRenew.Enabled
+                    = sp_GetThongTinDongHocPhiGridControl.Enabled
+                    = !value;
+
+                barButtonHuy.Enabled
+                    = barButtonSave.Enabled
+                    = groupControl2.Enabled
+                    = value;
+            }
         }
 
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            var maSV = txtMaSV.Text.Trim();
 
+            maSV = txtMaSV.Text.Trim();
             txtHoTen.Text = "";
             txtMaLop.Text = "";
 
@@ -68,11 +101,19 @@ namespace QLDSV_HTC.Forms
             try
             {
                 this.sp_GetThongTinDongHocPhiTableAdapter.Fill(this.DS.sp_GetThongTinDongHocPhi, maSV);
+                barButtonEdit.Enabled = barButtonDelete.Enabled = sp_GetThongTinDongHocPhiBindingSource.Count > 0;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            if (position > 0)
+            {
+                sp_GetThongTinDongHocPhiBindingSource.Position = position;
+            }
+
+            barButtonDelete.Enabled = barButtonEdit.Enabled = sp_GetThongTinDongHocPhiBindingSource.Count > 0;
         }
 
         private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
@@ -80,6 +121,8 @@ namespace QLDSV_HTC.Forms
             try
             {
                 this.sp_GetChiTietDongHocPhiTableAdapter.Fill(this.DS.sp_GetChiTietDongHocPhi, txtMaSV.Text.Trim(), txtNienKhoa.Text.Trim(), int.Parse(txtHocKy.Text));
+
+                HocPhiData = new HocPhiClass(txtMaSV.Text.Trim(), txtNienKhoa.Text.Trim(), int.Parse(txtHocKy.Text), int.Parse(txtHocPhi.Text));
             }
             catch (Exception ex)
             {
@@ -87,17 +130,167 @@ namespace QLDSV_HTC.Forms
             }
         }
 
-        private void fillToolStripButton_Click(object sender, EventArgs e)
+        private bool ValidateForm()
         {
+            if (txtMaSV.Text.Trim() == "")
+            {
+                XtraMessageBox.Show("Mã Sinh Viên không được để trống!", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (txtNienKhoa.Text.Trim() == "")
+            {
+                XtraMessageBox.Show("Niên khóa không được để trống!", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (txtHocKy.Text.Trim() == "")
+            {
+                XtraMessageBox.Show("Học kỳ không được để trống!", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (txtHocPhi.Text.Trim() == "")
+            {
+                XtraMessageBox.Show("Học phí không được để trống!", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+
+            return true;
+        }
+
+        private void barButtonAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            position = sp_GetThongTinDongHocPhiBindingSource.Position;
+            state = "add";
+            SetButtonState(true);
+            txtNienKhoa.Focus();
+            if (textMaSV.DataBindings.Count > 0)
+            {
+                this.DS.sp_GetThongTinDongHocPhi.MASVColumn.DefaultValue = maSV;
+                textMaSV.DataBindings[0].DataSourceNullValue = maSV;
+            }
+            this.sp_GetThongTinDongHocPhiBindingSource.AddNew();
+        }
+
+        private void barButtonEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (sp_GetChiTietDongHocPhiBindingSource.Count > 0)
+            {
+                MessageBox.Show("Sinh viên đã đóng học phí. Không thể sửa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            state = "edit";
+            SetButtonState(true);
+            position = sp_GetThongTinDongHocPhiBindingSource.Position;
+        }
+
+        private void barButtonDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (sp_GetChiTietDongHocPhiBindingSource.Count > 0)
+            {
+                MessageBox.Show("Sinh viên đã đóng học phí. Không thể xóa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (XtraMessageBox.Show("Bạn có thực sự muốn xóa thông tin học phí này?", "Xác nhận.", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                if (!ValidateForm()) return;
+                try
+                {
+                    position = sp_GetThongTinDongHocPhiBindingSource.Position;
+                    sp_GetThongTinDongHocPhiBindingSource.RemoveCurrent();
+                    this.sp_GetThongTinDongHocPhiTableAdapter.Connection.ConnectionString = Program.ConnStr;
+                    this.sp_GetThongTinDongHocPhiTableAdapter.Update(this.DS.sp_GetThongTinDongHocPhi);
+                    this.sp_GetThongTinDongHocPhiBindingSource.ResetCurrentItem();
+
+                    undoStack.Push(string.Format("INSERT INTO HOCPHI(MASV, NIENKHOA , HOCKY, HOCPHI) VALUES(N'{0}', N'{1}', {2}, {3})", HocPhiData.MaSV, HocPhiData.NienKhoa, HocPhiData.HocKy, HocPhiData.HocPhi));
+
+
+                    this.sp_GetThongTinDongHocPhiTableAdapter.Fill(this.DS.sp_GetThongTinDongHocPhi, maSV);
+                    barButtonEdit.Enabled = barButtonDelete.Enabled = sp_GetThongTinDongHocPhiBindingSource.Count > 0;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+
+            barButtonUndo.Enabled = undoStack.Count > 0;
+        }
+
+        private void barButtonSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (!ValidateForm()) return;
+
             try
             {
-                this.sp_GetChiTietDongHocPhiTableAdapter.Fill(this.DS.sp_GetChiTietDongHocPhi, txtMaSV.Text.Trim(), txtNienKhoa.Text.Trim(), int.Parse(txtHocKy.Text));
+                this.sp_GetThongTinDongHocPhiBindingSource.EndEdit();
+                this.sp_GetThongTinDongHocPhiBindingSource.ResetCurrentItem();
+                this.sp_GetThongTinDongHocPhiTableAdapter.Update(this.DS.sp_GetThongTinDongHocPhi);
+
+                if (state == "edit")
+                {
+                    Console.WriteLine(string.Format("UPDATE HOCPHI " +
+                                                 "SET MASV = N'{0}', NIENKHOA = N'{1}', HOCKY = {2}, HOCPHI = {3} " +
+                                                 "WHERE MASV = N'{4}' AND NIENKHOA = N'{5}' AND HOCKY = {6}",
+                                                  HocPhiData.MaSV, HocPhiData.NienKhoa, HocPhiData.HocKy, HocPhiData.HocPhi, HocPhiData.MaSV, HocPhiData.NienKhoa, HocPhiData.HocKy));
+                    undoStack.Push(string.Format("UPDATE HOCPHI " +
+                                                 "SET MASV = N'{0}', NIENKHOA = N'{1}', HOCKY = {2}, HOCPHI = {3} " +
+                                                 "WHERE MASV = N'{4}' AND NIENKHOA = N'{5}' AND HOCKY = {6}",
+                                                  HocPhiData.MaSV, HocPhiData.NienKhoa, HocPhiData.HocKy, HocPhiData.HocPhi,        HocPhiData.MaSV, HocPhiData.NienKhoa, HocPhiData.HocKy));
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                sp_GetThongTinDongHocPhiBindingSource.RemoveCurrent();
+                XtraMessageBox.Show("Ghi dữ liệu thất lại. Vui lòng kiểm tra lại!\n" + ex.Message, "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            SetButtonState(false);
+            barButtonUndo.Enabled = undoStack.Count > 0;
+        }
 
+        private void barButtonHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            SetButtonState(false);
+            simpleButton1_Click(null, null);
+        }
+
+        private void barButtonRenew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (!ValidateForm()) return;
+            simpleButton1_Click(null, null);
+            XtraMessageBox.Show("Làm mới dữ liệu thành công", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void barButtonUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            string command = undoStack.Pop();
+            Program.ExecSqlNonQuery(command);
+
+            barButtonUndo.Enabled = undoStack.Count > 0;
+            simpleButton1_Click(null, null);
+        }
+
+        private void barButtonOut_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (this.groupControl2.Enabled)
+            {
+                string message = "Dữ liệu có thể chưa lưu vào Database. \n Bạn có chắc muốn thoát !";
+                DialogResult dr = XtraMessageBox.Show(message, "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dr == DialogResult.No)
+                {
+                    return;
+                }
+            }
+            this.Close();
         }
     }
 }

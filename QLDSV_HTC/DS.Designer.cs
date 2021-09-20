@@ -5874,6 +5874,8 @@ namespace QLDSV_HTC {
             
             private global::System.Data.DataColumn columnSOTIENDADONG;
             
+            private global::System.Data.DataColumn columnMASV;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public sp_GetThongTinDongHocPhiDataTable() {
@@ -5941,6 +5943,14 @@ namespace QLDSV_HTC {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn MASVColumn {
+                get {
+                    return this.columnMASV;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -5976,16 +5986,26 @@ namespace QLDSV_HTC {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public sp_GetThongTinDongHocPhiRow Addsp_GetThongTinDongHocPhiRow(string NIENKHOA, int HOCKY, int HOCPHI, int SOTIENDADONG) {
+            public sp_GetThongTinDongHocPhiRow Addsp_GetThongTinDongHocPhiRow(string NIENKHOA, int HOCKY, int HOCPHI, int SOTIENDADONG, string MASV) {
                 sp_GetThongTinDongHocPhiRow rowsp_GetThongTinDongHocPhiRow = ((sp_GetThongTinDongHocPhiRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NIENKHOA,
                         HOCKY,
                         HOCPHI,
-                        SOTIENDADONG};
+                        SOTIENDADONG,
+                        MASV};
                 rowsp_GetThongTinDongHocPhiRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowsp_GetThongTinDongHocPhiRow);
                 return rowsp_GetThongTinDongHocPhiRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public sp_GetThongTinDongHocPhiRow FindByMASVNIENKHOAHOCKY(string MASV, string NIENKHOA, int HOCKY) {
+                return ((sp_GetThongTinDongHocPhiRow)(this.Rows.Find(new object[] {
+                            MASV,
+                            NIENKHOA,
+                            HOCKY})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6009,6 +6029,7 @@ namespace QLDSV_HTC {
                 this.columnHOCKY = base.Columns["HOCKY"];
                 this.columnHOCPHI = base.Columns["HOCPHI"];
                 this.columnSOTIENDADONG = base.Columns["SOTIENDADONG"];
+                this.columnMASV = base.Columns["MASV"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6022,11 +6043,19 @@ namespace QLDSV_HTC {
                 base.Columns.Add(this.columnHOCPHI);
                 this.columnSOTIENDADONG = new global::System.Data.DataColumn("SOTIENDADONG", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSOTIENDADONG);
+                this.columnMASV = new global::System.Data.DataColumn("MASV", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMASV);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnMASV,
+                                this.columnNIENKHOA,
+                                this.columnHOCKY}, true));
                 this.columnNIENKHOA.AllowDBNull = false;
                 this.columnNIENKHOA.MaxLength = 9;
                 this.columnHOCKY.AllowDBNull = false;
                 this.columnHOCPHI.AllowDBNull = false;
                 this.columnSOTIENDADONG.ReadOnly = true;
+                this.columnMASV.AllowDBNull = false;
+                this.columnMASV.MaxLength = 10;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8250,6 +8279,17 @@ namespace QLDSV_HTC {
                 }
                 set {
                     this[this.tablesp_GetThongTinDongHocPhi.SOTIENDADONGColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string MASV {
+                get {
+                    return ((string)(this[this.tablesp_GetThongTinDongHocPhi.MASVColumn]));
+                }
+                set {
+                    this[this.tablesp_GetThongTinDongHocPhi.MASVColumn] = value;
                 }
             }
             
@@ -14210,7 +14250,34 @@ SELECT MASV, NIENKHOA, HOCKY, NGAYDONG, SOTIENDONG FROM CT_DONGHOCPHI WHERE (HOC
             tableMapping.ColumnMappings.Add("HOCKY", "HOCKY");
             tableMapping.ColumnMappings.Add("HOCPHI", "HOCPHI");
             tableMapping.ColumnMappings.Add("SOTIENDADONG", "SOTIENDADONG");
+            tableMapping.ColumnMappings.Add("MASV", "MASV");
             this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "dbo.sp_XoaHocPhi";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.StoredProcedure;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MASV", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MASV", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NIENKHOA", global::System.Data.SqlDbType.NChar, 9, global::System.Data.ParameterDirection.Input, 0, 0, "NIENKHOA", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HOCKY", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, "HOCKY", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "dbo.sp_ThemHocPhi";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.StoredProcedure;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MASV", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MASV", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NIENKHOA", global::System.Data.SqlDbType.NChar, 9, global::System.Data.ParameterDirection.Input, 0, 0, "NIENKHOA", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HOCKY", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, "HOCKY", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HOCPHI", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, "HOCPHI", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = "dbo.sp_SuaHocPhi";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.StoredProcedure;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MASV", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MASV", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NIENKHOA", global::System.Data.SqlDbType.NChar, 9, global::System.Data.ParameterDirection.Input, 0, 0, "NIENKHOA", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HOCKY", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, "HOCKY", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HOCPHI", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, "HOCPHI", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14267,6 +14334,35 @@ SELECT MASV, NIENKHOA, HOCKY, NGAYDONG, SOTIENDONG FROM CT_DONGHOCPHI WHERE (HOC
             DS.sp_GetThongTinDongHocPhiDataTable dataTable = new DS.sp_GetThongTinDongHocPhiDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(DS.sp_GetThongTinDongHocPhiDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(DS dataSet) {
+            return this.Adapter.Update(dataSet, "sp_GetThongTinDongHocPhi");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
         }
     }
     
@@ -14597,6 +14693,8 @@ SELECT MASV, NIENKHOA, HOCKY, NGAYDONG, SOTIENDONG FROM CT_DONGHOCPHI WHERE (HOC
         
         private sp_GetBangDiemMonHocTableAdapter _sp_GetBangDiemMonHocTableAdapter;
         
+        private sp_GetThongTinDongHocPhiTableAdapter _sp_GetThongTinDongHocPhiTableAdapter;
+        
         private bool _backupDataSetBeforeUpdate;
         
         private global::System.Data.IDbConnection _connection;
@@ -14754,6 +14852,20 @@ SELECT MASV, NIENKHOA, HOCKY, NGAYDONG, SOTIENDONG FROM CT_DONGHOCPHI WHERE (HOC
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public sp_GetThongTinDongHocPhiTableAdapter sp_GetThongTinDongHocPhiTableAdapter {
+            get {
+                return this._sp_GetThongTinDongHocPhiTableAdapter;
+            }
+            set {
+                this._sp_GetThongTinDongHocPhiTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -14811,6 +14923,10 @@ SELECT MASV, NIENKHOA, HOCKY, NGAYDONG, SOTIENDONG FROM CT_DONGHOCPHI WHERE (HOC
                             && (this._sp_GetBangDiemMonHocTableAdapter.Connection != null))) {
                     return this._sp_GetBangDiemMonHocTableAdapter.Connection;
                 }
+                if (((this._sp_GetThongTinDongHocPhiTableAdapter != null) 
+                            && (this._sp_GetThongTinDongHocPhiTableAdapter.Connection != null))) {
+                    return this._sp_GetThongTinDongHocPhiTableAdapter.Connection;
+                }
                 return null;
             }
             set {
@@ -14852,6 +14968,9 @@ SELECT MASV, NIENKHOA, HOCKY, NGAYDONG, SOTIENDONG FROM CT_DONGHOCPHI WHERE (HOC
                     count = (count + 1);
                 }
                 if ((this._sp_GetBangDiemMonHocTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._sp_GetThongTinDongHocPhiTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -14955,6 +15074,15 @@ SELECT MASV, NIENKHOA, HOCKY, NGAYDONG, SOTIENDONG FROM CT_DONGHOCPHI WHERE (HOC
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._sp_GetThongTinDongHocPhiTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.sp_GetThongTinDongHocPhi.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._sp_GetThongTinDongHocPhiTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             return result;
         }
         
@@ -15045,6 +15173,14 @@ SELECT MASV, NIENKHOA, HOCKY, NGAYDONG, SOTIENDONG FROM CT_DONGHOCPHI WHERE (HOC
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._sp_GetThongTinDongHocPhiTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.sp_GetThongTinDongHocPhi.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._sp_GetThongTinDongHocPhiTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             return result;
         }
         
@@ -15055,6 +15191,14 @@ SELECT MASV, NIENKHOA, HOCKY, NGAYDONG, SOTIENDONG FROM CT_DONGHOCPHI WHERE (HOC
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateDeletedRows(DS dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._sp_GetThongTinDongHocPhiTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.sp_GetThongTinDongHocPhi.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._sp_GetThongTinDongHocPhiTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._cT_DONGHOCPHITableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.CT_DONGHOCPHI.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -15224,6 +15368,11 @@ SELECT MASV, NIENKHOA, HOCKY, NGAYDONG, SOTIENDONG FROM CT_DONGHOCPHI WHERE (HOC
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
+            if (((this._sp_GetThongTinDongHocPhiTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._sp_GetThongTinDongHocPhiTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
             global::System.Data.IDbConnection workConnection = this.Connection;
             if ((workConnection == null)) {
                 throw new global::System.ApplicationException("TableAdapterManager contains no connection information. Set each TableAdapterMana" +
@@ -15346,6 +15495,15 @@ SELECT MASV, NIENKHOA, HOCKY, NGAYDONG, SOTIENDONG FROM CT_DONGHOCPHI WHERE (HOC
                         adaptersWithAcceptChangesDuringUpdate.Add(this._sp_GetBangDiemMonHocTableAdapter.Adapter);
                     }
                 }
+                if ((this._sp_GetThongTinDongHocPhiTableAdapter != null)) {
+                    revertConnections.Add(this._sp_GetThongTinDongHocPhiTableAdapter, this._sp_GetThongTinDongHocPhiTableAdapter.Connection);
+                    this._sp_GetThongTinDongHocPhiTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._sp_GetThongTinDongHocPhiTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._sp_GetThongTinDongHocPhiTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._sp_GetThongTinDongHocPhiTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._sp_GetThongTinDongHocPhiTableAdapter.Adapter);
+                    }
+                }
                 // 
                 //---- Perform updates -----------
                 //
@@ -15443,6 +15601,10 @@ SELECT MASV, NIENKHOA, HOCKY, NGAYDONG, SOTIENDONG FROM CT_DONGHOCPHI WHERE (HOC
                 if ((this._sp_GetBangDiemMonHocTableAdapter != null)) {
                     this._sp_GetBangDiemMonHocTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._sp_GetBangDiemMonHocTableAdapter]));
                     this._sp_GetBangDiemMonHocTableAdapter.Transaction = null;
+                }
+                if ((this._sp_GetThongTinDongHocPhiTableAdapter != null)) {
+                    this._sp_GetThongTinDongHocPhiTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._sp_GetThongTinDongHocPhiTableAdapter]));
+                    this._sp_GetThongTinDongHocPhiTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];
