@@ -58,6 +58,8 @@ namespace QLDSV_HTC.Forms
             this.bdsMONHOC = new System.Windows.Forms.BindingSource(this.components);
             this.cmbKhoa = new System.Windows.Forms.ComboBox();
             this.txtNienKhoa = new DevExpress.XtraEditors.TextEdit();
+            this.txtHocKy = new DevExpress.XtraEditors.SpinEdit();
+            this.txtNhom = new DevExpress.XtraEditors.SpinEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -77,8 +79,6 @@ namespace QLDSV_HTC.Forms
             this.colDIEM_HM = new DevExpress.XtraGrid.Columns.GridColumn();
             this.sp_GetBangDiemMonHocTableAdapter = new QLDSV_HTC.DSTableAdapters.sp_GetBangDiemMonHocTableAdapter();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
-            this.txtHocKy = new DevExpress.XtraEditors.SpinEdit();
-            this.txtNhom = new DevExpress.XtraEditors.SpinEdit();
             ((System.ComponentModel.ISupportInitialize)(this.DS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -92,6 +92,8 @@ namespace QLDSV_HTC.Forms
             ((System.ComponentModel.ISupportInitialize)(this.lookUpMonHoc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMONHOC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNienKhoa.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHocKy.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNhom.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
@@ -104,8 +106,6 @@ namespace QLDSV_HTC.Forms
             ((System.ComponentModel.ISupportInitialize)(this.sp_GetBangDiemMonHocBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtHocKy.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNhom.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // DS
@@ -365,6 +365,68 @@ namespace QLDSV_HTC.Forms
             this.txtNienKhoa.StyleController = this.layoutControl1;
             this.txtNienKhoa.TabIndex = 3;
             // 
+            // txtHocKy
+            // 
+            this.txtHocKy.EditValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.txtHocKy.Location = new System.Drawing.Point(66, 61);
+            this.txtHocKy.MenuManager = this.barManager1;
+            this.txtHocKy.Name = "txtHocKy";
+            this.txtHocKy.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtHocKy.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
+            this.txtHocKy.Properties.IsFloatValue = false;
+            this.txtHocKy.Properties.Mask.EditMask = "N0";
+            this.txtHocKy.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.txtHocKy.Properties.MaxLength = 2;
+            this.txtHocKy.Properties.MaxValue = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.txtHocKy.Properties.MinValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.txtHocKy.Size = new System.Drawing.Size(493, 20);
+            this.txtHocKy.StyleController = this.layoutControl1;
+            this.txtHocKy.TabIndex = 4;
+            // 
+            // txtNhom
+            // 
+            this.txtNhom.EditValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.txtNhom.Location = new System.Drawing.Point(66, 85);
+            this.txtNhom.MenuManager = this.barManager1;
+            this.txtNhom.Name = "txtNhom";
+            this.txtNhom.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtNhom.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
+            this.txtNhom.Properties.IsFloatValue = false;
+            this.txtNhom.Properties.Mask.EditMask = "N0";
+            this.txtNhom.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.txtNhom.Properties.MaxLength = 2;
+            this.txtNhom.Properties.MaxValue = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+            this.txtNhom.Properties.MinValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.txtNhom.Size = new System.Drawing.Size(493, 20);
+            this.txtNhom.StyleController = this.layoutControl1;
+            this.txtNhom.TabIndex = 5;
+            // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -531,66 +593,6 @@ namespace QLDSV_HTC.Forms
             // 
             this.sp_GetBangDiemMonHocTableAdapter.ClearBeforeFill = true;
             // 
-            // txtHocKy
-            // 
-            this.txtHocKy.EditValue = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.txtHocKy.Location = new System.Drawing.Point(66, 61);
-            this.txtHocKy.MenuManager = this.barManager1;
-            this.txtHocKy.Name = "txtHocKy";
-            this.txtHocKy.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtHocKy.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
-            this.txtHocKy.Properties.Mask.EditMask = "N0";
-            this.txtHocKy.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.txtHocKy.Properties.MaxLength = 2;
-            this.txtHocKy.Properties.MaxValue = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            this.txtHocKy.Properties.MinValue = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.txtHocKy.Size = new System.Drawing.Size(493, 20);
-            this.txtHocKy.StyleController = this.layoutControl1;
-            this.txtHocKy.TabIndex = 4;
-            // 
-            // txtNhom
-            // 
-            this.txtNhom.EditValue = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.txtNhom.Location = new System.Drawing.Point(66, 85);
-            this.txtNhom.MenuManager = this.barManager1;
-            this.txtNhom.Name = "txtNhom";
-            this.txtNhom.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtNhom.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
-            this.txtNhom.Properties.Mask.EditMask = "N0";
-            this.txtNhom.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.txtNhom.Properties.MaxLength = 2;
-            this.txtNhom.Properties.MaxValue = new decimal(new int[] {
-            99999,
-            0,
-            0,
-            0});
-            this.txtNhom.Properties.MinValue = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.txtNhom.Size = new System.Drawing.Size(493, 20);
-            this.txtNhom.StyleController = this.layoutControl1;
-            this.txtNhom.TabIndex = 5;
-            // 
             // DiemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -619,6 +621,8 @@ namespace QLDSV_HTC.Forms
             ((System.ComponentModel.ISupportInitialize)(this.lookUpMonHoc.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMONHOC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNienKhoa.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHocKy.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNhom.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
@@ -631,8 +635,6 @@ namespace QLDSV_HTC.Forms
             ((System.ComponentModel.ISupportInitialize)(this.sp_GetBangDiemMonHocBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtHocKy.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNhom.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

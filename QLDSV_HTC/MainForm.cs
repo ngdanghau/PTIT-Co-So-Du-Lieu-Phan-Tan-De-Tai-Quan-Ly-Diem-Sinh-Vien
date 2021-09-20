@@ -1,5 +1,4 @@
 ﻿using QLDSV_HTC.Forms;
-using QLDSV_HTC.ReportForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -121,7 +120,7 @@ namespace QLDSV_HTC
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ShowMdiChildren(typeof(InDSLOPTINCHI));
+            
         }
 
         private void barButtonItem12_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

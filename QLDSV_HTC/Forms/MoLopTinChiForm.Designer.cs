@@ -182,6 +182,8 @@ namespace QLDSV_HTC.Forms
             this.txtMaLTC.Name = "txtMaLTC";
             this.txtMaLTC.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtMaLTC.Properties.IsFloatValue = false;
+            this.txtMaLTC.Properties.Mask.EditMask = "N00";
             this.txtMaLTC.Size = new System.Drawing.Size(90, 20);
             this.txtMaLTC.StyleController = this.layoutControl1;
             this.txtMaLTC.TabIndex = 13;
@@ -368,6 +370,8 @@ namespace QLDSV_HTC.Forms
             this.txtSoSVTT.Name = "txtSoSVTT";
             this.txtSoSVTT.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtSoSVTT.Properties.IsFloatValue = false;
+            this.txtSoSVTT.Properties.Mask.EditMask = "N00";
             this.txtSoSVTT.Properties.MaxValue = new decimal(new int[] {
             9999,
             0,
@@ -406,6 +410,8 @@ namespace QLDSV_HTC.Forms
             this.txtNhom.Name = "txtNhom";
             this.txtNhom.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtNhom.Properties.IsFloatValue = false;
+            this.txtNhom.Properties.Mask.EditMask = "N00";
             this.txtNhom.Properties.MaxValue = new decimal(new int[] {
             9999,
             0,
@@ -433,6 +439,8 @@ namespace QLDSV_HTC.Forms
             this.txtHocKy.Name = "txtHocKy";
             this.txtHocKy.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtHocKy.Properties.IsFloatValue = false;
+            this.txtHocKy.Properties.Mask.EditMask = "N00";
             this.txtHocKy.Properties.MaxValue = new decimal(new int[] {
             4,
             0,
