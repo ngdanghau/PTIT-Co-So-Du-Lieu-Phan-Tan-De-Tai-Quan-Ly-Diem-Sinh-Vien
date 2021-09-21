@@ -482,6 +482,7 @@ namespace QLDSV_HTC.Forms
             this.txtMaGV.Properties.DataSource = this.bdsGIANGVIEN;
             this.txtMaGV.Properties.DisplayMember = "MAGV";
             this.txtMaGV.Properties.NullText = "Chọn giảng viên";
+            this.txtMaGV.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.txtMaGV.Properties.ValueMember = "MAGV";
             this.txtMaGV.Size = new System.Drawing.Size(259, 20);
             this.txtMaGV.StyleController = this.layoutControl1;
@@ -504,9 +505,10 @@ namespace QLDSV_HTC.Forms
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MAMH", "MAMH", 30, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TENMH", "TENMH", 55, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
             this.txtMaMonHoc.Properties.DataSource = this.bdsMONHOC;
-            this.txtMaMonHoc.Properties.DisplayMember = "TENMH";
+            this.txtMaMonHoc.Properties.DisplayMember = "MAMH";
             this.txtMaMonHoc.Properties.NullText = "Chọn môn học";
             this.txtMaMonHoc.Properties.PopupSizeable = false;
+            this.txtMaMonHoc.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.txtMaMonHoc.Properties.ValueMember = "MAMH";
             this.txtMaMonHoc.Size = new System.Drawing.Size(222, 20);
             this.txtMaMonHoc.StyleController = this.layoutControl1;
@@ -632,6 +634,7 @@ namespace QLDSV_HTC.Forms
             this.tableAdapterManager.MONHOCTableAdapter = null;
             this.tableAdapterManager.SINHVIENTableAdapter = null;
             this.tableAdapterManager.sp_GetBangDiemMonHocTableAdapter = null;
+            this.tableAdapterManager.sp_GetThongTinDongHocPhiTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = QLDSV_HTC.DSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // LOPTINCHITableAdapter
