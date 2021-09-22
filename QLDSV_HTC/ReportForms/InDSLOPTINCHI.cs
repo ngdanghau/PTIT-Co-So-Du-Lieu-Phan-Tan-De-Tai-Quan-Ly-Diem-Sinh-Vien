@@ -23,28 +23,51 @@ namespace QLDSV_HTC.ReportForms
 
         private void InDSSV_Load(object sender, EventArgs e)
         {
-            DataTable dt = (DataTable)Program.Bds_Dspm.DataSource;
             if (Program.AuthGroup == "PGV")
             {
-                // lặp và thêm danh sách server vào combobox
-                foreach (DataRow dataRow in dt.Rows)
-                {
-                    if (dataRow.ItemArray[0].ToString().Contains("Khoa"))
-                        cmbKhoa.Properties.Items.Add(dataRow.ItemArray[0]);
-                }
+                Program.Bds_Dspm.Filter = "TENKHOA <> 'Phòng Kế Toán'";
             }
             else if (Program.AuthGroup == "KHOA")
             {
-                //cmbKhoa.Properties.Items.Add(((DataRowView)Program.Bds_Dspm[Program.MaKhoa])["TENKHOA"].ToString());
+                Program.Bds_Dspm.Filter = string.Format("TENSERVER = '{0}'", Program.ServerName);
             }
-            
-            // sau khi add item vào combobox, set index mặc định là 0
-            cmbKhoa.SelectedIndex = 0;
+            Utils.LoadComboBox(cmbKhoa, Program.Bds_Dspm.DataSource);
+        }
+        
+
+     
+
+        private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Utils.ChangeServer(cmbKhoa);
         }
 
-        private void simpleButton1_Click(object sender, EventArgs e)
+        private void labelControl1_Click(object sender, EventArgs e)
         {
-            InDSLTC_RP report = new InDSLTC_RP(/*cmbKhoa.SelectedText,*/ txtNienKhoa.Text, int.Parse(txtHocKy.Text));
+
+        }
+
+        private void labelControl1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void simpleButton1_Click_1(object sender, EventArgs e)
+        {
+            String NK = txtNienKhoa.Text.Trim();
+            String HK = txtHocKy.Text.Trim();
+            String Khoa = cmbKhoa.Text.Trim();
+            if (NK.Equals("") || HK.Equals(""))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (int.Parse(txtNienKhoa.Text.Substring(0, 4)) < 2000 || int.Parse(txtNienKhoa.Text.Substring(5, 4)) < 2000)
+            {
+                MessageBox.Show("Vui lòng nhập niên khóa lớn hơn 2000", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            InDSLTC_RP report = new InDSLTC_RP(NK, int.Parse(HK), Khoa);
             ReportPrintTool print = new ReportPrintTool(report);
             print.ShowPreviewDialog();
         }
