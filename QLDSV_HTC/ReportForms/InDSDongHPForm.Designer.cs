@@ -30,51 +30,41 @@ namespace QLDSV_HTC.ReportForms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.lookUpEdit_MH = new DevExpress.XtraEditors.LookUpEdit();
-            this.mONHOCBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dS = new QLDSV_HTC.DS();
+            this.lookUpEdit_ML = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit_NK = new DevExpress.XtraEditors.TextEdit();
             this.button_preview = new System.Windows.Forms.Button();
-            this.mONHOCTableAdapter = new QLDSV_HTC.DSTableAdapters.MONHOCTableAdapter();
             this.textEdit_HK = new DevExpress.XtraEditors.SpinEdit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit_MH.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mONHOCBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dS)).BeginInit();
+            this.dS = new QLDSV_HTC.DS();
+            this.lOPBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lOPTableAdapter = new QLDSV_HTC.DSTableAdapters.LOPTableAdapter();
+            this.tableAdapterManager = new QLDSV_HTC.DSTableAdapters.TableAdapterManager();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit_ML.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit_NK.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit_HK.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lOPBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // lookUpEdit_MH
+            // lookUpEdit_ML
             // 
-            this.lookUpEdit_MH.Location = new System.Drawing.Point(72, 12);
-            this.lookUpEdit_MH.Name = "lookUpEdit_MH";
-            this.lookUpEdit_MH.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.lookUpEdit_ML.Location = new System.Drawing.Point(72, 12);
+            this.lookUpEdit_ML.Name = "lookUpEdit_ML";
+            this.lookUpEdit_ML.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEdit_MH.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MAMH", "MAMH", 53, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TENMH", "TENMH", 44, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("SOTIET_LT", "SOTIET_LT", 63, DevExpress.Utils.FormatType.Numeric, "", true, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("SOTIET_TH", "SOTIET_TH", 65, DevExpress.Utils.FormatType.Numeric, "", true, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
-            this.lookUpEdit_MH.Properties.DataSource = this.mONHOCBindingSource;
-            this.lookUpEdit_MH.Properties.DisplayMember = "MAMH";
-            this.lookUpEdit_MH.Properties.NullText = "";
-            this.lookUpEdit_MH.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSuggest;
-            this.lookUpEdit_MH.Properties.ValueMember = "MAMH";
-            this.lookUpEdit_MH.Size = new System.Drawing.Size(100, 20);
-            this.lookUpEdit_MH.TabIndex = 33;
-            // 
-            // mONHOCBindingSource
-            // 
-            this.mONHOCBindingSource.DataMember = "MONHOC";
-            this.mONHOCBindingSource.DataSource = this.dS;
-            // 
-            // dS
-            // 
-            this.dS.DataSetName = "DS";
-            this.dS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.lookUpEdit_ML.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MALOP", "MALOP", 57, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TENLOP", "TENLOP", 48, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            this.lookUpEdit_ML.Properties.DataSource = this.lOPBindingSource;
+            this.lookUpEdit_ML.Properties.DisplayMember = "MALOP";
+            this.lookUpEdit_ML.Properties.NullText = "";
+            this.lookUpEdit_ML.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSuggest;
+            this.lookUpEdit_ML.Properties.ValueMember = "MALOP";
+            this.lookUpEdit_ML.Size = new System.Drawing.Size(100, 20);
+            this.lookUpEdit_ML.TabIndex = 33;
+            this.lookUpEdit_ML.EditValueChanged += new System.EventHandler(this.lookUpEdit_ML_EditValueChanged);
             // 
             // labelControl4
             // 
@@ -119,10 +109,6 @@ namespace QLDSV_HTC.ReportForms
             this.button_preview.UseVisualStyleBackColor = true;
             this.button_preview.Click += new System.EventHandler(this.button_preview_Click);
             // 
-            // mONHOCTableAdapter
-            // 
-            this.mONHOCTableAdapter.ClearBeforeFill = true;
-            // 
             // textEdit_HK
             // 
             this.textEdit_HK.EditValue = new decimal(new int[] {
@@ -151,12 +137,42 @@ namespace QLDSV_HTC.ReportForms
             this.textEdit_HK.Size = new System.Drawing.Size(100, 20);
             this.textEdit_HK.TabIndex = 26;
             // 
+            // dS
+            // 
+            this.dS.DataSetName = "DS";
+            this.dS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // lOPBindingSource
+            // 
+            this.lOPBindingSource.DataMember = "LOP";
+            this.lOPBindingSource.DataSource = this.dS;
+            // 
+            // lOPTableAdapter
+            // 
+            this.lOPTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.CT_DONGHOCPHITableAdapter = null;
+            this.tableAdapterManager.DANGKYTableAdapter = null;
+            this.tableAdapterManager.GIANGVIENTableAdapter = null;
+            this.tableAdapterManager.HOCPHITableAdapter = null;
+            this.tableAdapterManager.KHOATableAdapter = null;
+            this.tableAdapterManager.LOPTableAdapter = this.lOPTableAdapter;
+            this.tableAdapterManager.LOPTINCHITableAdapter = null;
+            this.tableAdapterManager.MONHOCTableAdapter = null;
+            this.tableAdapterManager.SINHVIENTableAdapter = null;
+            this.tableAdapterManager.sp_GetBangDiemMonHocTableAdapter = null;
+            this.tableAdapterManager.sp_GetThongTinDongHocPhiTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = QLDSV_HTC.DSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
             // InDSDongHPForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(413, 155);
-            this.Controls.Add(this.lookUpEdit_MH);
+            this.ClientSize = new System.Drawing.Size(407, 213);
+            this.Controls.Add(this.lookUpEdit_ML);
             this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
@@ -165,11 +181,12 @@ namespace QLDSV_HTC.ReportForms
             this.Controls.Add(this.textEdit_HK);
             this.Name = "InDSDongHPForm";
             this.Text = "In danh sách đóng học phí";
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit_MH.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mONHOCBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dS)).EndInit();
+            this.Load += new System.EventHandler(this.InDSDongHPForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit_ML.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit_NK.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit_HK.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lOPBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -177,15 +194,16 @@ namespace QLDSV_HTC.ReportForms
 
         #endregion
 
-        private DevExpress.XtraEditors.LookUpEdit lookUpEdit_MH;
-        private System.Windows.Forms.BindingSource mONHOCBindingSource;
-        private DS dS;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEdit_ML;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.TextEdit textEdit_NK;
         private System.Windows.Forms.Button button_preview;
-        private DSTableAdapters.MONHOCTableAdapter mONHOCTableAdapter;
         private DevExpress.XtraEditors.SpinEdit textEdit_HK;
+        private DS dS;
+        private System.Windows.Forms.BindingSource lOPBindingSource;
+        private DSTableAdapters.LOPTableAdapter lOPTableAdapter;
+        private DSTableAdapters.TableAdapterManager tableAdapterManager;
     }
 }

@@ -186,6 +186,12 @@
     <Compile Include="Reports\InDiemMonHoc_RP.Designer.cs">
       <DependentUpon>InDiemMonHoc_RP.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\InDSDongHP_RP.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\InDSDongHP_RP.Designer.cs">
+      <DependentUpon>InDSDongHP_RP.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\InDSLTC_RP.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -260,6 +266,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\InDiemMonHoc_RP.resx">
       <DependentUpon>InDiemMonHoc_RP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\InDSDongHP_RP.resx">
+      <DependentUpon>InDSDongHP_RP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\InDSLTC_RP.resx">
       <DependentUpon>InDSLTC_RP.cs</DependentUpon>
