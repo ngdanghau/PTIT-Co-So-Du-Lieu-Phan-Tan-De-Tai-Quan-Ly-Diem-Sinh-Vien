@@ -156,6 +156,12 @@
     <Compile Include="ReportForms\InDiemForm.Designer.cs">
       <DependentUpon>InDiemForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReportForms\InDSDongHPForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportForms\InDSDongHPForm.Designer.cs">
+      <DependentUpon>InDSDongHPForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReportForms\InDSLOPTINCHI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -239,6 +245,9 @@
     </Compile>
     <EmbeddedResource Include="ReportForms\InDiemForm.resx">
       <DependentUpon>InDiemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportForms\InDSDongHPForm.resx">
+      <DependentUpon>InDSDongHPForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportForms\InDSLOPTINCHI.resx">
       <DependentUpon>InDSLOPTINCHI.cs</DependentUpon>

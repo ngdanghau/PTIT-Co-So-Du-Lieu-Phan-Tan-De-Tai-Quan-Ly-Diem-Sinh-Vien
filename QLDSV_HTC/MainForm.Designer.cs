@@ -173,6 +173,7 @@ namespace QLDSV_HTC
             this.inHocPhi.LargeWidth = 100;
             this.inHocPhi.Name = "inHocPhi";
             this.inHocPhi.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.inHocPhi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.inHocPhi_ItemClick);
             // 
             // inBDTK
             // 
