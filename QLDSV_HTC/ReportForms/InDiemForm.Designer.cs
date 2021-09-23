@@ -196,6 +196,8 @@ namespace QLDSV_HTC.ReportForms
             this.textEdit_Nhom.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.textEdit_Nhom.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
+            this.textEdit_Nhom.Properties.IsFloatValue = false;
+            this.textEdit_Nhom.Properties.Mask.EditMask = "N00";
             this.textEdit_Nhom.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
             this.textEdit_Nhom.Properties.MaxValue = new decimal(new int[] {
             1,
@@ -227,7 +229,7 @@ namespace QLDSV_HTC.ReportForms
             this.Controls.Add(this.textEdit_HK);
             this.Controls.Add(this.textEdit_Nhom);
             this.Name = "InDiemForm";
-            this.Text = "InDiemForm";
+            this.Text = "In bảng điểm môn học";
             this.Load += new System.EventHandler(this.InDiemForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.textEdit_NK.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit_MH.Properties)).EndInit();

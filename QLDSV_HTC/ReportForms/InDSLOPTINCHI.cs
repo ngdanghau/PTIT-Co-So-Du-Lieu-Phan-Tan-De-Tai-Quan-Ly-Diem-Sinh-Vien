@@ -1,7 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using DevExpress.XtraReports.UI;
 using QLDSV_HTC.Reports;
-//using QLDSV_HTC.Reports;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

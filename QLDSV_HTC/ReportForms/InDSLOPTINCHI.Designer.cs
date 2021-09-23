@@ -98,6 +98,8 @@ namespace QLDSV_HTC.ReportForms
             this.txtHocKy.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtHocKy.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
+            this.txtHocKy.Properties.IsFloatValue = false;
+            this.txtHocKy.Properties.Mask.EditMask = "N00";
             this.txtHocKy.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
             this.txtHocKy.Properties.MaxValue = new decimal(new int[] {
             4,

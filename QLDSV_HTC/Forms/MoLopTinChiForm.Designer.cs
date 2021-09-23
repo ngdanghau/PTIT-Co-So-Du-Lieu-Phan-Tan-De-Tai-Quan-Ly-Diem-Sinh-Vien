@@ -47,7 +47,6 @@ namespace QLDSV_HTC.Forms
             this.barButtonHuy = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonRenew = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonOut = new DevExpress.XtraBars.BarButtonItem();
-            this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -136,7 +135,7 @@ namespace QLDSV_HTC.Forms
             this.panelControl1.Controls.Add(this.groupControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl1.Enabled = false;
-            this.panelControl1.Location = new System.Drawing.Point(0, 697);
+            this.panelControl1.Location = new System.Drawing.Point(0, 717);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(1144, 146);
             this.panelControl1.TabIndex = 0;
@@ -183,6 +182,8 @@ namespace QLDSV_HTC.Forms
             this.txtMaLTC.Name = "txtMaLTC";
             this.txtMaLTC.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtMaLTC.Properties.IsFloatValue = false;
+            this.txtMaLTC.Properties.Mask.EditMask = "N00";
             this.txtMaLTC.Size = new System.Drawing.Size(90, 20);
             this.txtMaLTC.StyleController = this.layoutControl1;
             this.txtMaLTC.TabIndex = 13;
@@ -200,8 +201,7 @@ namespace QLDSV_HTC.Forms
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar2,
-            this.bar3});
+            this.bar2});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -218,7 +218,6 @@ namespace QLDSV_HTC.Forms
             this.barButtonHuy});
             this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 8;
-            this.barManager1.StatusBar = this.bar3;
             // 
             // bar2
             // 
@@ -314,18 +313,6 @@ namespace QLDSV_HTC.Forms
             this.barButtonOut.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.barButtonOut.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonCancel_ItemClick);
             // 
-            // bar3
-            // 
-            this.bar3.BarName = "Status bar";
-            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
-            this.bar3.DockCol = 0;
-            this.bar3.DockRow = 0;
-            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-            this.bar3.OptionsBar.AllowQuickCustomization = false;
-            this.bar3.OptionsBar.DrawDragBorder = false;
-            this.bar3.OptionsBar.UseWholeRow = true;
-            this.bar3.Text = "Status bar";
-            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
@@ -338,9 +325,9 @@ namespace QLDSV_HTC.Forms
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 843);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 863);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1144, 20);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1144, 0);
             // 
             // barDockControlLeft
             // 
@@ -348,7 +335,7 @@ namespace QLDSV_HTC.Forms
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 819);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 839);
             // 
             // barDockControlRight
             // 
@@ -356,7 +343,7 @@ namespace QLDSV_HTC.Forms
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1144, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 819);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 839);
             // 
             // hUYLOPCheckEdit
             // 
@@ -383,6 +370,8 @@ namespace QLDSV_HTC.Forms
             this.txtSoSVTT.Name = "txtSoSVTT";
             this.txtSoSVTT.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtSoSVTT.Properties.IsFloatValue = false;
+            this.txtSoSVTT.Properties.Mask.EditMask = "N00";
             this.txtSoSVTT.Properties.MaxValue = new decimal(new int[] {
             9999,
             0,
@@ -421,6 +410,8 @@ namespace QLDSV_HTC.Forms
             this.txtNhom.Name = "txtNhom";
             this.txtNhom.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtNhom.Properties.IsFloatValue = false;
+            this.txtNhom.Properties.Mask.EditMask = "N00";
             this.txtNhom.Properties.MaxValue = new decimal(new int[] {
             9999,
             0,
@@ -448,6 +439,8 @@ namespace QLDSV_HTC.Forms
             this.txtHocKy.Name = "txtHocKy";
             this.txtHocKy.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtHocKy.Properties.IsFloatValue = false;
+            this.txtHocKy.Properties.Mask.EditMask = "N00";
             this.txtHocKy.Properties.MaxValue = new decimal(new int[] {
             4,
             0,
@@ -489,6 +482,7 @@ namespace QLDSV_HTC.Forms
             this.txtMaGV.Properties.DataSource = this.bdsGIANGVIEN;
             this.txtMaGV.Properties.DisplayMember = "MAGV";
             this.txtMaGV.Properties.NullText = "Chọn giảng viên";
+            this.txtMaGV.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.txtMaGV.Properties.ValueMember = "MAGV";
             this.txtMaGV.Size = new System.Drawing.Size(259, 20);
             this.txtMaGV.StyleController = this.layoutControl1;
@@ -511,9 +505,10 @@ namespace QLDSV_HTC.Forms
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MAMH", "MAMH", 30, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TENMH", "TENMH", 55, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
             this.txtMaMonHoc.Properties.DataSource = this.bdsMONHOC;
-            this.txtMaMonHoc.Properties.DisplayMember = "TENMH";
+            this.txtMaMonHoc.Properties.DisplayMember = "MAMH";
             this.txtMaMonHoc.Properties.NullText = "Chọn môn học";
             this.txtMaMonHoc.Properties.PopupSizeable = false;
+            this.txtMaMonHoc.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.txtMaMonHoc.Properties.ValueMember = "MAMH";
             this.txtMaMonHoc.Size = new System.Drawing.Size(222, 20);
             this.txtMaMonHoc.StyleController = this.layoutControl1;
@@ -639,6 +634,7 @@ namespace QLDSV_HTC.Forms
             this.tableAdapterManager.MONHOCTableAdapter = null;
             this.tableAdapterManager.SINHVIENTableAdapter = null;
             this.tableAdapterManager.sp_GetBangDiemMonHocTableAdapter = null;
+            this.tableAdapterManager.sp_GetThongTinDongHocPhiTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = QLDSV_HTC.DSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // LOPTINCHITableAdapter
@@ -653,7 +649,7 @@ namespace QLDSV_HTC.Forms
             this.gcLOPTINCHI.MainView = this.gridView1;
             this.gcLOPTINCHI.MenuManager = this.barManager1;
             this.gcLOPTINCHI.Name = "gcLOPTINCHI";
-            this.gcLOPTINCHI.Size = new System.Drawing.Size(1140, 634);
+            this.gcLOPTINCHI.Size = new System.Drawing.Size(1140, 654);
             this.gcLOPTINCHI.TabIndex = 11;
             this.gcLOPTINCHI.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -804,7 +800,7 @@ namespace QLDSV_HTC.Forms
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl3.Location = new System.Drawing.Point(0, 59);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(1144, 638);
+            this.panelControl3.Size = new System.Drawing.Size(1144, 658);
             this.panelControl3.TabIndex = 17;
             // 
             // MoLopTinChiForm
@@ -872,7 +868,6 @@ namespace QLDSV_HTC.Forms
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar2;
         private DevExpress.XtraBars.BarButtonItem barButtonAdd;
-        private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;

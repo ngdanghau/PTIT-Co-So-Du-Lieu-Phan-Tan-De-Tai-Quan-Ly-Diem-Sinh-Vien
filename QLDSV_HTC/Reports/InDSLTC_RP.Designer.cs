@@ -34,6 +34,7 @@ namespace QLDSV_HTC.Reports
             DevExpress.DataAccess.Sql.QueryParameter queryParameter1 = new DevExpress.DataAccess.Sql.QueryParameter();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter2 = new DevExpress.DataAccess.Sql.QueryParameter();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InDSLTC_RP));
+            DevExpress.XtraReports.UI.XRSummary xrSummary1 = new DevExpress.XtraReports.UI.XRSummary();
             this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.Title = new DevExpress.XtraReports.UI.XRControlStyle();
             this.DetailCaption1 = new DevExpress.XtraReports.UI.XRControlStyle();
@@ -42,7 +43,11 @@ namespace QLDSV_HTC.Reports
             this.PageInfo = new DevExpress.XtraReports.UI.XRControlStyle();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
+            this.pageInfo2 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
+            this.xrLabel_NKHK = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel_Khoa = new DevExpress.XtraReports.UI.XRLabel();
+            this.label1 = new DevExpress.XtraReports.UI.XRLabel();
             this.GroupHeader1 = new DevExpress.XtraReports.UI.GroupHeaderBand();
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.pageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
@@ -56,6 +61,7 @@ namespace QLDSV_HTC.Reports
             this.tableCell4 = new DevExpress.XtraReports.UI.XRTableCell();
             this.tableCell5 = new DevExpress.XtraReports.UI.XRTableCell();
             this.tableCell6 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.table2 = new DevExpress.XtraReports.UI.XRTable();
             this.tableRow2 = new DevExpress.XtraReports.UI.XRTableRow();
             this.tableCell7 = new DevExpress.XtraReports.UI.XRTableCell();
@@ -64,8 +70,7 @@ namespace QLDSV_HTC.Reports
             this.tableCell10 = new DevExpress.XtraReports.UI.XRTableCell();
             this.tableCell11 = new DevExpress.XtraReports.UI.XRTableCell();
             this.tableCell12 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrLabel_Khoa = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel_NKHK = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.table1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.table2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -148,41 +153,9 @@ namespace QLDSV_HTC.Reports
             // BottomMargin
             // 
             this.BottomMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.pageInfo1,
+            this.xrLabel1,
             this.pageInfo2});
             this.BottomMargin.Name = "BottomMargin";
-            // 
-            // ReportHeader
-            // 
-            this.ReportHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrLabel_NKHK,
-            this.xrLabel_Khoa,
-            this.label1});
-            this.ReportHeader.HeightF = 102.7083F;
-            this.ReportHeader.Name = "ReportHeader";
-            // 
-            // GroupHeader1
-            // 
-            this.GroupHeader1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.table1});
-            this.GroupHeader1.GroupUnion = DevExpress.XtraReports.UI.GroupUnion.WithFirstDetail;
-            this.GroupHeader1.HeightF = 28F;
-            this.GroupHeader1.Name = "GroupHeader1";
-            // 
-            // Detail
-            // 
-            this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.table2});
-            this.Detail.HeightF = 25F;
-            this.Detail.Name = "Detail";
-            // 
-            // pageInfo1
-            // 
-            this.pageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(6F, 6F);
-            this.pageInfo1.Name = "pageInfo1";
-            this.pageInfo1.PageInfo = DevExpress.XtraPrinting.PageInfo.DateTime;
-            this.pageInfo1.SizeF = new System.Drawing.SizeF(313F, 23F);
-            this.pageInfo1.StyleName = "PageInfo";
             // 
             // pageInfo2
             // 
@@ -193,6 +166,35 @@ namespace QLDSV_HTC.Reports
             this.pageInfo2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             this.pageInfo2.TextFormatString = "Page {0} of {1}";
             // 
+            // ReportHeader
+            // 
+            this.ReportHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLabel_NKHK,
+            this.xrLabel_Khoa,
+            this.label1});
+            this.ReportHeader.HeightF = 102.7083F;
+            this.ReportHeader.Name = "ReportHeader";
+            // 
+            // xrLabel_NKHK
+            // 
+            this.xrLabel_NKHK.LocationFloat = new DevExpress.Utils.PointFloat(6.00001F, 59.59702F);
+            this.xrLabel_NKHK.Name = "xrLabel_NKHK";
+            this.xrLabel_NKHK.SizeF = new System.Drawing.SizeF(638F, 29.40267F);
+            this.xrLabel_NKHK.StyleName = "Title";
+            this.xrLabel_NKHK.StylePriority.UseTextAlignment = false;
+            this.xrLabel_NKHK.Text = "Niên khóa: 2021-2022     Học kỳ: 1";
+            this.xrLabel_NKHK.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // xrLabel_Khoa
+            // 
+            this.xrLabel_Khoa.LocationFloat = new DevExpress.Utils.PointFloat(6.00001F, 30.19433F);
+            this.xrLabel_Khoa.Name = "xrLabel_Khoa";
+            this.xrLabel_Khoa.SizeF = new System.Drawing.SizeF(638F, 29.40267F);
+            this.xrLabel_Khoa.StyleName = "Title";
+            this.xrLabel_Khoa.StylePriority.UseTextAlignment = false;
+            this.xrLabel_Khoa.Text = "KHOA: CÔNG NGHỆ THÔNG TIN";
+            this.xrLabel_Khoa.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
             // label1
             // 
             this.label1.LocationFloat = new DevExpress.Utils.PointFloat(6F, 6F);
@@ -202,6 +204,14 @@ namespace QLDSV_HTC.Reports
             this.label1.StylePriority.UseTextAlignment = false;
             this.label1.Text = "DANH SÁCH LỚP TÍN CHỈ";
             this.label1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // GroupHeader1
+            // 
+            this.GroupHeader1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.table1});
+            this.GroupHeader1.GroupUnion = DevExpress.XtraReports.UI.GroupUnion.WithFirstDetail;
+            this.GroupHeader1.HeightF = 28F;
+            this.GroupHeader1.Name = "GroupHeader1";
             // 
             // table1
             // 
@@ -275,6 +285,13 @@ namespace QLDSV_HTC.Reports
             this.tableCell6.Text = "SỐ SV ĐĂNG KÝ";
             this.tableCell6.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.tableCell6.Weight = 0.10517208797221223D;
+            // 
+            // Detail
+            // 
+            this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.table2});
+            this.Detail.HeightF = 25F;
+            this.Detail.Name = "Detail";
             // 
             // table2
             // 
@@ -355,25 +372,19 @@ namespace QLDSV_HTC.Reports
             this.tableCell12.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.tableCell12.Weight = 0.10517195885938582D;
             // 
-            // xrLabel_Khoa
+            // xrLabel1
             // 
-            this.xrLabel_Khoa.LocationFloat = new DevExpress.Utils.PointFloat(6.00001F, 30.19433F);
-            this.xrLabel_Khoa.Name = "xrLabel_Khoa";
-            this.xrLabel_Khoa.SizeF = new System.Drawing.SizeF(638F, 29.40267F);
-            this.xrLabel_Khoa.StyleName = "Title";
-            this.xrLabel_Khoa.StylePriority.UseTextAlignment = false;
-            this.xrLabel_Khoa.Text = "KHOA: CÔNG NGHỆ THÔNG TIN";
-            this.xrLabel_Khoa.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            // 
-            // xrLabel_NKHK
-            // 
-            this.xrLabel_NKHK.LocationFloat = new DevExpress.Utils.PointFloat(6.00001F, 59.59702F);
-            this.xrLabel_NKHK.Name = "xrLabel_NKHK";
-            this.xrLabel_NKHK.SizeF = new System.Drawing.SizeF(638F, 29.40267F);
-            this.xrLabel_NKHK.StyleName = "Title";
-            this.xrLabel_NKHK.StylePriority.UseTextAlignment = false;
-            this.xrLabel_NKHK.Text = "Niên khóa: 2021-2022     Học kỳ: 1";
-            this.xrLabel_NKHK.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.xrLabel1.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumCount([STT])")});
+            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(6.00001F, 6.00001F);
+            this.xrLabel1.Multiline = true;
+            this.xrLabel1.Name = "xrLabel1";
+            this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel1.SizeF = new System.Drawing.SizeF(196.875F, 23F);
+            xrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
+            this.xrLabel1.Summary = xrSummary1;
+            this.xrLabel1.Text = "xrLabel1";
+            this.xrLabel1.TextFormatString = "Số lượng lớp đã mở: {0:#,#}";
             // 
             // InDSLTC_RP
             // 
@@ -436,5 +447,6 @@ namespace QLDSV_HTC.Reports
         private DevExpress.XtraReports.UI.XRTableCell tableCell12;
         private DevExpress.XtraReports.UI.XRLabel xrLabel_Khoa;
         private DevExpress.XtraReports.UI.XRLabel xrLabel_NKHK;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel1;
     }
 }

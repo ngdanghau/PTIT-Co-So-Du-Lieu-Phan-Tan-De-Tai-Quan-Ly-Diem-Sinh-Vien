@@ -55,7 +55,18 @@ namespace QLDSV_HTC
 
             if (Program.AuthGroup == "PGV")
             {
+
                 baoCaoPage.Visible = true;
+                InDSSVBtn.Visibility
+                    = inBDMH.Visibility
+                    = inDSL.Visibility
+                    = inBDTK.Visibility
+                    = inPhieuDiem.Visibility
+                    = DevExpress.XtraBars.BarItemVisibility.Always;
+
+                inHocPhi.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+
+                
                 usersGroup.Visible = true;
                 hocPhiPageGroup.Visible = false;
                 quanLyPageGroup.Visible = true;
@@ -64,6 +75,15 @@ namespace QLDSV_HTC
             else if (Program.AuthGroup == "KHOA")
             {
                 baoCaoPage.Visible = true;
+                InDSSVBtn.Visibility
+                    = inBDMH.Visibility
+                    = inDSL.Visibility
+                    = inBDTK.Visibility
+                    = inPhieuDiem.Visibility
+                    = DevExpress.XtraBars.BarItemVisibility.Always;
+
+                inHocPhi.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+
                 usersGroup.Visible = true;
                 hocPhiPageGroup.Visible = false;
                 quanLyPageGroup.Visible = true;
@@ -71,7 +91,17 @@ namespace QLDSV_HTC
             }
             else if (Program.AuthGroup == "PKT")
             {
-                baoCaoPage.Visible = false;
+
+                baoCaoPage.Visible = true;
+                InDSSVBtn.Visibility 
+                    = inBDMH.Visibility
+                    = inDSL.Visibility
+                    = inBDTK.Visibility
+                    = inPhieuDiem.Visibility
+                    = DevExpress.XtraBars.BarItemVisibility.Never;
+
+                inHocPhi.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+
                 usersGroup.Visible = true;
                 hocPhiPageGroup.Visible = true;
                 quanLyPageGroup.Visible = false;
@@ -154,14 +184,24 @@ namespace QLDSV_HTC
             ShowMdiChildren(typeof(InDSSV));
         }
 
-        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             ShowMdiChildren(typeof(InPhieuDiemForm));
         }
 
-        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             ShowMdiChildren(typeof(InDiemForm));
+        }
+
+        private void inHocPhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(InDSDongHPForm));
+        }
+
+        private void inBDTK_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(InBangDiemTKForm));
         }
     }
 }

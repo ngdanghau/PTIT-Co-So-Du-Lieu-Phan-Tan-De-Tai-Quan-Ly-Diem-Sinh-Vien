@@ -82,6 +82,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\HocPhiClass.cs" />
     <Compile Include="Class\LopClass.cs" />
     <Compile Include="Class\LopTinChiClass.cs" />
     <Compile Include="Class\MonHocClass.cs" />
@@ -117,6 +118,12 @@
     <Compile Include="Forms\HocPhiForm.Designer.cs">
       <DependentUpon>HocPhiForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReportForms\InBangDiemTKForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportForms\InBangDiemTKForm.Designer.cs">
+      <DependentUpon>InBangDiemTKForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\LopForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,16 +156,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="ReportForms\InDiemForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ReportForms\InDiemForm.Designer.cs">
       <DependentUpon>InDiemForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportForms\InDSDongHPForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportForms\InDSDongHPForm.Designer.cs">
+      <DependentUpon>InDSDongHPForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ReportForms\InDSLOPTINCHI.cs">
       <SubType>Form</SubType>
@@ -178,11 +186,23 @@
     <Compile Include="ReportForms\InPhieuDiemForm.Designer.cs">
       <DependentUpon>InPhieuDiemForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\InBangDiemTongKet_RP.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\InBangDiemTongKet_RP.Designer.cs">
+      <DependentUpon>InBangDiemTongKet_RP.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\InDiemMonHoc_RP.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\InDiemMonHoc_RP.Designer.cs">
       <DependentUpon>InDiemMonHoc_RP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\InDSDongHP_RP.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\InDSDongHP_RP.Designer.cs">
+      <DependentUpon>InDSDongHP_RP.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\InDSLTC_RP.cs">
       <SubType>Component</SubType>
@@ -215,6 +235,9 @@
     <EmbeddedResource Include="Forms\HocPhiForm.resx">
       <DependentUpon>HocPhiForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReportForms\InBangDiemTKForm.resx">
+      <DependentUpon>InBangDiemTKForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\LopForm.resx">
       <DependentUpon>LopForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -239,6 +262,17 @@
     <EmbeddedResource Include="ReportForms\InDiemForm.resx">
       <DependentUpon>InDiemForm.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="ReportForms\InDiemForm.resx">
+      <DependentUpon>InDiemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportForms\InDSDongHPForm.resx">
+      <DependentUpon>InDSDongHPForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReportForms\InDSLOPTINCHI.resx">
       <DependentUpon>InDSLOPTINCHI.cs</DependentUpon>
     </EmbeddedResource>
@@ -248,8 +282,14 @@
     <EmbeddedResource Include="ReportForms\InPhieuDiemForm.resx">
       <DependentUpon>InPhieuDiemForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\InBangDiemTongKet_RP.resx">
+      <DependentUpon>InBangDiemTongKet_RP.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\InDiemMonHoc_RP.resx">
       <DependentUpon>InDiemMonHoc_RP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\InDSDongHP_RP.resx">
+      <DependentUpon>InDSDongHP_RP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\InDSLTC_RP.resx">
       <DependentUpon>InDSLTC_RP.cs</DependentUpon>

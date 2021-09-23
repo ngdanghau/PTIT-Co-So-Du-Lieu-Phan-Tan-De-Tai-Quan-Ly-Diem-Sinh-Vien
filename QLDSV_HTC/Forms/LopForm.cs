@@ -103,7 +103,7 @@ namespace QLDSV_HTC.Forms
             {
                 bdsLOP.Position = position;
             }
-            barButtonDelete.Enabled = bdsLOP.Count > 0;
+            barButtonDelete.Enabled = barButtonEdit.Enabled = bdsLOP.Count > 0;
         }
 
         private void LopForm_Load(object sender, EventArgs e)
@@ -243,10 +243,6 @@ namespace QLDSV_HTC.Forms
             }
         }
 
-        private void txtMaLop_EditValueChanged(object sender, EventArgs e)
-        {
-            txtMaLop.Properties.CharacterCasing = CharacterCasing.Upper;
-        }
 
         private void barButtonHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {

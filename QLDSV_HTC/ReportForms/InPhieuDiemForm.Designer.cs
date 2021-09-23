@@ -49,6 +49,8 @@ namespace QLDSV_HTC.ReportForms
             // 
             this.textEdit_MSSV.Location = new System.Drawing.Point(48, 42);
             this.textEdit_MSSV.Name = "textEdit_MSSV";
+            this.textEdit_MSSV.Properties.Mask.EditMask = "(\\p{Lu}|[0-9])+";
+            this.textEdit_MSSV.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.textEdit_MSSV.Size = new System.Drawing.Size(225, 20);
             this.textEdit_MSSV.TabIndex = 14;
             this.textEdit_MSSV.EditValueChanged += new System.EventHandler(this.textEdit_NK_EditValueChanged);
@@ -92,7 +94,7 @@ namespace QLDSV_HTC.ReportForms
             this.Controls.Add(this.textEdit_MSSV);
             this.Controls.Add(this.button_preview);
             this.Name = "InPhieuDiemForm";
-            this.Text = "InPhieuDiemForm";
+            this.Text = "In phiếu điểm";
             this.Load += new System.EventHandler(this.InPhieuDiemForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.textEdit_MSSV.Properties)).EndInit();
             this.ResumeLayout(false);

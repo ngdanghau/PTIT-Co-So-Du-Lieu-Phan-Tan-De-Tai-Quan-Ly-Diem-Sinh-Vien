@@ -98,12 +98,27 @@ namespace QLDSV_HTC.Forms
                 return false;
             }
 
+            if (bdsMONHOC.Find("MAMH", txtMaMonHoc.EditValue.ToString()) == -1)
+            {
+                XtraMessageBox.Show("Mã môn học không tồn tại!", "Lỗi",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
             if (txtMaGV.EditValue == null)
             {
                 XtraMessageBox.Show("Mã giảng viên không được bỏ trống!", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+
+            if (bdsGIANGVIEN.Find("MAGV", txtMaGV.EditValue.ToString()) == -1)
+            {
+                XtraMessageBox.Show("Mã giảng viên không tồn tại!", "Lỗi",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
 
             if (txtMaKhoa.EditValue == null)
             {
@@ -253,7 +268,7 @@ namespace QLDSV_HTC.Forms
                 bdsLOPTINCHI.Position = position;
             }
 
-            if (bdsLOPTINCHI.Count == 0) barButtonDelete.Enabled = false;
+            barButtonEdit.Enabled = barButtonDelete.Enabled = bdsLOPTINCHI.Count > 0;
         }
 
         private void MoLopTinChiForm_Load(object sender, EventArgs e)

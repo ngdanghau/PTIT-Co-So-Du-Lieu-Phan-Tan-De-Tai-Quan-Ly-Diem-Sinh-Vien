@@ -35,11 +35,11 @@ namespace QLDSV_HTC
             this.loginBtn = new DevExpress.XtraBars.BarButtonItem();
             this.logoutBtn = new DevExpress.XtraBars.BarButtonItem();
             this.InDSSVBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            this.inDSL = new DevExpress.XtraBars.BarButtonItem();
+            this.inBDMH = new DevExpress.XtraBars.BarButtonItem();
+            this.inPhieuDiem = new DevExpress.XtraBars.BarButtonItem();
+            this.inHocPhi = new DevExpress.XtraBars.BarButtonItem();
+            this.inBDTK = new DevExpress.XtraBars.BarButtonItem();
             this.registerBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
@@ -82,11 +82,11 @@ namespace QLDSV_HTC
             this.loginBtn,
             this.logoutBtn,
             this.InDSSVBtn,
-            this.barButtonItem3,
-            this.barButtonItem4,
-            this.barButtonItem5,
-            this.barButtonItem6,
-            this.barButtonItem7,
+            this.inDSL,
+            this.inBDMH,
+            this.inPhieuDiem,
+            this.inHocPhi,
+            this.inBDTK,
             this.registerBtn,
             this.barButtonItem9,
             this.barButtonItem10,
@@ -135,53 +135,55 @@ namespace QLDSV_HTC
             this.InDSSVBtn.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.InDSSVBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.InDSSVBtn_ItemClick);
             // 
-            // barButtonItem3
+            // inDSL
             // 
-            this.barButtonItem3.Caption = "Danh sách lớp ";
-            this.barButtonItem3.Id = 5;
-            this.barButtonItem3.ImageOptions.Image = global::QLDSV_HTC.Properties.Resources.Whitelisting_Services;
-            this.barButtonItem3.LargeWidth = 80;
-            this.barButtonItem3.Name = "barButtonItem3";
-            this.barButtonItem3.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
+            this.inDSL.Caption = "Danh sách lớp ";
+            this.inDSL.Id = 5;
+            this.inDSL.ImageOptions.Image = global::QLDSV_HTC.Properties.Resources.Whitelisting_Services;
+            this.inDSL.LargeWidth = 80;
+            this.inDSL.Name = "inDSL";
+            this.inDSL.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.inDSL.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
-            // barButtonItem4
+            // inBDMH
             // 
-            this.barButtonItem4.Caption = "Bảng điểm môn học";
-            this.barButtonItem4.Id = 6;
-            this.barButtonItem4.ImageOptions.Image = global::QLDSV_HTC.Properties.Resources.Whitelisting_Services;
-            this.barButtonItem4.LargeWidth = 80;
-            this.barButtonItem4.Name = "barButtonItem4";
-            this.barButtonItem4.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
+            this.inBDMH.Caption = "Bảng điểm môn học";
+            this.inBDMH.Id = 6;
+            this.inBDMH.ImageOptions.Image = global::QLDSV_HTC.Properties.Resources.Whitelisting_Services;
+            this.inBDMH.LargeWidth = 80;
+            this.inBDMH.Name = "inBDMH";
+            this.inBDMH.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.inBDMH.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
             // 
-            // barButtonItem5
+            // inPhieuDiem
             // 
-            this.barButtonItem5.Caption = "Phiếu điểm";
-            this.barButtonItem5.Id = 7;
-            this.barButtonItem5.ImageOptions.Image = global::QLDSV_HTC.Properties.Resources.Whitelisting_Services;
-            this.barButtonItem5.LargeWidth = 80;
-            this.barButtonItem5.Name = "barButtonItem5";
-            this.barButtonItem5.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
+            this.inPhieuDiem.Caption = "Phiếu điểm";
+            this.inPhieuDiem.Id = 7;
+            this.inPhieuDiem.ImageOptions.Image = global::QLDSV_HTC.Properties.Resources.Whitelisting_Services;
+            this.inPhieuDiem.LargeWidth = 80;
+            this.inPhieuDiem.Name = "inPhieuDiem";
+            this.inPhieuDiem.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.inPhieuDiem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
             // 
-            // barButtonItem6
+            // inHocPhi
             // 
-            this.barButtonItem6.Caption = "Danh sách đóng học phí của lớp";
-            this.barButtonItem6.Id = 8;
-            this.barButtonItem6.ImageOptions.Image = global::QLDSV_HTC.Properties.Resources.Whitelisting_Services;
-            this.barButtonItem6.LargeWidth = 100;
-            this.barButtonItem6.Name = "barButtonItem6";
-            this.barButtonItem6.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.inHocPhi.Caption = "Danh sách đóng học phí của lớp";
+            this.inHocPhi.Id = 8;
+            this.inHocPhi.ImageOptions.Image = global::QLDSV_HTC.Properties.Resources.Whitelisting_Services;
+            this.inHocPhi.LargeWidth = 100;
+            this.inHocPhi.Name = "inHocPhi";
+            this.inHocPhi.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.inHocPhi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.inHocPhi_ItemClick);
             // 
-            // barButtonItem7
+            // inBDTK
             // 
-            this.barButtonItem7.Caption = "Bảng điểm tổng kết";
-            this.barButtonItem7.Id = 9;
-            this.barButtonItem7.ImageOptions.Image = global::QLDSV_HTC.Properties.Resources.Whitelisting_Services;
-            this.barButtonItem7.LargeWidth = 80;
-            this.barButtonItem7.Name = "barButtonItem7";
-            this.barButtonItem7.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.inBDTK.Caption = "Bảng điểm tổng kết";
+            this.inBDTK.Id = 9;
+            this.inBDTK.ImageOptions.Image = global::QLDSV_HTC.Properties.Resources.Whitelisting_Services;
+            this.inBDTK.LargeWidth = 80;
+            this.inBDTK.Name = "inBDTK";
+            this.inBDTK.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.inBDTK.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.inBDTK_ItemClick);
             // 
             // registerBtn
             // 
@@ -329,11 +331,11 @@ namespace QLDSV_HTC
             // ribbonPageGroup3
             // 
             this.ribbonPageGroup3.ItemLinks.Add(this.InDSSVBtn);
-            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem3);
-            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem4);
-            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem5);
-            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem6);
-            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem7);
+            this.ribbonPageGroup3.ItemLinks.Add(this.inDSL);
+            this.ribbonPageGroup3.ItemLinks.Add(this.inBDMH);
+            this.ribbonPageGroup3.ItemLinks.Add(this.inPhieuDiem);
+            this.ribbonPageGroup3.ItemLinks.Add(this.inHocPhi);
+            this.ribbonPageGroup3.ItemLinks.Add(this.inBDTK);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             this.ribbonPageGroup3.Text = "In ấn";
             // 
@@ -432,13 +434,13 @@ namespace QLDSV_HTC
         private DevExpress.XtraBars.BarButtonItem loginBtn;
         private DevExpress.XtraBars.BarButtonItem logoutBtn;
         private DevExpress.XtraBars.BarButtonItem InDSSVBtn;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private DevExpress.XtraBars.BarButtonItem inDSL;
+        private DevExpress.XtraBars.BarButtonItem inBDMH;
+        private DevExpress.XtraBars.BarButtonItem inHocPhi;
+        private DevExpress.XtraBars.BarButtonItem inBDTK;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
+        private DevExpress.XtraBars.BarButtonItem inPhieuDiem;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private DevExpress.XtraBars.BarButtonItem registerBtn;
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;

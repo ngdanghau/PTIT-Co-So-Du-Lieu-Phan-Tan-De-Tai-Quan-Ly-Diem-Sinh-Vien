@@ -36,7 +36,6 @@ namespace QLDSV_HTC.Forms
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.barButtonRenew = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonOut = new DevExpress.XtraBars.BarButtonItem();
-            this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -58,9 +57,9 @@ namespace QLDSV_HTC.Forms
             this.lookUpMonHoc = new DevExpress.XtraEditors.LookUpEdit();
             this.bdsMONHOC = new System.Windows.Forms.BindingSource(this.components);
             this.cmbKhoa = new System.Windows.Forms.ComboBox();
-            this.txtNhom = new DevExpress.XtraEditors.TextEdit();
-            this.txtHocKy = new DevExpress.XtraEditors.TextEdit();
             this.txtNienKhoa = new DevExpress.XtraEditors.TextEdit();
+            this.txtHocKy = new DevExpress.XtraEditors.SpinEdit();
+            this.txtNhom = new DevExpress.XtraEditors.SpinEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -92,9 +91,9 @@ namespace QLDSV_HTC.Forms
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpMonHoc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMONHOC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNhom.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtHocKy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNienKhoa.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHocKy.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNhom.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
@@ -117,8 +116,7 @@ namespace QLDSV_HTC.Forms
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar2,
-            this.bar3});
+            this.bar2});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -134,7 +132,6 @@ namespace QLDSV_HTC.Forms
             this.barButtonRenew});
             this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 12;
-            this.barManager1.StatusBar = this.bar3;
             // 
             // bar2
             // 
@@ -167,18 +164,6 @@ namespace QLDSV_HTC.Forms
             this.barButtonOut.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.barButtonOut.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonCancel_ItemClick);
             // 
-            // bar3
-            // 
-            this.bar3.BarName = "Status bar";
-            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
-            this.bar3.DockCol = 0;
-            this.bar3.DockRow = 0;
-            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-            this.bar3.OptionsBar.AllowQuickCustomization = false;
-            this.bar3.OptionsBar.DrawDragBorder = false;
-            this.bar3.OptionsBar.UseWholeRow = true;
-            this.bar3.Text = "Status bar";
-            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
@@ -191,9 +176,9 @@ namespace QLDSV_HTC.Forms
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 731);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 751);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1083, 20);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1083, 0);
             // 
             // barDockControlLeft
             // 
@@ -201,7 +186,7 @@ namespace QLDSV_HTC.Forms
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 707);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 727);
             // 
             // barDockControlRight
             // 
@@ -209,7 +194,7 @@ namespace QLDSV_HTC.Forms
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1083, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 707);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 727);
             // 
             // barButtonAdd
             // 
@@ -328,9 +313,9 @@ namespace QLDSV_HTC.Forms
             // 
             this.layoutControl1.Controls.Add(this.lookUpMonHoc);
             this.layoutControl1.Controls.Add(this.cmbKhoa);
-            this.layoutControl1.Controls.Add(this.txtNhom);
-            this.layoutControl1.Controls.Add(this.txtHocKy);
             this.layoutControl1.Controls.Add(this.txtNienKhoa);
+            this.layoutControl1.Controls.Add(this.txtHocKy);
+            this.layoutControl1.Controls.Add(this.txtNhom);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(2, 23);
             this.layoutControl1.Name = "layoutControl1";
@@ -369,40 +354,78 @@ namespace QLDSV_HTC.Forms
             this.cmbKhoa.TabIndex = 0;
             this.cmbKhoa.SelectedIndexChanged += new System.EventHandler(this.cmbKhoa_SelectedIndexChanged);
             // 
-            // txtNhom
-            // 
-            this.txtNhom.Location = new System.Drawing.Point(66, 85);
-            this.txtNhom.MenuManager = this.barManager1;
-            this.txtNhom.Name = "txtNhom";
-            this.txtNhom.Properties.Mask.EditMask = "N0";
-            this.txtNhom.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.txtNhom.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.txtNhom.Properties.MaxLength = 2;
-            this.txtNhom.Size = new System.Drawing.Size(493, 20);
-            this.txtNhom.StyleController = this.layoutControl1;
-            this.txtNhom.TabIndex = 5;
-            // 
-            // txtHocKy
-            // 
-            this.txtHocKy.Location = new System.Drawing.Point(66, 61);
-            this.txtHocKy.MenuManager = this.barManager1;
-            this.txtHocKy.Name = "txtHocKy";
-            this.txtHocKy.Properties.Mask.EditMask = "N0";
-            this.txtHocKy.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.txtHocKy.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.txtHocKy.Properties.MaxLength = 2;
-            this.txtHocKy.Size = new System.Drawing.Size(493, 20);
-            this.txtHocKy.StyleController = this.layoutControl1;
-            this.txtHocKy.TabIndex = 4;
-            // 
             // txtNienKhoa
             // 
             this.txtNienKhoa.Location = new System.Drawing.Point(66, 37);
             this.txtNienKhoa.MenuManager = this.barManager1;
             this.txtNienKhoa.Name = "txtNienKhoa";
+            this.txtNienKhoa.Properties.Mask.EditMask = "\\d{4}-\\d{4}";
+            this.txtNienKhoa.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.txtNienKhoa.Size = new System.Drawing.Size(493, 20);
             this.txtNienKhoa.StyleController = this.layoutControl1;
             this.txtNienKhoa.TabIndex = 3;
+            // 
+            // txtHocKy
+            // 
+            this.txtHocKy.EditValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.txtHocKy.Location = new System.Drawing.Point(66, 61);
+            this.txtHocKy.MenuManager = this.barManager1;
+            this.txtHocKy.Name = "txtHocKy";
+            this.txtHocKy.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtHocKy.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
+            this.txtHocKy.Properties.IsFloatValue = false;
+            this.txtHocKy.Properties.Mask.EditMask = "N0";
+            this.txtHocKy.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.txtHocKy.Properties.MaxLength = 2;
+            this.txtHocKy.Properties.MaxValue = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.txtHocKy.Properties.MinValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.txtHocKy.Size = new System.Drawing.Size(493, 20);
+            this.txtHocKy.StyleController = this.layoutControl1;
+            this.txtHocKy.TabIndex = 4;
+            // 
+            // txtNhom
+            // 
+            this.txtNhom.EditValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.txtNhom.Location = new System.Drawing.Point(66, 85);
+            this.txtNhom.MenuManager = this.barManager1;
+            this.txtNhom.Name = "txtNhom";
+            this.txtNhom.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtNhom.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
+            this.txtNhom.Properties.IsFloatValue = false;
+            this.txtNhom.Properties.Mask.EditMask = "N0";
+            this.txtNhom.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.txtNhom.Properties.MaxLength = 2;
+            this.txtNhom.Properties.MaxValue = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+            this.txtNhom.Properties.MinValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.txtNhom.Size = new System.Drawing.Size(493, 20);
+            this.txtNhom.StyleController = this.layoutControl1;
+            this.txtNhom.TabIndex = 5;
             // 
             // Root
             // 
@@ -473,7 +496,7 @@ namespace QLDSV_HTC.Forms
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(0, 256);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1083, 475);
+            this.panelControl2.Size = new System.Drawing.Size(1083, 495);
             this.panelControl2.TabIndex = 12;
             // 
             // sp_GetBangDiemMonHocGridControl
@@ -484,7 +507,7 @@ namespace QLDSV_HTC.Forms
             this.sp_GetBangDiemMonHocGridControl.MainView = this.gridView1;
             this.sp_GetBangDiemMonHocGridControl.MenuManager = this.barManager1;
             this.sp_GetBangDiemMonHocGridControl.Name = "sp_GetBangDiemMonHocGridControl";
-            this.sp_GetBangDiemMonHocGridControl.Size = new System.Drawing.Size(1079, 471);
+            this.sp_GetBangDiemMonHocGridControl.Size = new System.Drawing.Size(1079, 491);
             this.sp_GetBangDiemMonHocGridControl.TabIndex = 0;
             this.sp_GetBangDiemMonHocGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -597,9 +620,9 @@ namespace QLDSV_HTC.Forms
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lookUpMonHoc.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMONHOC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNhom.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtHocKy.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNienKhoa.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHocKy.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNhom.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
@@ -621,7 +644,6 @@ namespace QLDSV_HTC.Forms
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar2;
         private DevExpress.XtraBars.BarButtonItem barButtonAdd;
-        private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
@@ -641,12 +663,10 @@ namespace QLDSV_HTC.Forms
         private DevExpress.XtraEditors.SimpleButton btnStart;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
-        private DevExpress.XtraEditors.TextEdit txtHocKy;
         private DevExpress.XtraEditors.TextEdit txtNienKhoa;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private System.Windows.Forms.ComboBox cmbKhoa;
-        private DevExpress.XtraEditors.TextEdit txtNhom;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraEditors.LookUpEdit lookUpMonHoc;
@@ -667,5 +687,7 @@ namespace QLDSV_HTC.Forms
         private DevExpress.XtraEditors.SimpleButton btnHuy;
         private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
         private DevExpress.XtraGrid.Columns.GridColumn colDIEM_HM;
+        private DevExpress.XtraEditors.SpinEdit txtHocKy;
+        private DevExpress.XtraEditors.SpinEdit txtNhom;
     }
 }
