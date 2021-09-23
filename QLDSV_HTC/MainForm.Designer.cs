@@ -183,6 +183,7 @@ namespace QLDSV_HTC
             this.inBDTK.LargeWidth = 80;
             this.inBDTK.Name = "inBDTK";
             this.inBDTK.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.inBDTK.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.inBDTK_ItemClick);
             // 
             // registerBtn
             // 

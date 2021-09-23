@@ -198,5 +198,10 @@ namespace QLDSV_HTC
         {
             ShowMdiChildren(typeof(InDSDongHPForm));
         }
+
+        private void inBDTK_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(InBangDiemTKForm));
+        }
     }
 }
