@@ -180,6 +180,12 @@
     <Compile Include="ReportForms\InPhieuDiemForm.Designer.cs">
       <DependentUpon>InPhieuDiemForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\InBangDiemTongKet_RP.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\InBangDiemTongKet_RP.Designer.cs">
+      <DependentUpon>InBangDiemTongKet_RP.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\InDiemMonHoc_RP.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -263,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReportForms\InPhieuDiemForm.resx">
       <DependentUpon>InPhieuDiemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\InBangDiemTongKet_RP.resx">
+      <DependentUpon>InBangDiemTongKet_RP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\InDiemMonHoc_RP.resx">
       <DependentUpon>InDiemMonHoc_RP.cs</DependentUpon>
