@@ -2,12 +2,11 @@
 <xs:schema id="DS" targetNamespace="http://tempuri.org/DS.xsd" xmlns:mstns="http://tempuri.org/DS.xsd" xmlns="http://tempuri.org/DS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="3" FunctionsComponentName="QueriesTableAdapter" GeneratorFunctionsComponentClassName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" UserFunctionsComponentName="QueriesTableAdapter" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="2" FunctionsComponentName="QueriesTableAdapter" GeneratorFunctionsComponentClassName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" UserFunctionsComponentName="QueriesTableAdapter" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="QLDSV_TCConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="QLDSV_TCConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.QLDSV_HTC.Properties.Settings.GlobalReference.Default.QLDSV_TCConnectionString" Provider="System.Data.SqlClient" />
           <Connection ConnectionStringObject="Data Source=DESKTOP-7DBQMTA\SERVER3;Initial Catalog=QLDSV_TC;Persist Security Info=True;User ID=sa;Password=123456" IsAppSettingsProperty="false" Modifier="Assembly" Name="desktop-7dbqmta\server3.QLDSV_TC.dbo" ParameterPrefix="@" Provider="System.Data.SqlClient" />
           <Connection ConnectionStringObject="Data Source=DESKTOP-7DBQMTA\SERVER1;Initial Catalog=QLDSV_TC;Persist Security Info=True;User ID=HTKN;Password=123456" IsAppSettingsProperty="false" Modifier="Assembly" Name="desktop-7dbqmta\server1.QLDSV_TC.dbo" ParameterPrefix="@" Provider="System.Data.SqlClient" />
-          <Connection ConnectionStringObject="Data Source=DESKTOP-I8UUUNH\SERVER1;Initial Catalog=QLDSV_TC;Persist Security Info=True;User ID=sa;Password=123456" IsAppSettingsProperty="false" Modifier="Assembly" Name="desktop-i8uuunh\server1.QLDSV_TC.dbo" ParameterPrefix="@" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DANGKYTableAdapter" GeneratorDataComponentClassName="DANGKYTableAdapter" Name="DANGKY" UserDataComponentName="DANGKYTableAdapter">
@@ -1098,13 +1097,6 @@ SELECT MASV, NIENKHOA, HOCKY, NGAYDONG, SOTIENDONG FROM CT_DONGHOCPHI WHERE (HOC
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="NIENKHOA" msprop:Generator_ColumnVarNameInTable="columnNIENKHOA" msprop:Generator_ColumnPropNameInRow="NIENKHOA" msprop:Generator_ColumnPropNameInTable="NIENKHOAColumn" msprop:Generator_UserColumnName="NIENKHOA">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="9" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
               <xs:element name="HOCKY" msprop:Generator_ColumnVarNameInTable="columnHOCKY" msprop:Generator_ColumnPropNameInRow="HOCKY" msprop:Generator_ColumnPropNameInTable="HOCKYColumn" msprop:Generator_UserColumnName="HOCKY" type="xs:int" />
               <xs:element name="NGAYDONG" msprop:Generator_ColumnVarNameInTable="columnNGAYDONG" msprop:Generator_ColumnPropNameInRow="NGAYDONG" msprop:Generator_ColumnPropNameInTable="NGAYDONGColumn" msprop:Generator_UserColumnName="NGAYDONG" type="xs:dateTime" />
               <xs:element name="SOTIENDONG" msprop:Generator_ColumnVarNameInTable="columnSOTIENDONG" msprop:Generator_ColumnPropNameInRow="SOTIENDONG" msprop:Generator_ColumnPropNameInTable="SOTIENDONGColumn" msprop:Generator_UserColumnName="SOTIENDONG" type="xs:int" />
@@ -1140,7 +1132,7 @@ SELECT MASV, NIENKHOA, HOCKY, NGAYDONG, SOTIENDONG FROM CT_DONGHOCPHI WHERE (HOC
               <xs:element name="NIENKHOA" msprop:Generator_ColumnVarNameInTable="columnNIENKHOA" msprop:Generator_ColumnPropNameInRow="NIENKHOA" msprop:Generator_ColumnPropNameInTable="NIENKHOAColumn" msprop:Generator_UserColumnName="NIENKHOA">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
+                    <xs:maxLength value="9" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -1218,14 +1210,6 @@ SELECT MASV, NIENKHOA, HOCKY, NGAYDONG, SOTIENDONG FROM CT_DONGHOCPHI WHERE (HOC
       <xs:field xpath="mstns:MASV" />
       <xs:field xpath="mstns:NIENKHOA" />
       <xs:field xpath="mstns:HOCKY" />
-    </xs:unique>
-    <xs:unique name="sp_InBangDiemMonHoc_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:sp_InBangDiemMonHoc" />
-      <xs:field xpath="mstns:MASV" />
-    </xs:unique>
-    <xs:unique name="sp_InDSSV_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:sp_InDSSV" />
-      <xs:field xpath="mstns:MASV" />
     </xs:unique>
     <xs:keyref name="FK_CT_DONGHOCPHI_HOCPHI" refer="HOCPHI_Constraint1" msprop:rel_Generator_UserChildTable="CT_DONGHOCPHI" msprop:rel_Generator_ChildPropName="GetCT_DONGHOCPHIRows" msprop:rel_Generator_UserRelationName="FK_CT_DONGHOCPHI_HOCPHI" msprop:rel_Generator_ParentPropName="HOCPHIRowParent" msprop:rel_Generator_RelationVarName="relationFK_CT_DONGHOCPHI_HOCPHI" msprop:rel_Generator_UserParentTable="HOCPHI" msdata:DeleteRule="None">
       <xs:selector xpath=".//mstns:CT_DONGHOCPHI" />

@@ -25,11 +25,11 @@
     <Connector ID="DesignRelation:FK_CTLTC_SINHVIEN" ZOrder="14" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>280</X>
+          <X>616</X>
           <Y>145</Y>
         </Point>
         <Point>
-          <X>350</X>
+          <X>546</X>
           <Y>145</Y>
         </Point>
       </RoutePoints>
@@ -37,11 +37,11 @@
     <Connector ID="DesignRelation:FK_DANGKY_LOPTINCHI" ZOrder="15" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>616</X>
+          <X>280</X>
           <Y>145</Y>
         </Point>
         <Point>
-          <X>546</X>
+          <X>350</X>
           <Y>145</Y>
         </Point>
       </RoutePoints>
@@ -77,11 +77,15 @@
     <Connector ID="DesignRelation:FK_LOPTINCHI_KHOA" ZOrder="16" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>148</X>
-          <Y>448</Y>
+          <X>373</X>
+          <Y>361</Y>
         </Point>
         <Point>
-          <X>148</X>
+          <X>263</X>
+          <Y>361</Y>
+        </Point>
+        <Point>
+          <X>263</X>
           <Y>318</Y>
         </Point>
       </RoutePoints>
@@ -105,15 +109,11 @@
     <Connector ID="DesignRelation:FK_LOPTINCHI_MONHOC" ZOrder="18" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>373</X>
-          <Y>361</Y>
+          <X>148</X>
+          <Y>448</Y>
         </Point>
         <Point>
-          <X>263</X>
-          <Y>361</Y>
-        </Point>
-        <Point>
-          <X>263</X>
+          <X>148</X>
           <Y>318</Y>
         </Point>
       </RoutePoints>
