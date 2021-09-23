@@ -87,6 +87,7 @@ namespace QLDSV_HTC.ReportForms
         private void InDSSV_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dS.MONHOC' table. You can move, or remove it, as needed.
+            this.mONHOCTableAdapter.Connection.ConnectionString = Program.ConnStr;
             this.mONHOCTableAdapter.Fill(this.dS.MONHOC);
             if (Program.AuthGroup == "PGV")
             {

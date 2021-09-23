@@ -10369,7 +10369,7 @@ SELECT MASV, NIENKHOA, HOCKY, HOCPHI FROM HOCPHI WHERE (HOCKY = @HOCKY) AND (MAS
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=DESKTOP-7DBQMTA\\SERVER3;Initial Catalog=QLDSV_TC;Persist Security Inf" +
+            this._connection.ConnectionString = "Data Source=DESKTOP-I8UUUNH\\SERVER3;Initial Catalog=QLDSV_TC;Persist Security Inf" +
                 "o=True;User ID=sa;Password=123456";
         }
         
@@ -10733,7 +10733,7 @@ SELECT MASV, NIENKHOA, HOCKY, NGAYDONG, SOTIENDONG FROM CT_DONGHOCPHI WHERE (HOC
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=DESKTOP-7DBQMTA\\SERVER3;Initial Catalog=QLDSV_TC;Persist Security Inf" +
+            this._connection.ConnectionString = "Data Source=DESKTOP-I8UUUNH\\SERVER3;Initial Catalog=QLDSV_TC;Persist Security Inf" +
                 "o=True;User ID=sa;Password=123456";
         }
         
@@ -11079,7 +11079,7 @@ SELECT MASV, NIENKHOA, HOCKY, NGAYDONG, SOTIENDONG FROM CT_DONGHOCPHI WHERE (HOC
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=DESKTOP-7DBQMTA\\SERVER1;Initial Catalog=QLDSV_TC;Persist Security Inf" +
+            this._connection.ConnectionString = "Data Source=DESKTOP-I8UUUNH\\SERVER1;Initial Catalog=QLDSV_TC;Persist Security Inf" +
                 "o=True;User ID=HTKN;Password=123456";
         }
         
@@ -11447,7 +11447,7 @@ SELECT MASV, NIENKHOA, HOCKY, NGAYDONG, SOTIENDONG FROM CT_DONGHOCPHI WHERE (HOC
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=DESKTOP-7DBQMTA\\SERVER3;Initial Catalog=QLDSV_TC;Persist Security Inf" +
+            this._connection.ConnectionString = "Data Source=DESKTOP-I8UUUNH\\SERVER3;Initial Catalog=QLDSV_TC;Persist Security Inf" +
                 "o=True;User ID=sa;Password=123456";
         }
         
@@ -11659,7 +11659,7 @@ SELECT MASV, NIENKHOA, HOCKY, NGAYDONG, SOTIENDONG FROM CT_DONGHOCPHI WHERE (HOC
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=DESKTOP-7DBQMTA\\SERVER3;Initial Catalog=QLDSV_TC;Persist Security Inf" +
+            this._connection.ConnectionString = "Data Source=DESKTOP-I8UUUNH\\SERVER3;Initial Catalog=QLDSV_TC;Persist Security Inf" +
                 "o=True;User ID=sa;Password=123456";
         }
         

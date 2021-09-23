@@ -37,19 +37,19 @@ namespace QLDSV_HTC.ReportForms
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.button_preview = new System.Windows.Forms.Button();
             this.lookUpEdit_MH = new DevExpress.XtraEditors.LookUpEdit();
-            this.mONHOCBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dS = new QLDSV_HTC.DS();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox_Khoa = new System.Windows.Forms.ComboBox();
-            this.mONHOCTableAdapter = new QLDSV_HTC.DSTableAdapters.MONHOCTableAdapter();
             this.textEdit_HK = new DevExpress.XtraEditors.SpinEdit();
             this.textEdit_Nhom = new DevExpress.XtraEditors.SpinEdit();
+            this.mONHOCBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dS = new QLDSV_HTC.DS();
+            this.mONHOCTableAdapter = new QLDSV_HTC.DSTableAdapters.MONHOCTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit_NK.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit_MH.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mONHOCBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit_HK.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit_Nhom.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mONHOCBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS)).BeginInit();
             this.SuspendLayout();
             // 
             // textEdit_NK
@@ -125,16 +125,6 @@ namespace QLDSV_HTC.ReportForms
             this.lookUpEdit_MH.Size = new System.Drawing.Size(100, 20);
             this.lookUpEdit_MH.TabIndex = 23;
             // 
-            // mONHOCBindingSource
-            // 
-            this.mONHOCBindingSource.DataMember = "MONHOC";
-            this.mONHOCBindingSource.DataSource = this.dS;
-            // 
-            // dS
-            // 
-            this.dS.DataSetName = "DS";
-            this.dS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -154,10 +144,6 @@ namespace QLDSV_HTC.ReportForms
             this.comboBox_Khoa.Size = new System.Drawing.Size(288, 21);
             this.comboBox_Khoa.TabIndex = 24;
             this.comboBox_Khoa.SelectedIndexChanged += new System.EventHandler(this.comboBox_Khoa_SelectedIndexChanged);
-            // 
-            // mONHOCTableAdapter
-            // 
-            this.mONHOCTableAdapter.ClearBeforeFill = true;
             // 
             // textEdit_HK
             // 
@@ -217,6 +203,20 @@ namespace QLDSV_HTC.ReportForms
             this.textEdit_Nhom.TabIndex = 8;
             this.textEdit_Nhom.EditValueChanged += new System.EventHandler(this.textEdit_Nhom_EditValueChanged);
             // 
+            // mONHOCBindingSource
+            // 
+            this.mONHOCBindingSource.DataMember = "MONHOC";
+            this.mONHOCBindingSource.DataSource = this.dS;
+            // 
+            // dS
+            // 
+            this.dS.DataSetName = "DS";
+            this.dS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // mONHOCTableAdapter
+            // 
+            this.mONHOCTableAdapter.ClearBeforeFill = true;
+            // 
             // InDSSV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -238,10 +238,10 @@ namespace QLDSV_HTC.ReportForms
             this.Load += new System.EventHandler(this.InDSSV_Load);
             ((System.ComponentModel.ISupportInitialize)(this.textEdit_NK.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit_MH.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mONHOCBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit_HK.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit_Nhom.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mONHOCBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
