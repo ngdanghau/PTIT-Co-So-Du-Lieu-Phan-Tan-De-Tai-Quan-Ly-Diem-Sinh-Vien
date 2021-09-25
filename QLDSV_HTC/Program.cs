@@ -144,7 +144,6 @@ namespace QLDSV_HTC
                 XtraMessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Conn.Close();
                 return ex.State;
-
             }
         }
 

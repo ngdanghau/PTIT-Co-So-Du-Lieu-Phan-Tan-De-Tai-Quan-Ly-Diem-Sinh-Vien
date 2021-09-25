@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -157,12 +158,21 @@ namespace QLDSV_HTC.Forms
             this.Close();
         }
 
+        private bool checkMaMonHoc()
+        {
+            string query = string.Format(" EXEC sp_KiemTraMaMH N'{0}' ", txtMaMonHoc.Text.Trim());
+
+            var check = Program.ExecSqlNonQuery(query);
+            if(check == 0) return true;
+            return false;
+        }
+
         private void barButtonSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (!ValidateForm()) return;
+            if (!checkMaMonHoc()) return;
             try
             {
-
                 this.bdsMONHOC.EndEdit();
                 this.bdsMONHOC.ResetCurrentItem();
                 this.MONHOCTableAdapter.Update(this.DS.MONHOC);
@@ -175,8 +185,7 @@ namespace QLDSV_HTC.Forms
             catch (Exception ex)
             {
                 bdsMONHOC.RemoveCurrent();
-                XtraMessageBox.Show("Ghi dữ liệu thất lại. Vui lòng kiểm tra lại!\n" + ex.Message, "Lỗi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Ghi dữ liệu thất lại. Vui lòng kiểm tra lại!\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             SetButtonState(false);
         }

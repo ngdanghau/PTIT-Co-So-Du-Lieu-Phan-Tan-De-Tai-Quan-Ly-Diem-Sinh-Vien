@@ -309,6 +309,7 @@ namespace QLDSV_HTC.Forms
             this.txtTenMonHoc.Location = new System.Drawing.Point(102, 36);
             this.txtTenMonHoc.MenuManager = this.barManager1;
             this.txtTenMonHoc.Name = "txtTenMonHoc";
+            this.txtTenMonHoc.Properties.MaxLength = 50;
             this.txtTenMonHoc.Size = new System.Drawing.Size(396, 20);
             this.txtTenMonHoc.StyleController = this.layoutControl2;
             this.txtTenMonHoc.TabIndex = 6;
@@ -321,6 +322,7 @@ namespace QLDSV_HTC.Forms
             this.txtMaMonHoc.Name = "txtMaMonHoc";
             this.txtMaMonHoc.Properties.Mask.EditMask = "(\\p{Lu}|[0-9])+";
             this.txtMaMonHoc.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.txtMaMonHoc.Properties.MaxLength = 10;
             this.txtMaMonHoc.Size = new System.Drawing.Size(396, 20);
             this.txtMaMonHoc.StyleController = this.layoutControl2;
             this.txtMaMonHoc.TabIndex = 5;
@@ -391,6 +393,7 @@ namespace QLDSV_HTC.Forms
             this.tableAdapterManager.MONHOCTableAdapter = this.MONHOCTableAdapter;
             this.tableAdapterManager.SINHVIENTableAdapter = null;
             this.tableAdapterManager.sp_GetBangDiemMonHocTableAdapter = null;
+            this.tableAdapterManager.sp_GetThongTinDongHocPhiTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = QLDSV_HTC.DSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // gcMONHOC
