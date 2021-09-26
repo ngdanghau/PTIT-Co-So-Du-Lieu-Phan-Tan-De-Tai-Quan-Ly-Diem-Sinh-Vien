@@ -171,7 +171,7 @@ namespace QLDSV_HTC
 
         private void barButtonItem16_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            ShowMdiChildren(typeof(DangKyLTCForm));
         }
 
         private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
