@@ -46,6 +46,7 @@ namespace QLDSV_HTC.Forms
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.sp_LayDSLopTinChiDeDangKyGridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMAMH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTENMH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNHOM = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -58,6 +59,8 @@ namespace QLDSV_HTC.Forms
             this.sp_LayDSLopTinChiDaDangKyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dS = new QLDSV_HTC.DS();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colSTT = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMALTC = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMAMH1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTENMH1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNHOM1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -253,6 +256,7 @@ namespace QLDSV_HTC.Forms
             this.behaviorManager1.SetBehaviors(this.gridView1, new DevExpress.Utils.Behaviors.Behavior[] {
             ((DevExpress.Utils.Behaviors.Behavior)(DevExpress.Utils.Behaviors.Common.DisabledCellBehavior.Create(typeof(DevExpress.XtraGrid.Extensions.GridViewDisabledCellSource), "", appearanceObject1, this.disabledCellEvents1)))});
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
             this.colMAMH,
             this.colTENMH,
             this.colNHOM,
@@ -261,6 +265,20 @@ namespace QLDSV_HTC.Forms
             this.colSOLUONGCL});
             this.gridView1.GridControl = this.sp_LayDSLopTinChiDeDangKyGridControl;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsSelection.MultiSelect = true;
+            this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
+            this.gridView1.OptionsSelection.ShowCheckBoxSelectorInColumnHeader = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView1.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridView1_SelectionChanged);
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "STT";
+            this.gridColumn1.FieldName = "STT";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
+            this.gridColumn1.OptionsColumn.AllowFocus = false;
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 1;
             // 
             // colMAMH
             // 
@@ -270,7 +288,7 @@ namespace QLDSV_HTC.Forms
             this.colMAMH.OptionsColumn.AllowEdit = false;
             this.colMAMH.OptionsColumn.AllowFocus = false;
             this.colMAMH.Visible = true;
-            this.colMAMH.VisibleIndex = 0;
+            this.colMAMH.VisibleIndex = 2;
             // 
             // colTENMH
             // 
@@ -280,7 +298,7 @@ namespace QLDSV_HTC.Forms
             this.colTENMH.OptionsColumn.AllowEdit = false;
             this.colTENMH.OptionsColumn.AllowFocus = false;
             this.colTENMH.Visible = true;
-            this.colTENMH.VisibleIndex = 1;
+            this.colTENMH.VisibleIndex = 3;
             // 
             // colNHOM
             // 
@@ -291,7 +309,7 @@ namespace QLDSV_HTC.Forms
             this.colNHOM.OptionsColumn.AllowFocus = false;
             this.colNHOM.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
             this.colNHOM.Visible = true;
-            this.colNHOM.VisibleIndex = 3;
+            this.colNHOM.VisibleIndex = 5;
             // 
             // colHOTEN
             // 
@@ -301,7 +319,7 @@ namespace QLDSV_HTC.Forms
             this.colHOTEN.OptionsColumn.AllowEdit = false;
             this.colHOTEN.OptionsColumn.AllowFocus = false;
             this.colHOTEN.Visible = true;
-            this.colHOTEN.VisibleIndex = 2;
+            this.colHOTEN.VisibleIndex = 4;
             // 
             // colSOSVTOITHIEU
             // 
@@ -312,7 +330,7 @@ namespace QLDSV_HTC.Forms
             this.colSOSVTOITHIEU.OptionsColumn.AllowFocus = false;
             this.colSOSVTOITHIEU.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
             this.colSOSVTOITHIEU.Visible = true;
-            this.colSOSVTOITHIEU.VisibleIndex = 4;
+            this.colSOSVTOITHIEU.VisibleIndex = 6;
             // 
             // colSOLUONGCL
             // 
@@ -323,7 +341,7 @@ namespace QLDSV_HTC.Forms
             this.colSOLUONGCL.OptionsColumn.AllowFocus = false;
             this.colSOLUONGCL.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
             this.colSOLUONGCL.Visible = true;
-            this.colSOLUONGCL.VisibleIndex = 5;
+            this.colSOLUONGCL.VisibleIndex = 7;
             // 
             // groupControl3
             // 
@@ -370,6 +388,8 @@ namespace QLDSV_HTC.Forms
             // gridView2
             // 
             this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colSTT,
+            this.colMALTC,
             this.colMAMH1,
             this.colTENMH1,
             this.colNHOM1,
@@ -383,6 +403,25 @@ namespace QLDSV_HTC.Forms
             this.gridView2.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
             this.gridView2.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridView2_SelectionChanged);
             // 
+            // colSTT
+            // 
+            this.colSTT.Caption = "Số thứ tự";
+            this.colSTT.FieldName = "STT";
+            this.colSTT.Name = "colSTT";
+            this.colSTT.OptionsColumn.AllowEdit = false;
+            this.colSTT.OptionsColumn.AllowFocus = false;
+            this.colSTT.Visible = true;
+            this.colSTT.VisibleIndex = 2;
+            // 
+            // colMALTC
+            // 
+            this.colMALTC.FieldName = "MALTC";
+            this.colMALTC.Name = "colMALTC";
+            this.colMALTC.OptionsColumn.AllowEdit = false;
+            this.colMALTC.OptionsColumn.AllowFocus = false;
+            this.colMALTC.Visible = true;
+            this.colMALTC.VisibleIndex = 1;
+            // 
             // colMAMH1
             // 
             this.colMAMH1.Caption = "Mã môn học";
@@ -390,7 +429,7 @@ namespace QLDSV_HTC.Forms
             this.colMAMH1.Name = "colMAMH1";
             this.colMAMH1.OptionsColumn.AllowEdit = false;
             this.colMAMH1.Visible = true;
-            this.colMAMH1.VisibleIndex = 1;
+            this.colMAMH1.VisibleIndex = 3;
             // 
             // colTENMH1
             // 
@@ -399,7 +438,7 @@ namespace QLDSV_HTC.Forms
             this.colTENMH1.Name = "colTENMH1";
             this.colTENMH1.OptionsColumn.AllowEdit = false;
             this.colTENMH1.Visible = true;
-            this.colTENMH1.VisibleIndex = 2;
+            this.colTENMH1.VisibleIndex = 4;
             // 
             // colNHOM1
             // 
@@ -408,7 +447,7 @@ namespace QLDSV_HTC.Forms
             this.colNHOM1.Name = "colNHOM1";
             this.colNHOM1.OptionsColumn.AllowEdit = false;
             this.colNHOM1.Visible = true;
-            this.colNHOM1.VisibleIndex = 4;
+            this.colNHOM1.VisibleIndex = 6;
             // 
             // colNIENKHOA
             // 
@@ -417,7 +456,7 @@ namespace QLDSV_HTC.Forms
             this.colNIENKHOA.Name = "colNIENKHOA";
             this.colNIENKHOA.OptionsColumn.AllowEdit = false;
             this.colNIENKHOA.Visible = true;
-            this.colNIENKHOA.VisibleIndex = 3;
+            this.colNIENKHOA.VisibleIndex = 5;
             // 
             // panelControl2
             // 
@@ -430,11 +469,13 @@ namespace QLDSV_HTC.Forms
             // 
             // btnXoaDangKy
             // 
+            this.btnXoaDangKy.Enabled = false;
             this.btnXoaDangKy.Location = new System.Drawing.Point(22, 5);
             this.btnXoaDangKy.Name = "btnXoaDangKy";
             this.btnXoaDangKy.Size = new System.Drawing.Size(75, 23);
             this.btnXoaDangKy.TabIndex = 0;
             this.btnXoaDangKy.Text = "Xóa";
+            this.btnXoaDangKy.Click += new System.EventHandler(this.btnXoaDangKy_Click);
             // 
             // disabledCellEvents1
             // 
@@ -539,5 +580,8 @@ namespace QLDSV_HTC.Forms
         private DevExpress.XtraGrid.Columns.GridColumn colNHOM1;
         private DevExpress.XtraEditors.SimpleButton btnXoaDangKy;
         private DevExpress.XtraGrid.Columns.GridColumn colNIENKHOA;
+        private DevExpress.XtraGrid.Columns.GridColumn colSTT;
+        private DevExpress.XtraGrid.Columns.GridColumn colMALTC;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }
 }

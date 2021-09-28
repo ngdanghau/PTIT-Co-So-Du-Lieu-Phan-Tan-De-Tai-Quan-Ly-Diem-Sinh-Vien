@@ -5109,6 +5109,10 @@ namespace QLDSV_HTC {
             
             private global::System.Data.DataColumn columnSOSVTOITHIEU;
             
+            private global::System.Data.DataColumn columnMALTC;
+            
+            private global::System.Data.DataColumn columnSTT;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public sp_LayDSLopTinChiDeDangKyDataTable() {
@@ -5192,6 +5196,22 @@ namespace QLDSV_HTC {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn MALTCColumn {
+                get {
+                    return this.columnMALTC;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn STTColumn {
+                get {
+                    return this.columnSTT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -5227,7 +5247,7 @@ namespace QLDSV_HTC {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public sp_LayDSLopTinChiDeDangKyRow Addsp_LayDSLopTinChiDeDangKyRow(string MAMH, string TENMH, int NHOM, string HO_TEN, int SOSVDK, int SOSVTOITHIEU) {
+            public sp_LayDSLopTinChiDeDangKyRow Addsp_LayDSLopTinChiDeDangKyRow(string MAMH, string TENMH, int NHOM, string HO_TEN, int SOSVDK, int SOSVTOITHIEU, long STT) {
                 sp_LayDSLopTinChiDeDangKyRow rowsp_LayDSLopTinChiDeDangKyRow = ((sp_LayDSLopTinChiDeDangKyRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         MAMH,
@@ -5235,7 +5255,9 @@ namespace QLDSV_HTC {
                         NHOM,
                         HO_TEN,
                         SOSVDK,
-                        SOSVTOITHIEU};
+                        SOSVTOITHIEU,
+                        null,
+                        STT};
                 rowsp_LayDSLopTinChiDeDangKyRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowsp_LayDSLopTinChiDeDangKyRow);
                 return rowsp_LayDSLopTinChiDeDangKyRow;
@@ -5264,6 +5286,8 @@ namespace QLDSV_HTC {
                 this.columnHO_TEN = base.Columns["HO TEN"];
                 this.columnSOSVDK = base.Columns["SOSVDK"];
                 this.columnSOSVTOITHIEU = base.Columns["SOSVTOITHIEU"];
+                this.columnMALTC = base.Columns["MALTC"];
+                this.columnSTT = base.Columns["STT"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5281,6 +5305,10 @@ namespace QLDSV_HTC {
                 base.Columns.Add(this.columnSOSVDK);
                 this.columnSOSVTOITHIEU = new global::System.Data.DataColumn("SOSVTOITHIEU", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSOSVTOITHIEU);
+                this.columnMALTC = new global::System.Data.DataColumn("MALTC", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMALTC);
+                this.columnSTT = new global::System.Data.DataColumn("STT", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSTT);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnMAMH}, false));
                 this.columnMAMH.Unique = true;
@@ -5291,6 +5319,12 @@ namespace QLDSV_HTC {
                 this.columnHO_TEN.MaxLength = 61;
                 this.columnSOSVDK.ReadOnly = true;
                 this.columnSOSVTOITHIEU.AllowDBNull = false;
+                this.columnMALTC.AutoIncrement = true;
+                this.columnMALTC.AutoIncrementSeed = -1;
+                this.columnMALTC.AutoIncrementStep = -1;
+                this.columnMALTC.AllowDBNull = false;
+                this.columnMALTC.ReadOnly = true;
+                this.columnSTT.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5434,6 +5468,10 @@ namespace QLDSV_HTC {
             
             private global::System.Data.DataColumn columnMAGV;
             
+            private global::System.Data.DataColumn columnSTT;
+            
+            private global::System.Data.DataColumn columnMALTC;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public sp_LayDSLopTinChiDaDangKyDataTable() {
@@ -5509,6 +5547,22 @@ namespace QLDSV_HTC {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn STTColumn {
+                get {
+                    return this.columnSTT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn MALTCColumn {
+                get {
+                    return this.columnMALTC;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -5544,14 +5598,16 @@ namespace QLDSV_HTC {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public sp_LayDSLopTinChiDaDangKyRow Addsp_LayDSLopTinChiDaDangKyRow(string MAMH, string TENMH, int NHOM, string NIENKHOA, string MAGV) {
+            public sp_LayDSLopTinChiDaDangKyRow Addsp_LayDSLopTinChiDaDangKyRow(string MAMH, string TENMH, int NHOM, string NIENKHOA, string MAGV, long STT) {
                 sp_LayDSLopTinChiDaDangKyRow rowsp_LayDSLopTinChiDaDangKyRow = ((sp_LayDSLopTinChiDaDangKyRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         MAMH,
                         TENMH,
                         NHOM,
                         NIENKHOA,
-                        MAGV};
+                        MAGV,
+                        STT,
+                        null};
                 rowsp_LayDSLopTinChiDaDangKyRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowsp_LayDSLopTinChiDaDangKyRow);
                 return rowsp_LayDSLopTinChiDaDangKyRow;
@@ -5586,6 +5642,8 @@ namespace QLDSV_HTC {
                 this.columnNHOM = base.Columns["NHOM"];
                 this.columnNIENKHOA = base.Columns["NIENKHOA"];
                 this.columnMAGV = base.Columns["MAGV"];
+                this.columnSTT = base.Columns["STT"];
+                this.columnMALTC = base.Columns["MALTC"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5601,6 +5659,10 @@ namespace QLDSV_HTC {
                 base.Columns.Add(this.columnNIENKHOA);
                 this.columnMAGV = new global::System.Data.DataColumn("MAGV", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMAGV);
+                this.columnSTT = new global::System.Data.DataColumn("STT", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSTT);
+                this.columnMALTC = new global::System.Data.DataColumn("MALTC", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMALTC);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnMAMH}, true));
                 this.columnMAMH.AllowDBNull = false;
@@ -5613,6 +5675,12 @@ namespace QLDSV_HTC {
                 this.columnNIENKHOA.MaxLength = 9;
                 this.columnMAGV.AllowDBNull = false;
                 this.columnMAGV.MaxLength = 10;
+                this.columnSTT.ReadOnly = true;
+                this.columnMALTC.AutoIncrement = true;
+                this.columnMALTC.AutoIncrementSeed = -1;
+                this.columnMALTC.AutoIncrementStep = -1;
+                this.columnMALTC.AllowDBNull = false;
+                this.columnMALTC.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7295,6 +7363,33 @@ namespace QLDSV_HTC {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int MALTC {
+                get {
+                    return ((int)(this[this.tablesp_LayDSLopTinChiDeDangKy.MALTCColumn]));
+                }
+                set {
+                    this[this.tablesp_LayDSLopTinChiDeDangKy.MALTCColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long STT {
+                get {
+                    try {
+                        return ((long)(this[this.tablesp_LayDSLopTinChiDeDangKy.STTColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'STT\' in table \'sp_LayDSLopTinChiDeDangKy\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_LayDSLopTinChiDeDangKy.STTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsMAMHNull() {
                 return this.IsNull(this.tablesp_LayDSLopTinChiDeDangKy.MAMHColumn);
             }
@@ -7339,6 +7434,18 @@ namespace QLDSV_HTC {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetSOSVDKNull() {
                 this[this.tablesp_LayDSLopTinChiDeDangKy.SOSVDKColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSTTNull() {
+                return this.IsNull(this.tablesp_LayDSLopTinChiDeDangKy.STTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSTTNull() {
+                this[this.tablesp_LayDSLopTinChiDeDangKy.STTColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -7409,6 +7516,45 @@ namespace QLDSV_HTC {
                 set {
                     this[this.tablesp_LayDSLopTinChiDaDangKy.MAGVColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long STT {
+                get {
+                    try {
+                        return ((long)(this[this.tablesp_LayDSLopTinChiDaDangKy.STTColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'STT\' in table \'sp_LayDSLopTinChiDaDangKy\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_LayDSLopTinChiDaDangKy.STTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int MALTC {
+                get {
+                    return ((int)(this[this.tablesp_LayDSLopTinChiDaDangKy.MALTCColumn]));
+                }
+                set {
+                    this[this.tablesp_LayDSLopTinChiDaDangKy.MALTCColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSTTNull() {
+                return this.IsNull(this.tablesp_LayDSLopTinChiDaDangKy.STTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSTTNull() {
+                this[this.tablesp_LayDSLopTinChiDaDangKy.STTColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -12871,6 +13017,8 @@ SELECT MASV, NIENKHOA, HOCKY, NGAYDONG, SOTIENDONG FROM CT_DONGHOCPHI WHERE (HOC
             tableMapping.ColumnMappings.Add("HO TEN", "HO TEN");
             tableMapping.ColumnMappings.Add("SOSVDK", "SOSVDK");
             tableMapping.ColumnMappings.Add("SOSVTOITHIEU", "SOSVTOITHIEU");
+            tableMapping.ColumnMappings.Add("MALTC", "MALTC");
+            tableMapping.ColumnMappings.Add("STT", "STT");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -13070,6 +13218,8 @@ SELECT MASV, NIENKHOA, HOCKY, NGAYDONG, SOTIENDONG FROM CT_DONGHOCPHI WHERE (HOC
             tableMapping.ColumnMappings.Add("NHOM", "NHOM");
             tableMapping.ColumnMappings.Add("NIENKHOA", "NIENKHOA");
             tableMapping.ColumnMappings.Add("MAGV", "MAGV");
+            tableMapping.ColumnMappings.Add("STT", "STT");
+            tableMapping.ColumnMappings.Add("MALTC", "MALTC");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

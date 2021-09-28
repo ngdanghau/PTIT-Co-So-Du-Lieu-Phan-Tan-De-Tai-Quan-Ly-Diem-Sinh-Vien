@@ -791,12 +791,14 @@ SELECT MASV, NIENKHOA, HOCKY, NGAYDONG, SOTIENDONG FROM CT_DONGHOCPHI WHERE (HOC
               <Mapping SourceColumn="HO TEN" DataSetColumn="HO TEN" />
               <Mapping SourceColumn="SOSVDK" DataSetColumn="SOSVDK" />
               <Mapping SourceColumn="SOSVTOITHIEU" DataSetColumn="SOSVTOITHIEU" />
+              <Mapping SourceColumn="MALTC" DataSetColumn="MALTC" />
+              <Mapping SourceColumn="STT" DataSetColumn="STT" />
             </Mappings>
             <Sources />
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="sp_LayDSLopTinChiDaDangKyTableAdapter" GeneratorDataComponentClassName="sp_LayDSLopTinChiDaDangKyTableAdapter" Name="sp_LayDSLopTinChiDaDangKy" UserDataComponentName="sp_LayDSLopTinChiDaDangKyTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="desktop-7dbqmta\server1.QLDSV_TC.dbo" DbObjectName="QLDSV_TC.dbo.sp_LayDSLopTinChiDaDangKy" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="desktop-7dbqmta\server1.QLDSV_TC.dbo" DbObjectName="QLDSV_TC.dbo.sp_LayDSLopTinChiDaDangKy" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.sp_LayDSLopTinChiDaDangKy</CommandText>
@@ -816,6 +818,8 @@ SELECT MASV, NIENKHOA, HOCKY, NGAYDONG, SOTIENDONG FROM CT_DONGHOCPHI WHERE (HOC
               <Mapping SourceColumn="NHOM" DataSetColumn="NHOM" />
               <Mapping SourceColumn="NIENKHOA" DataSetColumn="NIENKHOA" />
               <Mapping SourceColumn="MAGV" DataSetColumn="MAGV" />
+              <Mapping SourceColumn="STT" DataSetColumn="STT" />
+              <Mapping SourceColumn="MALTC" DataSetColumn="MALTC" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -1234,6 +1238,8 @@ SELECT MASV, NIENKHOA, HOCKY, NGAYDONG, SOTIENDONG FROM CT_DONGHOCPHI WHERE (HOC
               </xs:element>
               <xs:element name="SOSVDK" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSOSVDK" msprop:Generator_ColumnPropNameInRow="SOSVDK" msprop:Generator_ColumnPropNameInTable="SOSVDKColumn" msprop:Generator_UserColumnName="SOSVDK" type="xs:int" minOccurs="0" />
               <xs:element name="SOSVTOITHIEU" msprop:Generator_ColumnVarNameInTable="columnSOSVTOITHIEU" msprop:Generator_ColumnPropNameInRow="SOSVTOITHIEU" msprop:Generator_ColumnPropNameInTable="SOSVTOITHIEUColumn" msprop:Generator_UserColumnName="SOSVTOITHIEU" type="xs:int" />
+              <xs:element name="MALTC" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnMALTC" msprop:Generator_ColumnPropNameInRow="MALTC" msprop:Generator_ColumnPropNameInTable="MALTCColumn" msprop:Generator_UserColumnName="MALTC" type="xs:int" />
+              <xs:element name="STT" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSTT" msprop:Generator_ColumnPropNameInRow="STT" msprop:Generator_ColumnPropNameInTable="STTColumn" msprop:Generator_UserColumnName="STT" type="xs:long" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1269,6 +1275,8 @@ SELECT MASV, NIENKHOA, HOCKY, NGAYDONG, SOTIENDONG FROM CT_DONGHOCPHI WHERE (HOC
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="STT" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSTT" msprop:Generator_ColumnPropNameInRow="STT" msprop:Generator_ColumnPropNameInTable="STTColumn" msprop:Generator_UserColumnName="STT" type="xs:long" minOccurs="0" />
+              <xs:element name="MALTC" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnMALTC" msprop:Generator_ColumnPropNameInRow="MALTC" msprop:Generator_ColumnPropNameInTable="MALTCColumn" msprop:Generator_UserColumnName="MALTC" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
