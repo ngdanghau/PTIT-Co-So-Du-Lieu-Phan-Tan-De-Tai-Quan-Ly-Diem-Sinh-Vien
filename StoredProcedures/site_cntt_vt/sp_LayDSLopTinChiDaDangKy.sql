@@ -1,0 +1,28 @@
+USE [QLDSV_TC]
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE OR ALTER PROCEDURE sp_LayDSLopTinChiDaDangKy
+	-- khai bao cac bien tam 
+	@MASV nchar(10), @NIENKHOA nchar(9), @HOCKY int
+AS
+BEGIN
+
+	SELECT ROW_NUMBER() over(ORDER BY MH.TENMH, LTC.NHOM) STT,LTC.MALTC, MH.MAMH, MH.TENMH, LTC.NHOM
+	FROM  LOPTINCHI as LTC
+
+	INNER JOIN MONHOC as MH ON MH.MAMH = LTC.MAMH
+	INNER JOIN (SELECT MASV, MALTC FROM DANGKY WHERE MASV = @MASV AND HUYDANGKY = 0) as DK ON DK.MALTC = LTC.MALTC
+
+	WHERE LTC.NIENKHOA = @NIENKHOA AND LTC.HOCKY = @HOCKY AND LTC.HUYLOP = 0 
+	GROUP BY LTC.NHOM, MH.MAMH, MH.TENMH, LTC.MALTC
+	ORDER BY MH.TENMH, LTC.NHOM
+	  
+END
+GO

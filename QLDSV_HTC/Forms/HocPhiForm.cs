@@ -248,10 +248,14 @@ namespace QLDSV_HTC.Forms
             {
                 this.sp_GetThongTinDongHocPhiBindingSource.EndEdit();
                 this.sp_GetThongTinDongHocPhiBindingSource.ResetCurrentItem();
-                this.sp_GetThongTinDongHocPhiTableAdapter.SuaHocPhi(HocPhiData.MaSV, HocPhiData.NienKhoa, HocPhiData.HocKy, HocPhiData.NienKhoaNew, HocPhiData.HocKyNew, HocPhiData.HocPhiNew);
 
-                if (state == "edit")
+
+                if (state == "add") {
+                    this.sp_GetThongTinDongHocPhiTableAdapter.Update(this.DS.sp_GetThongTinDongHocPhi);
+                } 
+                else if (state == "edit")
                 {
+                    this.sp_GetThongTinDongHocPhiTableAdapter.SuaHocPhi(HocPhiData.MaSV, HocPhiData.NienKhoa, HocPhiData.HocKy, HocPhiData.NienKhoaNew, HocPhiData.HocKyNew, HocPhiData.HocPhiNew);
                     Console.WriteLine(string.Format("UPDATE HOCPHI " +
                                                  "SET NIENKHOA = N'{0}', HOCKY = {1}, HOCPHI = {2} " +
                                                  "WHERE MASV = N'{3}' AND NIENKHOA = N'{4}' AND HOCKY = {5}", HocPhiData.NienKhoa, HocPhiData.HocKy, HocPhiData.HocPhi, HocPhiData.MaSV, HocPhiData.NienKhoaNew, HocPhiData.HocKyNew));
