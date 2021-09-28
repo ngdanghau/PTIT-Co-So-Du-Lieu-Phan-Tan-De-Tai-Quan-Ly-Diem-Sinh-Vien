@@ -179,7 +179,7 @@ namespace QLDSV_HTC.Forms
         private void barButtonSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (!ValidateForm()) return;
-            if (!checkMaLop()) return;
+            if (state == "add" && !checkMaLop()) return;
             try
             {
                 this.bdsLOP.EndEdit();

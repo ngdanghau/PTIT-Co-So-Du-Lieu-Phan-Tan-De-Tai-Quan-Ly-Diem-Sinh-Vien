@@ -184,7 +184,7 @@ namespace QLDSV_HTC.Forms
         private void barButtonSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (!ValidateForm()) return;
-            if (!checkLTC()) return;
+            if (state == "add" && !checkLTC()) return;
             try
             {
                 this.bdsLOPTINCHI.EndEdit();

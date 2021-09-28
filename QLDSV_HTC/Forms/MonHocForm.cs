@@ -170,7 +170,8 @@ namespace QLDSV_HTC.Forms
         private void barButtonSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (!ValidateForm()) return;
-            if (!checkMaMonHoc()) return;
+
+            if (state == "add" && !checkMaMonHoc()) return;
             try
             {
                 this.bdsMONHOC.EndEdit();
