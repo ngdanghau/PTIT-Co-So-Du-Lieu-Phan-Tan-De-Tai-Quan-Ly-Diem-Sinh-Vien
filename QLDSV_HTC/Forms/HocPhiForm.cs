@@ -122,7 +122,7 @@ namespace QLDSV_HTC.Forms
             {
                 this.sp_GetChiTietDongHocPhiTableAdapter.Fill(this.DS.sp_GetChiTietDongHocPhi, txtMaSV.Text.Trim(), txtNienKhoa.Text.Trim(), int.Parse(txtHocKy.Text));
 
-                HocPhiData = new HocPhiClass(txtMaSV.Text.Trim(), txtNienKhoa.Text.Trim(), int.Parse(txtHocKy.Text), int.Parse(txtHocPhi.Text));
+                HocPhiData = new HocPhiClass(txtMaSV.Text.Trim(), txtNienKhoa.Text.Trim(), int.Parse(txtHocKy.Text), int.Parse(txtHocPhi.EditValue.ToString()), txtNienKhoa.Text.Trim(), int.Parse(txtHocKy.Text), int.Parse(txtHocPhi.EditValue.ToString()));
             }
             catch (Exception ex)
             {
@@ -153,7 +153,7 @@ namespace QLDSV_HTC.Forms
                 return false;
             }
 
-            if (txtHocPhi.Text.Trim() == "")
+            if (txtHocPhi.EditValue.ToString().Trim() == "")
             {
                 XtraMessageBox.Show("Học phí không được để trống!", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -225,26 +225,40 @@ namespace QLDSV_HTC.Forms
             barButtonUndo.Enabled = undoStack.Count > 0;
         }
 
+        private bool checkHocPhi()
+        {
+            string query = string.Format(" EXEC sp_KiemTraHocPhi @MASV =  N'{0}', @NIENKHOA = N'{1}', @HOCKY = {2}", maSV, txtNienKhoa.Text.Trim(), Convert.ToInt32(txtHocKy.Text.Trim()));
+            var check = Program.ExecSqlNonQuery(query);
+            if (check == 0) return true;
+            return false;
+        }
+
         private void barButtonSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (!ValidateForm()) return;
+            if (state == "add" && !checkHocPhi()) return;
 
+            if(state == "edit")
+            {
+                HocPhiData.NienKhoaNew = txtNienKhoa.Text.Trim();
+                HocPhiData.HocKyNew = Convert.ToInt32(txtHocKy.Text);
+                HocPhiData.HocPhiNew = Convert.ToInt32(txtHocPhi.EditValue.ToString());
+            }
             try
             {
                 this.sp_GetThongTinDongHocPhiBindingSource.EndEdit();
                 this.sp_GetThongTinDongHocPhiBindingSource.ResetCurrentItem();
-                this.sp_GetThongTinDongHocPhiTableAdapter.Update(this.DS.sp_GetThongTinDongHocPhi);
+                this.sp_GetThongTinDongHocPhiTableAdapter.SuaHocPhi(HocPhiData.MaSV, HocPhiData.NienKhoa, HocPhiData.HocKy, HocPhiData.NienKhoaNew, HocPhiData.HocKyNew, HocPhiData.HocPhiNew);
 
                 if (state == "edit")
                 {
                     Console.WriteLine(string.Format("UPDATE HOCPHI " +
-                                                 "SET MASV = N'{0}', NIENKHOA = N'{1}', HOCKY = {2}, HOCPHI = {3} " +
-                                                 "WHERE MASV = N'{4}' AND NIENKHOA = N'{5}' AND HOCKY = {6}",
-                                                  HocPhiData.MaSV, HocPhiData.NienKhoa, HocPhiData.HocKy, HocPhiData.HocPhi, HocPhiData.MaSV, HocPhiData.NienKhoa, HocPhiData.HocKy));
+                                                 "SET NIENKHOA = N'{0}', HOCKY = {1}, HOCPHI = {2} " +
+                                                 "WHERE MASV = N'{3}' AND NIENKHOA = N'{4}' AND HOCKY = {5}", HocPhiData.NienKhoa, HocPhiData.HocKy, HocPhiData.HocPhi, HocPhiData.MaSV, HocPhiData.NienKhoaNew, HocPhiData.HocKyNew));
+
                     undoStack.Push(string.Format("UPDATE HOCPHI " +
-                                                 "SET MASV = N'{0}', NIENKHOA = N'{1}', HOCKY = {2}, HOCPHI = {3} " +
-                                                 "WHERE MASV = N'{4}' AND NIENKHOA = N'{5}' AND HOCKY = {6}",
-                                                  HocPhiData.MaSV, HocPhiData.NienKhoa, HocPhiData.HocKy, HocPhiData.HocPhi,        HocPhiData.MaSV, HocPhiData.NienKhoa, HocPhiData.HocKy));
+                                                 "SET NIENKHOA = N'{0}', HOCKY = {1}, HOCPHI = {2} " +
+                                                 "WHERE MASV = N'{3}' AND NIENKHOA = N'{4}' AND HOCKY = {5}", HocPhiData.NienKhoa, HocPhiData.HocKy, HocPhiData.HocPhi, HocPhiData.MaSV, HocPhiData.NienKhoaNew, HocPhiData.HocKyNew));
                 }
             }
             catch (Exception ex)
