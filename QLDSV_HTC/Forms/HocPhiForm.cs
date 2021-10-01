@@ -292,5 +292,10 @@ namespace QLDSV_HTC.Forms
             }
             this.Close();
         }
+
+        private void HocPhiForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

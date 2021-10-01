@@ -54,14 +54,16 @@ namespace QLDSV_HTC.Forms
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.txtHocPhi = new DevExpress.XtraEditors.SpinEdit();
+            this.textMaSV = new DevExpress.XtraEditors.TextEdit();
             this.sp_GetThongTinDongHocPhiBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.txtHocPhi = new DevExpress.XtraEditors.SpinEdit();
             this.txtHocKy = new DevExpress.XtraEditors.SpinEdit();
             this.txtNienKhoa = new DevExpress.XtraEditors.TextEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -91,8 +93,6 @@ namespace QLDSV_HTC.Forms
             this.colSOTIENDONG = new DevExpress.XtraGrid.Columns.GridColumn();
             this.sp_GetThongTinDongHocPhiTableAdapter = new QLDSV_HTC.DSTableAdapters.sp_GetThongTinDongHocPhiTableAdapter();
             this.sp_GetChiTietDongHocPhiTableAdapter = new QLDSV_HTC.DSTableAdapters.sp_GetChiTietDongHocPhiTableAdapter();
-            this.textMaSV = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.DS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -101,14 +101,16 @@ namespace QLDSV_HTC.Forms
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtHocPhi.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textMaSV.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sp_GetThongTinDongHocPhiBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHocPhi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHocKy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNienKhoa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
@@ -134,8 +136,6 @@ namespace QLDSV_HTC.Forms
             ((System.ComponentModel.ISupportInitialize)(this.sp_GetChiTietDongHocPhiGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sp_GetChiTietDongHocPhiBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textMaSV.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             this.SuspendLayout();
             // 
             // DS
@@ -376,6 +376,22 @@ namespace QLDSV_HTC.Forms
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // textMaSV
+            // 
+            this.textMaSV.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sp_GetThongTinDongHocPhiBindingSource, "MASV", true));
+            this.textMaSV.Enabled = false;
+            this.textMaSV.Location = new System.Drawing.Point(78, 36);
+            this.textMaSV.MenuManager = this.barManager2;
+            this.textMaSV.Name = "textMaSV";
+            this.textMaSV.Size = new System.Drawing.Size(126, 20);
+            this.textMaSV.StyleController = this.layoutControl1;
+            this.textMaSV.TabIndex = 8;
+            // 
+            // sp_GetThongTinDongHocPhiBindingSource
+            // 
+            this.sp_GetThongTinDongHocPhiBindingSource.DataMember = "sp_GetThongTinDongHocPhi";
+            this.sp_GetThongTinDongHocPhiBindingSource.DataSource = this.DS;
+            // 
             // txtHocPhi
             // 
             this.txtHocPhi.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sp_GetThongTinDongHocPhiBindingSource, "HOCPHI", true));
@@ -404,11 +420,6 @@ namespace QLDSV_HTC.Forms
             this.txtHocPhi.Size = new System.Drawing.Size(161, 20);
             this.txtHocPhi.StyleController = this.layoutControl1;
             this.txtHocPhi.TabIndex = 7;
-            // 
-            // sp_GetThongTinDongHocPhiBindingSource
-            // 
-            this.sp_GetThongTinDongHocPhiBindingSource.DataMember = "sp_GetThongTinDongHocPhi";
-            this.sp_GetThongTinDongHocPhiBindingSource.DataSource = this.DS;
             // 
             // txtHocKy
             // 
@@ -490,6 +501,15 @@ namespace QLDSV_HTC.Forms
             this.layoutControlItem4.Size = new System.Drawing.Size(231, 24);
             this.layoutControlItem4.Text = "Học kỳ:";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(63, 13);
+            // 
+            // layoutControlItem9
+            // 
+            this.layoutControlItem9.Control = this.textMaSV;
+            this.layoutControlItem9.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem9.Name = "layoutControlItem9";
+            this.layoutControlItem9.Size = new System.Drawing.Size(196, 53);
+            this.layoutControlItem9.Text = "Mã sinh viên:";
+            this.layoutControlItem9.TextSize = new System.Drawing.Size(63, 13);
             // 
             // groupControl1
             // 
@@ -785,26 +805,6 @@ namespace QLDSV_HTC.Forms
             // 
             this.sp_GetChiTietDongHocPhiTableAdapter.ClearBeforeFill = true;
             // 
-            // textMaSV
-            // 
-            this.textMaSV.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sp_GetThongTinDongHocPhiBindingSource, "MASV", true));
-            this.textMaSV.Enabled = false;
-            this.textMaSV.Location = new System.Drawing.Point(78, 36);
-            this.textMaSV.MenuManager = this.barManager2;
-            this.textMaSV.Name = "textMaSV";
-            this.textMaSV.Size = new System.Drawing.Size(126, 20);
-            this.textMaSV.StyleController = this.layoutControl1;
-            this.textMaSV.TabIndex = 8;
-            // 
-            // layoutControlItem9
-            // 
-            this.layoutControlItem9.Control = this.textMaSV;
-            this.layoutControlItem9.Location = new System.Drawing.Point(0, 24);
-            this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(196, 53);
-            this.layoutControlItem9.Text = "Mã sinh viên:";
-            this.layoutControlItem9.TextSize = new System.Drawing.Size(63, 13);
-            // 
             // HocPhiForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -823,6 +823,7 @@ namespace QLDSV_HTC.Forms
             this.Controls.Add(this.barDockControl1);
             this.Name = "HocPhiForm";
             this.Text = "Quản lý học phí";
+            this.Load += new System.EventHandler(this.HocPhiForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
@@ -831,14 +832,16 @@ namespace QLDSV_HTC.Forms
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtHocPhi.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textMaSV.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sp_GetThongTinDongHocPhiBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHocPhi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHocKy.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNienKhoa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
@@ -864,8 +867,6 @@ namespace QLDSV_HTC.Forms
             ((System.ComponentModel.ISupportInitialize)(this.sp_GetChiTietDongHocPhiGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sp_GetChiTietDongHocPhiBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textMaSV.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

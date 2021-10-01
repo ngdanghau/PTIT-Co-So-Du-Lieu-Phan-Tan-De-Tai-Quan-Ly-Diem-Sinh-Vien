@@ -141,7 +141,7 @@ namespace QLDSV_HTC
 
         private void barButtonItem13_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-           
+            ShowMdiChildren(typeof(SinhVienForm));
         }
 
         private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

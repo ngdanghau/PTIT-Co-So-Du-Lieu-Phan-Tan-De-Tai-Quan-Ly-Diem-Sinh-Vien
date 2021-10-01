@@ -50,14 +50,10 @@ namespace QLDSV_HTC.Forms
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.cmbKhoa = new System.Windows.Forms.ComboBox();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.gcLOP = new DevExpress.XtraGrid.GridControl();
             this.bdsLOP = new System.Windows.Forms.BindingSource(this.components);
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colMALOP = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTENLOP = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colKHOAHOC = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMAKHOA = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.LOPTableAdapter = new QLDSV_HTC.DSTableAdapters.LOPTableAdapter();
+            this.bdsSINHVIEN = new System.Windows.Forms.BindingSource(this.components);
+            this.SINHVIENTableAdapter = new QLDSV_HTC.DSTableAdapters.SINHVIENTableAdapter();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
@@ -70,18 +66,19 @@ namespace QLDSV_HTC.Forms
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.LOPTableAdapter = new QLDSV_HTC.DSTableAdapters.LOPTableAdapter();
-            this.bdsSINHVIEN = new System.Windows.Forms.BindingSource(this.components);
-            this.SINHVIENTableAdapter = new QLDSV_HTC.DSTableAdapters.SINHVIENTableAdapter();
+            this.gcLOP = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colMALOP = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTENLOP = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colKHOAHOC = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMAKHOA = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.DS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
-            this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gcLOP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLOP)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsSINHVIEN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
@@ -97,7 +94,10 @@ namespace QLDSV_HTC.Forms
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsSINHVIEN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcLOP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            this.panelControl2.SuspendLayout();
             this.SuspendLayout();
             // 
             // DS
@@ -132,6 +132,7 @@ namespace QLDSV_HTC.Forms
             this.bar2.DockCol = 0;
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar2.FloatLocation = new System.Drawing.Point(232, 185);
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonAdd),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonEdit),
@@ -266,6 +267,7 @@ namespace QLDSV_HTC.Forms
             this.tableAdapterManager.MONHOCTableAdapter = null;
             this.tableAdapterManager.SINHVIENTableAdapter = null;
             this.tableAdapterManager.sp_GetBangDiemMonHocTableAdapter = null;
+            this.tableAdapterManager.sp_GetThongTinDongHocPhiTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = QLDSV_HTC.DSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // panelControl1
@@ -296,84 +298,23 @@ namespace QLDSV_HTC.Forms
             this.labelControl1.TabIndex = 1;
             this.labelControl1.Text = "Khoa";
             // 
-            // panelControl2
-            // 
-            this.panelControl2.Controls.Add(this.gcLOP);
-            this.panelControl2.Controls.Add(this.panelControl3);
-            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(0, 60);
-            this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1083, 512);
-            this.panelControl2.TabIndex = 12;
-            // 
-            // gcLOP
-            // 
-            this.gcLOP.DataSource = this.bdsLOP;
-            this.gcLOP.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcLOP.Location = new System.Drawing.Point(2, 2);
-            this.gcLOP.MainView = this.gridView1;
-            this.gcLOP.MenuManager = this.barManager1;
-            this.gcLOP.Name = "gcLOP";
-            this.gcLOP.Size = new System.Drawing.Size(1079, 383);
-            this.gcLOP.TabIndex = 1;
-            this.gcLOP.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            // 
             // bdsLOP
             // 
             this.bdsLOP.DataMember = "LOP";
             this.bdsLOP.DataSource = this.DS;
             // 
-            // gridView1
+            // LOPTableAdapter
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colMALOP,
-            this.colTENLOP,
-            this.colKHOAHOC,
-            this.colMAKHOA});
-            this.gridView1.GridControl = this.gcLOP;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
+            this.LOPTableAdapter.ClearBeforeFill = true;
             // 
-            // colMALOP
+            // bdsSINHVIEN
             // 
-            this.colMALOP.Caption = "Mã lớp";
-            this.colMALOP.FieldName = "MALOP";
-            this.colMALOP.Name = "colMALOP";
-            this.colMALOP.OptionsColumn.AllowEdit = false;
-            this.colMALOP.OptionsColumn.AllowFocus = false;
-            this.colMALOP.Visible = true;
-            this.colMALOP.VisibleIndex = 0;
+            this.bdsSINHVIEN.DataMember = "FK_SINHVIEN_LOP";
+            this.bdsSINHVIEN.DataSource = this.bdsLOP;
             // 
-            // colTENLOP
+            // SINHVIENTableAdapter
             // 
-            this.colTENLOP.Caption = "Tên lớp";
-            this.colTENLOP.FieldName = "TENLOP";
-            this.colTENLOP.Name = "colTENLOP";
-            this.colTENLOP.OptionsColumn.AllowEdit = false;
-            this.colTENLOP.OptionsColumn.AllowFocus = false;
-            this.colTENLOP.Visible = true;
-            this.colTENLOP.VisibleIndex = 1;
-            // 
-            // colKHOAHOC
-            // 
-            this.colKHOAHOC.Caption = "Khóa học";
-            this.colKHOAHOC.FieldName = "KHOAHOC";
-            this.colKHOAHOC.Name = "colKHOAHOC";
-            this.colKHOAHOC.OptionsColumn.AllowEdit = false;
-            this.colKHOAHOC.OptionsColumn.AllowFocus = false;
-            this.colKHOAHOC.Visible = true;
-            this.colKHOAHOC.VisibleIndex = 2;
-            // 
-            // colMAKHOA
-            // 
-            this.colMAKHOA.Caption = "Mã khoa";
-            this.colMAKHOA.FieldName = "MAKHOA";
-            this.colMAKHOA.Name = "colMAKHOA";
-            this.colMAKHOA.OptionsColumn.AllowEdit = false;
-            this.colMAKHOA.OptionsColumn.AllowFocus = false;
-            this.colMAKHOA.Visible = true;
-            this.colMAKHOA.VisibleIndex = 3;
+            this.SINHVIENTableAdapter.ClearBeforeFill = true;
             // 
             // panelControl3
             // 
@@ -383,6 +324,7 @@ namespace QLDSV_HTC.Forms
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Size = new System.Drawing.Size(1079, 125);
             this.panelControl3.TabIndex = 0;
+            this.panelControl3.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl3_Paint);
             // 
             // panelControl4
             // 
@@ -403,6 +345,7 @@ namespace QLDSV_HTC.Forms
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(2, 2);
             this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(734, 305, 650, 400);
             this.layoutControl1.Root = this.Root;
             this.layoutControl1.Size = new System.Drawing.Size(475, 117);
             this.layoutControl1.TabIndex = 0;
@@ -448,9 +391,9 @@ namespace QLDSV_HTC.Forms
             this.txtMaLop.Location = new System.Drawing.Point(63, 12);
             this.txtMaLop.MenuManager = this.barManager1;
             this.txtMaLop.Name = "txtMaLop";
-            this.txtMaLop.Properties.ReadOnly = true;
             this.txtMaLop.Properties.Mask.EditMask = "(\\p{Lu}|[0-9])+";
             this.txtMaLop.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.txtMaLop.Properties.ReadOnly = true;
             this.txtMaLop.Size = new System.Drawing.Size(400, 20);
             this.txtMaLop.StyleController = this.layoutControl1;
             this.txtMaLop.TabIndex = 5;
@@ -505,18 +448,80 @@ namespace QLDSV_HTC.Forms
             this.layoutControlItem5.Text = "Mã khoa:";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(48, 13);
             // 
-            // LOPTableAdapter
+            // gcLOP
             // 
-            this.LOPTableAdapter.ClearBeforeFill = true;
+            this.gcLOP.DataSource = this.bdsLOP;
+            this.gcLOP.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcLOP.Location = new System.Drawing.Point(2, 2);
+            this.gcLOP.MainView = this.gridView1;
+            this.gcLOP.MenuManager = this.barManager1;
+            this.gcLOP.Name = "gcLOP";
+            this.gcLOP.Size = new System.Drawing.Size(1079, 383);
+            this.gcLOP.TabIndex = 1;
+            this.gcLOP.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            this.gcLOP.Click += new System.EventHandler(this.gcLOP_Click);
             // 
-            // bdsSINHVIEN
+            // gridView1
             // 
-            this.bdsSINHVIEN.DataMember = "FK_SINHVIEN_LOP";
-            this.bdsSINHVIEN.DataSource = this.bdsLOP;
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colMALOP,
+            this.colTENLOP,
+            this.colKHOAHOC,
+            this.colMAKHOA});
+            this.gridView1.GridControl = this.gcLOP;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
             // 
-            // SINHVIENTableAdapter
+            // colMALOP
             // 
-            this.SINHVIENTableAdapter.ClearBeforeFill = true;
+            this.colMALOP.Caption = "Mã lớp";
+            this.colMALOP.FieldName = "MALOP";
+            this.colMALOP.Name = "colMALOP";
+            this.colMALOP.OptionsColumn.AllowEdit = false;
+            this.colMALOP.OptionsColumn.AllowFocus = false;
+            this.colMALOP.Visible = true;
+            this.colMALOP.VisibleIndex = 0;
+            // 
+            // colTENLOP
+            // 
+            this.colTENLOP.Caption = "Tên lớp";
+            this.colTENLOP.FieldName = "TENLOP";
+            this.colTENLOP.Name = "colTENLOP";
+            this.colTENLOP.OptionsColumn.AllowEdit = false;
+            this.colTENLOP.OptionsColumn.AllowFocus = false;
+            this.colTENLOP.Visible = true;
+            this.colTENLOP.VisibleIndex = 1;
+            // 
+            // colKHOAHOC
+            // 
+            this.colKHOAHOC.Caption = "Khóa học";
+            this.colKHOAHOC.FieldName = "KHOAHOC";
+            this.colKHOAHOC.Name = "colKHOAHOC";
+            this.colKHOAHOC.OptionsColumn.AllowEdit = false;
+            this.colKHOAHOC.OptionsColumn.AllowFocus = false;
+            this.colKHOAHOC.Visible = true;
+            this.colKHOAHOC.VisibleIndex = 2;
+            // 
+            // colMAKHOA
+            // 
+            this.colMAKHOA.Caption = "Mã khoa";
+            this.colMAKHOA.FieldName = "MAKHOA";
+            this.colMAKHOA.Name = "colMAKHOA";
+            this.colMAKHOA.OptionsColumn.AllowEdit = false;
+            this.colMAKHOA.OptionsColumn.AllowFocus = false;
+            this.colMAKHOA.Visible = true;
+            this.colMAKHOA.VisibleIndex = 3;
+            // 
+            // panelControl2
+            // 
+            this.panelControl2.Controls.Add(this.gcLOP);
+            this.panelControl2.Controls.Add(this.panelControl3);
+            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl2.Location = new System.Drawing.Point(0, 60);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Size = new System.Drawing.Size(1083, 512);
+            this.panelControl2.TabIndex = 12;
             // 
             // LopForm
             // 
@@ -538,11 +543,8 @@ namespace QLDSV_HTC.Forms
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
-            this.panelControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gcLOP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLOP)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsSINHVIEN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
@@ -558,7 +560,10 @@ namespace QLDSV_HTC.Forms
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsSINHVIEN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcLOP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            this.panelControl2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -581,20 +586,22 @@ namespace QLDSV_HTC.Forms
         private DS DS;
         private DSTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.BindingSource bdsLOP;
-        private DevExpress.XtraEditors.PanelControl panelControl2;
-        private DevExpress.XtraEditors.PanelControl panelControl3;
-        private DevExpress.XtraEditors.PanelControl panelControl4;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DSTableAdapters.LOPTableAdapter LOPTableAdapter;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private System.Windows.Forms.BindingSource bdsSINHVIEN;
+        private DSTableAdapters.SINHVIENTableAdapter SINHVIENTableAdapter;
+        private System.Windows.Forms.ComboBox cmbKhoa;
+        private DevExpress.XtraBars.BarButtonItem barButtonHuy;
+        private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraGrid.GridControl gcLOP;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn colMALOP;
         private DevExpress.XtraGrid.Columns.GridColumn colTENLOP;
         private DevExpress.XtraGrid.Columns.GridColumn colKHOAHOC;
         private DevExpress.XtraGrid.Columns.GridColumn colMAKHOA;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
-        private System.Windows.Forms.BindingSource bdsSINHVIEN;
-        private DSTableAdapters.SINHVIENTableAdapter SINHVIENTableAdapter;
+        private DevExpress.XtraEditors.PanelControl panelControl3;
+        private DevExpress.XtraEditors.PanelControl panelControl4;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraEditors.TextEdit txtMaKhoa;
         private DevExpress.XtraEditors.TextEdit txtKhoaHoc;
@@ -605,7 +612,5 @@ namespace QLDSV_HTC.Forms
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
-        private System.Windows.Forms.ComboBox cmbKhoa;
-        private DevExpress.XtraBars.BarButtonItem barButtonHuy;
     }
 }

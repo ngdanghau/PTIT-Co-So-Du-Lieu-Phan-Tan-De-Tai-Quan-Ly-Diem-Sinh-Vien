@@ -34,7 +34,7 @@ namespace QLDSV_HTC.Reports
             DevExpress.DataAccess.Sql.QueryParameter queryParameter1 = new DevExpress.DataAccess.Sql.QueryParameter();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InBangDiemTongKet_RP));
             DevExpress.XtraReports.UI.CrossTab.CrossTabColumnDefinition crossTabColumnDefinition1 = new DevExpress.XtraReports.UI.CrossTab.CrossTabColumnDefinition(100F);
-            DevExpress.XtraReports.UI.CrossTab.CrossTabColumnDefinition crossTabColumnDefinition2 = new DevExpress.XtraReports.UI.CrossTab.CrossTabColumnDefinition(100F);
+            DevExpress.XtraReports.UI.CrossTab.CrossTabColumnDefinition crossTabColumnDefinition2 = new DevExpress.XtraReports.UI.CrossTab.CrossTabColumnDefinition(134.375F);
             DevExpress.XtraReports.UI.CrossTab.CrossTabColumnDefinition crossTabColumnDefinition3 = new DevExpress.XtraReports.UI.CrossTab.CrossTabColumnDefinition(100F);
             DevExpress.XtraReports.UI.CrossTab.CrossTabColumnField crossTabColumnField1 = new DevExpress.XtraReports.UI.CrossTab.CrossTabColumnField();
             DevExpress.XtraReports.UI.CrossTab.CrossTabDataField crossTabDataField1 = new DevExpress.XtraReports.UI.CrossTab.CrossTabDataField();
@@ -48,10 +48,8 @@ namespace QLDSV_HTC.Reports
             this.crossTabHeaderStyle = new DevExpress.XtraReports.UI.XRControlStyle();
             this.crossTabTotalStyle = new DevExpress.XtraReports.UI.XRControlStyle();
             this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
-            this.Detail = new DevExpress.XtraReports.UI.DetailBand();
-            this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
-            this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.label1 = new DevExpress.XtraReports.UI.XRLabel();
+            this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.crossTab1 = new DevExpress.XtraReports.UI.XRCrossTab();
             this.xrCrossTabCell1 = new DevExpress.XtraReports.UI.CrossTab.XRCrossTabCell();
             this.xrCrossTabCell2 = new DevExpress.XtraReports.UI.CrossTab.XRCrossTabCell();
@@ -67,6 +65,8 @@ namespace QLDSV_HTC.Reports
             this.xrCrossTabCell12 = new DevExpress.XtraReports.UI.CrossTab.XRCrossTabCell();
             this.xrCrossTabCell13 = new DevExpress.XtraReports.UI.CrossTab.XRCrossTabCell();
             this.xrCrossTabCell14 = new DevExpress.XtraReports.UI.CrossTab.XRCrossTabCell();
+            this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
+            this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.TitleStyle = new DevExpress.XtraReports.UI.XRControlStyle();
             ((System.ComponentModel.ISupportInitialize)(this.crossTab1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -122,20 +122,6 @@ namespace QLDSV_HTC.Reports
             this.ReportHeader.HeightF = 42.01302F;
             this.ReportHeader.Name = "ReportHeader";
             // 
-            // Detail
-            // 
-            this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.crossTab1});
-            this.Detail.Name = "Detail";
-            // 
-            // TopMargin
-            // 
-            this.TopMargin.Name = "TopMargin";
-            // 
-            // BottomMargin
-            // 
-            this.BottomMargin.Name = "BottomMargin";
-            // 
             // label1
             // 
             this.label1.LocationFloat = new DevExpress.Utils.PointFloat(6F, 6F);
@@ -143,6 +129,12 @@ namespace QLDSV_HTC.Reports
             this.label1.SizeF = new System.Drawing.SizeF(133.2114F, 30.01302F);
             this.label1.StyleName = "TitleStyle";
             this.label1.Text = "Report Title";
+            // 
+            // Detail
+            // 
+            this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.crossTab1});
+            this.Detail.Name = "Detail";
             // 
             // crossTab1
             // 
@@ -167,7 +159,7 @@ namespace QLDSV_HTC.Reports
             this.crossTab1.ColumnDefinitions.AddRange(new DevExpress.XtraReports.UI.CrossTab.CrossTabColumnDefinition[] {
             crossTabColumnDefinition1,
             crossTabColumnDefinition2,
-            new DevExpress.XtraReports.UI.CrossTab.CrossTabColumnDefinition(100F),
+            new DevExpress.XtraReports.UI.CrossTab.CrossTabColumnDefinition(132.2917F),
             crossTabColumnDefinition3});
             crossTabColumnField1.FieldName = "TENMH";
             this.crossTab1.ColumnFields.AddRange(new DevExpress.XtraReports.UI.CrossTab.CrossTabColumnField[] {
@@ -194,11 +186,12 @@ namespace QLDSV_HTC.Reports
             this.crossTab1.RowFields.AddRange(new DevExpress.XtraReports.UI.CrossTab.CrossTabRowField[] {
             crossTabRowField1,
             crossTabRowField2});
-            this.crossTab1.SizeF = new System.Drawing.SizeF(400F, 100F);
+            this.crossTab1.SizeF = new System.Drawing.SizeF(466.6667F, 100F);
             this.crossTab1.TotalAreaStyleName = "crossTabTotalStyle";
             // 
             // xrCrossTabCell1
             // 
+            this.xrCrossTabCell1.BorderColor = System.Drawing.Color.Black;
             this.xrCrossTabCell1.ColumnIndex = 0;
             this.xrCrossTabCell1.Name = "xrCrossTabCell1";
             this.xrCrossTabCell1.RowIndex = 0;
@@ -206,6 +199,7 @@ namespace QLDSV_HTC.Reports
             // 
             // xrCrossTabCell2
             // 
+            this.xrCrossTabCell2.BorderColor = System.Drawing.Color.Black;
             this.xrCrossTabCell2.ColumnIndex = 1;
             this.xrCrossTabCell2.Name = "xrCrossTabCell2";
             this.xrCrossTabCell2.RowIndex = 0;
@@ -213,12 +207,16 @@ namespace QLDSV_HTC.Reports
             // 
             // xrCrossTabCell3
             // 
+            this.xrCrossTabCell3.BorderColor = System.Drawing.Color.Black;
+            this.xrCrossTabCell3.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrCrossTabCell3.ColumnIndex = 2;
             this.xrCrossTabCell3.Name = "xrCrossTabCell3";
             this.xrCrossTabCell3.RowIndex = 1;
             // 
             // xrCrossTabCell4
             // 
+            this.xrCrossTabCell4.BorderColor = System.Drawing.Color.Black;
             this.xrCrossTabCell4.ColumnIndex = 2;
             this.xrCrossTabCell4.Name = "xrCrossTabCell4";
             this.xrCrossTabCell4.RowIndex = 0;
@@ -238,12 +236,18 @@ namespace QLDSV_HTC.Reports
             // 
             // xrCrossTabCell7
             // 
+            this.xrCrossTabCell7.BorderColor = System.Drawing.Color.Black;
+            this.xrCrossTabCell7.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrCrossTabCell7.ColumnIndex = 0;
             this.xrCrossTabCell7.Name = "xrCrossTabCell7";
             this.xrCrossTabCell7.RowIndex = 1;
             // 
             // xrCrossTabCell8
             // 
+            this.xrCrossTabCell8.BorderColor = System.Drawing.Color.Black;
+            this.xrCrossTabCell8.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrCrossTabCell8.ColumnIndex = 1;
             this.xrCrossTabCell8.Name = "xrCrossTabCell8";
             this.xrCrossTabCell8.RowIndex = 1;
@@ -287,6 +291,14 @@ namespace QLDSV_HTC.Reports
             this.xrCrossTabCell14.ColumnIndex = 3;
             this.xrCrossTabCell14.Name = "xrCrossTabCell14";
             this.xrCrossTabCell14.RowIndex = 3;
+            // 
+            // TopMargin
+            // 
+            this.TopMargin.Name = "TopMargin";
+            // 
+            // BottomMargin
+            // 
+            this.BottomMargin.Name = "BottomMargin";
             // 
             // TitleStyle
             // 

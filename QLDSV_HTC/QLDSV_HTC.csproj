@@ -55,6 +55,7 @@
     <Reference Include="DevExpress.XtraGauges.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraNavBar.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraReports.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraReports.v19.2.Extensions, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -82,6 +83,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\SinhVienClass.cs" />
     <Compile Include="Class\HocPhiClass.cs" />
     <Compile Include="Class\LopClass.cs" />
     <Compile Include="Class\LopTinChiClass.cs" />
@@ -112,11 +114,23 @@
     <Compile Include="Forms\DiemForm.Designer.cs">
       <DependentUpon>DiemForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SinhVienForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SinhVienForm.Designer.cs">
+      <DependentUpon>SinhVienForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\HocPhiForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\HocPhiForm.Designer.cs">
       <DependentUpon>HocPhiForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Test.Designer.cs">
+      <DependentUpon>Test.cs</DependentUpon>
     </Compile>
     <Compile Include="ReportForms\InBangDiemTKForm.cs">
       <SubType>Form</SubType>
@@ -232,14 +246,21 @@
     <EmbeddedResource Include="Forms\DiemForm.resx">
       <DependentUpon>DiemForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SinhVienForm.resx">
+      <DependentUpon>SinhVienForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\HocPhiForm.resx">
       <DependentUpon>HocPhiForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Test.resx">
+      <DependentUpon>Test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportForms\InBangDiemTKForm.resx">
       <DependentUpon>InBangDiemTKForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LopForm.resx">
       <DependentUpon>LopForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MoLopTinChiForm.resx">
       <DependentUpon>MoLopTinChiForm.cs</DependentUpon>
