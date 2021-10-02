@@ -17,6 +17,9 @@ namespace QLDSV_HTC
                 return false;
             // đoạn code hỗ trợ chuyển chi nhánh
             // ở chi nhánh A qua B thì dùng RemoteLogin,
+            Console.WriteLine(Program.ConnStr);
+            Console.WriteLine(cmbKhoa.SelectedValue.ToString());
+            Console.WriteLine(Program.ServerName);
             if (cmbKhoa.SelectedValue.ToString() != Program.ServerName)
             {
                 Program.ServerLogin = Program.RemoteLogin;
@@ -33,6 +36,7 @@ namespace QLDSV_HTC
             try
             {
                 Program.KetNoi();
+                Console.WriteLine(Program.ConnStr);
             }
             catch (Exception ex)
             {

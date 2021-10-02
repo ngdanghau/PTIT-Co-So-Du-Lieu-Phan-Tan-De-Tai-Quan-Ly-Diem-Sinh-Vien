@@ -86,6 +86,7 @@
     <Compile Include="Class\LopClass.cs" />
     <Compile Include="Class\LopTinChiClass.cs" />
     <Compile Include="Class\MonHocClass.cs" />
+    <Compile Include="Class\SinhVienClass.cs" />
     <Compile Include="DS.cs">
       <DependentUpon>DS.xsd</DependentUpon>
     </Compile>
@@ -117,6 +118,12 @@
     </Compile>
     <Compile Include="Forms\HocPhiForm.Designer.cs">
       <DependentUpon>HocPhiForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SinhVienForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SinhVienForm.Designer.cs">
+      <DependentUpon>SinhVienForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ReportForms\InBangDiemTKForm.cs">
       <SubType>Form</SubType>
@@ -234,6 +241,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\HocPhiForm.resx">
       <DependentUpon>HocPhiForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SinhVienForm.resx">
+      <DependentUpon>SinhVienForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportForms\InBangDiemTKForm.resx">
       <DependentUpon>InBangDiemTKForm.cs</DependentUpon>
