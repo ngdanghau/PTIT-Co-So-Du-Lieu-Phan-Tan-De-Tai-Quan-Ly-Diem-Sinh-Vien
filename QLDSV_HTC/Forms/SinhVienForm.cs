@@ -102,21 +102,6 @@ namespace QLDSV_HTC.Forms
             }
         }
 
-        private void panelControl1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void tileNavPane1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void navBarControl1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void LoadData()
         {
             dS.EnforceConstraints = false;
@@ -157,10 +142,6 @@ namespace QLDSV_HTC.Forms
             }
         }
 
-        private void panelControl2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void sINHVIENBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
@@ -176,10 +157,6 @@ namespace QLDSV_HTC.Forms
             this.Close();
         }
 
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void barButtonItem16_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -224,40 +201,6 @@ namespace QLDSV_HTC.Forms
             barButtonUndo.Enabled = undoStack.Count > 0;
         }
 
-        private void mASVLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void mASVTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LOPGridControl_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tENLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pHAICheckEdit_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dIACHILabel_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dIACHITextBox_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
 
         private void barButtonEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -279,41 +222,6 @@ namespace QLDSV_HTC.Forms
             {
                 LoadData();
             }
-        }
-
-        private void dANGHIHOCCheckEdit_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dANGHIHOCLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void nGAYSINHLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pHAILabel1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void CheckBox_Phai_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dANGHIHOCCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dANGHIHOCLabel_Click_1(object sender, EventArgs e)
-        {
-
         }
 
         private void barButtonRenew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

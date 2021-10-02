@@ -159,7 +159,6 @@ namespace QLDSV_HTC.Forms
             tENLabel.Size = new System.Drawing.Size(33, 13);
             tENLabel.TabIndex = 4;
             tENLabel.Text = "TÊN: ";
-            tENLabel.Click += new System.EventHandler(this.tENLabel_Click);
             // 
             // nGAYSINHLabel
             // 
@@ -169,7 +168,6 @@ namespace QLDSV_HTC.Forms
             nGAYSINHLabel.Size = new System.Drawing.Size(65, 13);
             nGAYSINHLabel.TabIndex = 8;
             nGAYSINHLabel.Text = "NGÀY SINH:";
-            nGAYSINHLabel.Click += new System.EventHandler(this.nGAYSINHLabel_Click);
             // 
             // dIACHILabel
             // 
@@ -179,7 +177,6 @@ namespace QLDSV_HTC.Forms
             dIACHILabel.Size = new System.Drawing.Size(54, 13);
             dIACHILabel.TabIndex = 10;
             dIACHILabel.Text = "ĐỊA CHỈ: ";
-            dIACHILabel.Click += new System.EventHandler(this.dIACHILabel_Click_1);
             // 
             // pHAILabel1
             // 
@@ -189,7 +186,6 @@ namespace QLDSV_HTC.Forms
             pHAILabel1.Size = new System.Drawing.Size(38, 13);
             pHAILabel1.TabIndex = 14;
             pHAILabel1.Text = "PHÁI: ";
-            pHAILabel1.Click += new System.EventHandler(this.pHAILabel1_Click);
             // 
             // panelControl1
             // 
@@ -200,7 +196,6 @@ namespace QLDSV_HTC.Forms
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(1190, 202);
             this.panelControl1.TabIndex = 2;
-            this.panelControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl1_Paint);
             // 
             // panelControl3
             // 
@@ -241,7 +236,6 @@ namespace QLDSV_HTC.Forms
             this.dANGHIHOCCheckBox.Size = new System.Drawing.Size(16, 24);
             this.dANGHIHOCCheckBox.TabIndex = 16;
             this.dANGHIHOCCheckBox.UseVisualStyleBackColor = true;
-            this.dANGHIHOCCheckBox.CheckedChanged += new System.EventHandler(this.dANGHIHOCCheckBox_CheckedChanged);
             // 
             // bdsSINHVIEN
             // 
@@ -266,7 +260,6 @@ namespace QLDSV_HTC.Forms
             this.CheckBox_Phai.Size = new System.Drawing.Size(15, 24);
             this.CheckBox_Phai.TabIndex = 15;
             this.CheckBox_Phai.UseVisualStyleBackColor = true;
-            this.CheckBox_Phai.CheckedChanged += new System.EventHandler(this.CheckBox_Phai_CheckedChanged);
             // 
             // dIACHITextBox
             // 
@@ -275,7 +268,6 @@ namespace QLDSV_HTC.Forms
             this.dIACHITextBox.Name = "dIACHITextBox";
             this.dIACHITextBox.Size = new System.Drawing.Size(136, 21);
             this.dIACHITextBox.TabIndex = 11;
-            this.dIACHITextBox.TextChanged += new System.EventHandler(this.dIACHITextBox_TextChanged_1);
             // 
             // DateEdit_NgaySinh
             // 
@@ -475,7 +467,6 @@ namespace QLDSV_HTC.Forms
             this.GC_Lop.TabIndex = 0;
             this.GC_Lop.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
-            this.GC_Lop.Click += new System.EventHandler(this.LOPGridControl_Click);
             // 
             // gridView1
             // 
@@ -705,7 +696,6 @@ namespace QLDSV_HTC.Forms
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(1190, 36);
             this.panelControl2.TabIndex = 12;
-            this.panelControl2.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl2_Paint);
             // 
             // cmbKhoa
             // 
