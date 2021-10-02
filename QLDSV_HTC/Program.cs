@@ -51,6 +51,7 @@ namespace QLDSV_HTC
         public static string AuthPassword = string.Empty;
         public static string AuthGroup = string.Empty;
         public static string AuthHoten = string.Empty;
+        public static string AuthServerName = string.Empty;
 
 
         /**

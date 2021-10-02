@@ -35,6 +35,7 @@ namespace QLDSV_HTC.Forms
             }
 
             Program.ServerName = cmbServer.SelectedValue.ToString();
+            Program.AuthServerName = cmbServer.SelectedValue.ToString();
             Program.AuthLogin = usernameText.Text;
             Program.AuthPassword = passwordText.Text;
 
