@@ -30,13 +30,7 @@ namespace QLDSV_HTC.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.AppearanceObject appearanceObject1 = new DevExpress.Utils.AppearanceObject();
-            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.txtMaSV = new DevExpress.XtraEditors.TextEdit();
-            this.labelLop = new DevExpress.XtraEditors.LabelControl();
-            this.btnLogin = new DevExpress.XtraEditors.SimpleButton();
-            this.labelHoTen = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            DevExpress.Utils.AppearanceObject appearanceObject2 = new DevExpress.Utils.AppearanceObject();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.txtHocKy = new DevExpress.XtraEditors.SpinEdit();
@@ -71,9 +65,6 @@ namespace QLDSV_HTC.Forms
             this.disabledCellEvents1 = new DevExpress.Utils.Behaviors.Common.DisabledCellEvents(this.components);
             this.sp_LayDSLopTinChiDaDangKyTableAdapter = new QLDSV_HTC.DSTableAdapters.sp_LayDSLopTinChiDaDangKyTableAdapter();
             this.tableAdapterManager = new QLDSV_HTC.DSTableAdapters.TableAdapterManager();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
-            this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaSV.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -95,71 +86,12 @@ namespace QLDSV_HTC.Forms
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupControl1
-            // 
-            this.groupControl1.Controls.Add(this.txtMaSV);
-            this.groupControl1.Controls.Add(this.labelLop);
-            this.groupControl1.Controls.Add(this.btnLogin);
-            this.groupControl1.Controls.Add(this.labelHoTen);
-            this.groupControl1.Controls.Add(this.labelControl1);
-            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupControl1.Location = new System.Drawing.Point(0, 0);
-            this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(936, 54);
-            this.groupControl1.TabIndex = 0;
-            this.groupControl1.Text = "Thông tin sinh viên";
-            // 
-            // txtMaSV
-            // 
-            this.txtMaSV.Location = new System.Drawing.Point(70, 26);
-            this.txtMaSV.Name = "txtMaSV";
-            this.txtMaSV.Properties.Mask.EditMask = "(\\p{Lu}|[0-9])+";
-            this.txtMaSV.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
-            this.txtMaSV.Properties.MaxLength = 10;
-            this.txtMaSV.Size = new System.Drawing.Size(86, 20);
-            this.txtMaSV.TabIndex = 1;
-            // 
-            // labelLop
-            // 
-            this.labelLop.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Horizontal;
-            this.labelLop.Location = new System.Drawing.Point(437, 30);
-            this.labelLop.Name = "labelLop";
-            this.labelLop.Size = new System.Drawing.Size(63, 13);
-            this.labelLop.TabIndex = 4;
-            this.labelLop.Text = "labelControl3";
-            // 
-            // btnLogin
-            // 
-            this.btnLogin.Location = new System.Drawing.Point(162, 25);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(89, 22);
-            this.btnLogin.TabIndex = 2;
-            this.btnLogin.Text = "Đăng nhập";
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
-            // 
-            // labelHoTen
-            // 
-            this.labelHoTen.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Horizontal;
-            this.labelHoTen.Location = new System.Drawing.Point(257, 30);
-            this.labelHoTen.Name = "labelHoTen";
-            this.labelHoTen.Size = new System.Drawing.Size(63, 13);
-            this.labelHoTen.TabIndex = 3;
-            this.labelHoTen.Text = "labelControl2";
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Location = new System.Drawing.Point(5, 30);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(59, 13);
-            this.labelControl1.TabIndex = 0;
-            this.labelControl1.Text = "Mã sinh viên";
-            // 
             // groupControl2
             // 
             this.groupControl2.Controls.Add(this.panelControl1);
             this.groupControl2.Controls.Add(this.sp_LayDSLopTinChiDeDangKyGridControl);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupControl2.Location = new System.Drawing.Point(0, 54);
+            this.groupControl2.Location = new System.Drawing.Point(0, 0);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(936, 295);
             this.groupControl2.TabIndex = 1;
@@ -254,7 +186,7 @@ namespace QLDSV_HTC.Forms
             // gridView1
             // 
             this.behaviorManager1.SetBehaviors(this.gridView1, new DevExpress.Utils.Behaviors.Behavior[] {
-            ((DevExpress.Utils.Behaviors.Behavior)(DevExpress.Utils.Behaviors.Common.DisabledCellBehavior.Create(typeof(DevExpress.XtraGrid.Extensions.GridViewDisabledCellSource), "", appearanceObject1, this.disabledCellEvents1)))});
+            ((DevExpress.Utils.Behaviors.Behavior)(DevExpress.Utils.Behaviors.Common.DisabledCellBehavior.Create(typeof(DevExpress.XtraGrid.Extensions.GridViewDisabledCellSource), "", appearanceObject2, this.disabledCellEvents1)))});
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.colMAMH,
@@ -348,9 +280,9 @@ namespace QLDSV_HTC.Forms
             this.groupControl3.Controls.Add(this.panelControl3);
             this.groupControl3.Controls.Add(this.panelControl2);
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl3.Location = new System.Drawing.Point(0, 349);
+            this.groupControl3.Location = new System.Drawing.Point(0, 295);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(936, 218);
+            this.groupControl3.Size = new System.Drawing.Size(936, 272);
             this.groupControl3.TabIndex = 2;
             this.groupControl3.Text = "Danh sách môn học đã chọn";
             // 
@@ -360,7 +292,7 @@ namespace QLDSV_HTC.Forms
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl3.Location = new System.Drawing.Point(2, 56);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(932, 160);
+            this.panelControl3.Size = new System.Drawing.Size(932, 214);
             this.panelControl3.TabIndex = 2;
             // 
             // sp_LayDSLopTinChiDaDangKyGridControl
@@ -370,7 +302,7 @@ namespace QLDSV_HTC.Forms
             this.sp_LayDSLopTinChiDaDangKyGridControl.Location = new System.Drawing.Point(2, 2);
             this.sp_LayDSLopTinChiDaDangKyGridControl.MainView = this.gridView2;
             this.sp_LayDSLopTinChiDaDangKyGridControl.Name = "sp_LayDSLopTinChiDaDangKyGridControl";
-            this.sp_LayDSLopTinChiDaDangKyGridControl.Size = new System.Drawing.Size(928, 156);
+            this.sp_LayDSLopTinChiDaDangKyGridControl.Size = new System.Drawing.Size(928, 210);
             this.sp_LayDSLopTinChiDaDangKyGridControl.TabIndex = 0;
             this.sp_LayDSLopTinChiDaDangKyGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -509,14 +441,8 @@ namespace QLDSV_HTC.Forms
             this.ClientSize = new System.Drawing.Size(936, 567);
             this.Controls.Add(this.groupControl3);
             this.Controls.Add(this.groupControl2);
-            this.Controls.Add(this.groupControl1);
             this.Name = "DangKyLTCForm";
             this.Text = "Đăng ký lớp tín chỉ";
-            this.Load += new System.EventHandler(this.DangKyLTCForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
-            this.groupControl1.ResumeLayout(false);
-            this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaSV.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
@@ -542,13 +468,6 @@ namespace QLDSV_HTC.Forms
         }
 
         #endregion
-
-        private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraEditors.SimpleButton btnLogin;
-        private DevExpress.XtraEditors.TextEdit txtMaSV;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.LabelControl labelLop;
-        private DevExpress.XtraEditors.LabelControl labelHoTen;
         private DevExpress.XtraEditors.GroupControl groupControl2;
         private DevExpress.XtraEditors.GroupControl groupControl3;
         private DevExpress.XtraEditors.LabelControl labelControl3;

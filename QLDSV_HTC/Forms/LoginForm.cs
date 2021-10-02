@@ -36,35 +36,70 @@ namespace QLDSV_HTC.Forms
 
             Program.ServerName = cmbServer.SelectedValue.ToString();
             Program.AuthServerName = cmbServer.SelectedValue.ToString();
-            Program.AuthLogin = usernameText.Text;
-            Program.AuthPassword = passwordText.Text;
 
-            Program.ServerLogin = usernameText.Text;
-            Program.ServerPassword = passwordText.Text;
+            Program.AuthLogin = usernameText.Text.Trim();
+            Program.AuthPassword = passwordText.Text.Trim();
+
+            Program.ServerLogin = usernameText.Text.Trim();
+            Program.ServerPassword = passwordText.Text.Trim();
+
+            if (svLogin.Checked)
+            {
+                Program.ServerLogin = Program.SVLogin;
+                Program.ServerPassword = Program.SVPassword;
+            }
+
+            Program.MaKhoa = Utils.GetMaKhoa(cmbServer.Text);
+
+
             try
             {
                 Program.KetNoi();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Không thể kết nối!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            Program.MaKhoa = Utils.GetMaKhoa(cmbServer.Text);
 
-            if(Program.AuthLogin.Contains("SV"))
+
+            if (svLogin.Checked)
             {
+                string lenh = string.Format("SELECT HO, TEN, MALOP, DANGHIHOC, PASSWORD FROM SINHVIEN WHERE MASV = N'{0}'", Program.AuthLogin);
+                Program.MyReader = Program.ExecSqlDataReader(lenh);
+                if (Program.MyReader == null || !Program.MyReader.HasRows)
+                {
+                    MessageBox.Show("Không tìm thấy thông tin sinh viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Program.MyReader.Close();
+                    return;
+                }
+                Program.MyReader.Read();
+                if (Program.MyReader.GetBoolean(3))
+                {
+                    MessageBox.Show("Sinh viên đã nghỉ học!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Program.MyReader.Close();
+                    return;
+                }
+
+                if (Program.MyReader.GetString(4) != Program.AuthPassword)
+                {
+                    MessageBox.Show("Thông tin mật khẩu không hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Program.MyReader.Close();
+                    return;
+                }
+
                 Program.AuthUserID = Program.AuthLogin;
-                Program.AuthHoten = "Sinh Viên";
-                Program.AuthGroup = "SV";
+                Program.AuthHoten = Program.MyReader.GetString(0) + " " + Program.MyReader.GetString(1);
+                Program.AuthGroup = Program.MyReader.GetString(2);
+                Program.MyReader.Close();
             }
             else
             {
                 // Lấy thông tin của user đang login
                 string sqlQuery = "exec sp_Get_Info_Login '" + Program.AuthLogin + "'";
                 Program.MyReader = Program.ExecSqlDataReader(sqlQuery);
-                if (Program.MyReader == null) return; 
+                if (Program.MyReader == null) return;
                 Program.MyReader.Read();
 
                 try
@@ -89,7 +124,7 @@ namespace QLDSV_HTC.Forms
                 Program.MyReader.Close();
                 Program.Conn.Close();
             }
-            
+
             
 
             // mở Main Form

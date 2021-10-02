@@ -13,9 +13,6 @@ namespace QLDSV_HTC.Forms
 {
     public partial class DangKyLTCForm : DevExpress.XtraEditors.XtraForm
     {
-        private bool isLogin = false;
-        private string maSV = "";
-
         public List<int> DisabledRowHandles = new List<int>();
         DataTable table = new DataTable();
         BindingSource bind = new BindingSource();
@@ -34,77 +31,11 @@ namespace QLDSV_HTC.Forms
             table.Columns.Add(new DataColumn("MALTC", typeof(Int32)));
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            if (isLogin)
-            {
-                isLogin = groupControl2.Enabled = groupControl3.Enabled = false;
-                txtMaSV.Enabled = true;
-                btnLogin.Text = "Đăng nhập";
-                labelHoTen.Text = "";
-                labelLop.Text = "";
-
-                sp_LayDSLopTinChiDaDangKyGridControl.DataSource = sp_LayDSLopTinChiDeDangKyGridControl.DataSource = null;
-                gridView1.RefreshData();
-                gridView2.RefreshData();
-            }
-            else
-            {
-                maSV = txtMaSV.Text.Trim();
-                if (maSV == "")
-                {
-                    XtraMessageBox.Show("Mã SV không được để trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                try
-                {
-                    Program.KetNoi();
-                }
-                catch (Exception ex)
-                {
-                    XtraMessageBox.Show(ex.Message, "Không thể kết nối!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                string lenh = string.Format("SELECT HO, TEN, MALOP, DANGHIHOC FROM SINHVIEN WHERE MASV = N'{0}'", maSV);
-                Program.MyReader = Program.ExecSqlDataReader(lenh);
-                if (Program.MyReader == null || !Program.MyReader.HasRows)
-                {
-                    MessageBox.Show("Không tìm thấy thông tin sinh viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Program.MyReader.Close();
-                    return;
-                }
-
-                Program.MyReader.Read();
-                if (Program.MyReader.GetBoolean(3))
-                {
-                    MessageBox.Show("Sinh viên đã nghỉ học!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Program.MyReader.Close();
-                    return;
-                }
-
-                isLogin = groupControl2.Enabled = groupControl3.Enabled = true;
-                txtMaSV.Enabled = false;
-                btnLogin.Text = "Thoát";
-
-                labelHoTen.Text = string.Format("Họ và tên: {0}", Program.MyReader.GetString(0) + " " + Program.MyReader.GetString(1));
-                labelLop.Text = string.Format("Lớp: {0}", Program.MyReader.GetString(2));
-
-                Program.MyReader.Close();
-
-
-            }
-           
-
-
-        }
-
         private void LoadDataDanhSachDaDangKy()
         {
             this.dS.EnforceConstraints = false;
             this.sp_LayDSLopTinChiDaDangKyTableAdapter.Connection.ConnectionString = Program.ConnStr;
-            this.sp_LayDSLopTinChiDaDangKyTableAdapter.Fill(this.dS.sp_LayDSLopTinChiDaDangKy, maSV, txtNienKhoa.Text.Trim(), Convert.ToInt32(txtHocKy.Text.Trim()));
+            this.sp_LayDSLopTinChiDaDangKyTableAdapter.Fill(this.dS.sp_LayDSLopTinChiDaDangKy, Program.AuthUserID, txtNienKhoa.Text.Trim(), Convert.ToInt32(txtHocKy.Text.Trim()));
             this.gridView2.Columns[1].Visible = false;
         }
 
@@ -159,13 +90,6 @@ namespace QLDSV_HTC.Forms
             Program.Conn.Close();
         }
 
-        private void DangKyLTCForm_Load(object sender, EventArgs e)
-        {
-            groupControl2.Enabled = groupControl3.Enabled = false;
-            labelHoTen.Text = "";
-            labelLop.Text = "";
-        }
-
         private void btnFilter_Click(object sender, EventArgs e)
         {
             if (txtNienKhoa.Text.Trim() == "")
@@ -203,7 +127,7 @@ namespace QLDSV_HTC.Forms
                     ltc_ID.Add(Convert.ToInt32(row["MALTC"]));
                 }
 
-                string query = string.Format("UPDATE DANGKY SET HUYDANGKY = {0} WHERE MASV = N'{1}' AND MALTC IN({2})", 1, maSV, string.Join(", ", ltc_ID.ToArray()));
+                string query = string.Format("UPDATE DANGKY SET HUYDANGKY = {0} WHERE MASV = N'{1}' AND MALTC IN({2})", 1, Program.AuthUserID, string.Join(", ", ltc_ID.ToArray()));
                 var result = Program.ExecSqlNonQuery(query);
                 gridView2.EndSelection();
                 if (result == 0)
@@ -234,7 +158,7 @@ namespace QLDSV_HTC.Forms
             var pos = Convert.ToInt32(row["STT"]) - 1;
             var maLTC = table.Rows[pos]["MALTC"];
 
-            string query = string.Format("EXEC sp_DangKyLopTinChi @MALTC = {0}, @MASV = '{1}'", maLTC, maSV);
+            string query = string.Format("EXEC sp_DangKyLopTinChi @MALTC = {0}, @MASV = '{1}'", maLTC, Program.AuthUserID);
             var result = Program.ExecSqlNonQuery(query);
             if (result == 0)
             {
