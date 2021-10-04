@@ -16,7 +16,13 @@ BEGIN
 
 	IF EXISTS ( SELECT * FROM LINK1.QLDSV_TC.DBO.MONHOC WHERE MONHOC.MAMH = @MAMH)
 	BEGIN
-		RAISERROR ('Mã môn học đã tồn tại trên chi nhánh khác', 16,1)
+		RAISERROR ('Mã môn học đã tồn tại trên chi nhánh khác', 16,2)
+		RETURN 1;
+	END
+
+	IF EXISTS ( SELECT * FROM LINK0.QLDSV_TC.DBO.MONHOC WHERE MONHOC.MAMH = @MAMH)
+	BEGIN
+		RAISERROR ('Mã môn học đã tồn tại trên chi nhánh khác', 16,3)
 		RETURN 1;
 	END
 

@@ -20,5 +20,11 @@ BEGIN
 		RETURN 1;
 	END
 
+	IF EXISTS ( SELECT * FROM LINK0.QLDSV_TC.DBO.LOP WHERE LOP.MALOP = @MALOP)
+	BEGIN
+		RAISERROR ('Mã lớp học đã tồn tại trên chi nhánh khác', 16,1)
+		RETURN 1;
+	END
+
 RETURN 0;
 END

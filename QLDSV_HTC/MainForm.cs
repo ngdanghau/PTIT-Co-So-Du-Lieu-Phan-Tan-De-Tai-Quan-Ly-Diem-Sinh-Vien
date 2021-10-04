@@ -40,7 +40,7 @@ namespace QLDSV_HTC
             logout();
             Program.LoginForm.StartPosition = FormStartPosition.CenterScreen;
             Program.LoginForm.Show();
-            Program.Bds_Dspm.Filter = "TENKHOA <> ''";
+            Program.Bds_Dspm.RemoveFilter();
             this.Hide();
         }
 

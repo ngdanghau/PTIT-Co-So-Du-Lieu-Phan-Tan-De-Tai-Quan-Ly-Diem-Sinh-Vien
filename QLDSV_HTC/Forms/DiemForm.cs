@@ -9,6 +9,7 @@ namespace QLDSV_HTC.Forms
     {
         private bool state = false;
         private int position = -1;
+        private int maltc = -1;
         public DiemForm()
         {
             InitializeComponent();
@@ -42,41 +43,16 @@ namespace QLDSV_HTC.Forms
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            if (txtNienKhoa.Text.Trim() == "")
-            {
-                XtraMessageBox.Show("Niên khóa không được để trống!", "Lỗi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (txtHocKy.Text.Trim() == "")
-            {
-                XtraMessageBox.Show("Học kỳ không được để trống!", "Lỗi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (txtNhom.Text.Trim() == "")
-            {
-                XtraMessageBox.Show("Nhóm không được để trống!", "Lỗi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (lookUpMonHoc.EditValue == null || lookUpMonHoc.EditValue.ToString().Trim() == "")
-            {
-                XtraMessageBox.Show("Môn học không được để trống!", "Lỗi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
             try
             {
-                this.sp_GetBangDiemMonHocTableAdapter.Fill(this.DS.sp_GetBangDiemMonHoc, Utils.GetMaKhoa(cmbKhoa.Text), txtNienKhoa.Text, Convert.ToInt32(txtHocKy.Text), lookUpMonHoc.EditValue.ToString(), Convert.ToInt32(txtNhom.Text));
+                gc_DSSV_DANGKY.DataSource = sp_GetBangDiemMonHocBindingSource;
+                maltc = Convert.ToInt32(((DataRowView)bdsLTC[bdsLTC.Position])["MALTC"].ToString());
+                this.sp_GetBangDiemMonHocTableAdapter.Connection.ConnectionString = Program.ConnStr;
+                this.sp_GetBangDiemMonHocTableAdapter.Fill(this.DS.sp_GetBangDiemMonHoc, maltc);
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show(ex.Message, "Lỗi tìm kiếm!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show(ex.Message, "Lỗi!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -85,22 +61,40 @@ namespace QLDSV_HTC.Forms
             this.Validate();
             this.sp_GetBangDiemMonHocBindingSource.EndEdit();
 
-            BindingSource bdsTemp = (BindingSource)this.sp_GetBangDiemMonHocGridControl.DataSource;
+            BindingSource bdsTemp = (BindingSource)this.gc_DSSV_DANGKY.DataSource;
 
             // kết thúc việc cập nhật dữ liệu
             this.Validate();
             bdsTemp.EndEdit();
 
+            DataTable dt = new DataTable();
+            dt.Columns.Add("MALTC", typeof(int));
+            dt.Columns.Add("MASV", typeof(string));
+            dt.Columns.Add("DIEM_CC", typeof(int));
+            dt.Columns.Add("DIEM_GK", typeof(float));
+            dt.Columns.Add("DIEM_CK", typeof(float));
+
             for (int i = 0; i < bdsTemp.Count; i++)
             {
                 string masv = ((DataRowView)bdsTemp[i])["MASV"].ToString();
-                int diemcc = Convert.ToInt32(((DataRowView)bdsTemp[i])["DIEM_CC"]);
-                double diemGK = Convert.ToDouble(((DataRowView)bdsTemp[i])["DIEM_GK"]);
-                double diemCK = Convert.ToDouble(((DataRowView)bdsTemp[i])["DIEM_CK"]);
-                this.sp_GetBangDiemMonHocTableAdapter.Update(Utils.GetMaKhoa(cmbKhoa.Text), txtNienKhoa.Text, Convert.ToInt32(txtHocKy.Text), Convert.ToInt32(txtNhom.Text), lookUpMonHoc.EditValue.ToString(), masv, diemcc, diemGK, diemCK);
+                string diemcc = ((DataRowView)bdsTemp[i])["DIEM_CC"].ToString();
+                string diemGK = ((DataRowView)bdsTemp[i])["DIEM_GK"].ToString();
+                string diemCK = ((DataRowView)bdsTemp[i])["DIEM_CK"].ToString();
+                dt.Rows.Add(maltc, masv, diemcc, diemGK, diemCK);
             }
+
+
+            try
+            {
+                this.sp_GetBangDiemMonHocTableAdapter.sp_GhiDiem(dt);
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Lỗi!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             btnSave.Enabled = btnHuy.Enabled = false;
-            btnUndo.Enabled = true;
             XtraMessageBox.Show("Cập nhật điểm thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
@@ -127,11 +121,6 @@ namespace QLDSV_HTC.Forms
 
             Utils.LoadComboBox(cmbKhoa, Program.Bds_Dspm.DataSource);
             Utils.ChangeServer(cmbKhoa);
-
-
-            lookUpMonHoc.Properties.PopulateColumns();
-            lookUpMonHoc.Properties.Columns[2].Visible = false;
-            lookUpMonHoc.Properties.Columns[3].Visible = false;
         }
 
         private void gridView1_ValidatingEditor(object sender, DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventArgs e)
@@ -189,18 +178,52 @@ namespace QLDSV_HTC.Forms
             }
         }
 
-        private void btnUndo_Click(object sender, EventArgs e)
-        {
-            // hủy
-            btnUndo.Enabled = false;
-        }
-
         private void btnHuy_Click(object sender, EventArgs e)
         {
             btnStart_Click(null, null);
             if (position > -1)
             {
                 sp_GetBangDiemMonHocBindingSource.Position = position;
+            }
+        }
+
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            if (txtNienKhoa.Text.Trim() == "")
+            {
+                XtraMessageBox.Show("Niên khóa không được để trống!", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (txtHocKy.Text.Trim() == "")
+            {
+                XtraMessageBox.Show("Học kỳ không được để trống!", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            gc_DSSV_DANGKY.DataSource = null;
+            try
+            {
+                this.sp_GetDS_LTCTableAdapter.Connection.ConnectionString = Program.ConnStr;
+                this.sp_GetDS_LTCTableAdapter.Fill(this.DS.sp_GetDS_LTC, txtNienKhoa.Text.Trim(), Convert.ToInt32(txtHocKy.Text.Trim()));
+
+                btnStart.Enabled = bdsLTC.Count > 0;
+
+                
+
+                if (bdsLTC.Count == 0)
+                {
+                    XtraMessageBox.Show("Danh sách lớp tín chỉ không tồn tại", "Lỗi!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Lỗi tìm kiếm!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

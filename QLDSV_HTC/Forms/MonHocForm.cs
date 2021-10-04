@@ -139,6 +139,7 @@ namespace QLDSV_HTC.Forms
 
         private void barButtonRenew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            position = 0;
             MonHocForm_Load(sender, e);
             XtraMessageBox.Show("Làm mới dữ liệu thành công", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

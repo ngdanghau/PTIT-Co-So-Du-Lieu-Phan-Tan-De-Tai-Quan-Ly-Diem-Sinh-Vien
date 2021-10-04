@@ -153,6 +153,7 @@ namespace QLDSV_HTC.Forms
 
         private void barButtonRenew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            position = 0;
             LoadData();
             XtraMessageBox.Show("Làm mới dữ liệu thành công", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

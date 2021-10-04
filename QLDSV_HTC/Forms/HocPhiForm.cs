@@ -100,6 +100,7 @@ namespace QLDSV_HTC.Forms
 
             try
             {
+                this.sp_GetThongTinDongHocPhiTableAdapter.Connection.ConnectionString = Program.ConnStr;
                 this.sp_GetThongTinDongHocPhiTableAdapter.Fill(this.DS.sp_GetThongTinDongHocPhi, maSV);
                 barButtonEdit.Enabled = barButtonDelete.Enabled = sp_GetThongTinDongHocPhiBindingSource.Count > 0;
             }
@@ -120,6 +121,7 @@ namespace QLDSV_HTC.Forms
         {
             try
             {
+                this.sp_GetChiTietDongHocPhiTableAdapter.Connection.ConnectionString = Program.ConnStr;
                 this.sp_GetChiTietDongHocPhiTableAdapter.Fill(this.DS.sp_GetChiTietDongHocPhi, txtMaSV.Text.Trim(), txtNienKhoa.Text.Trim(), int.Parse(txtHocKy.Text));
 
                 HocPhiData = new HocPhiClass(txtMaSV.Text.Trim(), txtNienKhoa.Text.Trim(), int.Parse(txtHocKy.Text), int.Parse(txtHocPhi.EditValue.ToString()), txtNienKhoa.Text.Trim(), int.Parse(txtHocKy.Text), int.Parse(txtHocPhi.EditValue.ToString()));
