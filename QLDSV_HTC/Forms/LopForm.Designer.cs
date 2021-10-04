@@ -324,7 +324,6 @@ namespace QLDSV_HTC.Forms
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Size = new System.Drawing.Size(1079, 125);
             this.panelControl3.TabIndex = 0;
-            this.panelControl3.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl3_Paint);
             // 
             // panelControl4
             // 
@@ -460,7 +459,6 @@ namespace QLDSV_HTC.Forms
             this.gcLOP.TabIndex = 1;
             this.gcLOP.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
-            this.gcLOP.Click += new System.EventHandler(this.gcLOP_Click);
             // 
             // gridView1
             // 
