@@ -305,7 +305,15 @@ namespace QLDSV_HTC.Forms
             // 
             // LOPTableAdapter
             // 
-            this.LOPTableAdapter.ClearBeforeFill = true;
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colMALOP,
+            this.colTENLOP,
+            this.colKHOAHOC,
+            this.colMAKHOA});
+            this.gridView1.GridControl = this.gcLOP;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsDetail.EnableMasterViewMode = false;
+            this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
             // 
             // bdsSINHVIEN
             // 
@@ -380,6 +388,7 @@ namespace QLDSV_HTC.Forms
             this.txtTenLop.Location = new System.Drawing.Point(63, 36);
             this.txtTenLop.MenuManager = this.barManager1;
             this.txtTenLop.Name = "txtTenLop";
+            this.txtTenLop.Properties.MaxLength = 50;
             this.txtTenLop.Size = new System.Drawing.Size(400, 20);
             this.txtTenLop.StyleController = this.layoutControl1;
             this.txtTenLop.TabIndex = 6;
@@ -392,6 +401,7 @@ namespace QLDSV_HTC.Forms
             this.txtMaLop.Name = "txtMaLop";
             this.txtMaLop.Properties.Mask.EditMask = "(\\p{Lu}|[0-9])+";
             this.txtMaLop.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.txtMaLop.Properties.MaxLength = 10;
             this.txtMaLop.Properties.ReadOnly = true;
             this.txtMaLop.Size = new System.Drawing.Size(400, 20);
             this.txtMaLop.StyleController = this.layoutControl1;

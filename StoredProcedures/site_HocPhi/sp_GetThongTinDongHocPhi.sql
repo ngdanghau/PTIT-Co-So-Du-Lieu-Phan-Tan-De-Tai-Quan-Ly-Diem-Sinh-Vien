@@ -1,0 +1,25 @@
+USE [QLDSV_TC]
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE OR ALTER PROCEDURE sp_GetThongTinDongHocPhi
+	-- khai bao cac bien tam 
+	@MASV nchar(10)
+AS
+BEGIN
+	SELECT DISTINCT HP.MASV, HP.NIENKHOA, HP.HOCKY, HP.HOCPHI, ISNULL(CT.SOTIENDADONG, 0) as SOTIENDADONG
+	FROM (SELECT NIENKHOA, HOCKY, HOCPHI, MASV FROM HOCPHI WHERE MASV = @MASV) as HP
+
+	LEFT JOIN (
+				SELECT MASV, NIENKHOA, HOCKY, SUM(SOTIENDONG) AS SOTIENDADONG 
+				FROM CT_DONGHOCPHI GROUP BY NIENKHOA, HOCKY, MASV
+			) AS CT
+	ON HP.MASV = CT.MASV AND CT.NIENKHOA = HP.NIENKHOA AND CT.HOCKY = HP.HOCKY
+END
+GO

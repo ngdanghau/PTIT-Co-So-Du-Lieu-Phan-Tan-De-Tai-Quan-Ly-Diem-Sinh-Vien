@@ -354,7 +354,7 @@ namespace QLDSV_HTC.Forms
                 XtraMessageBox.Show("Không thể xóa sinh viên đã đăng ký lớp tín chỉ.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (XtraMessageBox.Show("Bạn có thực sự muốn xóa Lớp này?", "Xác nhận.", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (XtraMessageBox.Show("Bạn có thực sự muốn xóa sinh viên này?", "Xác nhận.", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 try
                 {
@@ -368,7 +368,7 @@ namespace QLDSV_HTC.Forms
                 }
                 catch (Exception ex)
                 {
-                    XtraMessageBox.Show("Lỗi xóa lớp học.\nMã lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK);
+                    XtraMessageBox.Show("Lỗi xóa sinh viên .\nMã lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK);
                     //LopForm_Load(sender, e);
                     LoadData();
                 }

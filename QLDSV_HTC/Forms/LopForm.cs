@@ -167,9 +167,19 @@ namespace QLDSV_HTC.Forms
             this.Close();
         }
 
+        private bool checkMaLop()
+        {
+            string query = string.Format(" EXEC sp_KiemTraMaLop N'{0}' ", txtMaLop.Text.Trim());
+
+            var check = Program.ExecSqlNonQuery(query);
+            if (check == 0) return true;
+            return false;
+        }
+
         private void barButtonSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (!ValidateForm()) return;
+            if (state == "add" && !checkMaLop()) return;
             try
             {
                 this.bdsLOP.EndEdit();

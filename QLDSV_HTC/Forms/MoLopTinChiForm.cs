@@ -172,9 +172,19 @@ namespace QLDSV_HTC.Forms
             this.Close();
         }
 
+        private bool checkLTC()
+        {
+            string query = string.Format(" EXEC sp_KiemTraLTC @NIENKHOA = N'{0}', @HOCKY = {1}, @MAMH = N'{2}', @NHOM = {3}", txtNienKhoa.Text.Trim(), Convert.ToInt32(txtHocKy.Text), txtMaMonHoc.Text.Trim(), Convert.ToInt32(txtHocKy.Text));
+
+            var check = Program.ExecSqlNonQuery(query);
+            if (check == 0) return true;
+            return false;
+        }
+
         private void barButtonSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (!ValidateForm()) return;
+            if (state == "add" && !checkLTC()) return;
             try
             {
                 this.bdsLOPTINCHI.EndEdit();

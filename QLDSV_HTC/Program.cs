@@ -42,6 +42,10 @@ namespace QLDSV_HTC
         public static string RemotePassword = "123456";
         public static string Database = "QLDSV_TC";
 
+        // Tài khoản Login để cho sv tương tác với sql
+        public static string SVLogin = "SV";
+        public static string SVPassword = "123456";
+
 
         /**
          * Thông tin authentication 
@@ -51,6 +55,7 @@ namespace QLDSV_HTC
         public static string AuthPassword = string.Empty;
         public static string AuthGroup = string.Empty;
         public static string AuthHoten = string.Empty;
+        public static string AuthServerName = string.Empty;
 
 
         /**
@@ -144,7 +149,6 @@ namespace QLDSV_HTC
                 XtraMessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Conn.Close();
                 return ex.State;
-
             }
         }
 

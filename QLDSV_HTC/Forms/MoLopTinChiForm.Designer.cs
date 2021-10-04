@@ -667,6 +667,7 @@ namespace QLDSV_HTC.Forms
             this.colHUYLOP});
             this.gridView1.GridControl = this.gcLOPTINCHI;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsDetail.EnableMasterViewMode = false;
             this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
             // 
             // colNIENKHOA

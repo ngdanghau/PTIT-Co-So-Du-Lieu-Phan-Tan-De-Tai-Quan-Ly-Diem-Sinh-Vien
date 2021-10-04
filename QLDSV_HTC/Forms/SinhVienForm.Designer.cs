@@ -39,6 +39,7 @@ namespace QLDSV_HTC.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SinhVienForm));
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.NghiHoc_Label = new DevExpress.XtraEditors.LabelControl();
             this.dANGHIHOCCheckBox = new System.Windows.Forms.CheckBox();
             this.bdsSINHVIEN = new System.Windows.Forms.BindingSource(this.components);
             this.lOPBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -196,9 +197,9 @@ namespace QLDSV_HTC.Forms
             this.panelControl1.Controls.Add(this.panelControl3);
             this.panelControl1.Controls.Add(this.GC_Lop);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl1.Location = new System.Drawing.Point(0, 378);
+            this.panelControl1.Location = new System.Drawing.Point(0, 332);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1190, 156);
+            this.panelControl1.Size = new System.Drawing.Size(1190, 202);
             this.panelControl1.TabIndex = 2;
             this.panelControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl1_Paint);
             // 
@@ -222,8 +223,16 @@ namespace QLDSV_HTC.Forms
             this.panelControl3.Enabled = false;
             this.panelControl3.Location = new System.Drawing.Point(2, 2);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(421, 152);
+            this.panelControl3.Size = new System.Drawing.Size(421, 198);
             this.panelControl3.TabIndex = 1;
+            // 
+            // NghiHoc_Label
+            // 
+            this.NghiHoc_Label.Location = new System.Drawing.Point(205, 107);
+            this.NghiHoc_Label.Name = "NghiHoc_Label";
+            this.NghiHoc_Label.Size = new System.Drawing.Size(68, 13);
+            this.NghiHoc_Label.TabIndex = 17;
+            this.NghiHoc_Label.Text = "ĐÃ NGHỈ HỌC";
             // 
             // dANGHIHOCCheckBox
             // 
@@ -463,7 +472,7 @@ namespace QLDSV_HTC.Forms
             this.GC_Lop.MainView = this.gridView1;
             this.GC_Lop.MenuManager = this.barManager1;
             this.GC_Lop.Name = "GC_Lop";
-            this.GC_Lop.Size = new System.Drawing.Size(454, 152);
+            this.GC_Lop.Size = new System.Drawing.Size(454, 198);
             this.GC_Lop.TabIndex = 0;
             this.GC_Lop.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -749,7 +758,7 @@ namespace QLDSV_HTC.Forms
             this.GC_SV.MainView = this.gridView2;
             this.GC_SV.MenuManager = this.barManager1;
             this.GC_SV.Name = "GC_SV";
-            this.GC_SV.Size = new System.Drawing.Size(1190, 318);
+            this.GC_SV.Size = new System.Drawing.Size(1190, 272);
             this.GC_SV.TabIndex = 16;
             this.GC_SV.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});

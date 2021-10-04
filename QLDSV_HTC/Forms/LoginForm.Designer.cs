@@ -46,6 +46,8 @@
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
+            this.svLogin = new DevExpress.XtraEditors.CheckEdit();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.passwordText.Properties)).BeginInit();
@@ -61,10 +63,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.svLogin.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             this.SuspendLayout();
             // 
             // dataLayoutControl1
             // 
+            this.dataLayoutControl1.Controls.Add(this.svLogin);
             this.dataLayoutControl1.Controls.Add(this.cmbServer);
             this.dataLayoutControl1.Controls.Add(this.closeBtn);
             this.dataLayoutControl1.Controls.Add(this.loginBtn);
@@ -134,7 +139,7 @@
             this.checkEdit1.Location = new System.Drawing.Point(5, 99);
             this.checkEdit1.Name = "checkEdit1";
             this.checkEdit1.Properties.Caption = "Hiện mật khẩu";
-            this.checkEdit1.Size = new System.Drawing.Size(415, 20);
+            this.checkEdit1.Size = new System.Drawing.Size(205, 20);
             this.checkEdit1.StyleController = this.dataLayoutControl1;
             this.checkEdit1.TabIndex = 9;
             this.checkEdit1.CheckedChanged += new System.EventHandler(this.checkEdit1_CheckedChanged);
@@ -159,7 +164,8 @@
             this.emptySpaceItem1,
             this.layoutControlItem3,
             this.layoutControlItem6,
-            this.layoutControlItem5});
+            this.layoutControlItem5,
+            this.layoutControlItem7});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
@@ -215,7 +221,7 @@
             this.layoutControlItem6.Control = this.checkEdit1;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 73);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(419, 24);
+            this.layoutControlItem6.Size = new System.Drawing.Size(209, 24);
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
             // 
@@ -227,6 +233,24 @@
             this.layoutControlItem5.Size = new System.Drawing.Size(419, 25);
             this.layoutControlItem5.Text = "Máy chủ:";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(76, 13);
+            // 
+            // svLogin
+            // 
+            this.svLogin.Location = new System.Drawing.Point(214, 99);
+            this.svLogin.Name = "svLogin";
+            this.svLogin.Properties.Caption = "Đăng nhập SV";
+            this.svLogin.Size = new System.Drawing.Size(206, 20);
+            this.svLogin.StyleController = this.dataLayoutControl1;
+            this.svLogin.TabIndex = 11;
+            // 
+            // layoutControlItem7
+            // 
+            this.layoutControlItem7.Control = this.svLogin;
+            this.layoutControlItem7.Location = new System.Drawing.Point(209, 73);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Size = new System.Drawing.Size(210, 24);
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem7.TextVisible = false;
             // 
             // LoginForm
             // 
@@ -256,6 +280,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.svLogin.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -279,5 +305,7 @@
         private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
         private System.Windows.Forms.ComboBox cmbServer;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
+        private DevExpress.XtraEditors.CheckEdit svLogin;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
     }
 }

@@ -19,19 +19,29 @@ namespace QLDSV_HTC.Forms
             InitializeComponent();
         }
 
-        private void AddLoginForm_Load(object sender, EventArgs e) { 
+        private void AddLoginForm_Load(object sender, EventArgs e) {
+            // TODO: This line of code loads data into the 'dS.GIANGVIEN' table. You can move, or remove it, as needed.
+            //this.gIANGVIENTableAdapter.Connection.ConnectionString = Program.ConnStr;
+            //this.gETDSSVBindingSource.Filter = "MAGV <> '" + Program.nameOfUser + "'";
+            //this.gIANGVIENTableAdapter.Fill(this.dS.GIANGVIEN);
+
+
             roleList.Properties.Items.Clear();
             if(Program.AuthGroup == "PGV"){
                 roleList.Properties.Items.Add("PGV");
                 roleList.Properties.Items.Add("KHOA");
+                Program.Bds_Dspm.Filter = "TENKHOA <> 'Phòng Kế Toán'";
             }
             else if (Program.AuthGroup == "KHOA"){
                 roleList.Properties.Items.Add("KHOA");
+                Program.Bds_Dspm.Filter = string.Format("TENSERVER = '{0}'", Program.ServerName);
             }
             else if (Program.AuthGroup == "PKT"){
                 roleList.Properties.Items.Add("PKT");
+                Program.Bds_Dspm.Filter = string.Format("TENSERVER = '{0}'", Program.ServerName);
             }
             roleList.SelectedIndex = 0;
+            Utils.LoadComboBox(cmbKhoa, Program.Bds_Dspm.DataSource);
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -124,6 +134,14 @@ namespace QLDSV_HTC.Forms
                 //}
 
                 //return;
+        }
+
+        private void gIANGVIENBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.gIANGVIENBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.dS);
+
         }
     }
 }
