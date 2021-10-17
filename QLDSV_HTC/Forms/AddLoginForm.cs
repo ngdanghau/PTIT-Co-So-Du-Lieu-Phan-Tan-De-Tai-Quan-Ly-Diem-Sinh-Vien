@@ -1,9 +1,9 @@
 ﻿using DevExpress.XtraEditors;
+using QLDSV_HTC.Class;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,44 +19,21 @@ namespace QLDSV_HTC.Forms
             InitializeComponent();
         }
 
-        private void AddLoginForm_Load(object sender, EventArgs e) {
-            // TODO: This line of code loads data into the 'dS.GIANGVIEN' table. You can move, or remove it, as needed.
-            //this.gIANGVIENTableAdapter.Connection.ConnectionString = Program.ConnStr;
-            //this.gETDSSVBindingSource.Filter = "MAGV <> '" + Program.nameOfUser + "'";
-            //this.gIANGVIENTableAdapter.Fill(this.dS.GIANGVIEN);
-
-
-            roleList.Properties.Items.Clear();
-            if(Program.AuthGroup == "PGV"){
-                roleList.Properties.Items.Add("PGV");
-                roleList.Properties.Items.Add("KHOA");
-                Program.Bds_Dspm.Filter = "TENKHOA <> 'Phòng Kế Toán'";
-            }
-            else if (Program.AuthGroup == "KHOA"){
-                roleList.Properties.Items.Add("KHOA");
-                Program.Bds_Dspm.Filter = string.Format("TENSERVER = '{0}'", Program.ServerName);
-            }
-            else if (Program.AuthGroup == "PKT"){
-                roleList.Properties.Items.Add("PKT");
-                Program.Bds_Dspm.Filter = string.Format("TENSERVER = '{0}'", Program.ServerName);
-            }
-            roleList.SelectedIndex = 0;
-            Utils.LoadComboBox(cmbKhoa, Program.Bds_Dspm.DataSource);
-        }
-
-        private void simpleButton1_Click(object sender, EventArgs e)
+        private void createLogin_Click(object sender, EventArgs e)
         {
-
             string userName = userNameTxt.Text;
             string pass = passTxt.Text;
             string userId = userIdTxt.Text;
-            string role = roleList.SelectedText;
-            if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(pass))
+
+            if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(pass) || roleList.SelectedValue == null)
             {
                 XtraMessageBox.Show("Thông tin không được trống!", "Lỗi tạo tài khoản", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+ 
+
+            string role = roleList.SelectedValue.ToString();
             // login không được chứa khoảng trắng
             if (userId.Contains(" "))
             {
@@ -69,79 +46,38 @@ namespace QLDSV_HTC.Forms
                 XtraMessageBox.Show("UserName không được chứa khoảng trắng!", "Lỗi tạo tài khoản", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-
-
-            var linkServer = "";
-            if (Program.ServerName.Contains("SERVER1"))
+            if (pass.Length < 6)
             {
-                linkServer = "LINK2";
+                XtraMessageBox.Show("Mật khẩu phải ít nhất 6 ký tự!", "Lỗi tạo tài khoản", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else if (Program.ServerName.Contains("SERVER2"))
-            {
-                linkServer = "LINK1";
-            }
-
-            
-
             // Tạo tài khoản ở site hiện tại
-            string query = string.Format(" EXEC    @return_value = [DBO].[sp_TaoTaiKhoan] " +
+            string query = string.Format(" EXEC [DBO].[sp_TaoTaiKhoan] " +
                                          " @USERNAME = N'{1}', " +
                                          " @PASSWORD = N'{2}', " +
                                          " @USERID = N'{3}', " +
                                          " @ROLE = N'{4}' ", Program.Database, userName, pass, userId, role);
+            int result = Program.ExecSqlNonQuery(query);
+            if (result == 0)
+            {
+                XtraMessageBox.Show("Tạo login thành công!", "Thành công", MessageBoxButtons.OK);
+                return;
+            }
+        }
 
+        private void AddLoginForm_Load(object sender, EventArgs e)
+        {
+            var target = new List<RoleClass>(Program.roles);
 
             if (Program.AuthGroup == "PGV")
             {
-                // Tạo tài khoản ở site phân khác => ở SERVER 1 => dùng link 1 để lk tới SERVER 2 và ngược lại
-                query = string.Format(" EXEC    @return_value = {0}.{1}.[DBO].[sp_TaoTaiKhoan] " +
-                                      " @USERNAME = N'{2}', " +
-                                      " @PASSWORD = N'{3}', " +
-                                      " @USERID = N'{4}', " +
-                                      " @ROLE = N'{5}' ", linkServer, Program.Database, userName, pass, userId, role);
+                target.RemoveAll(p => p.TENSERVER == "PKT");
             }
-
-                //// trường hợp tạo tài khoản cho chỉ khoa và pgv
-
-                //String strLenh = " DECLARE @return_value int " + subLenh +
-                //             " SELECT  'Return Value' = @return_value ";
-
-                //int resultCheckLogin = Utils.CheckDataHelper(strLenh);
-
-                //if (resultCheckLogin == -1)
-                //{
-                //    XtraMessageBox.Show("Lỗi kết nối với database. Mời ban xem lại !", "", MessageBoxButtons.OK);
-                //    this.Close();
-                //}
-                //if (resultCheckLogin == 1)
-                //{
-                //    errorProvider.SetError(this.txtLogin, "Login bị trùng . Mời bạn nhập login khác !");
-                //}
-                //else if (resultCheckLogin == 2)
-                //{
-                //    errorProvider.SetError(this.lookUpUser, "Giảng viên đã có tài khoản rồi !");
-
-                //}
-                //else if (resultCheckLogin == 3)
-                //{
-                //    XtraMessageBox.Show("Lỗi thực thi trong cơ sơ dữ liệu !", "", MessageBoxButtons.OK);
-                //}
-                //else if (resultCheckLogin == 0)
-                //{
-                //    XtraMessageBox.Show("Tạo tài khoản thành công !", "", MessageBoxButtons.OK);
-
-                //}
-
-                //return;
-        }
-
-        private void gIANGVIENBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.gIANGVIENBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.dS);
-
+            else
+            {
+                target.RemoveAll(p => p.TENSERVER != Program.AuthGroup);
+            }
+            Utils.LoadComboBox(roleList, target);
         }
     }
 }

@@ -114,6 +114,8 @@ namespace QLDSV_HTC
                 quanLyPageGroup.Visible = false;
                 usersGroup.Visible = false;
                 dangKyPageGroup.Visible = true;
+
+                statusStrip1.Items[2].Text = string.Format("LỚP: {0}", Program.AuthGroup);
             }
 
         }

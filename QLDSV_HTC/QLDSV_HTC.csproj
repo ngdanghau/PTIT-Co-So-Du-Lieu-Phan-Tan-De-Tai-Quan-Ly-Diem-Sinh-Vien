@@ -86,6 +86,7 @@
     <Compile Include="Class\LopClass.cs" />
     <Compile Include="Class\LopTinChiClass.cs" />
     <Compile Include="Class\MonHocClass.cs" />
+    <Compile Include="Class\RoleClass.cs" />
     <Compile Include="Class\SinhVienClass.cs" />
     <Compile Include="DS.cs">
       <DependentUpon>DS.xsd</DependentUpon>

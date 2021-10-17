@@ -47,6 +47,7 @@ namespace QLDSV_HTC.Forms
             {
                 Program.ServerLogin = Program.SVLogin;
                 Program.ServerPassword = Program.SVPassword;
+                Program.AuthGroup = "SV";
             }
 
             Program.MaKhoa = Utils.GetMaKhoa(cmbServer.Text);

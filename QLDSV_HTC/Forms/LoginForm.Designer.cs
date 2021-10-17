@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
+            this.svLogin = new DevExpress.XtraEditors.CheckEdit();
             this.cmbServer = new System.Windows.Forms.ComboBox();
             this.closeBtn = new DevExpress.XtraEditors.SimpleButton();
             this.loginBtn = new DevExpress.XtraEditors.SimpleButton();
@@ -45,11 +46,11 @@
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
-            this.svLogin = new DevExpress.XtraEditors.CheckEdit();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.svLogin.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.passwordText.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usernameText.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
@@ -62,9 +63,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.svLogin.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataLayoutControl1
@@ -83,6 +83,15 @@
             this.dataLayoutControl1.Size = new System.Drawing.Size(425, 151);
             this.dataLayoutControl1.TabIndex = 0;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
+            // 
+            // svLogin
+            // 
+            this.svLogin.Location = new System.Drawing.Point(217, 99);
+            this.svLogin.Name = "svLogin";
+            this.svLogin.Properties.Caption = "Đăng nhập SV";
+            this.svLogin.Size = new System.Drawing.Size(203, 20);
+            this.svLogin.StyleController = this.dataLayoutControl1;
+            this.svLogin.TabIndex = 11;
             // 
             // cmbServer
             // 
@@ -130,6 +139,8 @@
             this.usernameText.Name = "usernameText";
             this.usernameText.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.usernameText.Properties.Appearance.Options.UseFont = true;
+            this.usernameText.Properties.Mask.EditMask = "(\\p{Lu}|[0-9])+";
+            this.usernameText.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.usernameText.Size = new System.Drawing.Size(336, 20);
             this.usernameText.StyleController = this.dataLayoutControl1;
             this.usernameText.TabIndex = 4;
@@ -139,7 +150,7 @@
             this.checkEdit1.Location = new System.Drawing.Point(5, 99);
             this.checkEdit1.Name = "checkEdit1";
             this.checkEdit1.Properties.Caption = "Hiện mật khẩu";
-            this.checkEdit1.Size = new System.Drawing.Size(205, 20);
+            this.checkEdit1.Size = new System.Drawing.Size(208, 20);
             this.checkEdit1.StyleController = this.dataLayoutControl1;
             this.checkEdit1.TabIndex = 9;
             this.checkEdit1.CheckedChanged += new System.EventHandler(this.checkEdit1_CheckedChanged);
@@ -221,7 +232,7 @@
             this.layoutControlItem6.Control = this.checkEdit1;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 73);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(209, 24);
+            this.layoutControlItem6.Size = new System.Drawing.Size(212, 24);
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
             // 
@@ -234,21 +245,12 @@
             this.layoutControlItem5.Text = "Máy chủ:";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(76, 13);
             // 
-            // svLogin
-            // 
-            this.svLogin.Location = new System.Drawing.Point(214, 99);
-            this.svLogin.Name = "svLogin";
-            this.svLogin.Properties.Caption = "Đăng nhập SV";
-            this.svLogin.Size = new System.Drawing.Size(206, 20);
-            this.svLogin.StyleController = this.dataLayoutControl1;
-            this.svLogin.TabIndex = 11;
-            // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.svLogin;
-            this.layoutControlItem7.Location = new System.Drawing.Point(209, 73);
+            this.layoutControlItem7.Location = new System.Drawing.Point(212, 73);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(210, 24);
+            this.layoutControlItem7.Size = new System.Drawing.Size(207, 24);
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
             // 
@@ -267,6 +269,7 @@
             this.Load += new System.EventHandler(this.LoginForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.svLogin.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.passwordText.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usernameText.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
@@ -279,9 +282,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.svLogin.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             this.ResumeLayout(false);
 
         }

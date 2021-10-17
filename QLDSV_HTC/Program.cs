@@ -1,6 +1,7 @@
 ﻿using DevExpress.Skins;
 using DevExpress.UserSkins;
 using DevExpress.XtraEditors;
+using QLDSV_HTC.Class;
 using QLDSV_HTC.Forms;
 using System;
 using System.Collections.Generic;
@@ -71,7 +72,11 @@ namespace QLDSV_HTC
         public static LoginForm LoginForm;
 
         // lưu danh sách các nhóm quyền
-        public static string[] NhomQuyen = new string[4] { "PGV", "KHOA", "SV", "PKT" };
+        public static List<RoleClass> roles = new List<RoleClass> {
+                new RoleClass("PGV", "Phòng Giáo Vụ"),
+                new RoleClass("KHOA", "Khoa"),
+                new RoleClass("PKT", "Phòng Kế Toán")
+        };
 
         // hàm thực hiện kết nối tới Database
         public static void KetNoi()

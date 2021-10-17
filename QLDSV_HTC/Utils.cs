@@ -52,8 +52,14 @@ namespace QLDSV_HTC
 
         public static void LoadComboBox(System.Windows.Forms.ComboBox cmbServer, Object dt)
         {
-            DataTable datatable = (DataTable)dt;
-            cmbServer.DataSource = datatable;
+            try
+            {
+                DataTable datatable = (DataTable)dt;
+                cmbServer.DataSource = datatable;
+            }
+            catch {
+                cmbServer.DataSource = dt;
+            }
             cmbServer.DisplayMember = "TENKHOA";
             cmbServer.ValueMember = "TENSERVER";
             cmbServer.SelectedIndex = 0;
