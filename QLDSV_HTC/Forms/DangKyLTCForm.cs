@@ -161,7 +161,7 @@ namespace QLDSV_HTC.Forms
             var NienKhoa = txtNienKhoa.Text.Trim();
 
             string query = string.Format("EXEC sp_DangKyLopTinChi @MALTC = {0}, @MASV = '{1}', @MAMH = '{2}', @HOCKY = {3}, @NIENKHOA = '{4}'", maLTC, Program.AuthUserID, maMh, hocky, NienKhoa);
-            var result = Program.ExecSqlNonQuery(query);
+            Program.ExecSqlNonQuery(query);
             LoadData();
             gridView1.ClearSelection();
         }
