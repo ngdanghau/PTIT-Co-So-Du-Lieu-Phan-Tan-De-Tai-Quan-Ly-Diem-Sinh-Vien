@@ -151,21 +151,19 @@ namespace QLDSV_HTC.Forms
 
         private void gridView1_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
         {
-            gridView1.ShowLoadingPanel();
 
             DataRow row = gridView1.GetFocusedDataRow();
             if (row == null) return;
             var pos = Convert.ToInt32(row["STT"]) - 1;
             var maLTC = table.Rows[pos]["MALTC"];
+            var maMh = table.Rows[pos]["MAMH"];
+            int hocky = Convert.ToInt32(txtHocKy.Text.Trim());
+            var NienKhoa = txtNienKhoa.Text.Trim();
 
-            string query = string.Format("EXEC sp_DangKyLopTinChi @MALTC = {0}, @MASV = '{1}'", maLTC, Program.AuthUserID);
+            string query = string.Format("EXEC sp_DangKyLopTinChi @MALTC = {0}, @MASV = '{1}', @MAMH = '{2}', @HOCKY = {3}, @NIENKHOA = '{4}'", maLTC, Program.AuthUserID, maMh, hocky, NienKhoa);
             var result = Program.ExecSqlNonQuery(query);
-            if (result == 0)
-            {
-                LoadData();
-            }
-
-            gridView1.HideLoadingPanel();
+            LoadData();
+            gridView1.ClearSelection();
         }
     }
 }

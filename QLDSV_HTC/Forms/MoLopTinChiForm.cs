@@ -175,7 +175,7 @@ namespace QLDSV_HTC.Forms
 
         private bool checkLTC()
         {
-            string query = string.Format(" EXEC sp_KiemTraLTC @NIENKHOA = N'{0}', @HOCKY = {1}, @MAMH = N'{2}', @NHOM = {3}", txtNienKhoa.Text.Trim(), Convert.ToInt32(txtHocKy.Text), txtMaMonHoc.Text.Trim(), Convert.ToInt32(txtHocKy.Text));
+            string query = string.Format(" EXEC sp_KiemTraLTC @NIENKHOA = N'{0}', @HOCKY = {1}, @MAMH = N'{2}', @NHOM = {3}", txtNienKhoa.Text.Trim(), Convert.ToInt32(txtHocKy.Text), txtMaMonHoc.Text.Trim(), Convert.ToInt32(txtNhom.Text));
 
             var check = Program.ExecSqlNonQuery(query);
             if (check == 0) return true;
