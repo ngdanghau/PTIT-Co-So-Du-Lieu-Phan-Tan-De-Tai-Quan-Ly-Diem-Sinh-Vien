@@ -247,9 +247,6 @@
     <EmbeddedResource Include="Forms\DiemForm.resx">
       <DependentUpon>DiemForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SinhVienForm.resx">
-      <DependentUpon>SinhVienForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\HocPhiForm.resx">
       <DependentUpon>HocPhiForm.cs</DependentUpon>
     </EmbeddedResource>

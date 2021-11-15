@@ -39,11 +39,11 @@ namespace QLDSV_HTC.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SinhVienForm));
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.bdsSINHVIEN = new System.Windows.Forms.BindingSource(this.components);
+            this.bdsLop = new System.Windows.Forms.BindingSource(this.components);
+            this.dS = new QLDSV_HTC.DS();
             this.NghiHoc_Label = new DevExpress.XtraEditors.LabelControl();
             this.dANGHIHOCCheckBox = new System.Windows.Forms.CheckBox();
-            this.bdsSINHVIEN = new System.Windows.Forms.BindingSource(this.components);
-            this.lOPBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dS = new QLDSV_HTC.DS();
             this.CheckBox_Phai = new System.Windows.Forms.CheckBox();
             this.dIACHITextBox = new System.Windows.Forms.TextBox();
             this.DateEdit_NgaySinh = new DevExpress.XtraEditors.DateEdit();
@@ -107,7 +107,6 @@ namespace QLDSV_HTC.Forms
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.bds_DangKy = new System.Windows.Forms.BindingSource(this.components);
             this.dANGKYTableAdapter = new QLDSV_HTC.DSTableAdapters.DANGKYTableAdapter();
-            this.NghiHoc_Label = new DevExpress.XtraEditors.LabelControl();
             mASVLabel = new System.Windows.Forms.Label();
             hOLabel = new System.Windows.Forms.Label();
             tENLabel = new System.Windows.Forms.Label();
@@ -119,7 +118,7 @@ namespace QLDSV_HTC.Forms
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsSINHVIEN)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lOPBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsLop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DateEdit_NgaySinh.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DateEdit_NgaySinh.Properties)).BeginInit();
@@ -197,9 +196,9 @@ namespace QLDSV_HTC.Forms
             this.panelControl1.Controls.Add(this.panelControl3);
             this.panelControl1.Controls.Add(this.GC_Lop);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl1.Location = new System.Drawing.Point(0, 332);
+            this.panelControl1.Location = new System.Drawing.Point(0, 859);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1190, 202);
+            this.panelControl1.Size = new System.Drawing.Size(1241, 202);
             this.panelControl1.TabIndex = 2;
             this.panelControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl1_Paint);
             // 
@@ -223,8 +222,23 @@ namespace QLDSV_HTC.Forms
             this.panelControl3.Enabled = false;
             this.panelControl3.Location = new System.Drawing.Point(2, 2);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(421, 198);
+            this.panelControl3.Size = new System.Drawing.Size(435, 198);
             this.panelControl3.TabIndex = 1;
+            // 
+            // bdsSINHVIEN
+            // 
+            this.bdsSINHVIEN.DataMember = "FK_SINHVIEN_LOP";
+            this.bdsSINHVIEN.DataSource = this.bdsLop;
+            // 
+            // bdsLop
+            // 
+            this.bdsLop.DataMember = "LOP";
+            this.bdsLop.DataSource = this.dS;
+            // 
+            // dS
+            // 
+            this.dS.DataSetName = "DS";
+            this.dS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // NghiHoc_Label
             // 
@@ -243,21 +257,6 @@ namespace QLDSV_HTC.Forms
             this.dANGHIHOCCheckBox.TabIndex = 16;
             this.dANGHIHOCCheckBox.UseVisualStyleBackColor = true;
             this.dANGHIHOCCheckBox.CheckedChanged += new System.EventHandler(this.dANGHIHOCCheckBox_CheckedChanged);
-            // 
-            // bdsSINHVIEN
-            // 
-            this.bdsSINHVIEN.DataMember = "FK_SINHVIEN_LOP";
-            this.bdsSINHVIEN.DataSource = this.lOPBindingSource;
-            // 
-            // lOPBindingSource
-            // 
-            this.lOPBindingSource.DataMember = "LOP";
-            this.lOPBindingSource.DataSource = this.dS;
-            // 
-            // dS
-            // 
-            this.dS.DataSetName = "DS";
-            this.dS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // CheckBox_Phai
             // 
@@ -413,15 +412,15 @@ namespace QLDSV_HTC.Forms
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1190, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(1241, 24);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 534);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 1061);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1190, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1241, 0);
             // 
             // barDockControlLeft
             // 
@@ -429,15 +428,15 @@ namespace QLDSV_HTC.Forms
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 510);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 1037);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1190, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(1241, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 510);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 1037);
             // 
             // TextBox_Ten
             // 
@@ -466,9 +465,9 @@ namespace QLDSV_HTC.Forms
             // 
             // GC_Lop
             // 
-            this.GC_Lop.DataSource = this.lOPBindingSource;
+            this.GC_Lop.DataSource = this.bdsLop;
             this.GC_Lop.Dock = System.Windows.Forms.DockStyle.Right;
-            this.GC_Lop.Location = new System.Drawing.Point(734, 2);
+            this.GC_Lop.Location = new System.Drawing.Point(785, 2);
             this.GC_Lop.MainView = this.gridView1;
             this.GC_Lop.MenuManager = this.barManager1;
             this.GC_Lop.Name = "GC_Lop";
@@ -704,7 +703,7 @@ namespace QLDSV_HTC.Forms
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl2.Location = new System.Drawing.Point(0, 24);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1190, 36);
+            this.panelControl2.Size = new System.Drawing.Size(1241, 36);
             this.panelControl2.TabIndex = 12;
             this.panelControl2.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl2_Paint);
             // 
@@ -758,10 +757,11 @@ namespace QLDSV_HTC.Forms
             this.GC_SV.MainView = this.gridView2;
             this.GC_SV.MenuManager = this.barManager1;
             this.GC_SV.Name = "GC_SV";
-            this.GC_SV.Size = new System.Drawing.Size(1190, 272);
+            this.GC_SV.Size = new System.Drawing.Size(1241, 799);
             this.GC_SV.TabIndex = 16;
             this.GC_SV.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
+            this.GC_SV.Click += new System.EventHandler(this.GC_SV_Click);
             // 
             // gridView2
             // 
@@ -860,20 +860,12 @@ namespace QLDSV_HTC.Forms
             // 
             this.dANGKYTableAdapter.ClearBeforeFill = true;
             // 
-            // NghiHoc_Label
-            // 
-            this.NghiHoc_Label.Location = new System.Drawing.Point(205, 107);
-            this.NghiHoc_Label.Name = "NghiHoc_Label";
-            this.NghiHoc_Label.Size = new System.Drawing.Size(68, 13);
-            this.NghiHoc_Label.TabIndex = 17;
-            this.NghiHoc_Label.Text = "ĐÃ NGHỈ HỌC";
-            // 
             // SinhVienForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1190, 534);
+            this.ClientSize = new System.Drawing.Size(1241, 1061);
             this.Controls.Add(this.GC_SV);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
@@ -890,7 +882,7 @@ namespace QLDSV_HTC.Forms
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsSINHVIEN)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lOPBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsLop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DateEdit_NgaySinh.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DateEdit_NgaySinh.Properties)).EndInit();
@@ -952,7 +944,7 @@ namespace QLDSV_HTC.Forms
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DSTableAdapters.SINHVIENTableAdapter sINHVIENTableAdapter;
         private DSTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.BindingSource lOPBindingSource;
+        private System.Windows.Forms.BindingSource bdsLop;
         private DSTableAdapters.LOPTableAdapter lOPTableAdapter;
         private DevExpress.XtraGrid.GridControl GC_SV;
         private System.Windows.Forms.BindingSource bdsSINHVIEN;

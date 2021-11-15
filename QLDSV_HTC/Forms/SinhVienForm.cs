@@ -14,7 +14,8 @@ namespace QLDSV_HTC.Forms
 {
     public partial class SinhVienForm : Form
     {
-        private int position = -1;
+        private int position_sv = -1;
+        private int position_lop = -1;
         private string state = "";
         Stack<string> undoStack = new Stack<string>();
 
@@ -53,6 +54,7 @@ namespace QLDSV_HTC.Forms
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+            
 
             return true;
         }
@@ -119,6 +121,7 @@ namespace QLDSV_HTC.Forms
 
         private void LoadData()
         {
+           
             dS.EnforceConstraints = false;
             this.lOPTableAdapter.Connection.ConnectionString = Program.ConnStr;
             // TODO: This line of code loads data into the 'dS.LOP' table. You can move, or remove it, as needed.
@@ -129,16 +132,22 @@ namespace QLDSV_HTC.Forms
             // TODO: This line of code loads data into the 'dS.DANGKY' table. You can move, or remove it, as needed.
             this.dANGKYTableAdapter.Connection.ConnectionString = Program.ConnStr;
             this.dANGKYTableAdapter.Fill(this.dS.DANGKY);
-            if (position > 0)
+            if (position_lop > 0 )
             {
-                bdsSINHVIEN.Position = position;
+                bdsLop.Position = position_lop;
+            }
+            if (position_sv > 0)
+            {
+                bdsSINHVIEN.Position = position_sv;
             }
             barButtonDelete.Enabled = barButtonEdit.Enabled = bdsSINHVIEN.Count > 0;
+            
         }
 
         private void SinhVienForm_Load(object sender, EventArgs e)
         {
-            
+           
+
 
             if (Program.AuthGroup == "PGV")
             {
@@ -155,6 +164,7 @@ namespace QLDSV_HTC.Forms
             {
                 LoadData();
             }
+            
         }
 
         private void panelControl2_Paint(object sender, PaintEventArgs e)
@@ -183,7 +193,8 @@ namespace QLDSV_HTC.Forms
 
         private void barButtonItem16_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            position = bdsSINHVIEN.Position;
+            position_sv = bdsSINHVIEN.Position;
+            position_lop = bdsLop.Position;
             state = "add";
             SetButtonState(true);
             TextBox_MaSV.Focus();
@@ -194,7 +205,11 @@ namespace QLDSV_HTC.Forms
         {
             //check các dk của dữ liệu đưa vào
             if (!ValidateForm()) return;
-            dANGHIHOCCheckBox.Checked = false; // SET DA NGHI HOC = FALSE
+            if (state == "add")
+            {
+                dANGHIHOCCheckBox.Checked = false; // SET DA NGHI HOC = FALSE
+                CheckBox_Phai.Checked = false;
+            }
             try
             {
                 this.bdsSINHVIEN.EndEdit();
@@ -204,7 +219,9 @@ namespace QLDSV_HTC.Forms
                 if (state == "edit")
                 {
                     undoStack.Push(string.Format("UPDATE SINHVIEN SET [HO] =N'{0}',[TEN] = N'{1}',[PHAI] = {2},[DIACHI] = N'{3}',[NGAYSINH] = '{4}',[DANGHIHOC] = {5} WHERE [MASV] = N'{6}'", sv.ho, sv.ten, sv.phai, sv.diaChi, sv.ngaySinh, sv.daNghiHoc, sv.maSV));
+                    LoadData();
                 }
+                
             }
             catch (Exception ex)
             {
@@ -261,7 +278,8 @@ namespace QLDSV_HTC.Forms
 
         private void barButtonEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            position = bdsSINHVIEN.Position;
+            position_sv = bdsSINHVIEN.Position;
+            position_lop = bdsLop.Position;
             state = "edit";
             SetButtonState(true);
         }
@@ -319,6 +337,7 @@ namespace QLDSV_HTC.Forms
         private void barButtonRenew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             LoadData();
+            bdsSINHVIEN.Position = 0;
             XtraMessageBox.Show("Làm mới dữ liệu thành công", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -332,8 +351,9 @@ namespace QLDSV_HTC.Forms
             int Nghihoc = 0;
             if (CheckBox_Phai.Checked)
             {
-                phai = 1;
+                phai = 1;   
             }
+
             if (dANGHIHOCCheckBox.Checked)
             {
                 Nghihoc = 1;
@@ -358,7 +378,8 @@ namespace QLDSV_HTC.Forms
             {
                 try
                 {
-                    position = bdsSINHVIEN.Position;
+                    position_sv = bdsSINHVIEN.Position;
+                    position_lop = bdsLop.Position;
                     bdsSINHVIEN.RemoveCurrent();
                     this.sINHVIENTableAdapter.Connection.ConnectionString = Program.ConnStr;
                     this.sINHVIENTableAdapter.Update(this.dS.SINHVIEN);
@@ -376,6 +397,11 @@ namespace QLDSV_HTC.Forms
                 barButtonUndo.Enabled = undoStack.Count > 0;
             }
 
+
+        }
+
+        private void GC_SV_Click(object sender, EventArgs e)
+        {
 
         }
     }
