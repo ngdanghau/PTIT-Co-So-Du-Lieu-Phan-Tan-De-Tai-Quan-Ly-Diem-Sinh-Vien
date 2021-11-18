@@ -10,14 +10,19 @@ GO
 -- =============================================
 CREATE OR ALTER PROCEDURE sp_GetBangDiemMonHoc
 	-- khai bao cac bien tam 
-	@MALTC int 
+	@NIENKHOA nchar(9), @HOCKY int, @MAMH nchar(10), @NHOM int 
 AS
 BEGIN
 
-	SELECT SV.MASV, SV.HO + ' '+ sv.TEN as 'HOTEN', DK.DIEM_CC, dk.DIEM_GK, dk.DIEM_CK
-	FROM (SELECT MASV, MALTC, DIEM_CC, DIEM_GK, DIEM_CK FROM DANGKY WHERE MALTC = @MALTC) as DK, SINHVIEN SV
-	WHERE SV.MASV = DK.MASV
-	ORDER BY SV.TEN, SV.HO
+	SELECT ROW_NUMBER() over(ORDER BY sv.TEN, sv.HO) STT, sv.MASV, sv.HO, sv.TEN, dk.DIEM_CC, dk.DIEM_GK, dk.DIEM_CK, (ROUND(dk.DIEM_CC,2) *0.1 + ROUND(dk.DIEM_CK,2) * 0.6 + ROUND(dk.DIEM_GK,2) * 0.3) as 'DIEM_HM'
+	FROM DANGKY as dk
+
+	INNER JOIN LOPTINCHI as ltc ON dk.MALTC= ltc.MALTC
+	INNER JOIN SINHVIEN as sv ON dk.MASV = sv.MASV
+
+	WHERE ltc.NIENKHOA = @NIENKHOA AND ltc.HOCKY = @HOCKY AND ltc.MAMH = @MAMH AND ltc.NHOM = @NHOM
+
+	ORDER BY sv.TEN, sv.HO
 	  
 END
 GO
