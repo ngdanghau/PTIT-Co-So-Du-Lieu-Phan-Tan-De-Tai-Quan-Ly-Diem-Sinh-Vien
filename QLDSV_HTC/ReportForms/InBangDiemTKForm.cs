@@ -1,4 +1,6 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraReports.UI;
+using QLDSV_HTC.Reports;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,6 +31,7 @@ namespace QLDSV_HTC.Forms
         private void InBangDiemTKForm_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dS.LOP' table. You can move, or remove it, as needed.
+            this.dS.EnforceConstraints = false;
             this.lOPTableAdapter.Fill(this.dS.LOP);
 
         }
@@ -42,6 +45,11 @@ namespace QLDSV_HTC.Forms
                 return;
             }
 
+            Console.WriteLine(dataRow);
+
+            InBangDiemTongKet_RP rpt = new InBangDiemTongKet_RP();
+            ReportPrintTool print = new ReportPrintTool(rpt);
+            print.ShowPreviewDialog();
 
         }
     }
