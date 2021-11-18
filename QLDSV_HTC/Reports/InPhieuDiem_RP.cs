@@ -13,6 +13,8 @@ namespace QLDSV_HTC.Reports
             InitializeComponent();
             this.xrLabel_Khoa.Text = "Khoa: " + Khoa;
             this.xrLabel_MSSV.Text = "MSSV: " + MaSV.ToUpper();
+
+            this.sqlDataSource1.Connection.ConnectionString = Program.ConnStr;
             this.sqlDataSource1.Queries[0].Parameters[0].Value = MaSV;
             this.sqlDataSource1.Fill();
         }
