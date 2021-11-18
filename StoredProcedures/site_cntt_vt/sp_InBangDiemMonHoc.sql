@@ -14,7 +14,7 @@ CREATE OR ALTER PROCEDURE sp_InBangDiemMonHoc
 AS
 BEGIN
 
-	SELECT sv.MASV, sv.HO, sv.TEN, dk.DIEM_CC, dk.DIEM_GK, dk.DIEM_CK, (dk.DIEM_CC *0.1 + dk.DIEM_CK * 0.6) as 'DIEM_HM'
+	SELECT ROW_NUMBER() over(ORDER BY sv.TEN, sv.HO) STT, sv.MASV, sv.HO, sv.TEN, dk.DIEM_CC, ROUND(dk.DIEM_GK,2), ROUND(dk.DIEM_CK,2), (dk.DIEM_CC *0.1 + ROUND(dk.DIEM_CK,2) * 0.6 + ROUND(dk.DIEM_GK,2) * 0.3) as 'DIEM_HM'
 	FROM DANGKY as dk
 
 	INNER JOIN LOPTINCHI as ltc ON dk.MALTC= ltc.MALTC
