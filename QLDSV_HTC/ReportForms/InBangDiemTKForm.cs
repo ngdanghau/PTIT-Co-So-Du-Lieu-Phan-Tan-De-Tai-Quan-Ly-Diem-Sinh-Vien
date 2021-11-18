@@ -1,4 +1,6 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraReports.UI;
+using QLDSV_HTC.Reports;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -43,6 +45,11 @@ namespace QLDSV_HTC.Forms
                 return;
             }
 
+            Console.WriteLine(dataRow);
+
+            InBangDiemTongKet_RP rpt = new InBangDiemTongKet_RP();
+            ReportPrintTool print = new ReportPrintTool(rpt);
+            print.ShowPreviewDialog();
 
         }
     }
