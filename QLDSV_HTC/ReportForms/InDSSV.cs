@@ -68,21 +68,6 @@ namespace QLDSV_HTC.ReportForms
 
         }
 
-        private void labelControl2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textEdit1_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textEdit2_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void InDSSV_Load(object sender, EventArgs e)
         {
@@ -97,43 +82,11 @@ namespace QLDSV_HTC.ReportForms
                 Program.Bds_Dspm.Filter = string.Format("TENSERVER = '{0}'", Program.ServerName);
             }
             Utils.LoadComboBox(comboBox_Khoa, Program.Bds_Dspm.DataSource);
-
-
-        }
-
-        private void labelControl1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelControl4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textEdit_MH_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelControl3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textEdit_Nhom_EditValueChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void comboBox_Khoa_SelectedIndexChanged(object sender, EventArgs e)
         {
             Utils.ChangeServer(comboBox_Khoa);
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

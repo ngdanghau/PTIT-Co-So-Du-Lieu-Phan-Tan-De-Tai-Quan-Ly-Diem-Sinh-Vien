@@ -45,9 +45,7 @@ namespace QLDSV_HTC.Forms
                 return;
             }
 
-            Console.WriteLine(dataRow);
-
-            InBangDiemTongKet_RP rpt = new InBangDiemTongKet_RP();
+            InBangDiemTongKet_RP rpt = new InBangDiemTongKet_RP(dataRow.Row.ItemArray);
             ReportPrintTool print = new ReportPrintTool(rpt);
             print.ShowPreviewDialog();
 

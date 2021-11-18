@@ -50,7 +50,6 @@ namespace QLDSV_HTC.ReportForms
             this.labelControl1.Size = new System.Drawing.Size(54, 13);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Niên khóa: ";
-            this.labelControl1.Click += new System.EventHandler(this.labelControl1_Click_1);
             // 
             // labelControl2
             // 

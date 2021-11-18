@@ -60,7 +60,6 @@ namespace QLDSV_HTC.ReportForms
             this.textEdit_NK.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.textEdit_NK.Size = new System.Drawing.Size(100, 20);
             this.textEdit_NK.TabIndex = 2;
-            this.textEdit_NK.EditValueChanged += new System.EventHandler(this.textEdit1_EditValueChanged);
             // 
             // labelControl1
             // 
@@ -69,7 +68,6 @@ namespace QLDSV_HTC.ReportForms
             this.labelControl1.Size = new System.Drawing.Size(54, 13);
             this.labelControl1.TabIndex = 3;
             this.labelControl1.Text = "Niên khóa: ";
-            this.labelControl1.Click += new System.EventHandler(this.labelControl1_Click);
             // 
             // labelControl2
             // 
@@ -78,7 +76,6 @@ namespace QLDSV_HTC.ReportForms
             this.labelControl2.Size = new System.Drawing.Size(35, 13);
             this.labelControl2.TabIndex = 5;
             this.labelControl2.Text = "Học kì: ";
-            this.labelControl2.Click += new System.EventHandler(this.labelControl2_Click);
             // 
             // labelControl3
             // 
@@ -87,7 +84,6 @@ namespace QLDSV_HTC.ReportForms
             this.labelControl3.Size = new System.Drawing.Size(31, 13);
             this.labelControl3.TabIndex = 9;
             this.labelControl3.Text = "Nhóm:";
-            this.labelControl3.Click += new System.EventHandler(this.labelControl3_Click);
             // 
             // labelControl4
             // 
@@ -96,7 +92,6 @@ namespace QLDSV_HTC.ReportForms
             this.labelControl4.Size = new System.Drawing.Size(44, 13);
             this.labelControl4.TabIndex = 7;
             this.labelControl4.Text = "Môn học:";
-            this.labelControl4.Click += new System.EventHandler(this.labelControl4_Click);
             // 
             // button_preview
             // 
@@ -143,7 +138,6 @@ namespace QLDSV_HTC.ReportForms
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 25;
             this.label1.Text = "Khoa:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // comboBox_Khoa
             // 
@@ -186,7 +180,6 @@ namespace QLDSV_HTC.ReportForms
             0});
             this.textEdit_HK.Size = new System.Drawing.Size(100, 20);
             this.textEdit_HK.TabIndex = 4;
-            this.textEdit_HK.EditValueChanged += new System.EventHandler(this.textEdit2_EditValueChanged);
             // 
             // textEdit_Nhom
             // 
@@ -215,7 +208,6 @@ namespace QLDSV_HTC.ReportForms
             0});
             this.textEdit_Nhom.Size = new System.Drawing.Size(100, 20);
             this.textEdit_Nhom.TabIndex = 8;
-            this.textEdit_Nhom.EditValueChanged += new System.EventHandler(this.textEdit_Nhom_EditValueChanged);
             // 
             // InDSSV
             // 

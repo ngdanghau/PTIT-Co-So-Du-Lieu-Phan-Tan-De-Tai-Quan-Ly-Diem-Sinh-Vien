@@ -41,15 +41,6 @@ namespace QLDSV_HTC.ReportForms
             Utils.ChangeServer(cmbKhoa);
         }
 
-        private void labelControl1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelControl1_Click_1(object sender, EventArgs e)
-        {
-
-        }
 
         private void simpleButton1_Click_1(object sender, EventArgs e)
         {

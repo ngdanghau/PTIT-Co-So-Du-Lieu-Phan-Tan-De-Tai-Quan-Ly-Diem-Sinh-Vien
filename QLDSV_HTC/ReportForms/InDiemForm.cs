@@ -81,29 +81,10 @@ namespace QLDSV_HTC.ReportForms
             
         }
 
-        private void labelControl1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textEdit_NK_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void comboBox_Khoa_SelectedIndexChanged(object sender, EventArgs e)
         {
             Utils.ChangeServer(comboBox_Khoa);
         }
 
-        private void comboBox_MH_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lookUpEdit_MH_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

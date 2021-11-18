@@ -83,7 +83,6 @@ namespace QLDSV_HTC.ReportForms
             this.labelControl1.Size = new System.Drawing.Size(54, 13);
             this.labelControl1.TabIndex = 12;
             this.labelControl1.Text = "Niên khóa: ";
-            this.labelControl1.Click += new System.EventHandler(this.labelControl1_Click);
             // 
             // textEdit_NK
             // 
@@ -93,7 +92,6 @@ namespace QLDSV_HTC.ReportForms
             this.textEdit_NK.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.textEdit_NK.Size = new System.Drawing.Size(100, 20);
             this.textEdit_NK.TabIndex = 11;
-            this.textEdit_NK.EditValueChanged += new System.EventHandler(this.textEdit_NK_EditValueChanged);
             // 
             // button_preview
             // 
@@ -140,7 +138,6 @@ namespace QLDSV_HTC.ReportForms
             this.lookUpEdit_MH.Properties.ValueMember = "MAMH";
             this.lookUpEdit_MH.Size = new System.Drawing.Size(100, 20);
             this.lookUpEdit_MH.TabIndex = 22;
-            this.lookUpEdit_MH.EditValueChanged += new System.EventHandler(this.lookUpEdit_MH_EditValueChanged);
             // 
             // mONHOCBindingSource
             // 
