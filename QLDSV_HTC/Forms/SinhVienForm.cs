@@ -56,6 +56,15 @@ namespace QLDSV_HTC.Forms
 
             return true;
         }
+        private Boolean CheckMaSV(String maSV)
+        {
+            String query = String.Format("EXEC sp_KiemTraMaSV @MaSV = {0}", maSV);
+            int check = Program.ExecSqlNonQuery(query);
+            if (check == 1)
+                return true;
+            return false;
+        }
+
         private void SetButtonState(bool value)
         {
             if (state == "edit")
@@ -154,6 +163,18 @@ namespace QLDSV_HTC.Forms
     
         private void barButtonOut_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if(barButtonUndo.Enabled)
+            {
+                String message = "Dữ liệu bạn vừa sửa sẽ không thể hoàn tác! Bạn có xác nhận thoát.";
+                DialogResult dr = XtraMessageBox.Show(message, "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dr == DialogResult.No) return;
+            }else if(barButtonHuy.Enabled)
+            {
+                String message = "Dữ liệu bạn đang sửa sẽ bị hủy! Bạn có xác nhận thoát.";
+                DialogResult dr = XtraMessageBox.Show(message, "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dr == DialogResult.No) return;
+            }
+            
             this.Close();
         }
 
@@ -171,6 +192,11 @@ namespace QLDSV_HTC.Forms
         {
             //check các dk của dữ liệu đưa vào
             if (!ValidateForm()) return;
+            if (state == "add" && CheckMaSV(TextBox_MaSV.Text) )
+            {
+                TextBox_MaSV.Focus();
+                return;
+            }
             dANGHIHOCCheckBox.Checked = false; // SET DA NGHI HOC = FALSE
             try
             {

@@ -29,6 +29,7 @@ namespace QLDSV_HTC.Forms
         private void InBangDiemTKForm_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dS.LOP' table. You can move, or remove it, as needed.
+            dS.EnforceConstraints = false;
             this.lOPTableAdapter.Fill(this.dS.LOP);
 
         }
