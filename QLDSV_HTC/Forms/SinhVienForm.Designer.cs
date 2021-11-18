@@ -154,7 +154,7 @@ namespace QLDSV_HTC.Forms
             // tENLabel
             // 
             tENLabel.AutoSize = true;
-            tENLabel.Location = new System.Drawing.Point(202, 51);
+            tENLabel.Location = new System.Drawing.Point(237, 51);
             tENLabel.Name = "tENLabel";
             tENLabel.Size = new System.Drawing.Size(33, 13);
             tENLabel.TabIndex = 4;
@@ -163,7 +163,7 @@ namespace QLDSV_HTC.Forms
             // nGAYSINHLabel
             // 
             nGAYSINHLabel.AutoSize = true;
-            nGAYSINHLabel.Location = new System.Drawing.Point(202, 25);
+            nGAYSINHLabel.Location = new System.Drawing.Point(237, 25);
             nGAYSINHLabel.Name = "nGAYSINHLabel";
             nGAYSINHLabel.Size = new System.Drawing.Size(65, 13);
             nGAYSINHLabel.TabIndex = 8;
@@ -172,7 +172,7 @@ namespace QLDSV_HTC.Forms
             // dIACHILabel
             // 
             dIACHILabel.AutoSize = true;
-            dIACHILabel.Location = new System.Drawing.Point(202, 76);
+            dIACHILabel.Location = new System.Drawing.Point(237, 76);
             dIACHILabel.Name = "dIACHILabel";
             dIACHILabel.Size = new System.Drawing.Size(54, 13);
             dIACHILabel.TabIndex = 10;
@@ -217,12 +217,12 @@ namespace QLDSV_HTC.Forms
             this.panelControl3.Enabled = false;
             this.panelControl3.Location = new System.Drawing.Point(2, 2);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(421, 198);
+            this.panelControl3.Size = new System.Drawing.Size(517, 198);
             this.panelControl3.TabIndex = 1;
             // 
             // NghiHoc_Label
             // 
-            this.NghiHoc_Label.Location = new System.Drawing.Point(205, 107);
+            this.NghiHoc_Label.Location = new System.Drawing.Point(240, 107);
             this.NghiHoc_Label.Name = "NghiHoc_Label";
             this.NghiHoc_Label.Size = new System.Drawing.Size(68, 13);
             this.NghiHoc_Label.TabIndex = 17;
@@ -231,7 +231,7 @@ namespace QLDSV_HTC.Forms
             // dANGHIHOCCheckBox
             // 
             this.dANGHIHOCCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.bdsSINHVIEN, "DANGHIHOC", true));
-            this.dANGHIHOCCheckBox.Location = new System.Drawing.Point(279, 102);
+            this.dANGHIHOCCheckBox.Location = new System.Drawing.Point(314, 102);
             this.dANGHIHOCCheckBox.Name = "dANGHIHOCCheckBox";
             this.dANGHIHOCCheckBox.Size = new System.Drawing.Size(16, 24);
             this.dANGHIHOCCheckBox.TabIndex = 16;
@@ -264,7 +264,7 @@ namespace QLDSV_HTC.Forms
             // dIACHITextBox
             // 
             this.dIACHITextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsSINHVIEN, "DIACHI", true));
-            this.dIACHITextBox.Location = new System.Drawing.Point(279, 75);
+            this.dIACHITextBox.Location = new System.Drawing.Point(314, 75);
             this.dIACHITextBox.Name = "dIACHITextBox";
             this.dIACHITextBox.Size = new System.Drawing.Size(136, 21);
             this.dIACHITextBox.TabIndex = 11;
@@ -273,7 +273,7 @@ namespace QLDSV_HTC.Forms
             // 
             this.DateEdit_NgaySinh.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsSINHVIEN, "NGAYSINH", true));
             this.DateEdit_NgaySinh.EditValue = null;
-            this.DateEdit_NgaySinh.Location = new System.Drawing.Point(279, 22);
+            this.DateEdit_NgaySinh.Location = new System.Drawing.Point(314, 22);
             this.DateEdit_NgaySinh.MenuManager = this.barManager1;
             this.DateEdit_NgaySinh.Name = "DateEdit_NgaySinh";
             this.DateEdit_NgaySinh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -433,7 +433,7 @@ namespace QLDSV_HTC.Forms
             // TextBox_Ten
             // 
             this.TextBox_Ten.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsSINHVIEN, "TEN", true));
-            this.TextBox_Ten.Location = new System.Drawing.Point(279, 48);
+            this.TextBox_Ten.Location = new System.Drawing.Point(314, 48);
             this.TextBox_Ten.Name = "TextBox_Ten";
             this.TextBox_Ten.Size = new System.Drawing.Size(136, 21);
             this.TextBox_Ten.TabIndex = 5;
