@@ -19,13 +19,22 @@ namespace QLDSV_HTC.Forms
             InitializeComponent();
         }
 
+        private bool CheckMaGV(string maGV, string makhoa)
+        {
+            String query = String.Format("EXEC sp_KiemTraMaGV @MAGV = '{0}', @MAKHOA = '{1}'", maGV, makhoa);
+            int check = Program.ExecSqlNonQuery(query);
+            if (check == 0) return true;
+            return false;
+        }
+
         private void createLogin_Click(object sender, EventArgs e)
         {
             string userName = userNameTxt.Text;
             string pass = passTxt.Text;
             string userId = userIdTxt.Text;
+            string makhoa = cmbKhoa.Text;
 
-            if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(pass) || roleList.SelectedValue == null)
+            if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(pass) || roleList.SelectedValue == null || string.IsNullOrEmpty(makhoa))
             {
                 XtraMessageBox.Show("Thông tin không được trống!", "Lỗi tạo tài khoản", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -51,6 +60,13 @@ namespace QLDSV_HTC.Forms
                 XtraMessageBox.Show("Mật khẩu phải ít nhất 6 ký tự!", "Lỗi tạo tài khoản", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            // kiểm tra giao viên có ở site hiện tại ko
+
+            if (!CheckMaGV(userId, Utils.GetMaKhoa(makhoa)))
+            {
+                return;
+            }
+
             // Tạo tài khoản ở site hiện tại
             string query = string.Format(" EXEC [DBO].[sp_TaoTaiKhoan] " +
                                          " @USERNAME = N'{1}', " +
@@ -77,7 +93,14 @@ namespace QLDSV_HTC.Forms
             {
                 target.RemoveAll(p => p.TENSERVER != Program.AuthGroup);
             }
+
+            Program.ServerLogin = Program.AuthLogin;
+            Program.ServerPassword = Program.AuthPassword;
+
+
             Utils.LoadComboBox(roleList, target);
+            Program.Bds_Dspm.Filter = "TENKHOA <> 'Phòng Kế Toán'";
+            Utils.LoadComboBox(cmbKhoa, Program.Bds_Dspm.DataSource);
         }
     }
 }

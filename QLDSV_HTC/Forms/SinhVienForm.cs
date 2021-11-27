@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace QLDSV_HTC.Forms
 {
-    public partial class SinhVienForm : Form
+    public partial class SinhVienForm : DevExpress.XtraEditors.XtraForm
     {
         private int position = -1;
         private string state = "";
