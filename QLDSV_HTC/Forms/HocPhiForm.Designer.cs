@@ -54,14 +54,16 @@ namespace QLDSV_HTC.Forms
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.txtHocPhi = new DevExpress.XtraEditors.SpinEdit();
+            this.textMaSV = new DevExpress.XtraEditors.TextEdit();
             this.sp_GetThongTinDongHocPhiBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.txtHocPhi = new DevExpress.XtraEditors.SpinEdit();
             this.txtHocKy = new DevExpress.XtraEditors.SpinEdit();
             this.txtNienKhoa = new DevExpress.XtraEditors.TextEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -83,16 +85,38 @@ namespace QLDSV_HTC.Forms
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
+            this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.layoutControl3 = new DevExpress.XtraLayout.LayoutControl();
+            this.dateDong = new System.Windows.Forms.DateTimePicker();
+            this.sp_GetChiTietDongHocPhiBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.txtHocPhi1 = new DevExpress.XtraEditors.SpinEdit();
+            this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.sp_GetChiTietDongHocPhiGridControl = new DevExpress.XtraGrid.GridControl();
-            this.sp_GetChiTietDongHocPhiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colNGAYDONG = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSOTIENDONG = new DevExpress.XtraGrid.Columns.GridColumn();
             this.sp_GetThongTinDongHocPhiTableAdapter = new QLDSV_HTC.DSTableAdapters.sp_GetThongTinDongHocPhiTableAdapter();
             this.sp_GetChiTietDongHocPhiTableAdapter = new QLDSV_HTC.DSTableAdapters.sp_GetChiTietDongHocPhiTableAdapter();
-            this.textMaSV = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
+            this.layoutControl4 = new DevExpress.XtraLayout.LayoutControl();
+            this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.simpleBtnThem = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.simpleBtnEdit = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.simpleBtnDelete = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.simpleBtnSave = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.simpleBtnHuy = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.simpleBtnRenew = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.DS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -101,14 +125,16 @@ namespace QLDSV_HTC.Forms
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtHocPhi.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textMaSV.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sp_GetThongTinDongHocPhiBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHocPhi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHocKy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNienKhoa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
@@ -129,13 +155,32 @@ namespace QLDSV_HTC.Forms
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
             this.panelControl5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
+            this.groupControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).BeginInit();
+            this.layoutControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sp_GetChiTietDongHocPhiBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHocPhi1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sp_GetChiTietDongHocPhiGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sp_GetChiTietDongHocPhiBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textMaSV.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
+            this.groupControl5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl4)).BeginInit();
+            this.layoutControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
             this.SuspendLayout();
             // 
             // DS
@@ -337,6 +382,7 @@ namespace QLDSV_HTC.Forms
             this.tableAdapterManager.LOPTINCHITableAdapter = null;
             this.tableAdapterManager.MONHOCTableAdapter = null;
             this.tableAdapterManager.SINHVIENTableAdapter = null;
+            this.tableAdapterManager.sp_GetChiTietDongHocPhiTableAdapter = null;
             this.tableAdapterManager.sp_GetThongTinDongHocPhiTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = QLDSV_HTC.DSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
@@ -375,11 +421,27 @@ namespace QLDSV_HTC.Forms
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // textMaSV
+            // 
+            this.textMaSV.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sp_GetThongTinDongHocPhiBindingSource, "MASV", true));
+            this.textMaSV.Enabled = false;
+            this.textMaSV.Location = new System.Drawing.Point(78, 36);
+            this.textMaSV.MenuManager = this.barManager2;
+            this.textMaSV.Name = "textMaSV";
+            this.textMaSV.Size = new System.Drawing.Size(126, 20);
+            this.textMaSV.StyleController = this.layoutControl1;
+            this.textMaSV.TabIndex = 8;
+            // 
+            // sp_GetThongTinDongHocPhiBindingSource
+            // 
+            this.sp_GetThongTinDongHocPhiBindingSource.DataMember = "sp_GetThongTinDongHocPhi";
+            this.sp_GetThongTinDongHocPhiBindingSource.DataSource = this.DS;
+            // 
             // txtHocPhi
             // 
             this.txtHocPhi.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sp_GetThongTinDongHocPhiBindingSource, "HOCPHI", true));
             this.txtHocPhi.EditValue = new decimal(new int[] {
-            0,
+            1,
             0,
             0,
             0});
@@ -400,14 +462,14 @@ namespace QLDSV_HTC.Forms
             0,
             0,
             0});
+            this.txtHocPhi.Properties.MinValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.txtHocPhi.Size = new System.Drawing.Size(161, 20);
             this.txtHocPhi.StyleController = this.layoutControl1;
             this.txtHocPhi.TabIndex = 7;
-            // 
-            // sp_GetThongTinDongHocPhiBindingSource
-            // 
-            this.sp_GetThongTinDongHocPhiBindingSource.DataMember = "sp_GetThongTinDongHocPhi";
-            this.sp_GetThongTinDongHocPhiBindingSource.DataSource = this.DS;
             // 
             // txtHocKy
             // 
@@ -489,6 +551,15 @@ namespace QLDSV_HTC.Forms
             this.layoutControlItem4.Size = new System.Drawing.Size(231, 24);
             this.layoutControlItem4.Text = "Học kỳ:";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(63, 13);
+            // 
+            // layoutControlItem9
+            // 
+            this.layoutControlItem9.Control = this.textMaSV;
+            this.layoutControlItem9.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem9.Name = "layoutControlItem9";
+            this.layoutControlItem9.Size = new System.Drawing.Size(196, 53);
+            this.layoutControlItem9.Text = "Mã sinh viên:";
+            this.layoutControlItem9.TextSize = new System.Drawing.Size(63, 13);
             // 
             // groupControl1
             // 
@@ -711,20 +782,133 @@ namespace QLDSV_HTC.Forms
             // 
             // panelControl5
             // 
+            this.panelControl5.Controls.Add(this.groupControl4);
             this.panelControl5.Controls.Add(this.groupControl3);
+            this.panelControl5.Controls.Add(this.groupControl5);
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl5.Location = new System.Drawing.Point(2, 2);
             this.panelControl5.Name = "panelControl5";
             this.panelControl5.Size = new System.Drawing.Size(1143, 165);
             this.panelControl5.TabIndex = 2;
             // 
+            // groupControl4
+            // 
+            this.groupControl4.Controls.Add(this.layoutControl3);
+            this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl4.Enabled = false;
+            this.groupControl4.Location = new System.Drawing.Point(539, 2);
+            this.groupControl4.Name = "groupControl4";
+            this.groupControl4.Size = new System.Drawing.Size(402, 161);
+            this.groupControl4.TabIndex = 3;
+            this.groupControl4.Text = "Đóng học phí";
+            // 
+            // layoutControl3
+            // 
+            this.layoutControl3.Controls.Add(this.dateDong);
+            this.layoutControl3.Controls.Add(this.txtHocPhi1);
+            this.layoutControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl3.Location = new System.Drawing.Point(2, 23);
+            this.layoutControl3.Name = "layoutControl3";
+            this.layoutControl3.Root = this.layoutControlGroup2;
+            this.layoutControl3.Size = new System.Drawing.Size(398, 136);
+            this.layoutControl3.TabIndex = 0;
+            this.layoutControl3.Text = "layoutControl3";
+            // 
+            // dateDong
+            // 
+            this.dateDong.CustomFormat = "yyyy-MM-dd";
+            this.dateDong.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.sp_GetChiTietDongHocPhiBindingSource, "NGAYDONG", true));
+            this.dateDong.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateDong.Location = new System.Drawing.Point(71, 12);
+            this.dateDong.Name = "dateDong";
+            this.dateDong.Size = new System.Drawing.Size(315, 21);
+            this.dateDong.TabIndex = 4;
+            // 
+            // sp_GetChiTietDongHocPhiBindingSource
+            // 
+            this.sp_GetChiTietDongHocPhiBindingSource.DataMember = "sp_GetChiTietDongHocPhi";
+            this.sp_GetChiTietDongHocPhiBindingSource.DataSource = this.DS;
+            // 
+            // txtHocPhi1
+            // 
+            this.txtHocPhi1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sp_GetChiTietDongHocPhiBindingSource, "SOTIENDONG", true));
+            this.txtHocPhi1.EditValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.txtHocPhi1.Location = new System.Drawing.Point(71, 36);
+            this.txtHocPhi1.Name = "txtHocPhi1";
+            this.txtHocPhi1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtHocPhi1.Properties.Increment = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.txtHocPhi1.Properties.IsFloatValue = false;
+            this.txtHocPhi1.Properties.Mask.EditMask = "N00";
+            this.txtHocPhi1.Properties.MaxValue = new decimal(new int[] {
+            99999999,
+            0,
+            0,
+            0});
+            this.txtHocPhi1.Properties.MinValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.txtHocPhi1.Size = new System.Drawing.Size(315, 20);
+            this.txtHocPhi1.StyleController = this.layoutControl3;
+            this.txtHocPhi1.TabIndex = 7;
+            // 
+            // layoutControlGroup2
+            // 
+            this.layoutControlGroup2.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup2.GroupBordersVisible = false;
+            this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem2,
+            this.emptySpaceItem1,
+            this.layoutControlItem10});
+            this.layoutControlGroup2.Name = "layoutControlGroup2";
+            this.layoutControlGroup2.Size = new System.Drawing.Size(398, 136);
+            this.layoutControlGroup2.TextVisible = false;
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.dateDong;
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(378, 24);
+            this.layoutControlItem2.Text = "Ngày đóng:";
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(56, 13);
+            // 
+            // emptySpaceItem1
+            // 
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 48);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(378, 68);
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // layoutControlItem10
+            // 
+            this.layoutControlItem10.Control = this.txtHocPhi1;
+            this.layoutControlItem10.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.layoutControlItem10.CustomizationFormText = "Học phí:";
+            this.layoutControlItem10.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem10.Name = "layoutControlItem10";
+            this.layoutControlItem10.Size = new System.Drawing.Size(378, 24);
+            this.layoutControlItem10.Text = "Học phí:";
+            this.layoutControlItem10.TextSize = new System.Drawing.Size(56, 13);
+            // 
             // groupControl3
             // 
             this.groupControl3.Controls.Add(this.sp_GetChiTietDongHocPhiGridControl);
-            this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl3.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupControl3.Location = new System.Drawing.Point(2, 2);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(1139, 161);
+            this.groupControl3.Size = new System.Drawing.Size(537, 161);
             this.groupControl3.TabIndex = 2;
             this.groupControl3.Text = "Chi tiết đóng học phí";
             // 
@@ -736,15 +920,10 @@ namespace QLDSV_HTC.Forms
             this.sp_GetChiTietDongHocPhiGridControl.MainView = this.gridView2;
             this.sp_GetChiTietDongHocPhiGridControl.MenuManager = this.barManager2;
             this.sp_GetChiTietDongHocPhiGridControl.Name = "sp_GetChiTietDongHocPhiGridControl";
-            this.sp_GetChiTietDongHocPhiGridControl.Size = new System.Drawing.Size(1135, 136);
+            this.sp_GetChiTietDongHocPhiGridControl.Size = new System.Drawing.Size(533, 136);
             this.sp_GetChiTietDongHocPhiGridControl.TabIndex = 1;
             this.sp_GetChiTietDongHocPhiGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
-            // 
-            // sp_GetChiTietDongHocPhiBindingSource
-            // 
-            this.sp_GetChiTietDongHocPhiBindingSource.DataMember = "sp_GetChiTietDongHocPhi";
-            this.sp_GetChiTietDongHocPhiBindingSource.DataSource = this.DS;
             // 
             // gridView2
             // 
@@ -753,6 +932,7 @@ namespace QLDSV_HTC.Forms
             this.colSOTIENDONG});
             this.gridView2.GridControl = this.sp_GetChiTietDongHocPhiGridControl;
             this.gridView2.Name = "gridView2";
+            this.gridView2.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView2_RowClick);
             // 
             // colNGAYDONG
             // 
@@ -784,25 +964,172 @@ namespace QLDSV_HTC.Forms
             // 
             this.sp_GetChiTietDongHocPhiTableAdapter.ClearBeforeFill = true;
             // 
-            // textMaSV
+            // groupControl5
             // 
-            this.textMaSV.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sp_GetThongTinDongHocPhiBindingSource, "MASV", true));
-            this.textMaSV.Enabled = false;
-            this.textMaSV.Location = new System.Drawing.Point(78, 36);
-            this.textMaSV.MenuManager = this.barManager2;
-            this.textMaSV.Name = "textMaSV";
-            this.textMaSV.Size = new System.Drawing.Size(126, 20);
-            this.textMaSV.StyleController = this.layoutControl1;
-            this.textMaSV.TabIndex = 8;
+            this.groupControl5.Controls.Add(this.layoutControl4);
+            this.groupControl5.Dock = System.Windows.Forms.DockStyle.Right;
+            this.groupControl5.Enabled = false;
+            this.groupControl5.Location = new System.Drawing.Point(941, 2);
+            this.groupControl5.Name = "groupControl5";
+            this.groupControl5.Size = new System.Drawing.Size(200, 161);
+            this.groupControl5.TabIndex = 4;
+            this.groupControl5.Text = "Chức năng";
             // 
-            // layoutControlItem9
+            // layoutControl4
             // 
-            this.layoutControlItem9.Control = this.textMaSV;
-            this.layoutControlItem9.Location = new System.Drawing.Point(0, 24);
-            this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(196, 53);
-            this.layoutControlItem9.Text = "Mã sinh viên:";
-            this.layoutControlItem9.TextSize = new System.Drawing.Size(63, 13);
+            this.layoutControl4.Controls.Add(this.simpleBtnRenew);
+            this.layoutControl4.Controls.Add(this.simpleBtnHuy);
+            this.layoutControl4.Controls.Add(this.simpleBtnSave);
+            this.layoutControl4.Controls.Add(this.simpleBtnDelete);
+            this.layoutControl4.Controls.Add(this.simpleBtnEdit);
+            this.layoutControl4.Controls.Add(this.simpleBtnThem);
+            this.layoutControl4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl4.Location = new System.Drawing.Point(2, 23);
+            this.layoutControl4.Name = "layoutControl4";
+            this.layoutControl4.Root = this.layoutControlGroup3;
+            this.layoutControl4.Size = new System.Drawing.Size(196, 136);
+            this.layoutControl4.TabIndex = 0;
+            this.layoutControl4.Text = "layoutControl4";
+            // 
+            // layoutControlGroup3
+            // 
+            this.layoutControlGroup3.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup3.GroupBordersVisible = false;
+            this.layoutControlGroup3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem11,
+            this.emptySpaceItem2,
+            this.layoutControlItem12,
+            this.layoutControlItem13,
+            this.layoutControlItem14,
+            this.layoutControlItem15,
+            this.layoutControlItem16});
+            this.layoutControlGroup3.Name = "layoutControlGroup3";
+            this.layoutControlGroup3.Size = new System.Drawing.Size(196, 136);
+            this.layoutControlGroup3.TextVisible = false;
+            // 
+            // simpleBtnThem
+            // 
+            this.simpleBtnThem.Location = new System.Drawing.Point(12, 12);
+            this.simpleBtnThem.Name = "simpleBtnThem";
+            this.simpleBtnThem.Size = new System.Drawing.Size(84, 22);
+            this.simpleBtnThem.StyleController = this.layoutControl4;
+            this.simpleBtnThem.TabIndex = 4;
+            this.simpleBtnThem.Text = "Thêm";
+            this.simpleBtnThem.Click += new System.EventHandler(this.simpleBtnThem_Click);
+            // 
+            // layoutControlItem11
+            // 
+            this.layoutControlItem11.Control = this.simpleBtnThem;
+            this.layoutControlItem11.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem11.Name = "layoutControlItem11";
+            this.layoutControlItem11.Size = new System.Drawing.Size(88, 26);
+            this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem11.TextVisible = false;
+            // 
+            // emptySpaceItem2
+            // 
+            this.emptySpaceItem2.AllowHotTrack = false;
+            this.emptySpaceItem2.Location = new System.Drawing.Point(88, 78);
+            this.emptySpaceItem2.Name = "emptySpaceItem2";
+            this.emptySpaceItem2.Size = new System.Drawing.Size(88, 38);
+            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // simpleBtnEdit
+            // 
+            this.simpleBtnEdit.Location = new System.Drawing.Point(100, 12);
+            this.simpleBtnEdit.Name = "simpleBtnEdit";
+            this.simpleBtnEdit.Size = new System.Drawing.Size(84, 22);
+            this.simpleBtnEdit.StyleController = this.layoutControl4;
+            this.simpleBtnEdit.TabIndex = 5;
+            this.simpleBtnEdit.Text = "Sửa";
+            this.simpleBtnEdit.Click += new System.EventHandler(this.simpleBtnEdit_Click);
+            // 
+            // layoutControlItem12
+            // 
+            this.layoutControlItem12.Control = this.simpleBtnEdit;
+            this.layoutControlItem12.Location = new System.Drawing.Point(88, 0);
+            this.layoutControlItem12.Name = "layoutControlItem12";
+            this.layoutControlItem12.Size = new System.Drawing.Size(88, 26);
+            this.layoutControlItem12.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem12.TextVisible = false;
+            // 
+            // simpleBtnDelete
+            // 
+            this.simpleBtnDelete.Location = new System.Drawing.Point(12, 38);
+            this.simpleBtnDelete.Name = "simpleBtnDelete";
+            this.simpleBtnDelete.Size = new System.Drawing.Size(84, 22);
+            this.simpleBtnDelete.StyleController = this.layoutControl4;
+            this.simpleBtnDelete.TabIndex = 6;
+            this.simpleBtnDelete.Text = "Xóa";
+            this.simpleBtnDelete.Click += new System.EventHandler(this.simpleBtnDelete_Click);
+            // 
+            // layoutControlItem13
+            // 
+            this.layoutControlItem13.Control = this.simpleBtnDelete;
+            this.layoutControlItem13.Location = new System.Drawing.Point(0, 26);
+            this.layoutControlItem13.Name = "layoutControlItem13";
+            this.layoutControlItem13.Size = new System.Drawing.Size(88, 26);
+            this.layoutControlItem13.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem13.TextVisible = false;
+            // 
+            // simpleBtnSave
+            // 
+            this.simpleBtnSave.Enabled = false;
+            this.simpleBtnSave.Location = new System.Drawing.Point(100, 38);
+            this.simpleBtnSave.Name = "simpleBtnSave";
+            this.simpleBtnSave.Size = new System.Drawing.Size(84, 22);
+            this.simpleBtnSave.StyleController = this.layoutControl4;
+            this.simpleBtnSave.TabIndex = 7;
+            this.simpleBtnSave.Text = "Ghi";
+            this.simpleBtnSave.Click += new System.EventHandler(this.simpleBtnSave_Click);
+            // 
+            // layoutControlItem14
+            // 
+            this.layoutControlItem14.Control = this.simpleBtnSave;
+            this.layoutControlItem14.Location = new System.Drawing.Point(88, 26);
+            this.layoutControlItem14.Name = "layoutControlItem14";
+            this.layoutControlItem14.Size = new System.Drawing.Size(88, 26);
+            this.layoutControlItem14.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem14.TextVisible = false;
+            // 
+            // simpleBtnHuy
+            // 
+            this.simpleBtnHuy.Enabled = false;
+            this.simpleBtnHuy.Location = new System.Drawing.Point(12, 64);
+            this.simpleBtnHuy.Name = "simpleBtnHuy";
+            this.simpleBtnHuy.Size = new System.Drawing.Size(84, 22);
+            this.simpleBtnHuy.StyleController = this.layoutControl4;
+            this.simpleBtnHuy.TabIndex = 8;
+            this.simpleBtnHuy.Text = "Hủy";
+            this.simpleBtnHuy.Click += new System.EventHandler(this.simpleBtnHuy_Click);
+            // 
+            // layoutControlItem15
+            // 
+            this.layoutControlItem15.Control = this.simpleBtnHuy;
+            this.layoutControlItem15.Location = new System.Drawing.Point(0, 52);
+            this.layoutControlItem15.Name = "layoutControlItem15";
+            this.layoutControlItem15.Size = new System.Drawing.Size(88, 64);
+            this.layoutControlItem15.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem15.TextVisible = false;
+            // 
+            // simpleBtnRenew
+            // 
+            this.simpleBtnRenew.Location = new System.Drawing.Point(100, 64);
+            this.simpleBtnRenew.Name = "simpleBtnRenew";
+            this.simpleBtnRenew.Size = new System.Drawing.Size(84, 22);
+            this.simpleBtnRenew.StyleController = this.layoutControl4;
+            this.simpleBtnRenew.TabIndex = 9;
+            this.simpleBtnRenew.Text = "Làm mới";
+            this.simpleBtnRenew.Click += new System.EventHandler(this.simpleBtnRenew_Click);
+            // 
+            // layoutControlItem16
+            // 
+            this.layoutControlItem16.Control = this.simpleBtnRenew;
+            this.layoutControlItem16.Location = new System.Drawing.Point(88, 52);
+            this.layoutControlItem16.Name = "layoutControlItem16";
+            this.layoutControlItem16.Size = new System.Drawing.Size(88, 26);
+            this.layoutControlItem16.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem16.TextVisible = false;
             // 
             // HocPhiForm
             // 
@@ -830,14 +1157,16 @@ namespace QLDSV_HTC.Forms
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtHocPhi.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textMaSV.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sp_GetThongTinDongHocPhiBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHocPhi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHocKy.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNienKhoa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
@@ -858,13 +1187,32 @@ namespace QLDSV_HTC.Forms
             this.panelControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
             this.panelControl5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
+            this.groupControl4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).EndInit();
+            this.layoutControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.sp_GetChiTietDongHocPhiBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHocPhi1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.sp_GetChiTietDongHocPhiGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sp_GetChiTietDongHocPhiBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textMaSV.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
+            this.groupControl5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl4)).EndInit();
+            this.layoutControl4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -933,5 +1281,29 @@ namespace QLDSV_HTC.Forms
         private DevExpress.XtraBars.BarButtonItem barButtonOut;
         private DevExpress.XtraEditors.TextEdit textMaSV;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
+        private DevExpress.XtraEditors.GroupControl groupControl4;
+        private DevExpress.XtraLayout.LayoutControl layoutControl3;
+        private System.Windows.Forms.DateTimePicker dateDong;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
+        private DevExpress.XtraEditors.SpinEdit txtHocPhi1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
+        private DevExpress.XtraEditors.GroupControl groupControl5;
+        private DevExpress.XtraLayout.LayoutControl layoutControl4;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup3;
+        private DevExpress.XtraEditors.SimpleButton simpleBtnRenew;
+        private DevExpress.XtraEditors.SimpleButton simpleBtnHuy;
+        private DevExpress.XtraEditors.SimpleButton simpleBtnSave;
+        private DevExpress.XtraEditors.SimpleButton simpleBtnDelete;
+        private DevExpress.XtraEditors.SimpleButton simpleBtnEdit;
+        private DevExpress.XtraEditors.SimpleButton simpleBtnThem;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem12;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem13;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem14;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem15;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem16;
     }
 }

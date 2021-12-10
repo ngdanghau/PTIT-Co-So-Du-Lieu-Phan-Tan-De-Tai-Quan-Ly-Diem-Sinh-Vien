@@ -12,8 +12,10 @@ namespace QLDSV_HTC.Forms
         private string maSV = "";
         private int position = 0;
         private string state;
+        private string state2;
         Stack<string> undoStack = new Stack<string>();
         private HocPhiClass HocPhiData = null;
+        private ChiTietDongHPClass ChiTietDongHP = null;
         public HocPhiForm()
         {
             InitializeComponent();
@@ -49,6 +51,40 @@ namespace QLDSV_HTC.Forms
                 barButtonHuy.Enabled
                     = barButtonSave.Enabled
                     = groupControl2.Enabled
+                    = value;
+            }
+        }
+
+        private void SetButtonStatePanel2(bool value)
+        {
+            if (state2 == "edit")
+            {
+                simpleBtnThem.Enabled
+                    = simpleBtnEdit.Enabled
+                    = simpleBtnDelete.Enabled
+                    = simpleBtnRenew.Enabled
+                    = sp_GetChiTietDongHocPhiGridControl.Enabled
+                    = !value;
+
+                simpleBtnHuy.Enabled
+                    = simpleBtnSave.Enabled
+                    = groupControl4.Enabled
+                    = value;
+
+                barButtonUndo.Enabled = undoStack.Count > 0;
+            }
+            else if (state2 == "add")
+            {
+                simpleBtnThem.Enabled
+                    = simpleBtnEdit.Enabled
+                    = simpleBtnDelete.Enabled
+                    = simpleBtnRenew.Enabled
+                    = sp_GetThongTinDongHocPhiGridControl.Enabled
+                    = !value;
+
+                simpleBtnHuy.Enabled
+                    = simpleBtnSave.Enabled
+                    = groupControl4.Enabled
                     = value;
             }
         }
@@ -125,6 +161,15 @@ namespace QLDSV_HTC.Forms
                 this.sp_GetChiTietDongHocPhiTableAdapter.Fill(this.DS.sp_GetChiTietDongHocPhi, txtMaSV.Text.Trim(), txtNienKhoa.Text.Trim(), int.Parse(txtHocKy.Text));
 
                 HocPhiData = new HocPhiClass(txtMaSV.Text.Trim(), txtNienKhoa.Text.Trim(), int.Parse(txtHocKy.Text), int.Parse(txtHocPhi.EditValue.ToString()), txtNienKhoa.Text.Trim(), int.Parse(txtHocKy.Text), int.Parse(txtHocPhi.EditValue.ToString()));
+
+
+                if (sp_GetChiTietDongHocPhiBindingSource.Count > 0)
+                {
+                    ChiTietDongHP = new ChiTietDongHPClass(txtMaSV.Text.Trim(), txtNienKhoa.Text.Trim(), int.Parse(txtHocKy.Text), int.Parse(txtHocPhi1.EditValue.ToString()), txtNienKhoa.Text.Trim(), int.Parse(txtHocKy.Text), int.Parse(txtHocPhi1.EditValue.ToString()), DateTime.Parse(dateDong.Text), DateTime.Parse(dateDong.Text));
+                }
+
+                groupControl5.Enabled = sp_GetChiTietDongHocPhiBindingSource.Count > 0;
+
             }
             catch (Exception ex)
             {
@@ -151,6 +196,26 @@ namespace QLDSV_HTC.Forms
             if (txtHocKy.Text.Trim() == "")
             {
                 XtraMessageBox.Show("Học kỳ không được để trống!", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (txtHocPhi.EditValue.ToString().Trim() == "")
+            {
+                XtraMessageBox.Show("Học phí không được để trống!", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+
+            return true;
+        }
+
+        private bool ValidateForm2()
+        {
+            if (dateDong.Text.Trim() == "")
+            {
+                XtraMessageBox.Show("Ngày đóng không được để trống!", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
@@ -235,6 +300,15 @@ namespace QLDSV_HTC.Forms
             return false;
         }
 
+        private bool checkHocPhiDaDong()
+        {
+            string ngaydong = dateDong.Text;
+            string query = string.Format(" EXEC sp_KiemTraHocPhiDaDong @MASV =  N'{0}', @NIENKHOA = N'{1}', @HOCKY = {2}, @NGAYDONG = N'{3}'", maSV, txtNienKhoa.Text.Trim(), Convert.ToInt32(txtHocKy.Text.Trim()), ngaydong);
+            var check = Program.ExecSqlNonQuery(query);
+            if (check == 0) return true;
+            return false;
+        }
+
         private void barButtonSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (!ValidateForm()) return;
@@ -311,6 +385,105 @@ namespace QLDSV_HTC.Forms
                 }
             }
             this.Close();
+        }
+
+
+
+
+        private void simpleBtnEdit_Click(object sender, EventArgs e)
+        {
+            state2 = "edit";
+            SetButtonStatePanel2(true);
+        }
+
+        private void simpleBtnDelete_Click(object sender, EventArgs e)
+        {
+            if (XtraMessageBox.Show("Bạn có thực sự muốn xóa lần đóng tiền học phí này?", "Xác nhận.", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                if (!ValidateForm2()) return;
+                try
+                {
+                    sp_GetChiTietDongHocPhiBindingSource.RemoveCurrent();
+                    this.sp_GetChiTietDongHocPhiBindingSource.ResetCurrentItem();
+                    this.sp_GetChiTietDongHocPhiTableAdapter.Connection.ConnectionString = Program.ConnStr;
+                    this.sp_GetChiTietDongHocPhiTableAdapter.sp_XoaChiTietDongHP(ChiTietDongHP.MaSV, ChiTietDongHP.NienKhoa, ChiTietDongHP.HocKy, ChiTietDongHP.NgayDong);
+
+                    this.sp_GetChiTietDongHocPhiTableAdapter.Fill(this.DS.sp_GetChiTietDongHocPhi, ChiTietDongHP.MaSV, ChiTietDongHP.NienKhoa, ChiTietDongHP.HocKy);
+                    simpleButton1_Click(null, null);
+                    simpleBtnEdit.Enabled = simpleBtnDelete.Enabled = sp_GetThongTinDongHocPhiBindingSource.Count > 0;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
+
+        private void simpleBtnSave_Click(object sender, EventArgs e)
+        {
+            if (!ValidateForm2()) return;
+            if (state2 == "add" && !checkHocPhiDaDong()) return;
+
+            ChiTietDongHP.NgayDongNew = DateTime.Parse(dateDong.Text);
+            ChiTietDongHP.TienDaDongNew = Convert.ToInt32(txtHocPhi1.EditValue.ToString());
+
+            try
+            {
+                int check = 0;
+                this.sp_GetChiTietDongHocPhiBindingSource.EndEdit();
+                if (state2 == "add")
+                {
+                    string query = string.Format(" EXEC sp_ThemChiTietDongHP @MASV = N'{0}', @NIENKHOA = N'{1}', @HOCKY = {2}, @NGAYDONG = N'{3}', @SOTIENDONG = {4}", ChiTietDongHP.MaSV, ChiTietDongHP.NienKhoa, ChiTietDongHP.HocKy, ChiTietDongHP.NgayDongNew, ChiTietDongHP.TienDaDongNew);
+                    check = Program.ExecSqlNonQuery(query);
+                    if (check != 0)
+                    {
+                        sp_GetChiTietDongHocPhiBindingSource.RemoveCurrent();
+                    }
+
+                }
+                else if (state2 == "edit")
+                {
+                    string query = string.Format(" EXEC sp_SuaChiTietDongHP @MASV = N'{0}', @NIENKHOA = N'{1}', @HOCKY = {2}, @NGAYDONG = N'{3}', @NIENKHOANEW = N'{4}', @HOCKYNEW = {5}, @SOTIENDONGNEW = {6}, @NGAYDONGNEW = N'{7}'", ChiTietDongHP.MaSV, ChiTietDongHP.NienKhoa, ChiTietDongHP.HocKy, ChiTietDongHP.NgayDong, ChiTietDongHP.NienKhoaNew, ChiTietDongHP.HocKyNew, ChiTietDongHP.TienDaDongNew, ChiTietDongHP.NgayDongNew);
+                    check = Program.ExecSqlNonQuery(query);
+                }
+                if (check != 0)
+                {
+                    this.sp_GetChiTietDongHocPhiBindingSource.ResetCurrentItem();
+                    gridView1_RowClick(null, null);
+                }
+                }
+            catch (Exception ex)
+            {
+                
+                
+            }
+            SetButtonStatePanel2(false);
+            simpleButton1_Click(null, null);
+        }
+
+        private void simpleBtnThem_Click(object sender, EventArgs e)
+        {
+            state2 = "add";
+            SetButtonStatePanel2(true);
+            this.sp_GetChiTietDongHocPhiBindingSource.AddNew();
+        }
+
+
+        private void simpleBtnRenew_Click(object sender, EventArgs e)
+        {
+            gridView1_RowClick(null, null);
+            XtraMessageBox.Show("Làm mới dữ liệu thành công", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void simpleBtnHuy_Click(object sender, EventArgs e)
+        {
+            SetButtonStatePanel2(false);
+            gridView1_RowClick(null, null);
+        }
+
+        private void gridView2_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+            ChiTietDongHP = new ChiTietDongHPClass(txtMaSV.Text.Trim(), txtNienKhoa.Text.Trim(), int.Parse(txtHocKy.Text), int.Parse(txtHocPhi1.EditValue.ToString()), txtNienKhoa.Text.Trim(), int.Parse(txtHocKy.Text), int.Parse(txtHocPhi1.EditValue.ToString()), DateTime.Parse(dateDong.Text), DateTime.Parse(dateDong.Text));
         }
     }
 }
