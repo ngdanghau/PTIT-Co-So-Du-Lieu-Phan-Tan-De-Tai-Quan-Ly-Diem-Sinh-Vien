@@ -37,6 +37,8 @@ namespace QLDSV_HTC.Forms
             this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbKhoa = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lOPBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
@@ -68,12 +70,13 @@ namespace QLDSV_HTC.Forms
             this.tableAdapterManager.LOPTINCHITableAdapter = null;
             this.tableAdapterManager.MONHOCTableAdapter = null;
             this.tableAdapterManager.SINHVIENTableAdapter = null;
+            this.tableAdapterManager.sp_GetChiTietDongHocPhiTableAdapter = null;
             this.tableAdapterManager.sp_GetThongTinDongHocPhiTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = QLDSV_HTC.DSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // lookUpEdit1
             // 
-            this.lookUpEdit1.Location = new System.Drawing.Point(84, 12);
+            this.lookUpEdit1.Location = new System.Drawing.Point(83, 39);
             this.lookUpEdit1.Name = "lookUpEdit1";
             this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -91,7 +94,7 @@ namespace QLDSV_HTC.Forms
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(43, 15);
+            this.labelControl1.Location = new System.Drawing.Point(42, 42);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(35, 13);
             this.labelControl1.TabIndex = 1;
@@ -99,18 +102,39 @@ namespace QLDSV_HTC.Forms
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(84, 55);
+            this.simpleButton1.Location = new System.Drawing.Point(83, 65);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(75, 23);
             this.simpleButton1.TabIndex = 2;
             this.simpleButton1.Text = "In";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(42, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Khoa:";
+            // 
+            // cmbKhoa
+            // 
+            this.cmbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbKhoa.FormattingEnabled = true;
+            this.cmbKhoa.Location = new System.Drawing.Point(83, 12);
+            this.cmbKhoa.Name = "cmbKhoa";
+            this.cmbKhoa.Size = new System.Drawing.Size(156, 21);
+            this.cmbKhoa.TabIndex = 21;
+            this.cmbKhoa.SelectedIndexChanged += new System.EventHandler(this.cmbKhoa_SelectedIndexChanged);
+            // 
             // InBangDiemTKForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(276, 148);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cmbKhoa);
             this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.lookUpEdit1);
@@ -134,5 +158,7 @@ namespace QLDSV_HTC.Forms
         private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmbKhoa;
     }
 }

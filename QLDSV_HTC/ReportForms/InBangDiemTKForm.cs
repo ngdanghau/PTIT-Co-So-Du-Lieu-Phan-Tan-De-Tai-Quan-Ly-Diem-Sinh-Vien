@@ -28,11 +28,33 @@ namespace QLDSV_HTC.Forms
 
         }
 
-        private void InBangDiemTKForm_Load(object sender, EventArgs e)
+        private void LoadData()
         {
             // TODO: This line of code loads data into the 'dS.LOP' table. You can move, or remove it, as needed.
             dS.EnforceConstraints = false;
+            this.lOPTableAdapter.Connection.ConnectionString = Program.ConnStr;
             this.lOPTableAdapter.Fill(this.dS.LOP);
+        }
+
+        private void InBangDiemTKForm_Load(object sender, EventArgs e)
+        {
+            
+
+            if (Program.AuthGroup == "PGV")
+            {
+                Program.Bds_Dspm.Filter = "TENKHOA <> 'Phòng Kế Toán'";
+            }
+            else if (Program.AuthGroup == "KHOA")
+            {
+                Program.Bds_Dspm.Filter = string.Format("TENSERVER = '{0}'", Program.ServerName);
+            }
+
+            Utils.LoadComboBox(cmbKhoa, Program.Bds_Dspm.DataSource);
+
+            if (Utils.ChangeServer(cmbKhoa))
+            {
+                LoadData();
+            }
 
         }
 
@@ -49,6 +71,14 @@ namespace QLDSV_HTC.Forms
             ReportPrintTool print = new ReportPrintTool(rpt);
             print.ShowPreviewDialog();
 
+        }
+
+        private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Utils.ChangeServer(cmbKhoa))
+            {
+                LoadData();
+            }
         }
     }
 }
