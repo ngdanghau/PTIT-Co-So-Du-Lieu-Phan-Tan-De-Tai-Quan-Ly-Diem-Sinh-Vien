@@ -123,10 +123,7 @@ namespace QLDSV_HTC.Forms
             // TODO: This line of code loads data into the 'dS.DANGKY' table. You can move, or remove it, as needed.
             this.dANGKYTableAdapter.Connection.ConnectionString = Program.ConnStr;
             this.dANGKYTableAdapter.Fill(this.dS.DANGKY);
-            if (position > 0)
-            {
-                bdsSINHVIEN.Position = position;
-            }
+            pASSWORDTextEdit.Visible = false;
             barButtonDelete.Enabled = barButtonEdit.Enabled = bdsSINHVIEN.Count > 0;
         }
 
@@ -186,6 +183,7 @@ namespace QLDSV_HTC.Forms
             SetButtonState(true);
             TextBox_MaSV.Focus();
             bdsSINHVIEN.AddNew();
+            CheckBox_Phai.Checked = false;
         }
 
         private void barButtonSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -198,6 +196,7 @@ namespace QLDSV_HTC.Forms
                 return;
             }
             dANGHIHOCCheckBox.Checked = false; // SET DA NGHI HOC = FALSE
+            pASSWORDTextEdit.Text = "123456";
             try
             {
                 this.bdsSINHVIEN.EndEdit();
@@ -260,6 +259,8 @@ namespace QLDSV_HTC.Forms
         {
             TextBox_MaSV.CharacterCasing = CharacterCasing.Upper;
         }
+
+
         private void gridView2_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             int phai = 0;
@@ -283,33 +284,84 @@ namespace QLDSV_HTC.Forms
 
         private void barButtonDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (bds_DangKy.Count > 0)
-            {
-                XtraMessageBox.Show("Không thể xóa sinh viên đã đăng ký lớp tín chỉ.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            
             if (XtraMessageBox.Show("Bạn có thực sự muốn xóa sinh viên này?", "Xác nhận.", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                try
+                if (bds_DangKy.Count > 0)
                 {
-                    position = bdsSINHVIEN.Position;
-                    bdsSINHVIEN.RemoveCurrent();
-                    this.sINHVIENTableAdapter.Connection.ConnectionString = Program.ConnStr;
-                    this.sINHVIENTableAdapter.Update(this.dS.SINHVIEN);
-                    this.bdsSINHVIEN.ResetCurrentItem();
+                    try
+                    {
+                        position = bdsSINHVIEN.Position;
+                        ((DataRowView)bdsSINHVIEN[bdsSINHVIEN.Position])["DANGHIHOC"] = true;
+                        
+                        bdsSINHVIEN.EndEdit();
+                        this.sINHVIENTableAdapter.Connection.ConnectionString = Program.ConnStr;
+                        this.sINHVIENTableAdapter.Update(this.dS.SINHVIEN);
+                        this.bdsSINHVIEN.ResetCurrentItem();
+                        undoStack.Push(string.Format("UPDATE SINHVIEN SET [DANGHIHOC] ='False' WHERE [MASV] = '{0}'", sv.maSV));
+                        
+                        XtraMessageBox.Show("Sinh viên đã được thay đổi thành đã nghỉ học, do đã đăng ký lớp tín chỉ nên không thể xóa.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        
+                    }
+                    catch (Exception ex)
+                    {
+                        XtraMessageBox.Show("Lỗi xóa sinh viên .\nMã lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK);
+                        //LopForm_Load(sender, e);
+                        LoadData();
+                    }
+                }
+                else
+                {
+                    try
+                    {
+                        position = bdsSINHVIEN.Position;
+                        bdsSINHVIEN.RemoveCurrent();
+                        this.sINHVIENTableAdapter.Connection.ConnectionString = Program.ConnStr;
+                        this.sINHVIENTableAdapter.Update(this.dS.SINHVIEN);
+                        this.bdsSINHVIEN.ResetCurrentItem();
 
-                    undoStack.Push(string.Format("INSERT INTO SINHVIEN([MASV],[HO],[TEN],[PHAI],[DIACHI],[NGAYSINH],[MALOP],[DANGHIHOC],[PASSWORD])VALUES(N'{0}',N'{1}',N'{2}',{3},N'{4}','{5}','{6}',{7},N'')", sv.maSV, sv.ho, sv.ten, sv.phai, sv.diaChi, sv.ngaySinh,sv.maLop,sv.daNghiHoc));
+                        undoStack.Push(string.Format("INSERT INTO SINHVIEN([MASV],[HO],[TEN],[PHAI],[DIACHI],[NGAYSINH],[MALOP],[DANGHIHOC],[PASSWORD])VALUES(N'{0}',N'{1}',N'{2}',{3},N'{4}','{5}','{6}',{7},N'123456')", sv.maSV, sv.ho, sv.ten, sv.phai, sv.diaChi, sv.ngaySinh, sv.maLop, sv.daNghiHoc));
+                    }
+                    catch (Exception ex)
+                    {
+                        XtraMessageBox.Show("Lỗi xóa sinh viên .\nMã lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK);
+                        //LopForm_Load(sender, e);
+                        LoadData();
+                    }
                 }
-                catch (Exception ex)
-                {
-                    XtraMessageBox.Show("Lỗi xóa sinh viên .\nMã lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK);
-                    //LopForm_Load(sender, e);
-                    LoadData();
-                }
+                LoadData();
                 barButtonDelete.Enabled = bdsSINHVIEN.Count > 0;
                 barButtonUndo.Enabled = undoStack.Count > 0;
             }
 
+
+        }
+
+        private void GC_Lop_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
+
+        private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            int phai = 0;
+            int Nghihoc = 0;
+            if (CheckBox_Phai.Checked)
+            {
+                phai = 1;
+            }
+            if (dANGHIHOCCheckBox.Checked)
+            {
+                Nghihoc = 1;
+            }
+            try
+            {
+                String Malop = ((DataRowView)bdsSINHVIEN[bdsSINHVIEN.Position])["MaLop"].ToString();
+                sv = new SinhVienClass(TextBox_MaSV.Text.Trim(), TextBox_Ho.Text.Trim(), TextBox_Ten.Text.Trim(), phai.ToString(), dIACHITextBox.Text.Trim(), DateEdit_NgaySinh.DateTime.ToString("yyyy/MM/dd"), Nghihoc.ToString(), Malop);
+            }
+            catch { }
 
         }
     }
