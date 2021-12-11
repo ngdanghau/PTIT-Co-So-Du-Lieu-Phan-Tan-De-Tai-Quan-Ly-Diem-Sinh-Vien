@@ -4,6 +4,9 @@
 
     partial class DS
     {
+        partial class SINHVIENDataTable
+        {
+        }
     }
 }
 

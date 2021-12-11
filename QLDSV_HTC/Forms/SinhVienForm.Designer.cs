@@ -37,6 +37,7 @@ namespace QLDSV_HTC.Forms
             System.Windows.Forms.Label dIACHILabel;
             System.Windows.Forms.Label pHAILabel1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SinhVienForm));
+            System.Windows.Forms.Label pASSWORDLabel;
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.NghiHoc_Label = new DevExpress.XtraEditors.LabelControl();
@@ -107,12 +108,14 @@ namespace QLDSV_HTC.Forms
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.bds_DangKy = new System.Windows.Forms.BindingSource(this.components);
             this.dANGKYTableAdapter = new QLDSV_HTC.DSTableAdapters.DANGKYTableAdapter();
+            this.pASSWORDTextEdit = new DevExpress.XtraEditors.TextEdit();
             mASVLabel = new System.Windows.Forms.Label();
             hOLabel = new System.Windows.Forms.Label();
             tENLabel = new System.Windows.Forms.Label();
             nGAYSINHLabel = new System.Windows.Forms.Label();
             dIACHILabel = new System.Windows.Forms.Label();
             pHAILabel1 = new System.Windows.Forms.Label();
+            pASSWORDLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
@@ -131,6 +134,7 @@ namespace QLDSV_HTC.Forms
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bds_DangKy)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pASSWORDTextEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // mASVLabel
@@ -192,13 +196,15 @@ namespace QLDSV_HTC.Forms
             this.panelControl1.Controls.Add(this.panelControl3);
             this.panelControl1.Controls.Add(this.GC_Lop);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl1.Location = new System.Drawing.Point(0, 332);
+            this.panelControl1.Location = new System.Drawing.Point(0, 534);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(1190, 202);
             this.panelControl1.TabIndex = 2;
             // 
             // panelControl3
             // 
+            this.panelControl3.Controls.Add(pASSWORDLabel);
+            this.panelControl3.Controls.Add(this.pASSWORDTextEdit);
             this.panelControl3.Controls.Add(this.NghiHoc_Label);
             this.panelControl3.Controls.Add(this.dANGHIHOCCheckBox);
             this.panelControl3.Controls.Add(pHAILabel1);
@@ -410,7 +416,7 @@ namespace QLDSV_HTC.Forms
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 534);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 736);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(1190, 0);
             // 
@@ -420,7 +426,7 @@ namespace QLDSV_HTC.Forms
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 510);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 712);
             // 
             // barDockControlRight
             // 
@@ -428,7 +434,7 @@ namespace QLDSV_HTC.Forms
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1190, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 510);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 712);
             // 
             // TextBox_Ten
             // 
@@ -467,6 +473,7 @@ namespace QLDSV_HTC.Forms
             this.GC_Lop.TabIndex = 0;
             this.GC_Lop.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.GC_Lop.Click += new System.EventHandler(this.GC_Lop_Click);
             // 
             // gridView1
             // 
@@ -478,6 +485,7 @@ namespace QLDSV_HTC.Forms
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsBehavior.ReadOnly = true;
             this.gridView1.OptionsDetail.EnableMasterViewMode = false;
+            this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
             // 
             // colMALOP
             // 
@@ -731,6 +739,7 @@ namespace QLDSV_HTC.Forms
             this.tableAdapterManager.LOPTINCHITableAdapter = null;
             this.tableAdapterManager.MONHOCTableAdapter = null;
             this.tableAdapterManager.SINHVIENTableAdapter = this.sINHVIENTableAdapter;
+            this.tableAdapterManager.sp_GetChiTietDongHocPhiTableAdapter = null;
             this.tableAdapterManager.sp_GetThongTinDongHocPhiTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = QLDSV_HTC.DSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
@@ -746,7 +755,7 @@ namespace QLDSV_HTC.Forms
             this.GC_SV.MainView = this.gridView2;
             this.GC_SV.MenuManager = this.barManager1;
             this.GC_SV.Name = "GC_SV";
-            this.GC_SV.Size = new System.Drawing.Size(1190, 272);
+            this.GC_SV.Size = new System.Drawing.Size(1190, 474);
             this.GC_SV.TabIndex = 16;
             this.GC_SV.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -848,12 +857,31 @@ namespace QLDSV_HTC.Forms
             // 
             this.dANGKYTableAdapter.ClearBeforeFill = true;
             // 
+            // pASSWORDLabel
+            // 
+            pASSWORDLabel.AutoSize = true;
+            pASSWORDLabel.Location = new System.Drawing.Point(2, 136);
+            pASSWORDLabel.Name = "pASSWORDLabel";
+            pASSWORDLabel.Size = new System.Drawing.Size(68, 13);
+            pASSWORDLabel.TabIndex = 17;
+            pASSWORDLabel.Text = "PASSWORD:";
+            pASSWORDLabel.Visible = false;
+            // 
+            // pASSWORDTextEdit
+            // 
+            this.pASSWORDTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsSINHVIEN, "PASSWORD", true));
+            this.pASSWORDTextEdit.Location = new System.Drawing.Point(76, 133);
+            this.pASSWORDTextEdit.MenuManager = this.barManager1;
+            this.pASSWORDTextEdit.Name = "pASSWORDTextEdit";
+            this.pASSWORDTextEdit.Size = new System.Drawing.Size(100, 20);
+            this.pASSWORDTextEdit.TabIndex = 18;
+            // 
             // SinhVienForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1190, 534);
+            this.ClientSize = new System.Drawing.Size(1190, 736);
             this.Controls.Add(this.GC_SV);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
@@ -884,6 +912,7 @@ namespace QLDSV_HTC.Forms
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bds_DangKy)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pASSWORDTextEdit.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -960,5 +989,6 @@ namespace QLDSV_HTC.Forms
         private System.Windows.Forms.BindingSource bds_DangKy;
         private DSTableAdapters.DANGKYTableAdapter dANGKYTableAdapter;
         private DevExpress.XtraEditors.LabelControl NghiHoc_Label;
+        private DevExpress.XtraEditors.TextEdit pASSWORDTextEdit;
     }
 }
