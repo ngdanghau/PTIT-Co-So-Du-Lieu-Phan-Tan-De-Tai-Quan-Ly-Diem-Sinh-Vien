@@ -67,6 +67,7 @@ namespace QLDSV_HTC.ReportForms
         private void InDSDongHPForm_Load(object sender, EventArgs e)
         {
             dS.EnforceConstraints = false;
+            this.lOPTableAdapter.Connection.ConnectionString = Program.ConnStr;
             // TODO: This line of code loads data into the 'dS.LOP' table. You can move, or remove it, as needed.
             this.lOPTableAdapter.Fill(this.dS.LOP);
 

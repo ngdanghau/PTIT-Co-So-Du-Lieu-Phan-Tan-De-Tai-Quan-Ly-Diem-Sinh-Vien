@@ -78,14 +78,14 @@ namespace QLDSV_HTC.Forms
                 return false;
             }
 
-            if (Convert.ToInt32(txtSoTietLT.Text) < 0)
+            if (txtSoTietLT.EditValue == null || Convert.ToInt32(txtSoTietLT.EditValue.ToString()) < 0)
             {
                 XtraMessageBox.Show("Số tiết lý thuyết phải lớn hơn 0!", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
-            if (Convert.ToInt32(txtSoTietTH.Text) < 0)
+            if (txtSoTietTH.EditValue == null ||  Convert.ToInt32(txtSoTietTH.EditValue.ToString()) < 0)
             {
                 XtraMessageBox.Show("Số tiết thực hành phải lớn hơn 0!", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -243,7 +243,7 @@ namespace QLDSV_HTC.Forms
         {
             try
             {
-                MonHocData = new MonHocClass(txtMaMonHoc.Text.Trim(), txtTenMonHoc.Text.Trim(), Convert.ToInt32(txtSoTietLT.Text), Convert.ToInt32(txtSoTietTH.Text));
+                MonHocData = new MonHocClass(txtMaMonHoc.Text.Trim(), txtTenMonHoc.Text.Trim(), txtSoTietLT.EditValue == null ? 0  : Convert.ToInt32(txtSoTietLT.EditValue.ToString()), txtSoTietTH.EditValue == null ? 0 : Convert.ToInt32(txtSoTietTH.EditValue.ToString()));
             }
             catch { }
         }
