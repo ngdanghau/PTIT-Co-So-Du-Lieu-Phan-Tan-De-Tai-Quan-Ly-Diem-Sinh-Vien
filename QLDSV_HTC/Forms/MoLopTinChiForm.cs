@@ -301,7 +301,6 @@ namespace QLDSV_HTC.Forms
                 LoadData();
             }
 
-            hUYLOPCheckEdit.Properties.ValueChecked = "Off";
         }
 
         private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)
@@ -323,7 +322,7 @@ namespace QLDSV_HTC.Forms
         {
             try
             {
-                LopTinChiData = new LopTinChiClass(Convert.ToInt32(txtMaLTC.Text), txtNienKhoa.Text.Trim(), txtMaMonHoc.EditValue.ToString().Trim(), txtMaGV.Text.Trim(), txtMaKhoa.Text.Trim(), Convert.ToInt32(txtHocKy.Text), Convert.ToInt32(txtNhom.Text), Convert.ToInt32(txtSoSVTT.Text), hUYLOPCheckEdit.Checked);
+                LopTinChiData = new LopTinChiClass(Convert.ToInt32(txtMaLTC.Text), txtNienKhoa.Text.Trim(), txtMaMonHoc.EditValue.ToString().Trim(), txtMaGV.Text.Trim(), txtMaKhoa.Text.Trim(), Convert.ToInt32(txtHocKy.Text), Convert.ToInt32(txtNhom.Text), Convert.ToInt32(txtSoSVTT.Text), hUYLOPCheckBox.Checked);
             }
             catch { }
         }
