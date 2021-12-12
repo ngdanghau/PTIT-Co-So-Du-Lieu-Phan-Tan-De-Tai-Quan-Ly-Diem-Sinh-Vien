@@ -188,6 +188,14 @@ namespace QLDSV_HTC.Forms
             if (state == "add" && !checkLTC()) return;
             try
             {
+                if(state =="edit")
+                    if (LopTinChiData.SoSVToiThieu > Convert.ToInt32(txtSoSVTT.Text) && bdsDANGKY.Count > 0)
+                    {
+                        XtraMessageBox.Show("Số SV tối thiểu sau khi sửa phải lớn hơn SV tối thiểu trước đó", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
                 this.bdsLOPTINCHI.EndEdit();
                 this.bdsLOPTINCHI.ResetCurrentItem();
                 this.LOPTINCHITableAdapter.Update(this.DS.LOPTINCHI);

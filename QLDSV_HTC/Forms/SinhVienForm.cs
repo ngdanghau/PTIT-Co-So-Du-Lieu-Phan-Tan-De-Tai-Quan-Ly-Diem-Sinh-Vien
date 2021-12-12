@@ -83,8 +83,6 @@ namespace QLDSV_HTC.Forms
                     = barButtonSave.Enabled
                     = panelControl3.Enabled
                     = TextBox_MaSV.ReadOnly
-                    = dANGHIHOCCheckBox.Visible
-                    = NghiHoc_Label.Visible
                     = value;
 
                 barButtonUndo.Enabled = undoStack.Count > 0;
@@ -100,8 +98,6 @@ namespace QLDSV_HTC.Forms
                     = GC_SV.Enabled
                     = TextBox_MaSV.ReadOnly
                     //= panelControl1.Enabled
-                    = dANGHIHOCCheckBox.Visible
-                    = NghiHoc_Label.Visible
                     = !value;
 
                 barButtonHuy.Enabled
@@ -124,7 +120,10 @@ namespace QLDSV_HTC.Forms
             // TODO: This line of code loads data into the 'dS.DANGKY' table. You can move, or remove it, as needed.
             this.dANGKYTableAdapter.Connection.ConnectionString = Program.ConnStr;
             this.dANGKYTableAdapter.Fill(this.dS.DANGKY);
-            pASSWORDTextEdit.Visible = false;
+            pASSWORDTextEdit.Visible
+            = dANGHIHOCCheckBox.Visible
+            = NghiHoc_Label.Visible
+            = false;
             barButtonDelete.Enabled = barButtonEdit.Enabled = bdsSINHVIEN.Count > 0;
             
             if(position2 > 0 )
@@ -315,7 +314,7 @@ namespace QLDSV_HTC.Forms
                         this.sINHVIENTableAdapter.Connection.ConnectionString = Program.ConnStr;
                         this.sINHVIENTableAdapter.Update(this.dS.SINHVIEN);
                         this.bdsSINHVIEN.ResetCurrentItem();
-                        undoStack.Push(string.Format("UPDATE SINHVIEN SET [DANGHIHOC] ='False' WHERE [MASV] = '{0}'", sv.maSV));
+                        undoStack.Push(string.Format("UPDATE SINHVIEN SET [DANGHIHOC] ='False' WHERE [MASV] = '{0}'",TextBox_MaSV.Text ));
                         
                         XtraMessageBox.Show("Sinh viên đã được thay đổi thành đã nghỉ học, do đã đăng ký lớp tín chỉ nên không thể xóa.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         
@@ -364,6 +363,8 @@ namespace QLDSV_HTC.Forms
 
         private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
+            if(bdsSINHVIEN.Count>0)
+            {
             int phai = 0;
             int Nghihoc = 0;
             if (CheckBox_Phai.Checked)
@@ -374,13 +375,13 @@ namespace QLDSV_HTC.Forms
             {
                 Nghihoc = 1;
             }
-            try
-            {
-                String Malop = ((DataRowView)bdsSINHVIEN[bdsSINHVIEN.Position])["MaLop"].ToString();
-                sv = new SinhVienClass(TextBox_MaSV.Text.Trim(), TextBox_Ho.Text.Trim(), TextBox_Ten.Text.Trim(), phai.ToString(), dIACHITextBox.Text.Trim(), DateEdit_NgaySinh.DateTime.ToString("yyyy/MM/dd"), Nghihoc.ToString(), Malop);
+                try
+                {
+                    String Malop = ((DataRowView)bdsSINHVIEN[bdsSINHVIEN.Position])["MaLop"].ToString();
+                    sv = new SinhVienClass(TextBox_MaSV.Text.Trim(), TextBox_Ho.Text.Trim(), TextBox_Ten.Text.Trim(), phai.ToString(), dIACHITextBox.Text.Trim(), DateEdit_NgaySinh.DateTime.ToString("yyyy/MM/dd"), Nghihoc.ToString(), Malop);
+                }
+                catch { }
             }
-            catch { }
-
         }
     }
 }
