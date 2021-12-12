@@ -185,6 +185,7 @@ namespace QLDSV_HTC.Forms
             {
                 sp_GetBangDiemMonHocBindingSource.Position = position;
             }
+            btnSave.Enabled = btnHuy.Enabled = false;
         }
 
 
