@@ -15,6 +15,7 @@ namespace QLDSV_HTC.Forms
     public partial class SinhVienForm : DevExpress.XtraEditors.XtraForm
     {
         private int position = -1;
+        private int position2 = -1;
         private string state = "";
         Stack<string> undoStack = new Stack<string>();
 
@@ -125,6 +126,17 @@ namespace QLDSV_HTC.Forms
             this.dANGKYTableAdapter.Fill(this.dS.DANGKY);
             pASSWORDTextEdit.Visible = false;
             barButtonDelete.Enabled = barButtonEdit.Enabled = bdsSINHVIEN.Count > 0;
+            
+            if(position2 > 0 )
+            {
+                lOPBindingSource.Position = position2;           
+            }
+
+            if(position > 0 )
+            {
+                bdsSINHVIEN.Position = position;
+            }
+
         }
 
         private void SinhVienForm_Load(object sender, EventArgs e)
@@ -179,7 +191,8 @@ namespace QLDSV_HTC.Forms
         private void barButtonItem16_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             position = bdsSINHVIEN.Position;
-            state = "add";
+            position2 = lOPBindingSource.Position;
+            state = "add";  
             SetButtonState(true);
             TextBox_MaSV.Focus();
             bdsSINHVIEN.AddNew();
@@ -230,6 +243,7 @@ namespace QLDSV_HTC.Forms
         private void barButtonEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             position = bdsSINHVIEN.Position;
+            position2 = lOPBindingSource.Position;
             state = "edit";
             SetButtonState(true);
         }
@@ -251,6 +265,8 @@ namespace QLDSV_HTC.Forms
 
         private void barButtonRenew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            position = 0;
+            position2 = 0;
             LoadData();
             XtraMessageBox.Show("Làm mới dữ liệu thành công", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -264,7 +280,7 @@ namespace QLDSV_HTC.Forms
         private void gridView2_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             int phai = 0;
-            int Nghihoc = 0;
+            int Nghihoc = 0;      
             if (CheckBox_Phai.Checked)
             {
                 phai = 1;
@@ -292,6 +308,7 @@ namespace QLDSV_HTC.Forms
                     try
                     {
                         position = bdsSINHVIEN.Position;
+                        position2 = lOPBindingSource.Position;
                         ((DataRowView)bdsSINHVIEN[bdsSINHVIEN.Position])["DANGHIHOC"] = true;
                         
                         bdsSINHVIEN.EndEdit();
@@ -315,6 +332,7 @@ namespace QLDSV_HTC.Forms
                     try
                     {
                         position = bdsSINHVIEN.Position;
+                        position2 = lOPBindingSource.Position;
                         bdsSINHVIEN.RemoveCurrent();
                         this.sINHVIENTableAdapter.Connection.ConnectionString = Program.ConnStr;
                         this.sINHVIENTableAdapter.Update(this.dS.SINHVIEN);
