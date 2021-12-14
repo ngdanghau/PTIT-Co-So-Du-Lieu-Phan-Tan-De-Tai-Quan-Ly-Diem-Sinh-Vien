@@ -1,4 +1,6 @@
 USE [QLDSV_TC]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_InDSSV]    Script Date: 14/12/2021 3:58:23 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8,18 +10,21 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE OR ALTER PROCEDURE sp_InDSSV
-	-- khai bao cac bien tam 
-	@NIENKHOA nchar(9), @HOCKY int, @MAMH nchar(10), @NHOM int 
+ALTER PROCEDURE [dbo].[sp_InDSSV]
+	-- Add the parameters for the stored procedure here
+	@NIENKHOA nchar(9), @HOCKY int, @MAMH nchar(10), @NHOM int
 AS
 BEGIN
 
-	SELECT sv.MASV, sv.HO, sv.TEN, sv.PHAI, sv.MALOP
-	   FROM SINHVIEN as sv, LOPTINCHI as ltc, DANGKY as dk
-	   WHERE 
-		sv.MASV = dk.MASV AND ltc.MALTC = dk.MALTC AND
-		ltc.NIENKHOA = @NIENKHOA AND ltc.HOCKY = @HOCKY AND ltc.MAMH = @MAMH AND ltc.NHOM = @NHOM
+	SELECT  ROW_NUMBER() over(ORDER BY sv.TEN, sv.HO) STT, sv.MASV, sv.HO, sv.TEN, Case 
+            When sv.PHAI='false' Then 'Nam' 
+            Else 'Nu' END AS Phai  
+			, sv.MALOP
+	FROM  (SELECT ltc.MALTC from LOPTINCHI as ltc where ltc.MAMH = @MAMH AND ltc.NIENKHOA = @NIENKHOA AND ltc.HOCKY = @HOCKY AND ltc.NHOM = @NHOM) as ltc
+	Inner join DANGKY as dk  on dk.MALTC = ltc.MALTC
+	Inner join SINHVIEN as sv on dk.MASV = sv.MASV
+	WHERE  sv.DANGHIHOC = 'False'
+
 	ORDER BY sv.TEN, sv.HO
-	  
+
 END
-GO
