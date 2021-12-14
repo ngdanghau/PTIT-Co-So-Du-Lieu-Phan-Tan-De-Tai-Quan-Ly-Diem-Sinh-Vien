@@ -76,6 +76,7 @@ namespace QLDSV_HTC.Forms
                     = barButtonRenew.Enabled
                     = GC_Lop.Enabled
                     = GC_SV.Enabled
+                    = cmbKhoa.Enabled
                     //= panelControl1.Enabled
                     = !value;
 
@@ -97,6 +98,7 @@ namespace QLDSV_HTC.Forms
                     = GC_Lop.Enabled
                     = GC_SV.Enabled
                     = TextBox_MaSV.ReadOnly
+                    = cmbKhoa.Enabled
                     //= panelControl1.Enabled
                     = !value;
 
@@ -128,12 +130,16 @@ namespace QLDSV_HTC.Forms
             
             if(position2 > 0 )
             {
+                if(position2 <= lOPBindingSource.Count)
                 lOPBindingSource.Position = position2;           
             }
 
             if(position > 0 )
             {
-                bdsSINHVIEN.Position = position;
+                if (position <= bdsSINHVIEN.Count)
+                    bdsSINHVIEN.Position = position;
+                else
+                    bdsSINHVIEN.Position = position = 0;
             }
 
         }
